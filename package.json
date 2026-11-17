@@ -16,6 +16,7 @@
     "format": "prettier --write --experimental-cli src/"
   },
   "dependencies": {
+    "@primeicons/vue": "^8.0.2",
     "pinia": "^4.0.3",
     "primevue": "^5.0.5",
     "vue": "^3.5.42",

@@ -1,54 +1,23 @@
-# erp-design-system
+# ERP Design System
 
-This template should help get you started developing with Vue 3 in Vite.
-
-## Recommended IDE Setup
-
-[VS Code](https://code.visualstudio.com/) + [Vue (Official)](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
-
-## Recommended Browser Setup
-
-- Chromium-based browsers (Chrome, Edge, Brave, etc.):
-  - [Vue.js devtools](https://chromewebstore.google.com/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd)
-  - [Turn on Custom Object Formatter in Chrome DevTools](http://bit.ly/object-formatters)
-- Firefox:
-  - [Vue.js devtools](https://addons.mozilla.org/en-US/firefox/addon/vue-js-devtools/)
-  - [Turn on Custom Object Formatter in Firefox DevTools](https://fxdx.dev/firefox-devtools-custom-object-formatters/)
-
-## Type Support for `.vue` Imports in TS
-
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vite.dev/config/).
-
-## Project Setup
+Vue 3 and PrimeVue component playground with a standalone ERP theme and Tailwind CSS.
 
 ```sh
 npm install
-```
-
-### Compile and Hot-Reload for Development
-
-```sh
 npm run dev
 ```
 
-### Type-Check, Compile and Minify for Production
+Open `/` to try buttons, status messages, form controls, and a sortable table.
+Light mode is the default. Use the sun/moon button in the header to switch modes. Your selection is remembered in this browser.
 
-```sh
-npm run build
-```
+- Theme tokens: `src/theme/erp-theme/`.
+- Default font: Rubik, loaded from Google Fonts and set by the theme typography token.
+- Brand assets: `src/assets/brand/logo.svg` (wordmark) and `src/assets/brand/symbol.svg` (symbol).
+- Favicon: `public/favicon.svg`, a copy of the brand symbol.
+- Global styles: `src/assets/styles/main.css`.
+- Component previews: `src/components/playground/`.
+- PrimeVue components are auto-imported in templates; `src/components.d.ts` is generated.
+- PrimeIcons are SVG components from `@primeicons/vue`; import individual icons as needed.
+- `src/theme/aura-reference/` is reference material, excluded from application compilation.
 
-### Run Unit Tests with [Vitest](https://vitest.dev/)
-
-```sh
-npm run test:unit
-```
-
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-npm run lint
-```
+Run `npm run build` for type-checking and a production build, or `npm run test:unit -- --run` for tests.

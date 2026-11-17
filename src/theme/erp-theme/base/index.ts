@@ -32,6 +32,9 @@ export const primitive = {
 };
 
 export const semantic = {
+    typography: {
+        fontFamily: "'Rubik', system-ui, sans-serif"
+    },
     transitionDuration: '0.2s',
     focusRing: {
         width: '1px',

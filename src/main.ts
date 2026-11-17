@@ -1,4 +1,5 @@
-import './assets/main.css'
+import './assets/styles/main.css'
+import './theme/color-mode'
 
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
@@ -14,6 +15,7 @@ app.use(PrimeVue, {
   theme: {
     preset: ErpTheme,
     options: {
+      darkModeSelector: '.app-dark',
       cssLayer: {
         name: 'primevue',
         order: 'tailwind-base, primevue, tailwind-utilities',

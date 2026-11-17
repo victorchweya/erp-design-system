@@ -1,0 +1,32 @@
+@layer tailwind-base, primevue, tailwind-utilities;
+
+@layer tailwind-base {
+  @tailwind base;
+
+  html {
+    color-scheme: light;
+  }
+
+  body {
+    min-width: 320px;
+    color: var(--p-text-color);
+    background: var(--p-surface-50);
+  }
+
+  #app {
+    isolation: isolate;
+  }
+
+  html.app-dark {
+    color-scheme: dark;
+  }
+
+  .app-dark body {
+    background: var(--p-surface-950);
+  }
+}
+
+@layer tailwind-utilities {
+  @tailwind components;
+  @tailwind utilities;
+}
