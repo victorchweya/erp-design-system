@@ -13,7 +13,9 @@ Open `/` to try buttons, status messages, form controls, and a sortable table. O
 
 Open `/foundations/typography` for Rubik specimens, recommended heading and body combinations, weights, and Tailwind classes.
 
-General (`/general`) and the Motion, Spacing, and Icons foundation pages are still placeholders.
+Open `/foundations/spacing` for the spacing scale, padding and gap examples, PrimeVue control sizes, radii, breakpoints, and page containers.
+
+General (`/general`) and the Motion and Icons foundation pages are still placeholders.
 
 Light mode is the default. The header's sun/moon button switches modes and remembers the selection in this browser. PrimeVue and Tailwind share the `.app-dark` selector.
 
@@ -58,6 +60,18 @@ Fixed brand colours and raw FTF ramps keep their values across modes. Raw ramp u
 Typography uses Rubik and Tailwind's default type scale without custom size utilities. [typography.ts](src/theme/erp-theme/foundations/typography.ts) keeps a local copy of the default sizes, line heights, and the four UI weights for the standalone PrimeVue preset and documentation. The integration check verifies these against Tailwind's installed defaults and resolved configuration.
 
 PrimeVue font sizes reference `font.size.*` tokens and weights reference `font.weight.*`. Default controls use `text-base` (16px), small controls use `text-sm` (14px), and large controls use `text-lg` (18px). Component line heights retain PrimeVue's layout; Tailwind text utilities include their default line heights. The root font size stays at the browser default so rem units respect user preferences.
+
+## Spacing
+
+Spacing uses Tailwind v3's default scale. [spacing.ts](src/theme/erp-theme/foundations/spacing.ts) keeps the matching values local for the standalone preset and documentation; the integration check verifies them against the installed Tailwind defaults. Shared form fields, lists, navigation, overlays, buttons, cards, tags, tables, and dialogs reference `spacing.*` tokens. Existing component-specific 18px padding and the Stepper's 26px alignment margin remain unchanged.
+
+Use Tailwind utilities such as `p-6` and `gap-4`. In ordinary CSS, the matching PrimeVue variables are `var(--p-spacing-6)` and `var(--p-spacing-4)`. In CSS processed by Tailwind v3, use `theme('spacing.6')`. Breakpoints and existing page gutters are unchanged.
+
+The existing radius mapping is documented on the page: PrimeVue `border.radius.xs` matches `rounded-sm` (2px), and `border.radius.sm` matches `rounded` (4px). The `md`, `lg`, and `xl` names match across both systems.
+
+DataTables have a rounded outer frame in the shared preset: 6px (`border.radius.md`) for small tables and 8px (`border.radius.lg`) for default and large tables. The frame includes headers, footers, and pagination; inner cell borders stay square.
+
+The shared wide container is `max-w-8xl`, capped at 90rem (1440px at a 16px root), matching FTF ecommerce. Its value lives in `spacing.ts`. Foundation pages currently use `max-w-7xl` and the playground uses `max-w-6xl`. Container widths are separate from responsive breakpoints.
 
 ## Shared page navigation
 

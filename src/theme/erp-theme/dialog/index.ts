@@ -8,7 +8,7 @@ export const root = {
 
 export const header = {
     padding: '{overlay.modal.padding}',
-    gap: '0.5rem'
+    gap: '{spacing.2}'
 };
 
 export const title = {
@@ -22,7 +22,7 @@ export const content = {
 
 export const footer = {
     padding: '0 {overlay.modal.padding} {overlay.modal.padding} {overlay.modal.padding}',
-    gap: '0.5rem'
+    gap: '{spacing.2}'
 };
 
 export default {

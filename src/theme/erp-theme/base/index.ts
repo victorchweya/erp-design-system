@@ -1,21 +1,16 @@
 import { brandTokenReferences, primitives } from '../foundations/palette'
 import { fontFamily, fontTokens } from '../foundations/typography'
+import { borderRadii, spacing } from '../foundations/spacing'
 
 export const primitive = {
     font: fontTokens,
+    spacing,
     // The namespace separates FTF tokens from inherited component palette names.
     ftf: {
         ...primitives,
         ...Object.fromEntries(Object.entries(brandTokenReferences).map(([name, reference]) => [name, `{ftf.${reference}}`]))
     },
-    borderRadius: {
-        none: '0',
-        xs: '2px',
-        sm: '4px',
-        md: '6px',
-        lg: '8px',
-        xl: '12px'
-    },
+    borderRadius: borderRadii,
     emerald: { 50: '#ecfdf5', 100: '#d1fae5', 200: '#a7f3d0', 300: '#6ee7b7', 400: '#34d399', 500: '#10b981', 600: '#059669', 700: '#047857', 800: '#065f46', 900: '#064e3b', 950: '#022c22' },
     green: { 50: '#f0fdf4', 100: '#dcfce7', 200: '#bbf7d0', 300: '#86efac', 400: '#4ade80', 500: '#22c55e', 600: '#16a34a', 700: '#15803d', 800: '#166534', 900: '#14532d', 950: '#052e16' },
     lime: { 50: '#f7fee7', 100: '#ecfccb', 200: '#d9f99d', 300: '#bef264', 400: '#a3e635', 500: '#84cc16', 600: '#65a30d', 700: '#4d7c0f', 800: '#3f6212', 900: '#365314', 950: '#1a2e05' },
@@ -74,17 +69,17 @@ export const semantic = {
     formField: {
         fontSize: '{typography.font.size}',
         fontWeight: '{typography.font.weight}',
-        paddingX: '0.75rem',
-        paddingY: '0.5rem',
+        paddingX: '{spacing.3}',
+        paddingY: '{spacing.2}',
         sm: {
             fontSize: '{font.size.sm}',
-            paddingX: '0.625rem',
-            paddingY: '0.375rem'
+            paddingX: '{spacing.2.5}',
+            paddingY: '{spacing.1.5}'
         },
         lg: {
             fontSize: '{font.size.lg}',
-            paddingX: '0.875rem',
-            paddingY: '0.625rem'
+            paddingX: '{spacing.3.5}',
+            paddingY: '{spacing.2.5}'
         },
         borderRadius: '{border.radius.md}',
         focusRing: {
@@ -97,17 +92,17 @@ export const semantic = {
         transitionDuration: '{transition.duration}'
     },
     list: {
-        padding: '0.25rem 0.25rem',
-        gap: '2px',
+        padding: '{spacing.1} {spacing.1}',
+        gap: '{spacing.0.5}',
         header: {
-            padding: '0.5rem 1rem 0.25rem 1rem'
+            padding: '{spacing.2} {spacing.4} {spacing.1} {spacing.4}'
         },
         option: {
-            padding: '0.5rem 0.75rem',
+            padding: '{spacing.2} {spacing.3}',
             borderRadius: '{border.radius.sm}'
         },
         optionGroup: {
-            padding: '0.5rem 0.75rem',
+            padding: '{spacing.2} {spacing.3}',
             fontWeight: '{font.weight.semibold}'
         }
     },
@@ -119,16 +114,16 @@ export const semantic = {
     },
     navigation: {
         list: {
-            padding: '0.25rem 0.25rem',
-            gap: '2px'
+            padding: '{spacing.1} {spacing.1}',
+            gap: '{spacing.0.5}'
         },
         item: {
-            padding: '0.5rem 0.75rem',
+            padding: '{spacing.2} {spacing.3}',
             borderRadius: '{border.radius.sm}',
-            gap: '0.5rem'
+            gap: '{spacing.2}'
         },
         submenuLabel: {
-            padding: '0.5rem 0.75rem',
+            padding: '{spacing.2} {spacing.3}',
             fontWeight: '{font.weight.semibold}'
         },
         submenuIcon: {
@@ -142,12 +137,12 @@ export const semantic = {
         },
         popover: {
             borderRadius: '{border.radius.md}',
-            padding: '0.75rem',
+            padding: '{spacing.3}',
             shadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1)'
         },
         modal: {
             borderRadius: '{border.radius.xl}',
-            padding: '1.25rem',
+            padding: '{spacing.5}',
             shadow: '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1)'
         },
         navigation: {

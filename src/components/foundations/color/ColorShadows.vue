@@ -13,20 +13,26 @@ const shadows = [
 
 <template>
   <div class="grid grid-cols-2 gap-4 lg:grid-cols-4">
-    <figure
+    <Card
       v-for="shadow in shadows"
       :key="shadow.utility"
-      class="flex min-w-0 flex-col gap-4 rounded-lg border border-surface p-4"
+      class="min-w-0"
+      role="figure"
+      :aria-label="shadow.label"
     >
-      <div
-        :class="shadow.utility"
-        class="h-16 rounded-lg bg-surface-0 dark:bg-surface-800"
-        aria-hidden="true"
-      />
-      <figcaption class="flex flex-col gap-1">
-        <h3 class="text-base font-medium">{{ shadow.label }}</h3>
-        <code class="text-xs text-muted-color">{{ shadow.utility }}</code>
-      </figcaption>
-    </figure>
+      <template #content>
+        <div
+          :class="shadow.utility"
+          class="h-16 rounded-lg bg-surface-0 dark:bg-surface-800"
+          aria-hidden="true"
+        />
+      </template>
+      <template #footer>
+        <div class="flex flex-col gap-1">
+          <h3 class="text-base font-medium">{{ shadow.label }}</h3>
+          <code class="text-xs text-muted-color">{{ shadow.utility }}</code>
+        </div>
+      </template>
+    </Card>
   </div>
 </template>

@@ -23,18 +23,24 @@ const swatches = [
 
 <template>
   <div class="grid grid-cols-2 gap-4 lg:grid-cols-3">
-    <figure
+    <Card
       v-for="swatch in swatches"
       :key="swatch.token"
-      class="min-w-0 overflow-hidden rounded-lg border border-surface"
+      class="min-w-0 overflow-hidden"
+      role="figure"
+      :aria-label="swatch.label"
     >
-      <div class="h-14" :style="{ backgroundColor: swatch.variable }" aria-hidden="true" />
-      <figcaption class="flex flex-col gap-1 p-3">
-        <h3 class="text-base font-medium">{{ swatch.label }}</h3>
-        <code class="break-all text-xs text-muted-color">{{ swatch.token }}</code>
-        <span class="font-mono text-xs">Light {{ swatch.light }}</span>
-        <span class="font-mono text-xs">Dark {{ swatch.dark }}</span>
-      </figcaption>
-    </figure>
+      <template #header>
+        <div class="h-14" :style="{ backgroundColor: swatch.variable }" aria-hidden="true" />
+      </template>
+      <template #content>
+        <div class="flex flex-col gap-1">
+          <h3 class="text-base font-medium">{{ swatch.label }}</h3>
+          <code class="break-all text-xs text-muted-color">{{ swatch.token }}</code>
+          <span class="font-mono text-xs">Light {{ swatch.light }}</span>
+          <span class="font-mono text-xs">Dark {{ swatch.dark }}</span>
+        </div>
+      </template>
+    </Card>
   </div>
 </template>

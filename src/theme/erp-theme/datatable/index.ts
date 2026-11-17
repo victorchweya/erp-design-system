@@ -7,12 +7,12 @@ export const header = {
     borderColor: '{datatable.border.color}',
     color: '{content.color}',
     borderWidth: '0 0 1px 0',
-    padding: '0.75rem 1rem',
+    padding: '{spacing.3} {spacing.4}',
     sm: {
-        padding: '0.375rem 0.5rem'
+        padding: '{spacing.1.5} {spacing.2}'
     },
     lg: {
-        padding: '1rem 1.25rem'
+        padding: '{spacing.4} {spacing.5}'
     }
 };
 
@@ -24,8 +24,8 @@ export const headerCell = {
     color: '{content.color}',
     hoverColor: '{content.hover.color}',
     selectedColor: '{highlight.color}',
-    gap: '0.5rem',
-    padding: '0.75rem 1rem',
+    gap: '{spacing.2}',
+    padding: '{spacing.3} {spacing.4}',
     focusRing: {
         width: '{focus.ring.width}',
         style: '{focus.ring.style}',
@@ -34,10 +34,10 @@ export const headerCell = {
         shadow: '{focus.ring.shadow}'
     },
     sm: {
-        padding: '0.375rem 0.5rem'
+        padding: '{spacing.1.5} {spacing.2}'
     },
     lg: {
-        padding: '1rem 1.25rem'
+        padding: '{spacing.4} {spacing.5}'
     }
 };
 
@@ -63,12 +63,12 @@ export const row = {
 
 export const bodyCell = {
     borderColor: '{datatable.border.color}',
-    padding: '0.75rem 1rem',
+    padding: '{spacing.3} {spacing.4}',
     sm: {
-        padding: '0.375rem 0.5rem'
+        padding: '{spacing.1.5} {spacing.2}'
     },
     lg: {
-        padding: '1rem 1.25rem'
+        padding: '{spacing.4} {spacing.5}'
     }
 };
 
@@ -76,12 +76,12 @@ export const footerCell = {
     background: '{content.background}',
     borderColor: '{datatable.border.color}',
     color: '{content.color}',
-    padding: '0.75rem 1rem',
+    padding: '{spacing.3} {spacing.4}',
     sm: {
-        padding: '0.375rem 0.5rem'
+        padding: '{spacing.1.5} {spacing.2}'
     },
     lg: {
-        padding: '1rem 1.25rem'
+        padding: '{spacing.4} {spacing.5}'
     }
 };
 
@@ -94,12 +94,12 @@ export const footer = {
     borderColor: '{datatable.border.color}',
     color: '{content.color}',
     borderWidth: '0 0 1px 0',
-    padding: '0.75rem 1rem',
+    padding: '{spacing.3} {spacing.4}',
     sm: {
-        padding: '0.375rem 0.5rem'
+        padding: '{spacing.1.5} {spacing.2}'
     },
     lg: {
-        padding: '1rem 1.25rem'
+        padding: '{spacing.4} {spacing.5}'
     }
 };
 
@@ -159,7 +159,7 @@ export const filter = {
         color: '{overlay.popover.color}',
         shadow: '{overlay.popover.shadow}',
         padding: '{overlay.popover.padding}',
-        gap: '0.5rem'
+        gap: '{spacing.2}'
     },
     rule: {
         borderColor: '{content.border.color}'
@@ -220,6 +220,26 @@ export const colorScheme = {
 };
 
 export const css = /*css*/ `
+    .p-datatable {
+        border-radius: dt('border.radius.lg');
+        overflow: clip;
+    }
+
+    .p-datatable.p-datatable-sm {
+        border-radius: dt('border.radius.md');
+    }
+
+    /* Paint the frame above cell backgrounds to keep rounded corners continuous. */
+    .p-datatable::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        border: 1px solid dt('datatable.border.color');
+        border-radius: inherit;
+        pointer-events: none;
+        z-index: 2;
+    }
+
     .p-datatable-mask.p-overlay-mask {
         --px-mask-background: light-dark(rgba(255,255,255,0.5),rgba(0,0,0,0.3));
     }

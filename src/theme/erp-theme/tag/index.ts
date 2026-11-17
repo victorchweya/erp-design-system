@@ -1,8 +1,8 @@
 export const root = {
     fontSize: '{font.size.sm}',
     fontWeight: '{font.weight.bold}',
-    padding: '0.25rem 0.5rem',
-    gap: '0.25rem',
+    padding: '{spacing.1} {spacing.2}',
+    gap: '{spacing.1}',
     borderRadius: '{content.border.radius}',
     roundedBorderRadius: '{border.radius.xl}'
 };

@@ -73,14 +73,14 @@ it('renders the color documentation without internal audit notes', () => {
     'shadow-none',
   ]
   expect(shadows.findAll('code').map((code) => code.text())).toEqual(shadowUtilities)
-  shadows.findAll('figure').forEach((figure, index) => {
+  shadows.findAll('[role="figure"]').forEach((figure, index) => {
     expect(figure.get('[aria-hidden="true"]').classes()).toContain(shadowUtilities[index])
   })
   expect(wrapper.text()).not.toContain('No dark pairing inferred')
   expect(wrapper.text()).not.toContain('Local PrimeVue examples')
   expect(wrapper.text()).not.toContain('Confirm Order')
   const brand = wrapper.get('#color-brand')
-  expect(brand.findAll('figure')).toHaveLength(12)
+  expect(brand.findAll('[role="figure"]')).toHaveLength(12)
   expect(brand.text()).toContain('Cream#FFF5DF')
   expect(brand.text()).toContain('Peach#F1D3AF')
   expect(brand.text()).toContain('Ochre#E0AF62')
@@ -134,7 +134,7 @@ it('renders the color documentation without internal audit notes', () => {
   expect(text.findAll('code').map((token) => token.text())).toContain('text.muted.color')
   expect(text.findAll('h3').filter((heading) => heading.text() === 'text-muted')).toHaveLength(1)
   expect(wrapper.findAll('code').map((token) => token.text())).not.toContain('text-secondary')
-  const warning = text.findAll('figure').find((figure) => figure.get('h3').text() === 'text-warn')!
+  const warning = text.findAll('[role="figure"]').find((figure) => figure.get('h3').text() === 'text-warn')!
   expect(warning.get('code').text()).toBe('severity.warn.color')
   expect(warning.text()).toContain('Light #8D5317')
   expect(warning.text()).toContain('Dark #EBC194')
@@ -156,7 +156,7 @@ it('renders the color documentation without internal audit notes', () => {
     ].map((name) => `bg-${name}`),
   )
   const warningBackground = background
-    .findAll('figure')
+    .findAll('[role="figure"]')
     .find((figure) => figure.get('h3').text() === 'bg-warn')!
   expect(warningBackground.get('code').text()).toBe('severity.warn.background')
   expect(warningBackground.text()).toContain('Light #D78228')
@@ -171,7 +171,7 @@ it('renders the color documentation without internal audit notes', () => {
   for (const section of [text, background]) {
     const labels = section.findAll('h3').map((heading) => heading.text())
     expect(new Set(labels).size).toBe(labels.length)
-    for (const figure of section.findAll('figure')) {
+    for (const figure of section.findAll('[role="figure"]')) {
       const halves = figure.findAll('[aria-hidden="true"] > div')
       expect(halves).toHaveLength(2)
       expect(halves.map((half) => half.text())).toEqual(['Aa', 'Aa'])
@@ -191,8 +191,8 @@ it('renders the color documentation without internal audit notes', () => {
     'Disabled background',
     'Disabled text',
   ])
-  expect(inputs.findAll('figure')).toHaveLength(6)
-  for (const figure of inputs.findAll('figure')) {
+  expect(inputs.findAll('[role="figure"]')).toHaveLength(6)
+  for (const figure of inputs.findAll('[role="figure"]')) {
     expect(figure.text()).toContain('Light #')
     expect(figure.text()).toContain('Dark #')
     expect(figure.text()).not.toContain('Foreground:')
@@ -208,8 +208,8 @@ it('renders the color documentation without internal audit notes', () => {
     'Danger',
     'Contrast',
   ])
-  expect(status.findAll('figure')).toHaveLength(7)
-  for (const figure of status.findAll('figure')) {
+  expect(status.findAll('[role="figure"]')).toHaveLength(7)
+  for (const figure of status.findAll('[role="figure"]')) {
     const severity = figure.get('h3').text().toLowerCase()
     expect(figure.text()).toContain(`bg-${severity}`)
     expect(figure.text()).toContain(`text-${severity}-contrast`)

@@ -19,7 +19,7 @@ function reset() {
 
 <template>
   <Card
-    class="h-full shadow-none ring-1 ring-surface-200 dark:ring-surface-800"
+    class="h-full"
     role="region"
     aria-labelledby="form-heading"
   >

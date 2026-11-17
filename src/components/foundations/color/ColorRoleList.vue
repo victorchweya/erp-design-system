@@ -19,30 +19,36 @@ const swatches = computed(() =>
 
 <template>
   <div class="grid grid-cols-2 gap-4 lg:grid-cols-3">
-    <figure
+    <Card
       v-for="swatch in swatches"
       :key="swatch.name"
-      class="min-w-0 overflow-hidden rounded-lg border border-surface"
+      class="min-w-0 overflow-hidden"
+      role="figure"
+      :aria-label="swatch.label"
     >
-      <div class="flex h-14 text-base font-medium" aria-hidden="true">
-        <div
-          v-for="mode in modes"
-          :key="mode"
-          class="flex flex-1 items-center justify-center"
-          :style="{
-            backgroundColor: swatch[mode].background.value,
-            color: swatch[mode].foreground.value,
-          }"
-        >
-          Aa
+      <template #header>
+        <div class="flex h-14 text-base font-medium" aria-hidden="true">
+          <div
+            v-for="mode in modes"
+            :key="mode"
+            class="flex flex-1 items-center justify-center"
+            :style="{
+              backgroundColor: swatch[mode].background.value,
+              color: swatch[mode].foreground.value,
+            }"
+          >
+            Aa
+          </div>
         </div>
-      </div>
-      <figcaption class="flex flex-col gap-1 p-3">
-        <h3 class="break-words text-base font-medium">{{ swatch.label }}</h3>
-        <code class="break-all text-xs text-muted-color">{{ swatch.token }}</code>
-        <span class="font-mono text-xs">Light {{ swatch.lightValue }}</span>
-        <span class="font-mono text-xs">Dark {{ swatch.darkValue }}</span>
-      </figcaption>
-    </figure>
+      </template>
+      <template #content>
+        <div class="flex flex-col gap-1">
+          <h3 class="break-words text-base font-medium">{{ swatch.label }}</h3>
+          <code class="break-all text-xs text-muted-color">{{ swatch.token }}</code>
+          <span class="font-mono text-xs">Light {{ swatch.lightValue }}</span>
+          <span class="font-mono text-xs">Dark {{ swatch.darkValue }}</span>
+        </div>
+      </template>
+    </Card>
   </div>
 </template>

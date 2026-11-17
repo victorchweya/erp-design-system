@@ -2,6 +2,7 @@ import PrimeUI from 'tailwindcss-primeui'
 import { brandTokenReferences, primitives } from './src/theme/erp-theme/foundations/palette.ts'
 import { semanticColors } from './src/theme/erp-theme/foundations/color-tokens.ts'
 import { fontFamily } from './src/theme/erp-theme/foundations/typography.ts'
+import { wideContainerMaxWidth } from './src/theme/erp-theme/foundations/spacing.ts'
 
 const themeColor = (token) =>
   `color-mix(in srgb, var(--p-${token}) calc(100% * <alpha-value>), transparent)`
@@ -23,6 +24,9 @@ export default {
   content: ['./index.html', './src/**/*.{vue,js,ts,jsx,tsx}', '!./src/theme/aura-reference/**'],
   theme: {
     extend: {
+      maxWidth: {
+        '8xl': wideContainerMaxWidth,
+      },
       colors: {
         status: pairedColors('status', ['success', 'warning', 'error', 'info']),
         ftf: Object.fromEntries(

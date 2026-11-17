@@ -42,30 +42,34 @@ function pixels(value: string) {
       <h2 :id="`${id}-title`" class="text-xl font-medium">{{ label }}</h2>
       <p class="text-muted-color">{{ description }}</p>
     </div>
-    <div class="flex flex-col gap-6 rounded-xl border border-surface p-6">
-      <p class="break-words" :class="[sizeClasses[size], weightClasses[weight]]">
-        Shaping the Future of Food
-      </p>
-      <dl class="flex flex-wrap gap-x-8 gap-y-3 text-sm">
-        <div>
-          <dt class="text-muted-color">Tailwind</dt>
-          <dd class="font-mono">{{ sizeClasses[size] }} {{ weightClasses[weight] }}</dd>
-        </div>
-        <div>
-          <dt class="text-muted-color">Weight</dt>
-          <dd>{{ fontWeights[weight] }}</dd>
-        </div>
-        <div>
-          <dt class="text-muted-color">Size</dt>
-          <dd>{{ pixels(fontSizes[size][0]) }}</dd>
-        </div>
-        <div>
-          <dt class="text-muted-color">Line height</dt>
-          <dd>
-            {{ pixels(fontSizes[size][1] === '1' ? fontSizes[size][0] : fontSizes[size][1]) }}
-          </dd>
-        </div>
-      </dl>
-    </div>
+    <Card class="min-w-0">
+      <template #content>
+        <p class="break-words" :class="[sizeClasses[size], weightClasses[weight]]">
+          Shaping the Future of Food
+        </p>
+      </template>
+      <template #footer>
+        <dl class="flex flex-wrap gap-x-8 gap-y-3 text-sm">
+          <div>
+            <dt class="text-muted-color">Tailwind</dt>
+            <dd class="font-mono">{{ sizeClasses[size] }} {{ weightClasses[weight] }}</dd>
+          </div>
+          <div>
+            <dt class="text-muted-color">Weight</dt>
+            <dd>{{ fontWeights[weight] }}</dd>
+          </div>
+          <div>
+            <dt class="text-muted-color">Size</dt>
+            <dd>{{ pixels(fontSizes[size][0]) }}</dd>
+          </div>
+          <div>
+            <dt class="text-muted-color">Line height</dt>
+            <dd>
+              {{ pixels(fontSizes[size][1] === '1' ? fontSizes[size][0] : fontSizes[size][1]) }}
+            </dd>
+          </div>
+        </dl>
+      </template>
+    </Card>
   </section>
 </template>

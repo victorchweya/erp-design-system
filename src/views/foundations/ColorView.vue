@@ -71,16 +71,12 @@ const roleSections = (
         <h1 class="text-3xl font-medium tracking-tight sm:text-4xl">Colour</h1>
         <p class="text-lg text-muted-color">
           Use the FTF palette and semantic colour roles across Tailwind and PrimeVue. Light and dark
-          values share one token source, keeping text, backgrounds, borders, and feedback consistent.
+          values share one token source, keeping text, backgrounds, borders, and feedback
+          consistent.
         </p>
       </header>
 
-      <AnchorNav
-        :items="sections"
-        :active-id="activeSection"
-        inline
-        class="mb-8 xl:hidden"
-      />
+      <AnchorNav :items="sections" :active-id="activeSection" inline class="mb-8 xl:hidden" />
 
       <div class="flex flex-col gap-12">
         <section
@@ -91,10 +87,10 @@ const roleSections = (
           <h2 id="color-usage-title" class="text-3xl font-medium">How to use</h2>
           <p class="text-muted-color">
             Use shared tokens through Tailwind utilities such as
-            <Tag severity="secondary" class="align-baseline"><code>bg-primary</code></Tag>,
-            <Tag severity="secondary" class="align-baseline"><code>text-color</code></Tag>, and
-            <Tag severity="secondary" class="align-baseline"><code>border-surface</code></Tag>,
-            or CSS variables such as
+            <Tag severity="secondary" class="align-baseline"><code>bg-primary</code></Tag
+            >, <Tag severity="secondary" class="align-baseline"><code>text-color</code></Tag
+            >, and <Tag severity="secondary" class="align-baseline"><code>border-surface</code></Tag
+            >, or CSS variables such as
             <Tag severity="secondary" class="align-baseline"
               ><code>var(--p-primary-color)</code></Tag
             >.
@@ -113,18 +109,18 @@ const roleSections = (
           <p class="text-muted-color">
             Pair coloured backgrounds with their matching contrast text:
             <Tag severity="secondary" class="align-baseline"><code>bg-primary</code></Tag> with
-            <Tag severity="secondary" class="align-baseline"
-              ><code>text-primary-contrast</code></Tag
+            <Tag severity="secondary" class="align-baseline"><code>text-primary-contrast</code></Tag
             >, or <Tag severity="secondary" class="align-baseline"><code>bg-warn</code></Tag>
             with
-            <Tag severity="secondary" class="align-baseline"><code>text-warn-contrast</code></Tag>.
+            <Tag severity="secondary" class="align-baseline"><code>text-warn-contrast</code></Tag
+            >.
           </p>
         </section>
 
         <section
           id="color-brand"
           aria-labelledby="color-brand-title"
-          class="flex scroll-mt-24 flex-col gap-5"
+          class="flex scroll-mt-24 flex-col gap-4"
         >
           <h2 id="color-brand-title" class="text-3xl font-medium">Brand</h2>
           <p class="text-muted-color">Kale, Lime, Carrot, and Tamarind are the core FTF colours.</p>
@@ -150,7 +146,7 @@ const roleSections = (
         <section
           id="color-palette"
           aria-labelledby="color-palette-title"
-          class="flex scroll-mt-24 flex-col gap-5"
+          class="flex scroll-mt-24 flex-col gap-4"
         >
           <h2 id="color-palette-title" class="text-3xl font-medium">Palette</h2>
           <p class="text-muted-color">

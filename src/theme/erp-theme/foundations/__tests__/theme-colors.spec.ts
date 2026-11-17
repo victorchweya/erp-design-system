@@ -11,6 +11,7 @@ import { resolve } from 'node:path'
 import { brandTokenReferences, primitives } from '../palette'
 import { colorRoles, colorValue, contrastRatio, roleByName, semanticColors } from '../color-tokens'
 import { fontSizes, fontWeights } from '../typography'
+import { spacing } from '../spacing'
 
 const tailwindConfig = loadConfig(resolve('tailwind.config.js'))
 const previousTheme = Theme.getTheme() ?? {}
@@ -21,6 +22,29 @@ beforeEach(() => {
   })
 })
 afterEach(() => Theme.setTheme(previousTheme))
+
+it('keeps shared PrimeVue spacing aligned with Tailwind and preserves control density', () => {
+  expect(spacing).toEqual(defaultTheme.spacing)
+  expect(resolveConfig(tailwindConfig).theme.spacing).toEqual(spacing)
+  for (const [step, value] of Object.entries(spacing)) {
+    expect($dt(`spacing.${step}`).value).toBe(value)
+  }
+  for (const [size, x, y] of [
+    ['', spacing[3], spacing[2]],
+    ['sm.', spacing[2.5], spacing[1.5]],
+    ['lg.', spacing[3.5], spacing[2.5]],
+  ]) {
+    for (const group of ['form.field', 'button', 'inputtext', 'select', 'textarea']) {
+      expect($dt(`${group}.${size}padding.x`).value).toBe(x)
+      expect($dt(`${group}.${size}padding.y`).value).toBe(y)
+    }
+  }
+  expect($dt('card.body.padding').value).toBe(spacing[5])
+  expect($dt('card.body.gap').value).toBe(spacing[2])
+  expect($dt('tag.padding').value).toBe(`${spacing[1]} ${spacing[2]}`)
+  expect($dt('datatable.body.cell.padding').value).toBe(`${spacing[3]} ${spacing[4]}`)
+  expect($dt('dialog.content.padding').value).toBe(`0 ${spacing[5]} ${spacing[5]} ${spacing[5]}`)
+})
 
 it('keeps the public PrimeVue typography scale aligned with default Tailwind utilities', () => {
   const tailwind = resolveConfig(tailwindConfig)

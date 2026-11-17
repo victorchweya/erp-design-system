@@ -12,19 +12,29 @@ import { primitives } from '@/theme/erp-theme/foundations/color-tokens'
       >
         <h3 class="pt-2 text-sm font-medium capitalize">{{ family }}</h3>
         <div class="flex gap-1">
-          <figure
+          <Card
             v-for="(value, step) in steps"
             :key="step"
-            class="min-w-0 flex-1 overflow-hidden rounded border border-surface"
+            class="min-w-0 flex-1 overflow-hidden"
+            :dt="{
+              root: { borderRadius: '{border.radius.sm}' },
+              body: { padding: '{spacing.1}', gap: '0' },
+            }"
+            role="figure"
+            :aria-label="`${family}.${step}`"
           >
-            <div class="h-8" :style="{ backgroundColor: value }" aria-hidden="true" />
-            <figcaption class="flex flex-col gap-1 p-1">
-              <span class="text-xs font-medium"
-                ><span class="sr-only">{{ family }}.</span>{{ step }}</span
-              >
-              <span class="font-mono text-xs">{{ value }}</span>
-            </figcaption>
-          </figure>
+            <template #header>
+              <div class="h-8" :style="{ backgroundColor: value }" aria-hidden="true" />
+            </template>
+            <template #content>
+              <div class="flex flex-col gap-1">
+                <span class="text-xs font-medium"
+                  ><span class="sr-only">{{ family }}.</span>{{ step }}</span
+                >
+                <span class="font-mono text-xs">{{ value }}</span>
+              </div>
+            </template>
+          </Card>
         </div>
       </div>
     </div>
