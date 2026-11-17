@@ -38,4 +38,5 @@ This repository builds a PrimeVue design system with Vue 3, TypeScript, and Vite
   - `npm run build-only` for build or integration changes.
 - Add or update a focused test for new non-trivial behavior and bug fixes.
 - For visual changes, inspect the result in a browser when available.
+- Run Playwright only when explicitly requested by the user.
 - State what was checked and any remaining limitations. Documentation-only changes do not require application tests.

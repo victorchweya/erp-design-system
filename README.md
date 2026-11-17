@@ -16,6 +16,8 @@ Light mode is the default. Use the sun/moon button in the header to switch modes
 - Favicon: `public/favicon.svg`, a copy of the brand symbol.
 - Global styles: `src/assets/styles/main.css`.
 - Component previews: `src/components/playground/`.
+- App shell: `src/layouts/`, adapted from the FTF sidebar and top app navigation.
+- Documentation pages: General at `/general`, and Color, Motion, Spacing, Icons, and Typography under `/foundations/`. These pages are empty, ready for content.
 - PrimeVue components are auto-imported in templates; `src/components.d.ts` is generated.
 - PrimeIcons are SVG components from `@primeicons/vue`; import individual icons as needed.
 - `src/theme/aura-reference/` is reference material, excluded from application compilation.
