@@ -9,7 +9,7 @@ import { colorMode } from '@/theme/color-mode'
     type="button"
     iconOnly
     rounded
-    variant="text"
+    text
     severity="secondary"
     size="small"
     :aria-label="colorMode === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'"

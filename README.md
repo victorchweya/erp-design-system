@@ -1,6 +1,6 @@
 # ERP Design System
 
-FTF design-system foundations and a component playground, built with Vue 3, TypeScript, PrimeVue, and Tailwind CSS. The ERP theme is a standalone local preset.
+FTF design-system foundations and component documentation, built with Vue 3, TypeScript, PrimeVue, and Tailwind CSS. The ERP theme is a standalone local preset.
 
 ## Getting started
 
@@ -9,7 +9,9 @@ npm install
 npm run dev
 ```
 
-Open `/` to try buttons, status messages, form controls, and a sortable table. Open `/foundations/color` for the colour foundations, including brand colours, semantic roles, light/dark comparisons, palette ramps, default Tailwind shadows, and the token table.
+Open `/` or `/components` to reach `/components/core-elements/button`, the first component reference. Components are organised under Core elements and Forms in the sidebar. Pending documentation entries are visible but disabled until their pages are available. The Button page includes live examples with copyable source for variants, severities, sizes, icons, states, and groups.
+
+Open `/foundations/color` for the colour foundations, including brand colours, semantic roles, light/dark comparisons, palette ramps, default Tailwind shadows, and the token table.
 
 Open `/foundations/typography` for Rubik specimens, recommended heading and body combinations, weights, and Tailwind classes.
 
@@ -73,7 +75,7 @@ The existing radius mapping is documented on the page: PrimeVue `border.radius.x
 
 DataTables have a rounded outer frame in the shared preset: 6px (`border.radius.md`) for small tables and 8px (`border.radius.lg`) for default and large tables. The frame includes headers, footers, and pagination; inner cell borders stay square.
 
-The shared wide container is `max-w-8xl`, capped at 90rem (1440px at a 16px root), matching FTF ecommerce. Its value lives in `spacing.ts`. Foundation pages currently use `max-w-7xl` and the playground uses `max-w-screen-xl` (1280px). Container widths are separate from responsive breakpoints.
+The shared wide container is `max-w-8xl`, capped at 90rem (1440px at a 16px root), matching FTF ecommerce. Its value lives in `spacing.ts`. Foundation pages use `max-w-7xl` and component pages use `max-w-screen-xl` (1280px). Container widths are separate from responsive breakpoints.
 
 ## Shared page navigation
 
@@ -90,7 +92,7 @@ Smooth scrolling is set on `html` and respects reduced-motion preferences. Secti
 - Brand assets: `src/assets/brand/logo.svg` (wordmark) and `src/assets/brand/symbol.svg` (symbol).
 - Favicon: `public/favicon.svg`, a copy of the brand symbol.
 - Global styles: `src/assets/styles/main.css`.
-- Component previews: `src/components/playground/`.
+- Component pages: `src/views/components/`; examples and their copyable source: `src/components/docs/`.
 - App shell: `src/layouts/`, adapted from the FTF sidebar and top app navigation.
 - PrimeVue components are auto-imported in templates; `src/components.d.ts` is generated.
 - PrimeIcons are SVG components from `@primeicons/vue`; import individual icons as needed.

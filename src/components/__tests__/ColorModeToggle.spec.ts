@@ -14,7 +14,7 @@ it('switches modes and updates the accessible action label', async () => {
     'matchMedia',
     vi.fn(() => ({ matches: false })),
   )
-  const { default: ColorModeToggle } = await import('../playground/ColorModeToggle.vue')
+  const { default: ColorModeToggle } = await import('../ColorModeToggle.vue')
   const wrapper = mount(ColorModeToggle, { global: { plugins: [PrimeVue] } })
 
   await wrapper.get('button[aria-label="Switch to dark mode"]').trigger('click')

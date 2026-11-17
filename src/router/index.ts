@@ -1,5 +1,4 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import ComponentPlaygroundView from '../views/ComponentPlaygroundView.vue'
 
 declare module 'vue-router' {
   interface RouteMeta {
@@ -13,8 +12,17 @@ const router = createRouter({
     {
       path: '/',
       name: 'components',
-      meta: { breadcrumb: ['Component playground'] },
-      component: ComponentPlaygroundView,
+      redirect: '/components/core-elements/button',
+    },
+    {
+      path: '/components',
+      redirect: '/components/core-elements/button',
+    },
+    {
+      path: '/components/core-elements/button',
+      name: 'component-button',
+      meta: { breadcrumb: ['Components', 'Core elements', 'Button'] },
+      component: () => import('../views/components/ButtonView.vue'),
     },
     {
       path: '/general',

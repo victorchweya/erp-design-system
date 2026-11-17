@@ -30,6 +30,7 @@ it('navigates to the documentation pages and marks the current link', async () =
   await router.isReady()
   const wrapper = mount(AppMenu, { global: { plugins: [router] } })
 
+  expect(router.currentRoute.value.path).toBe('/components/core-elements/button')
   expect(wrapper.get('h2').text()).toBe('Getting started')
   expect(wrapper.get('summary').text()).toBe('Foundations')
   for (const path of [
@@ -39,6 +40,7 @@ it('navigates to the documentation pages and marks the current link', async () =
     '/foundations/spacing',
     '/foundations/icons',
     '/foundations/typography',
+    '/components/core-elements/button',
   ]) {
     await wrapper.get(`a[href="${path}"]`).trigger('click')
     await expect.poll(() => router.currentRoute.value.path).toBe(path)
@@ -48,11 +50,29 @@ it('navigates to the documentation pages and marks the current link', async () =
     expect(wrapper.get(`a[href="${path}"]`).classes()).toContain('font-medium')
     expect(wrapper.findAll('a[aria-current="page"]')).toHaveLength(1)
     expect(wrapper.find('.menu-group:has([aria-current="page"])').exists()).toBe(
-      path.startsWith('/foundations/'),
+      path !== '/general',
     )
   }
-  expect(wrapper.emitted('navigate')).toHaveLength(6)
+  expect(wrapper.emitted('navigate')).toHaveLength(7)
   await router.push('/general')
   await flushPromises()
   expect(wrapper.find('.menu-group:has([aria-current="page"])').exists()).toBe(false)
+})
+
+it('keeps pending component entries disabled without dead routes', async () => {
+  const router = createRouter({ history: createMemoryHistory(), routes: appRouter.options.routes })
+  await router.push('/')
+  await router.isReady()
+  const wrapper = mount(AppMenu, { global: { plugins: [router] } })
+  const activeLink = wrapper.get('a[aria-current="page"]')
+  expect(activeLink.element.closest('details')?.open).toBe(true)
+
+  const pending = wrapper.findAll('[role="link"][aria-disabled="true"]')
+  expect(pending.length).toBeGreaterThan(0)
+  for (const item of pending) {
+    expect(item.attributes('href')).toBeUndefined()
+    await item.trigger('click')
+  }
+  expect(router.currentRoute.value.path).toBe('/components/core-elements/button')
+  expect(wrapper.emitted('navigate')).toBeUndefined()
 })

@@ -27,7 +27,7 @@ async function mountLayout(desktop: boolean) {
   const wrapper = mount(AppLayout, {
     attachTo: document.body,
     global: { plugins: [PrimeVue, router] },
-    slots: { default: '<h1>Playground</h1>' },
+    slots: { default: '<h1>Documentation</h1>' },
   })
   return { wrapper, media }
 }

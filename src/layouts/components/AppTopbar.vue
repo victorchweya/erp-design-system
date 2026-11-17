@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import Bell from '@primeicons/vue/bell'
-import ColorModeToggle from '@/components/playground/ColorModeToggle.vue'
+import ColorModeToggle from '@/components/ColorModeToggle.vue'
 import AppBreadcrumb from './AppBreadcrumb.vue'
 import SidebarToggle from './SidebarToggle.vue'
 

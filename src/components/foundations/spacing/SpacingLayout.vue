@@ -192,7 +192,7 @@ const containers = [
       </Column>
     </DataTable>
     <p class="text-sm text-muted-color">
-      Foundation pages use max-w-7xl (1280px), and the playground uses max-w-screen-xl (1280px).
+      Foundation pages use max-w-7xl (1280px), and component pages use max-w-screen-xl (1280px).
       Container caps are separate from responsive breakpoints: 2xl: still starts at 1536px.
     </p>
     <p class="text-sm text-muted-color">

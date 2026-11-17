@@ -27,7 +27,12 @@ it('updates the breadcrumb and current page when navigating between sections', a
   expect(breadcrumb.get('[aria-current="page"]').text()).toBe('General')
   expect(breadcrumb.text()).not.toContain('Foundations')
 
-  await router.push('/')
-  expect(breadcrumb.get('[aria-current="page"]').text()).toBe('Component playground')
-  expect(breadcrumb.findAll('[aria-current="page"]')).toHaveLength(1)
+  for (const path of ['/', '/components']) {
+    await router.push(path)
+    expect(router.currentRoute.value.path).toBe('/components/core-elements/button')
+    expect(breadcrumb.text()).toContain('Components')
+    expect(breadcrumb.text()).toContain('Core elements')
+    expect(breadcrumb.get('[aria-current="page"]').text()).toBe('Button')
+    expect(breadcrumb.findAll('[aria-current="page"]')).toHaveLength(1)
+  }
 })
