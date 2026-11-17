@@ -192,8 +192,8 @@ const containers = [
       </Column>
     </DataTable>
     <p class="text-sm text-muted-color">
-      Foundation pages use max-w-7xl (1280px), and the playground uses max-w-6xl (1152px). Container
-      caps are separate from responsive breakpoints: 2xl: still starts at 1536px.
+      Foundation pages use max-w-7xl (1280px), and the playground uses max-w-screen-xl (1280px).
+      Container caps are separate from responsive breakpoints: 2xl: still starts at 1536px.
     </p>
     <p class="text-sm text-muted-color">
       A centred container with 16px side padding and a 16px grid gap. From lg, the content and

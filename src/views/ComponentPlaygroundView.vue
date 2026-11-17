@@ -5,7 +5,9 @@ import TablePreview from '@/components/playground/TablePreview.vue'
 </script>
 
 <template>
-  <div class="mx-auto flex max-w-6xl flex-col gap-8 px-4 py-10 sm:px-6 lg:gap-10 lg:px-8 lg:py-12">
+  <div
+    class="mx-auto flex max-w-screen-xl flex-col gap-8 px-4 py-10 sm:px-6 lg:gap-10 lg:px-8 lg:py-12"
+  >
     <div class="flex flex-col gap-3">
       <p class="font-mono text-sm text-muted-color">Components / Playground</p>
       <h1

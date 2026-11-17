@@ -73,7 +73,7 @@ The existing radius mapping is documented on the page: PrimeVue `border.radius.x
 
 DataTables have a rounded outer frame in the shared preset: 6px (`border.radius.md`) for small tables and 8px (`border.radius.lg`) for default and large tables. The frame includes headers, footers, and pagination; inner cell borders stay square.
 
-The shared wide container is `max-w-8xl`, capped at 90rem (1440px at a 16px root), matching FTF ecommerce. Its value lives in `spacing.ts`. Foundation pages currently use `max-w-7xl` and the playground uses `max-w-6xl`. Container widths are separate from responsive breakpoints.
+The shared wide container is `max-w-8xl`, capped at 90rem (1440px at a 16px root), matching FTF ecommerce. Its value lives in `spacing.ts`. Foundation pages currently use `max-w-7xl` and the playground uses `max-w-screen-xl` (1280px). Container widths are separate from responsive breakpoints.
 
 ## Shared page navigation
 
