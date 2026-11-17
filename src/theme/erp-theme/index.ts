@@ -38,10 +38,12 @@ import imagecompare from './imagecompare';
 import inlinemessage from './inlinemessage';
 import inplace from './inplace';
 import inputchips from './inputchips';
+import inputcolor from './inputcolor';
 import inputgroup from './inputgroup';
 import inputnumber from './inputnumber';
 import inputotp from './inputotp';
 import inputtext from './inputtext';
+import inputtags from './inputtags';
 import knob from './knob';
 import listbox from './listbox';
 import megamenu from './megamenu';
@@ -130,10 +132,12 @@ export default definePreset({
         inlinemessage,
         inplace,
         inputchips,
+        inputcolor,
         inputgroup,
         inputnumber,
         inputotp,
         inputtext,
+        inputtags,
         knob,
         listbox,
         megamenu,

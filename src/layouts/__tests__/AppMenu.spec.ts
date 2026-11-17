@@ -6,6 +6,7 @@ import { enableAutoUnmount, flushPromises, mount } from '@vue/test-utils'
 import { createMemoryHistory, createRouter } from 'vue-router'
 import appRouter from '@/router'
 import AppMenu from '../components/AppMenu.vue'
+import { componentPages } from '@/data/component-pages'
 
 enableAutoUnmount(afterEach)
 
@@ -59,20 +60,23 @@ it('navigates to the documentation pages and marks the current link', async () =
   expect(wrapper.find('.menu-group:has([aria-current="page"])').exists()).toBe(false)
 })
 
-it('keeps pending component entries disabled without dead routes', async () => {
+it('opens every component page and keeps its group and current link active', async () => {
   const router = createRouter({ history: createMemoryHistory(), routes: appRouter.options.routes })
   await router.push('/')
   await router.isReady()
   const wrapper = mount(AppMenu, { global: { plugins: [router] } })
-  const activeLink = wrapper.get('a[aria-current="page"]')
-  expect(activeLink.element.closest('details')?.open).toBe(true)
-
-  const pending = wrapper.findAll('[role="link"][aria-disabled="true"]')
-  expect(pending.length).toBeGreaterThan(0)
-  for (const item of pending) {
-    expect(item.attributes('href')).toBeUndefined()
-    await item.trigger('click')
+  for (const page of componentPages) {
+    await wrapper.get(`a[href="${page.path}"]`).trigger('click')
+    await expect.poll(() => router.currentRoute.value.path).toBe(page.path)
+    await flushPromises()
+    const current = wrapper.get('a[aria-current="page"]')
+    expect(current.attributes('href')).toBe(page.path)
+    expect(current.element.closest('details')?.open).toBe(true)
+    expect(router.currentRoute.value.meta.breadcrumb).toEqual([
+      'Components',
+      page.group,
+      page.label,
+    ])
   }
-  expect(router.currentRoute.value.path).toBe('/components/core-elements/button')
-  expect(wrapper.emitted('navigate')).toBeUndefined()
+  expect(wrapper.emitted('navigate')).toHaveLength(componentPages.length)
 })

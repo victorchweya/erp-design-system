@@ -1,0 +1,73 @@
+<script setup lang="ts">
+import ComponentDoc from '@/components/docs/ComponentDoc.vue'
+import SkeletonExample from '@/components/docs/examples/SkeletonExample.vue'
+import code0 from '@/components/docs/examples/SkeletonExample.vue?raw'
+import SkeletonShapesExample from '@/components/docs/examples/SkeletonShapesExample.vue'
+import code1 from '@/components/docs/examples/SkeletonShapesExample.vue?raw'
+const examples = [
+  {
+    id: 'skeleton-0',
+    title: 'Loading content',
+    description: 'Keep the placeholder close to the final layout to reduce movement.',
+    component: SkeletonExample,
+    code: code0,
+  },
+  {
+    id: 'skeleton-1',
+    title: 'Shapes',
+    description:
+      'Use circle, width, height, and size. Disable animation when movement is unnecessary.',
+    component: SkeletonShapesExample,
+    code: code1,
+  },
+]
+const api = [
+  {
+    name: 'shape',
+    type: 'any',
+    default: 'rectangle',
+    description: 'Square or circle.',
+  },
+  {
+    name: 'size',
+    type: 'string',
+    default: '—',
+    description: 'CSS width and height for a square shape.',
+  },
+  {
+    name: 'width',
+    type: 'string',
+    default: '100%',
+    description: 'CSS width.',
+  },
+  {
+    name: 'height',
+    type: 'string',
+    default: '1rem',
+    description: 'CSS height.',
+  },
+  {
+    name: 'animation',
+    type: 'any',
+    default: 'wave',
+    description: 'Shimmer or none.',
+  },
+]
+const accessibility = [
+  'Skeletons are hidden from screen readers. Announce loading once on their containing region.',
+  'Use animation="none" when motion is unnecessary. Respect reduced-motion preferences.',
+]
+</script>
+
+<template>
+  <ComponentDoc
+    title="Skeleton"
+    category="Core elements"
+    description="Reserve space for content while it loads."
+    usage="Match the placeholder to the content shape. Place related skeletons inside a container marked aria-busy, then replace the whole group when loading completes."
+    :examples="examples"
+    :api="api"
+    :accessibility="accessibility"
+    source="https://primevue.dev/skeleton"
+  />
+</template>

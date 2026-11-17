@@ -1,4 +1,5 @@
 export const root = {
+    fontSize: '{form.field.font.size}',
     color: '{form.field.float.label.color}',
     focusColor: '{form.field.float.label.focus.color}',
     activeColor: '{form.field.float.label.active.color}',

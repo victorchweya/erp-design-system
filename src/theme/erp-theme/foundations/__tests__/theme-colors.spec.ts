@@ -97,6 +97,52 @@ it('publishes the verified palette and brand aliases without filling missing sha
   expect($dt('orange.500').value).toBe('#f97316')
 })
 
+it('styles current multi-value and colour controls with resolved shared theme tokens', () => {
+  for (const suffix of [
+    'background',
+    'disabled.background',
+    'filled.background',
+    'filled.hover.background',
+    'filled.focus.background',
+    'border.color',
+    'hover.border.color',
+    'focus.border.color',
+    'invalid.border.color',
+    'color',
+    'disabled.color',
+    'padding.x',
+    'padding.y',
+    'border.radius',
+    'focus.ring.width',
+    'focus.ring.color',
+  ]) {
+    expect($dt(`inputtags.${suffix}`).value).toBe($dt(`form.field.${suffix}`).value)
+    expect($dt(`inputtags.${suffix}`).value).toBeDefined()
+  }
+  for (const token of [
+    'inputcolor.border.color',
+    'inputcolor.area.border.radius',
+    'inputcolor.slider.size',
+    'inputcolor.handle.size',
+    'inputcolor.handle.focus.ring.outline.color',
+    'inputcolor.transparency.grid.color',
+    'inputcolor.swatch.size',
+    'avatar.font.weight',
+    'chip.focus.background',
+    'chip.label.font.size',
+    'card.subtitle.font.size',
+    'datepicker.date.font.size',
+    'datepicker.time.picker.color',
+    'fileupload.file.name.color',
+    'inputgroup.addon.font.size',
+  ])
+    expect($dt(token).value, token).toBeDefined()
+  for (const component of ['autocomplete', 'select', 'multiselect', 'listbox', 'cascadeselect']) {
+    expect($dt(`${component}.option.font.size`).value).toBe(fontSizes.base[0])
+    expect($dt(`${component}.option.font.weight`).value).toBe(fontWeights.normal)
+  }
+})
+
 it('resolves primary button states to the documented accessible light and dark pairs', () => {
   for (const [roleName, componentToken] of [
     ['primary.color', 'button.primary.background'],

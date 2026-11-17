@@ -19,6 +19,7 @@ export const header = {
 };
 
 export const title = {
+    fontSize: '{font.size.base}',
     gap: '0.5rem',
     fontWeight: '{font.weight.medium}'
 };
@@ -49,6 +50,8 @@ export const inputIcon = {
 };
 
 export const selectMonth = {
+    fontSize: '{font.size.base}',
+    fontWeight: '{font.weight.medium}',
     hoverBackground: '{content.hover.background}',
     color: '{content.color}',
     hoverColor: '{content.hover.color}',
@@ -57,6 +60,8 @@ export const selectMonth = {
 };
 
 export const selectYear = {
+    fontSize: '{font.size.base}',
+    fontWeight: '{font.weight.medium}',
     hoverBackground: '{content.hover.background}',
     color: '{content.color}',
     hoverColor: '{content.hover.color}',
@@ -74,12 +79,15 @@ export const dayView = {
 };
 
 export const weekDay = {
+    fontSize: '{font.size.sm}',
     padding: '0.25rem',
     fontWeight: '{font.weight.medium}',
     color: '{content.color}'
 };
 
 export const date = {
+    fontSize: '{font.size.base}',
+    fontWeight: '{font.weight.normal}',
     hoverBackground: '{content.hover.background}',
     selectedBackground: '{primary.color}',
     rangeSelectedBackground: '{highlight.background}',
@@ -124,6 +132,9 @@ export const buttonbar = {
 };
 
 export const timePicker = {
+    color: '{content.color}',
+    fontSize: '{font.size.base}',
+    fontWeight: '{font.weight.normal}',
     padding: '0.5rem 0 0 0',
     borderColor: '{content.border.color}',
     gap: '0.5rem',

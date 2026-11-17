@@ -23,6 +23,8 @@ export const content = {
 };
 
 export const file = {
+    name: { color: '{content.color}', fontSize: '{font.size.base}', fontWeight: '{font.weight.medium}' },
+    size: { color: '{text.muted.color}', fontSize: '{font.size.sm}', fontWeight: '{font.weight.normal}' },
     padding: '1rem',
     gap: '1rem',
     borderColor: '{content.border.color}',

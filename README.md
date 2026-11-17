@@ -9,7 +9,16 @@ npm install
 npm run dev
 ```
 
-Open `/` or `/components` to reach `/components/core-elements/button`, the first component reference. Components are organised under Core elements and Forms in the sidebar. Pending documentation entries are visible but disabled until their pages are available. The Button page includes live examples with copyable source for variants, severities, sizes, icons, states, and groups.
+Open `/` or `/components` to reach `/components/core-elements/button`. All 38 pages in Core elements and Forms are available from the sidebar. Pages include live examples, copyable Vue source, usage guidance, accessibility notes, and key props where applicable.
+
+- **Core elements:** Button, SplitButton, SpeedDial, Avatar, Badge, Card, Chip, Divider, Tag, Toolbar, and Skeleton.
+- **Forms:** text and numeric inputs, password and code entry, tags, autocomplete, selects and lists, checkboxes and radio buttons, toggles, dates, sliders, ratings, Knob, colour selection, FileUpload, Editor, Inplace, field layout, and validation.
+
+The sidebar and routes use the same [component page registry](src/data/component-pages.ts). Each page loads independently; Quill only loads when the Editor example is opened. [ComponentDoc.vue](src/components/docs/ComponentDoc.vue) provides the shared documentation layout while each example owns its local state.
+
+Examples do not send form values, passwords, codes, or files to a backend. FileUpload uses `customUpload` to report local selections. Form validation uses `@primevue/forms` with a small custom resolver. Editor uses Quill; the installed PrimeVue 5 component is deprecated, so prefer Textarea when formatted content is unnecessary.
+
+Tag and Badge support seven native severities: primary, secondary, success, info, warn, danger, and contrast. `help` is supported by Button, not Tag or Badge. Inputs use `invalid` for error styling rather than severity.
 
 Open `/foundations/color` for the colour foundations, including brand colours, semantic roles, light/dark comparisons, palette ramps, default Tailwind shadows, and the token table.
 

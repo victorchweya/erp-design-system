@@ -60,6 +60,9 @@ export const list = {
 };
 
 export const option = {
+    fontSize: '{font.size.base}',
+    fontWeight: '{font.weight.normal}',
+    selectedFontWeight: '{font.weight.medium}',
     focusBackground: '{list.option.focus.background}',
     selectedBackground: '{list.option.selected.background}',
     selectedFocusBackground: '{list.option.selected.focus.background}',
@@ -72,6 +75,7 @@ export const option = {
 };
 
 export const optionGroup = {
+    fontSize: '{font.size.sm}',
     background: '{list.option.group.background}',
     color: '{list.option.group.color}',
     fontWeight: '{list.option.group.font.weight}',

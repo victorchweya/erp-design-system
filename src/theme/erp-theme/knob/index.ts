@@ -18,6 +18,8 @@ export const range = {
 };
 
 export const text = {
+    fontSize: '{font.size.xl}',
+    fontWeight: '{font.weight.medium}',
     color: '{text.muted.color}'
 };
 

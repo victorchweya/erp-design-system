@@ -106,9 +106,10 @@ it('checks every finalized light and dark text pairing', () => {
   ).toBeCloseTo(10.07, 2)
 })
 
-it('keeps essential borders and icons accessible and separates decorative and disabled roles', () => {
+it('keeps focus boundaries and icons accessible and records the softer default border', () => {
   for (const role of colorRoles.filter(
-    (role) => role.kind === 'boundary' || role.kind === 'icon',
+    (role) =>
+      (role.kind === 'boundary' || role.kind === 'icon') && role.name !== 'form.field.border.color',
   )) {
     for (const pair of [role.light, role.dark]) {
       expect(contrastRatio(pair.foreground.value, pair.background.value)).toBeGreaterThanOrEqual(3)
@@ -119,7 +120,15 @@ it('keeps essential borders and icons accessible and separates decorative and di
   expect(
     contrastRatio(divider.light.foreground.value, divider.light.background.value),
   ).toBeLessThan(3)
-  expect(roleByName('form.field.border.color').evidence).toBe('FTF decision')
+  const inputBorder = roleByName('form.field.border.color')
+  for (const role of [divider, inputBorder]) {
+    for (const pair of [role.light, role.dark]) {
+      expect(pair.foreground.value).toBe('#E6E6E6')
+    }
+  }
+  expect(
+    contrastRatio(inputBorder.light.foreground.value, inputBorder.light.background.value),
+  ).toBeLessThan(3)
   const disabled = roleByName('form.field.disabled.color')
   expect(disabled.kind).toBe('disabled')
   expect(

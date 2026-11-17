@@ -58,6 +58,9 @@ export const list = {
 };
 
 export const option = {
+    fontSize: '{font.size.base}',
+    fontWeight: '{font.weight.normal}',
+    selectedFontWeight: '{font.weight.medium}',
     focusBackground: '{list.option.focus.background}',
     selectedBackground: '{list.option.selected.background}',
     selectedFocusBackground: '{list.option.selected.focus.background}',

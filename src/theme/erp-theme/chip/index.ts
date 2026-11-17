@@ -1,9 +1,15 @@
 export const root = {
+    focusBackground: '{content.hover.background}',
     borderRadius: '16px',
     paddingX: '0.75rem',
     paddingY: '0.5rem',
     gap: '0.5rem',
     transitionDuration: '{transition.duration}'
+};
+
+export const label = {
+    fontSize: '{font.size.sm}',
+    fontWeight: '{font.weight.normal}'
 };
 
 export const image = {
@@ -55,6 +61,7 @@ export const colorScheme = {
 
 export default {
     root,
+    label,
     image,
     icon,
     removeIcon,

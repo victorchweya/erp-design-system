@@ -2,6 +2,7 @@
 import AngleDown from '@primeicons/vue/angle-down'
 import { computed } from 'vue'
 import { RouterLink, useRoute } from 'vue-router'
+import { componentPages } from '@/data/component-pages'
 
 defineEmits<{ navigate: [] }>()
 
@@ -10,7 +11,7 @@ type MenuGroup = {
   id: string
   label: string
   heading?: string
-  items: { label: string; to?: string }[]
+  items: { label: string; to: string }[]
 }
 const groups: MenuGroup[] = [
   {
@@ -28,51 +29,16 @@ const groups: MenuGroup[] = [
     id: 'core-elements',
     label: 'Core elements',
     heading: 'Components',
-    items: [
-      { label: 'Button', to: '/components/core-elements/button' },
-      { label: 'SplitButton' },
-      { label: 'SpeedDial' },
-      { label: 'Avatar' },
-      { label: 'Badge' },
-      { label: 'Card' },
-      { label: 'Chip' },
-      { label: 'Divider' },
-      { label: 'Tag' },
-      { label: 'Toolbar' },
-      { label: 'Skeleton' },
-    ],
+    items: componentPages
+      .filter((page) => page.group === 'Core elements')
+      .map((page) => ({ label: page.label, to: page.path })),
   },
   {
     id: 'forms',
     label: 'Forms',
-    items: [
-      { label: 'Inputs' },
-      { label: 'Textarea' },
-      { label: 'InputNumber' },
-      { label: 'InputPassword' },
-      { label: 'InputOtp' },
-      { label: 'InputTags' },
-      { label: 'AutoComplete' },
-      { label: 'Select' },
-      { label: 'MultiSelect' },
-      { label: 'Listbox' },
-      { label: 'CascadeSelect' },
-      { label: 'TreeSelect' },
-      { label: 'Checkbox' },
-      { label: 'RadioButton' },
-      { label: 'ToggleSwitch' },
-      { label: 'ToggleButton' },
-      { label: 'SelectButton' },
-      { label: 'DatePicker' },
-      { label: 'Slider' },
-      { label: 'Rating' },
-      { label: 'Knob' },
-      { label: 'InputColor' },
-      { label: 'FileUpload' },
-      { label: 'Editor' },
-      { label: 'Inplace' },
-      { label: 'Labels & field layout' },
-    ],
+    items: componentPages
+      .filter((page) => page.group === 'Forms')
+      .map((page) => ({ label: page.label, to: page.path })),
   },
 ]
 const menuGroups = computed(() =>
@@ -120,20 +86,11 @@ const activeClass =
         >
           <li v-for="item in group.items" :key="item.label">
             <RouterLink
-              v-if="item.to"
               :to="item.to"
               :class="linkClass"
               :exact-active-class="activeClass"
               @click="$emit('navigate')"
               >{{ item.label }}</RouterLink
-            >
-            <span
-              v-else
-              role="link"
-              aria-disabled="true"
-              :title="`${item.label} documentation is not available yet`"
-              class="flex rounded-lg px-2 py-2 leading-tight text-muted-color"
-              >{{ item.label }}<span class="sr-only"> — documentation pending</span></span
             >
           </li>
         </ul>

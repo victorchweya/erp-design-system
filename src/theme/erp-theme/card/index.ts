@@ -20,6 +20,8 @@ export const title = {
 };
 
 export const subtitle = {
+    fontSize: '{font.size.sm}',
+    fontWeight: '{font.weight.normal}',
     color: '{text.muted.color}'
 };
 

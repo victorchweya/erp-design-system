@@ -1,4 +1,5 @@
 export const root = {
+    fontWeight: '{font.weight.medium}',
     width: '2rem',
     height: '2rem',
     fontSize: '{font.size.base}',
