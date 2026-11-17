@@ -79,7 +79,7 @@ const containers = [
     aria-labelledby="spacing-radius-title"
     class="flex scroll-mt-24 flex-col gap-4"
   >
-    <h2 id="spacing-radius-title" class="text-3xl font-medium">Radius</h2>
+    <h2 id="spacing-radius-title" class="text-2xl font-medium">Radius</h2>
     <p class="text-muted-color">
       Use the existing FTF radii. PrimeVue’s sm token is 4px and matches Tailwind’s rounded utility;
       rounded-sm is 2px. The md, lg, and xl names match across both systems.
@@ -117,7 +117,7 @@ const containers = [
     aria-labelledby="spacing-breakpoints-title"
     class="flex scroll-mt-24 flex-col gap-4"
   >
-    <h2 id="spacing-breakpoints-title" class="text-3xl font-medium">Breakpoints</h2>
+    <h2 id="spacing-breakpoints-title" class="text-2xl font-medium">Breakpoints</h2>
     <p class="text-muted-color">
       Use Tailwind’s default breakpoints. Classes are mobile first: md:grid-cols-2 applies from
       768px and above. The rem equivalents below assume a 16px root size.
@@ -164,7 +164,7 @@ const containers = [
     aria-labelledby="spacing-containers-title"
     class="flex scroll-mt-24 flex-col gap-4"
   >
-    <h2 id="spacing-containers-title" class="text-3xl font-medium">Containers & grid</h2>
+    <h2 id="spacing-containers-title" class="text-2xl font-medium">Containers & grid</h2>
     <p class="text-muted-color">
       Use these container caps and grid utilities to build page layouts. Containers fill the
       available width up to their maximum. The wide container uses FTF’s 1440px cap.

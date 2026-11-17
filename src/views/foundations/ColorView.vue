@@ -64,12 +64,12 @@ const roleSections = (
 </script>
 
 <template>
-  <div class="mx-auto flex w-full max-w-7xl gap-10 px-6 py-10 text-base">
+  <div class="mx-auto flex w-full max-w-7xl gap-10 px-6 py-10 text-sm">
     <div class="min-w-0 flex-1">
       <header class="mb-8 flex flex-col gap-3">
         <p class="text-sm font-medium uppercase tracking-wide text-primary">Foundations</p>
         <h1 class="text-3xl font-medium tracking-tight sm:text-4xl">Colour</h1>
-        <p class="text-lg text-muted-color">
+        <p class="text-base leading-relaxed text-muted-color">
           Use the FTF palette and semantic colour roles across Tailwind and PrimeVue. Light and dark
           values share one token source, keeping text, backgrounds, borders, and feedback
           consistent.
@@ -84,8 +84,8 @@ const roleSections = (
           aria-labelledby="color-usage-title"
           class="flex scroll-mt-24 flex-col gap-4"
         >
-          <h2 id="color-usage-title" class="text-3xl font-medium">How to use</h2>
-          <p class="text-muted-color">
+          <h2 id="color-usage-title" class="text-2xl font-medium">How to use</h2>
+          <p class="leading-relaxed text-muted-color">
             Use shared tokens through Tailwind utilities such as
             <Tag severity="secondary" class="align-baseline"><code>bg-primary</code></Tag
             >, <Tag severity="secondary" class="align-baseline"><code>text-color</code></Tag
@@ -95,18 +95,18 @@ const roleSections = (
               ><code>var(--p-primary-color)</code></Tag
             >.
           </p>
-          <p class="text-muted-color">
+          <p class="leading-relaxed text-muted-color">
             Use <Tag severity="secondary" class="align-baseline"><code>text-color</code></Tag>
             for body copy, and
             <Tag severity="secondary" class="align-baseline"><code>text-muted</code></Tag>
             for supporting text.
           </p>
-          <p class="text-muted-color">
+          <p class="leading-relaxed text-muted-color">
             Semantic colours adapt to light and dark mode automatically. Fixed palette utilities
             such as <Tag severity="secondary" class="align-baseline"><code>bg-kale</code></Tag>
             keep the same colour.
           </p>
-          <p class="text-muted-color">
+          <p class="leading-relaxed text-muted-color">
             Pair coloured backgrounds with their matching contrast text:
             <Tag severity="secondary" class="align-baseline"><code>bg-primary</code></Tag> with
             <Tag severity="secondary" class="align-baseline"><code>text-primary-contrast</code></Tag
@@ -122,7 +122,7 @@ const roleSections = (
           aria-labelledby="color-brand-title"
           class="flex scroll-mt-24 flex-col gap-4"
         >
-          <h2 id="color-brand-title" class="text-3xl font-medium">Brand</h2>
+          <h2 id="color-brand-title" class="text-2xl font-medium">Brand</h2>
           <p class="text-muted-color">Kale, Lime, Carrot, and Tamarind are the core FTF colours.</p>
           <ColorBrand />
         </section>
@@ -134,7 +134,7 @@ const roleSections = (
           :aria-labelledby="`color-${section.id}-title`"
           class="flex scroll-mt-24 flex-col gap-4"
         >
-          <h2 :id="`color-${section.id}-title`" class="text-3xl font-medium">
+          <h2 :id="`color-${section.id}-title`" class="text-2xl font-medium">
             {{ section.label }}
           </h2>
           <p class="text-muted-color">{{ section.description }}</p>
@@ -148,7 +148,7 @@ const roleSections = (
           aria-labelledby="color-palette-title"
           class="flex scroll-mt-24 flex-col gap-4"
         >
-          <h2 id="color-palette-title" class="text-3xl font-medium">Palette</h2>
+          <h2 id="color-palette-title" class="text-2xl font-medium">Palette</h2>
           <p class="text-muted-color">
             Color ramps for brand accents, feedback, surfaces, and text.
           </p>
@@ -160,7 +160,7 @@ const roleSections = (
           aria-labelledby="color-shadows-title"
           class="flex scroll-mt-24 flex-col gap-4"
         >
-          <h2 id="color-shadows-title" class="text-3xl font-medium">Shadows</h2>
+          <h2 id="color-shadows-title" class="text-2xl font-medium">Shadows</h2>
           <p class="text-muted-color">
             Tailwind’s default shadows, from subtle separation to raised surfaces.
           </p>
@@ -172,7 +172,7 @@ const roleSections = (
           aria-labelledby="color-token-table-title"
           class="flex scroll-mt-24 flex-col gap-4"
         >
-          <h2 id="color-token-table-title" class="text-3xl font-medium">Token table</h2>
+          <h2 id="color-token-table-title" class="text-2xl font-medium">Token table</h2>
           <ColorTokenTable />
         </section>
       </div>

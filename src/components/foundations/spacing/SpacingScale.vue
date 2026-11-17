@@ -15,7 +15,7 @@ const rows = steps.map((step) => ({
     aria-labelledby="spacing-scale-title"
     class="flex scroll-mt-24 flex-col gap-4"
   >
-    <h2 id="spacing-scale-title" class="text-3xl font-medium">Spacing scale</h2>
+    <h2 id="spacing-scale-title" class="text-2xl font-medium">Spacing scale</h2>
     <p class="text-muted-color">
       Common steps for padding, margin, gaps, and sizes. Tailwind also provides intermediate and
       larger steps. Values in pixels assume a 16px root size; rem values respect font preferences.

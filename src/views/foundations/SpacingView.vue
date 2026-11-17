@@ -34,12 +34,12 @@ const tokenCss = `.panel {
 </script>
 
 <template>
-  <div class="mx-auto flex w-full max-w-7xl gap-10 px-6 py-10 text-base">
+  <div class="mx-auto flex w-full max-w-7xl gap-10 px-6 py-10 text-sm">
     <div class="min-w-0 flex-1">
       <header class="mb-8 flex flex-col gap-3">
         <p class="text-sm font-medium uppercase tracking-wide text-primary">Foundations</p>
         <h1 class="text-3xl font-medium tracking-tight sm:text-4xl">Spacing</h1>
-        <p class="text-lg text-muted-color">
+        <p class="text-base leading-relaxed text-muted-color">
           Use Tailwind’s default spacing scale to give FTF layouts a consistent rhythm. Shared
           PrimeVue padding and gap tokens use the same values.
         </p>
@@ -51,15 +51,15 @@ const tokenCss = `.panel {
           aria-labelledby="spacing-usage-title"
           class="flex scroll-mt-24 flex-col gap-4"
         >
-          <h2 id="spacing-usage-title" class="text-3xl font-medium">How to use</h2>
-          <p class="text-muted-color">
+          <h2 id="spacing-usage-title" class="text-2xl font-medium">How to use</h2>
+          <p class="leading-relaxed text-muted-color">
             Use <Tag severity="secondary" class="align-baseline"><code>p-4</code></Tag> for 16px
             padding, <Tag severity="secondary" class="align-baseline"><code>gap-4</code></Tag> for
             16px between items, and
             <Tag severity="secondary" class="align-baseline"><code>px-4</code></Tag> for 16px
             horizontal padding. Prefer gap for sibling spacing in flex and grid layouts.
           </p>
-          <p class="text-muted-color">
+          <p class="leading-relaxed text-muted-color">
             The scale is based on 0.25rem steps, with smaller half steps for dense controls. Use 4,
             8, 12, 16, 20, 24, 32, 40, and 48px for most layouts; 2, 6, 10, and 14px are available
             when needed.
@@ -82,7 +82,7 @@ const tokenCss = `.panel {
           aria-labelledby="spacing-css-title"
           class="flex scroll-mt-24 flex-col gap-4"
         >
-          <h2 id="spacing-css-title" class="text-3xl font-medium">In CSS</h2>
+          <h2 id="spacing-css-title" class="text-2xl font-medium">In CSS</h2>
           <p class="text-muted-color">
             Use theme() in CSS processed by Tailwind v3, or use the shared PrimeVue variables in
             ordinary CSS.

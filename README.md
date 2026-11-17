@@ -15,7 +15,9 @@ Open `/foundations/typography` for Rubik specimens, recommended heading and body
 
 Open `/foundations/spacing` for the spacing scale, padding and gap examples, PrimeVue control sizes, radii, breakpoints, and page containers.
 
-General (`/general`) and the Motion and Icons foundation pages are still placeholders.
+Open `/foundations/icons` for PrimeIcons imports, sizes, semantic colours, button examples, accessibility guidance, and the full searchable icon library. All examples use the installed `@primeicons/vue` package.
+
+General (`/general`) and the Motion foundation page are still placeholders.
 
 Light mode is the default. The header's sun/moon button switches modes and remembers the selection in this browser. PrimeVue and Tailwind share the `.app-dark` selector.
 

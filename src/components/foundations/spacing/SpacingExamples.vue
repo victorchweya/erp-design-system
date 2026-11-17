@@ -33,7 +33,7 @@ const examples = controls.map((control) => ({
     aria-labelledby="spacing-examples-title"
     class="flex scroll-mt-24 flex-col gap-4"
   >
-    <h2 id="spacing-examples-title" class="text-3xl font-medium">Padding & gaps</h2>
+    <h2 id="spacing-examples-title" class="text-2xl font-medium">Padding & gaps</h2>
     <p class="text-muted-color">
       Padding creates space inside a surface. Gap separates items in a flex or grid layout.
     </p>
@@ -77,7 +77,7 @@ const examples = controls.map((control) => ({
     aria-labelledby="spacing-controls-title"
     class="flex scroll-mt-24 flex-col gap-4"
   >
-    <h2 id="spacing-controls-title" class="text-3xl font-medium">Control spacing</h2>
+    <h2 id="spacing-controls-title" class="text-2xl font-medium">Control spacing</h2>
     <p class="text-muted-color">
       PrimeVue buttons and inputs share form.field padding tokens. Use the component’s size property
       to change density. The utilities below describe the equivalent padding; they do not need to be
