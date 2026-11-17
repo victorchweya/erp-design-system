@@ -1,6 +1,4 @@
-import type { VirtualScrollerDesignTokens, VirtualScrollerTokenSections } from '@primeuix/themes/types/virtualscroller';
-
-export const loader: VirtualScrollerTokenSections.Loader = {
+export const loader = {
     mask: {
         background: '{content.background}',
         color: '{text.muted.color}'
@@ -12,4 +10,4 @@ export const loader: VirtualScrollerTokenSections.Loader = {
 
 export default {
     loader
-} satisfies VirtualScrollerDesignTokens;
+};

@@ -1,6 +1,4 @@
-import type { ListboxDesignTokens, ListboxTokenSections } from '@primeuix/themes/types/listbox';
-
-export const root: ListboxTokenSections.Root = {
+export const root = {
     background: '{form.field.background}',
     disabledBackground: '{form.field.disabled.background}',
     borderColor: '{form.field.border.color}',
@@ -12,7 +10,7 @@ export const root: ListboxTokenSections.Root = {
     transitionDuration: '{form.field.transition.duration}'
 };
 
-export const list: ListboxTokenSections.List = {
+export const list = {
     padding: '{list.padding}',
     gap: '{list.gap}',
     header: {
@@ -20,7 +18,7 @@ export const list: ListboxTokenSections.List = {
     }
 };
 
-export const option: ListboxTokenSections.Option = {
+export const option = {
     focusBackground: '{list.option.focus.background}',
     selectedBackground: '{list.option.selected.background}',
     selectedFocusBackground: '{list.option.selected.focus.background}',
@@ -32,24 +30,24 @@ export const option: ListboxTokenSections.Option = {
     borderRadius: '{list.option.border.radius}'
 };
 
-export const optionGroup: ListboxTokenSections.OptionGroup = {
+export const optionGroup = {
     background: '{list.option.group.background}',
     color: '{list.option.group.color}',
     fontWeight: '{list.option.group.font.weight}',
     padding: '{list.option.group.padding}'
 };
 
-export const checkmark: ListboxTokenSections.Checkmark = {
+export const checkmark = {
     color: '{list.option.color}',
     gutterStart: '-0.375rem',
     gutterEnd: '0.375rem'
 };
 
-export const emptyMessage: ListboxTokenSections.EmptyMessage = {
+export const emptyMessage = {
     padding: '{list.option.padding}'
 };
 
-export const colorScheme: ListboxTokenSections.ColorScheme = {
+export const colorScheme = {
     light: {
         option: {
             stripedBackground: '{surface.50}'
@@ -70,4 +68,4 @@ export default {
     checkmark,
     emptyMessage,
     colorScheme
-} satisfies ListboxDesignTokens;
+};

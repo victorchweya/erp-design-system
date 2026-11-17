@@ -1,6 +1,4 @@
-import type { CheckboxDesignTokens, CheckboxTokenSections } from '@primeuix/themes/types/checkbox';
-
-export const root: CheckboxTokenSections.Root = {
+export const root = {
     borderRadius: '{border.radius.sm}',
     width: '1.25rem',
     height: '1.25rem',
@@ -36,7 +34,7 @@ export const root: CheckboxTokenSections.Root = {
     }
 };
 
-export const icon: CheckboxTokenSections.Icon = {
+export const icon = {
     size: '0.875rem',
     color: '{form.field.color}',
     checkedColor: '{primary.contrast.color}',
@@ -53,4 +51,4 @@ export const icon: CheckboxTokenSections.Icon = {
 export default {
     root,
     icon
-} satisfies CheckboxDesignTokens;
+};

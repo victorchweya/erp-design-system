@@ -1,6 +1,4 @@
-import type { CascadeSelectDesignTokens, CascadeSelectTokenSections } from '@primeuix/themes/types/cascadeselect';
-
-export const root: CascadeSelectTokenSections.Root = {
+export const root = {
     background: '{form.field.background}',
     disabledBackground: '{form.field.disabled.background}',
     filledBackground: '{form.field.filled.background}',
@@ -38,12 +36,12 @@ export const root: CascadeSelectTokenSections.Root = {
     }
 };
 
-export const dropdown: CascadeSelectTokenSections.Dropdown = {
+export const dropdown = {
     width: '2.5rem',
     color: '{form.field.icon.color}'
 };
 
-export const overlay: CascadeSelectTokenSections.Overlay = {
+export const overlay = {
     background: '{overlay.select.background}',
     borderColor: '{overlay.select.border.color}',
     borderRadius: '{overlay.select.border.radius}',
@@ -51,13 +49,13 @@ export const overlay: CascadeSelectTokenSections.Overlay = {
     shadow: '{overlay.select.shadow}'
 };
 
-export const list: CascadeSelectTokenSections.List = {
+export const list = {
     padding: '{list.padding}',
     gap: '{list.gap}',
     mobileIndent: '1rem'
 };
 
-export const option: CascadeSelectTokenSections.Option = {
+export const option = {
     focusBackground: '{list.option.focus.background}',
     selectedBackground: '{list.option.selected.background}',
     selectedFocusBackground: '{list.option.selected.focus.background}',
@@ -74,7 +72,7 @@ export const option: CascadeSelectTokenSections.Option = {
     }
 };
 
-export const clearIcon: CascadeSelectTokenSections.ClearIcon = {
+export const clearIcon = {
     color: '{form.field.icon.color}'
 };
 
@@ -85,4 +83,4 @@ export default {
     list,
     option,
     clearIcon
-} satisfies CascadeSelectDesignTokens;
+};

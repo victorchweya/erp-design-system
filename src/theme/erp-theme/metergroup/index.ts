@@ -1,28 +1,26 @@
-import type { MeterGroupDesignTokens, MeterGroupTokenSections } from '@primeuix/themes/types/metergroup';
-
-export const root: MeterGroupTokenSections.Root = {
+export const root = {
     borderRadius: '{content.border.radius}',
     gap: '1rem'
 };
 
-export const meters: MeterGroupTokenSections.Meters = {
+export const meters = {
     background: '{content.border.color}',
     size: '0.5rem'
 };
 
-export const label: MeterGroupTokenSections.Label = {
+export const label = {
     gap: '0.5rem'
 };
 
-export const labelMarker: MeterGroupTokenSections.LabelMarker = {
+export const labelMarker = {
     size: '0.5rem'
 };
 
-export const labelIcon: MeterGroupTokenSections.LabelIcon = {
+export const labelIcon = {
     size: '1rem'
 };
 
-export const labelList: MeterGroupTokenSections.LabelList = {
+export const labelList = {
     verticalGap: '0.5rem',
     horizontalGap: '1rem'
 };
@@ -34,4 +32,4 @@ export default {
     labelMarker,
     labelIcon,
     labelList
-} satisfies MeterGroupDesignTokens;
+};

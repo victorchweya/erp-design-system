@@ -1,13 +1,11 @@
-import type { DockDesignTokens, DockTokenSections } from '@primeuix/themes/types/dock';
-
-export const root: DockTokenSections.Root = {
+export const root = {
     background: 'rgba(255, 255, 255, 0.1)',
     borderColor: 'rgba(255, 255, 255, 0.2)',
     padding: '0.5rem',
     borderRadius: '{border.radius.xl}'
 };
 
-export const item: DockTokenSections.Item = {
+export const item = {
     borderRadius: '{content.border.radius}',
     padding: '0.5rem',
     size: '3rem',
@@ -23,4 +21,4 @@ export const item: DockTokenSections.Item = {
 export default {
     root,
     item
-} satisfies DockDesignTokens;
+};

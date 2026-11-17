@@ -1,6 +1,4 @@
-import type { RatingDesignTokens, RatingTokenSections } from '@primeuix/themes/types/rating';
-
-export const root: RatingTokenSections.Root = {
+export const root = {
     gap: '0.25rem',
     transitionDuration: '{transition.duration}',
     focusRing: {
@@ -12,7 +10,7 @@ export const root: RatingTokenSections.Root = {
     }
 };
 
-export const icon: RatingTokenSections.Icon = {
+export const icon = {
     size: '1rem',
     color: '{text.muted.color}',
     hoverColor: '{primary.color}',
@@ -22,4 +20,4 @@ export const icon: RatingTokenSections.Icon = {
 export default {
     root,
     icon
-} satisfies RatingDesignTokens;
+};

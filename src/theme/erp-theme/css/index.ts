@@ -1,5 +1,3 @@
-import { ExtendedCSS } from '@primeuix/themes/types';
-
 const css = /*css*/ `
     li.p-autocomplete-option,
     div.p-cascadeselect-option-content,
@@ -26,4 +24,4 @@ const css = /*css*/ `
     }
 `;
 
-export default css satisfies ExtendedCSS;
+export default css;

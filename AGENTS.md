@@ -22,7 +22,9 @@ This repository builds a PrimeVue design system with Vue 3, TypeScript, and Vite
 - Use Composition API with `<script setup lang="ts">` for new Vue components.
 - Reuse existing components, composables, and installed dependencies before adding code.
 - Prefer PrimeVue components and shared design tokens. Add wrappers only when they provide needed behavior or a reusable project contract.
+- PrimeVue components are auto-imported in templates by Vite. Keep service and composable imports explicit; `src/components.d.ts` is generated.
 - Keep design-system customization in `src/theme/erp-theme/`; use `src/theme/aura-reference/` as a reference.
+- `erp-theme` is a standalone preset. Keep its tokens local; do not add `@primeuix/themes` or import packaged presets. The Aura reference snapshot is excluded from application compilation.
 - Prefer theme tokens over repeated hard-coded styles or CSS overrides of PrimeVue internals.
 - Check the PrimeVue MCP documentation version against the installed version before applying its guidance; verify any version differences with official documentation.
 - Preserve accessibility, including labels, keyboard operation, and focus behavior.

@@ -1,17 +1,15 @@
-import type { SplitterDesignTokens, SplitterTokenSections } from '@primeuix/themes/types/splitter';
-
-export const root: SplitterTokenSections.Root = {
+export const root = {
     background: '{content.background}',
     borderColor: '{content.border.color}',
     color: '{content.color}',
     transitionDuration: '{transition.duration}'
 };
 
-export const gutter: SplitterTokenSections.Gutter = {
+export const gutter = {
     background: '{content.border.color}'
 };
 
-export const handle: SplitterTokenSections.Handle = {
+export const handle = {
     size: '24px',
     background: 'transparent',
     borderRadius: '{content.border.radius}',
@@ -28,4 +26,4 @@ export default {
     root,
     gutter,
     handle
-} satisfies SplitterDesignTokens;
+};

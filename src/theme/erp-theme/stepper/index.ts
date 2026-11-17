@@ -1,22 +1,20 @@
-import type { StepperDesignTokens, StepperTokenSections } from '@primeuix/themes/types/stepper';
-
-export const root: StepperTokenSections.Root = {
+export const root = {
     transitionDuration: '{transition.duration}'
 };
 
-export const separator: StepperTokenSections.Separator = {
+export const separator = {
     background: '{content.border.color}',
     activeBackground: '{primary.color}',
     margin: '0 0 0 1.625rem',
     size: '2px'
 };
 
-export const step: StepperTokenSections.Step = {
+export const step = {
     padding: '0.5rem',
     gap: '1rem'
 };
 
-export const stepHeader: StepperTokenSections.StepHeader = {
+export const stepHeader = {
     padding: '0',
     borderRadius: '{content.border.radius}',
     focusRing: {
@@ -29,13 +27,13 @@ export const stepHeader: StepperTokenSections.StepHeader = {
     gap: '0.5rem'
 };
 
-export const stepTitle: StepperTokenSections.StepTitle = {
+export const stepTitle = {
     color: '{text.muted.color}',
     activeColor: '{primary.color}',
     fontWeight: '500'
 };
 
-export const stepNumber: StepperTokenSections.StepNumber = {
+export const stepNumber = {
     background: '{content.background}',
     activeBackground: '{content.background}',
     borderColor: '{content.border.color}',
@@ -49,11 +47,11 @@ export const stepNumber: StepperTokenSections.StepNumber = {
     shadow: '0px 0.5px 0px 0px rgba(0, 0, 0, 0.06), 0px 1px 1px 0px rgba(0, 0, 0, 0.12)'
 };
 
-export const steppanels: StepperTokenSections.Steppanels = {
+export const steppanels = {
     padding: '0.875rem 0.5rem 1.125rem 0.5rem'
 };
 
-export const steppanel: StepperTokenSections.Steppanel = {
+export const steppanel = {
     background: '{content.background}',
     color: '{content.color}',
     padding: '0',
@@ -69,4 +67,4 @@ export default {
     stepNumber,
     steppanels,
     steppanel
-} satisfies StepperDesignTokens;
+};

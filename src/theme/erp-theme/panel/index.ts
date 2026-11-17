@@ -1,13 +1,11 @@
-import type { PanelDesignTokens, PanelTokenSections } from '@primeuix/themes/types/panel';
-
-export const root: PanelTokenSections.Root = {
+export const root = {
     background: '{content.background}',
     borderColor: '{content.border.color}',
     color: '{content.color}',
     borderRadius: '{content.border.radius}'
 };
 
-export const header: PanelTokenSections.Header = {
+export const header = {
     background: 'transparent',
     color: '{text.color}',
     padding: '1.125rem',
@@ -16,19 +14,19 @@ export const header: PanelTokenSections.Header = {
     borderRadius: '0'
 };
 
-export const toggleableHeader: PanelTokenSections.ToggleableHeader = {
+export const toggleableHeader = {
     padding: '0.375rem 1.125rem'
 };
 
-export const title: PanelTokenSections.Title = {
+export const title = {
     fontWeight: '600'
 };
 
-export const content: PanelTokenSections.Content = {
+export const content = {
     padding: '0 1.125rem 1.125rem 1.125rem'
 };
 
-export const footer: PanelTokenSections.Footer = {
+export const footer = {
     padding: '0 1.125rem 1.125rem 1.125rem'
 };
 
@@ -39,4 +37,4 @@ export default {
     title,
     content,
     footer
-} satisfies PanelDesignTokens;
+};

@@ -1,18 +1,16 @@
-import type { EditorDesignTokens, EditorTokenSections } from '@primeuix/themes/types/editor';
-
-export const toolbar: EditorTokenSections.Toolbar = {
+export const toolbar = {
     background: '{content.background}',
     borderColor: '{content.border.color}',
     borderRadius: '{content.border.radius}'
 };
 
-export const toolbarItem: EditorTokenSections.ToolbarItem = {
+export const toolbarItem = {
     color: '{text.muted.color}',
     hoverColor: '{text.color}',
     activeColor: '{primary.color}'
 };
 
-export const overlay: EditorTokenSections.Overlay = {
+export const overlay = {
     background: '{overlay.select.background}',
     borderColor: '{overlay.select.border.color}',
     borderRadius: '{overlay.select.border.radius}',
@@ -21,7 +19,7 @@ export const overlay: EditorTokenSections.Overlay = {
     padding: '{list.padding}'
 };
 
-export const overlayOption: EditorTokenSections.OverlayOption = {
+export const overlayOption = {
     focusBackground: '{list.option.focus.background}',
     color: '{list.option.color}',
     focusColor: '{list.option.focus.color}',
@@ -29,7 +27,7 @@ export const overlayOption: EditorTokenSections.OverlayOption = {
     borderRadius: '{list.option.border.radius}'
 };
 
-export const content: EditorTokenSections.Content = {
+export const content = {
     background: '{content.background}',
     borderColor: '{content.border.color}',
     color: '{content.color}',
@@ -42,4 +40,4 @@ export default {
     overlay,
     overlayOption,
     content
-} satisfies EditorDesignTokens;
+};

@@ -1,20 +1,18 @@
-import type { InlineMessageDesignTokens, InlineMessageTokenSections } from '@primeuix/themes/types/inlinemessage';
-
-export const root: InlineMessageTokenSections.Root = {
+export const root = {
     padding: '{form.field.padding.y} {form.field.padding.x}',
     borderRadius: '{content.border.radius}',
     gap: '0.5rem'
 };
 
-export const text: InlineMessageTokenSections.Text = {
+export const text = {
     fontWeight: '500'
 };
 
-export const icon: InlineMessageTokenSections.Icon = {
+export const icon = {
     size: '1rem'
 };
 
-export const colorScheme: InlineMessageTokenSections.ColorScheme = {
+export const colorScheme = {
     light: {
         info: {
             background: 'color-mix(in srgb, {blue.50}, transparent 5%)',
@@ -98,4 +96,4 @@ export default {
     text,
     icon,
     colorScheme
-} satisfies InlineMessageDesignTokens;
+};

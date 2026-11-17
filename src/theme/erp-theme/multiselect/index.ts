@@ -1,6 +1,4 @@
-import type { MultiSelectDesignTokens, MultiSelectTokenSections } from '@primeuix/themes/types/multiselect';
-
-export const root: MultiSelectTokenSections.Root = {
+export const root = {
     background: '{form.field.background}',
     disabledBackground: '{form.field.disabled.background}',
     filledBackground: '{form.field.filled.background}',
@@ -38,12 +36,12 @@ export const root: MultiSelectTokenSections.Root = {
     }
 };
 
-export const dropdown: MultiSelectTokenSections.Dropdown = {
+export const dropdown = {
     width: '2.5rem',
     color: '{form.field.icon.color}'
 };
 
-export const overlay: MultiSelectTokenSections.Overlay = {
+export const overlay = {
     background: '{overlay.select.background}',
     borderColor: '{overlay.select.border.color}',
     borderRadius: '{overlay.select.border.radius}',
@@ -51,7 +49,7 @@ export const overlay: MultiSelectTokenSections.Overlay = {
     shadow: '{overlay.select.shadow}'
 };
 
-export const list: MultiSelectTokenSections.List = {
+export const list = {
     padding: '{list.padding}',
     gap: '{list.gap}',
     header: {
@@ -59,7 +57,7 @@ export const list: MultiSelectTokenSections.List = {
     }
 };
 
-export const option: MultiSelectTokenSections.Option = {
+export const option = {
     focusBackground: '{list.option.focus.background}',
     selectedBackground: '{list.option.selected.background}',
     selectedFocusBackground: '{list.option.selected.focus.background}',
@@ -72,22 +70,22 @@ export const option: MultiSelectTokenSections.Option = {
     gap: '0.5rem'
 };
 
-export const optionGroup: MultiSelectTokenSections.OptionGroup = {
+export const optionGroup = {
     background: '{list.option.group.background}',
     color: '{list.option.group.color}',
     fontWeight: '{list.option.group.font.weight}',
     padding: '{list.option.group.padding}'
 };
 
-export const clearIcon: MultiSelectTokenSections.ClearIcon = {
+export const clearIcon = {
     color: '{form.field.icon.color}'
 };
 
-export const chip: MultiSelectTokenSections.Chip = {
+export const chip = {
     borderRadius: '{border.radius.sm}'
 };
 
-export const emptyMessage: MultiSelectTokenSections.EmptyMessage = {
+export const emptyMessage = {
     padding: '{list.option.padding}'
 };
 
@@ -101,4 +99,4 @@ export default {
     chip,
     clearIcon,
     emptyMessage
-} satisfies MultiSelectDesignTokens;
+};

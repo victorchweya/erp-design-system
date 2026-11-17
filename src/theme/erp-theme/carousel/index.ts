@@ -1,19 +1,17 @@
-import type { CarouselDesignTokens, CarouselTokenSections } from '@primeuix/themes/types/carousel';
-
-export const root: CarouselTokenSections.Root = {
+export const root = {
     transitionDuration: '{transition.duration}'
 };
 
-export const content: CarouselTokenSections.Content = {
+export const content = {
     gap: '0.25rem'
 };
 
-export const indicatorList: CarouselTokenSections.IndicatorList = {
+export const indicatorList = {
     padding: '1rem',
     gap: '0.5rem'
 };
 
-export const indicator: CarouselTokenSections.Indicator = {
+export const indicator = {
     width: '2rem',
     height: '0.5rem',
     borderRadius: '{content.border.radius}',
@@ -26,7 +24,7 @@ export const indicator: CarouselTokenSections.Indicator = {
     }
 };
 
-export const colorScheme: CarouselTokenSections.ColorScheme = {
+export const colorScheme = {
     light: {
         indicator: {
             background: '{surface.200}',
@@ -49,4 +47,4 @@ export default {
     indicatorList,
     indicator,
     colorScheme
-} satisfies CarouselDesignTokens;
+};

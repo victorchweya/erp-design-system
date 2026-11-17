@@ -1,10 +1,8 @@
-import type { InputOtpDesignTokens, InputOtpTokenSections } from '@primeuix/themes/types/inputotp';
-
-export const root: InputOtpTokenSections.Root = {
+export const root = {
     gap: '0.5rem'
 };
 
-export const input: InputOtpTokenSections.Input = {
+export const input = {
     width: '2.5rem',
     sm: {
         width: '2rem'
@@ -17,4 +15,4 @@ export const input: InputOtpTokenSections.Input = {
 export default {
     root,
     input
-} satisfies InputOtpDesignTokens;
+};

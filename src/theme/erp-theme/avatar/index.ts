@@ -1,6 +1,4 @@
-import type { AvatarDesignTokens, AvatarTokenSections } from '@primeuix/themes/types/avatar';
-
-export const root: AvatarTokenSections.Root = {
+export const root = {
     width: '2rem',
     height: '2rem',
     fontSize: '1rem',
@@ -9,16 +7,16 @@ export const root: AvatarTokenSections.Root = {
     borderRadius: '{content.border.radius}'
 };
 
-export const icon: AvatarTokenSections.Icon = {
+export const icon = {
     size: '1rem'
 };
 
-export const group: AvatarTokenSections.Group = {
+export const group = {
     borderColor: '{content.background}',
     offset: '-0.75rem'
 };
 
-export const lg: AvatarTokenSections.Lg = {
+export const lg = {
     width: '3rem',
     height: '3rem',
     fontSize: '1.5rem',
@@ -30,7 +28,7 @@ export const lg: AvatarTokenSections.Lg = {
     }
 };
 
-export const xl: AvatarTokenSections.Xl = {
+export const xl = {
     width: '4rem',
     height: '4rem',
     fontSize: '2rem',
@@ -48,4 +46,4 @@ export default {
     group,
     lg,
     xl
-} satisfies AvatarDesignTokens;
+};

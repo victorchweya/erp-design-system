@@ -1,10 +1,8 @@
-import type { SkeletonDesignTokens, SkeletonTokenSections } from '@primeuix/themes/types/skeleton';
-
-export const root: SkeletonTokenSections.Root = {
+export const root = {
     borderRadius: '{content.border.radius}'
 };
 
-export const colorScheme: SkeletonTokenSections.ColorScheme = {
+export const colorScheme = {
     light: {
         root: {
             background: '{surface.200}',
@@ -22,4 +20,4 @@ export const colorScheme: SkeletonTokenSections.ColorScheme = {
 export default {
     root,
     colorScheme
-} satisfies SkeletonDesignTokens;
+};

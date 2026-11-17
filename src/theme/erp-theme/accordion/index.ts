@@ -1,15 +1,13 @@
-import type { AccordionDesignTokens, AccordionTokenSections } from '@primeuix/themes/types/accordion';
-
-export const root: AccordionTokenSections.Root = {
+export const root = {
     transitionDuration: '{transition.duration}'
 };
 
-export const panel: AccordionTokenSections.Panel = {
+export const panel = {
     borderWidth: '0 0 1px 0',
     borderColor: '{content.border.color}'
 };
 
-export const header: AccordionTokenSections.Header = {
+export const header = {
     color: '{text.muted.color}',
     hoverColor: '{text.color}',
     activeColor: '{text.color}',
@@ -46,7 +44,7 @@ export const header: AccordionTokenSections.Header = {
     }
 };
 
-export const content: AccordionTokenSections.Content = {
+export const content = {
     borderWidth: '0',
     borderColor: '{content.border.color}',
     background: '{content.background}',
@@ -59,4 +57,4 @@ export default {
     panel,
     header,
     content
-} satisfies AccordionDesignTokens;
+};

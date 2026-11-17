@@ -1,6 +1,4 @@
-import type { MegaMenuDesignTokens, MegaMenuTokenSections } from '@primeuix/themes/types/megamenu';
-
-export const root: MegaMenuTokenSections.Root = {
+export const root = {
     background: '{content.background}',
     borderColor: '{content.border.color}',
     borderRadius: '{content.border.radius}',
@@ -17,12 +15,12 @@ export const root: MegaMenuTokenSections.Root = {
     transitionDuration: '{transition.duration}'
 };
 
-export const baseItem: MegaMenuTokenSections.BaseItem = {
+export const baseItem = {
     borderRadius: '{content.border.radius}',
     padding: '{navigation.item.padding}'
 };
 
-export const item: MegaMenuTokenSections.Item = {
+export const item = {
     focusBackground: '{navigation.item.focus.background}',
     activeBackground: '{navigation.item.active.background}',
     color: '{navigation.item.color}',
@@ -38,7 +36,7 @@ export const item: MegaMenuTokenSections.Item = {
     }
 };
 
-export const overlay: MegaMenuTokenSections.Overlay = {
+export const overlay = {
     padding: '0',
     background: '{content.background}',
     borderColor: '{content.border.color}',
@@ -48,30 +46,30 @@ export const overlay: MegaMenuTokenSections.Overlay = {
     gap: '0.5rem'
 };
 
-export const submenu: MegaMenuTokenSections.Submenu = {
+export const submenu = {
     padding: '{navigation.list.padding}',
     gap: '{navigation.list.gap}'
 };
 
-export const submenuLabel: MegaMenuTokenSections.SubmenuLabel = {
+export const submenuLabel = {
     padding: '{navigation.submenu.label.padding}',
     fontWeight: '{navigation.submenu.label.font.weight}',
     background: '{navigation.submenu.label.background}',
     color: '{navigation.submenu.label.color}'
 };
 
-export const submenuIcon: MegaMenuTokenSections.SubmenuIcon = {
+export const submenuIcon = {
     size: '{navigation.submenu.icon.size}',
     color: '{navigation.submenu.icon.color}',
     focusColor: '{navigation.submenu.icon.focus.color}',
     activeColor: '{navigation.submenu.icon.active.color}'
 };
 
-export const separator: MegaMenuTokenSections.Separator = {
+export const separator = {
     borderColor: '{content.border.color}'
 };
 
-export const mobileButton: MegaMenuTokenSections.MobileButton = {
+export const mobileButton = {
     borderRadius: '50%',
     size: '1.75rem',
     color: '{text.muted.color}',
@@ -96,4 +94,4 @@ export default {
     submenuIcon,
     separator,
     mobileButton
-} satisfies MegaMenuDesignTokens;
+};

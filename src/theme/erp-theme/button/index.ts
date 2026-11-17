@@ -1,6 +1,4 @@
-import type { ButtonDesignTokens, ButtonTokenSections } from '@primeuix/themes/types/button';
-
-export const root: ButtonTokenSections.Root = {
+export const root = {
     borderRadius: '{form.field.border.radius}',
     roundedBorderRadius: '2rem',
     gap: '0.5rem',
@@ -32,7 +30,7 @@ export const root: ButtonTokenSections.Root = {
     transitionDuration: '{form.field.transition.duration}'
 };
 
-export const colorScheme: ButtonTokenSections.ColorScheme = {
+export const colorScheme = {
     light: {
         root: {
             primary: {
@@ -502,4 +500,4 @@ export const colorScheme: ButtonTokenSections.ColorScheme = {
 export default {
     root,
     colorScheme
-} satisfies ButtonDesignTokens;
+};

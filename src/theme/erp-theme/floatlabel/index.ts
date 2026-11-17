@@ -1,6 +1,4 @@
-import type { FloatLabelDesignTokens, FloatLabelTokenSections } from '@primeuix/themes/types/floatlabel';
-
-export const root: FloatLabelTokenSections.Root = {
+export const root = {
     color: '{form.field.float.label.color}',
     focusColor: '{form.field.float.label.focus.color}',
     activeColor: '{form.field.float.label.active.color}',
@@ -15,13 +13,13 @@ export const root: FloatLabelTokenSections.Root = {
     }
 };
 
-export const over: FloatLabelTokenSections.Over = {
+export const over = {
     active: {
         top: '-1.25rem'
     }
 };
 
-export const inside: FloatLabelTokenSections.In = {
+export const inside = {
     input: {
         paddingTop: '1.5rem',
         paddingBottom: '{form.field.padding.y}'
@@ -31,7 +29,7 @@ export const inside: FloatLabelTokenSections.In = {
     }
 };
 
-export const on: FloatLabelTokenSections.On = {
+export const on = {
     borderRadius: '{border.radius.xs}',
     active: {
         background: '{form.field.background}',
@@ -44,4 +42,4 @@ export default {
     over,
     in: inside,
     on
-} satisfies FloatLabelDesignTokens;
+};

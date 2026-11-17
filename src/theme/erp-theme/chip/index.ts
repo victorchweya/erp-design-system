@@ -1,6 +1,4 @@
-import type { ChipDesignTokens, ChipTokenSections } from '@primeuix/themes/types/chip';
-
-export const root: ChipTokenSections.Root = {
+export const root = {
     borderRadius: '16px',
     paddingX: '0.75rem',
     paddingY: '0.5rem',
@@ -8,16 +6,16 @@ export const root: ChipTokenSections.Root = {
     transitionDuration: '{transition.duration}'
 };
 
-export const image: ChipTokenSections.Image = {
+export const image = {
     width: '2rem',
     height: '2rem'
 };
 
-export const icon: ChipTokenSections.Icon = {
+export const icon = {
     size: '1rem'
 };
 
-export const removeIcon: ChipTokenSections.RemoveIcon = {
+export const removeIcon = {
     size: '1rem',
     focusRing: {
         width: '{focus.ring.width}',
@@ -28,7 +26,7 @@ export const removeIcon: ChipTokenSections.RemoveIcon = {
     }
 };
 
-export const colorScheme: ChipTokenSections.ColorScheme = {
+export const colorScheme = {
     light: {
         root: {
             background: '{surface.100}',
@@ -61,4 +59,4 @@ export default {
     icon,
     removeIcon,
     colorScheme
-} satisfies ChipDesignTokens;
+};

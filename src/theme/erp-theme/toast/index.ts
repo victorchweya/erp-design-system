@@ -1,36 +1,34 @@
-import type { ToastDesignTokens, ToastTokenSections } from '@primeuix/themes/types/toast';
-
-export const root: ToastTokenSections.Root = {
+export const root = {
     width: '25rem',
     borderRadius: '{content.border.radius}',
     borderWidth: '1px',
     transitionDuration: '{transition.duration}'
 };
 
-export const icon: ToastTokenSections.Icon = {
+export const icon = {
     size: '1.125rem'
 };
 
-export const content: ToastTokenSections.Content = {
+export const content = {
     padding: '{overlay.popover.padding}',
     gap: '0.5rem'
 };
 
-export const text: ToastTokenSections.Text = {
+export const text = {
     gap: '0.5rem'
 };
 
-export const summary: ToastTokenSections.Summary = {
+export const summary = {
     fontWeight: '500',
     fontSize: '1rem'
 };
 
-export const detail: ToastTokenSections.Detail = {
+export const detail = {
     fontWeight: '500',
     fontSize: '0.875rem'
 };
 
-export const closeButton: ToastTokenSections.CloseButton = {
+export const closeButton = {
     width: '1.75rem',
     height: '1.75rem',
     borderRadius: '50%',
@@ -41,11 +39,11 @@ export const closeButton: ToastTokenSections.CloseButton = {
     }
 };
 
-export const closeIcon: ToastTokenSections.CloseIcon = {
+export const closeIcon = {
     size: '1rem'
 };
 
-export const colorScheme: ToastTokenSections.ColorScheme = {
+export const colorScheme = {
     light: {
         root: {
             blur: '1.5px'
@@ -236,4 +234,4 @@ export default {
     closeButton,
     closeIcon,
     colorScheme
-} satisfies ToastDesignTokens;
+};

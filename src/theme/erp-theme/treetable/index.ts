@@ -1,10 +1,8 @@
-import type { TreeTableDesignTokens, TreeTableTokenSections } from '@primeuix/themes/types/treetable';
-
-export const root: TreeTableTokenSections.Root = {
+export const root = {
     transitionDuration: '{transition.duration}'
 };
 
-export const header: TreeTableTokenSections.Header = {
+export const header = {
     background: '{content.background}',
     borderColor: '{treetable.border.color}',
     color: '{content.color}',
@@ -12,7 +10,7 @@ export const header: TreeTableTokenSections.Header = {
     padding: '0.75rem 1rem'
 };
 
-export const headerCell: TreeTableTokenSections.HeaderCell = {
+export const headerCell = {
     background: '{content.background}',
     hoverBackground: '{content.hover.background}',
     selectedBackground: '{highlight.background}',
@@ -31,11 +29,11 @@ export const headerCell: TreeTableTokenSections.HeaderCell = {
     }
 };
 
-export const columnTitle: TreeTableTokenSections.ColumnTitle = {
+export const columnTitle = {
     fontWeight: '600'
 };
 
-export const row: TreeTableTokenSections.Row = {
+export const row = {
     background: '{content.background}',
     hoverBackground: '{content.hover.background}',
     selectedBackground: '{highlight.background}',
@@ -51,24 +49,24 @@ export const row: TreeTableTokenSections.Row = {
     }
 };
 
-export const bodyCell: TreeTableTokenSections.BodyCell = {
+export const bodyCell = {
     borderColor: '{treetable.border.color}',
     padding: '0.75rem 1rem',
     gap: '0.5rem'
 };
 
-export const footerCell: TreeTableTokenSections.FooterCell = {
+export const footerCell = {
     background: '{content.background}',
     borderColor: '{treetable.border.color}',
     color: '{content.color}',
     padding: '0.75rem 1rem'
 };
 
-export const columnFooter: TreeTableTokenSections.ColumnFooter = {
+export const columnFooter = {
     fontWeight: '600'
 };
 
-export const footer: TreeTableTokenSections.Footer = {
+export const footer = {
     background: '{content.background}',
     borderColor: '{treetable.border.color}',
     color: '{content.color}',
@@ -76,26 +74,26 @@ export const footer: TreeTableTokenSections.Footer = {
     padding: '0.75rem 1rem'
 };
 
-export const columnResizer: TreeTableTokenSections.ColumnResizer = {
+export const columnResizer = {
     width: '0.5rem'
 };
 
-export const resizeIndicator: TreeTableTokenSections.ResizeIndicator = {
+export const resizeIndicator = {
     width: '1px',
     color: '{primary.color}'
 };
 
-export const sortIcon: TreeTableTokenSections.SortIcon = {
+export const sortIcon = {
     color: '{text.muted.color}',
     hoverColor: '{text.hover.muted.color}',
     size: '0.875rem'
 };
 
-export const loadingIcon: TreeTableTokenSections.LoadingIcon = {
+export const loadingIcon = {
     size: '2rem'
 };
 
-export const nodeToggleButton: TreeTableTokenSections.NodeToggleButton = {
+export const nodeToggleButton = {
     hoverBackground: '{content.hover.background}',
     selectedHoverBackground: '{content.background}',
     color: '{text.muted.color}',
@@ -112,17 +110,17 @@ export const nodeToggleButton: TreeTableTokenSections.NodeToggleButton = {
     }
 };
 
-export const paginatorTop: TreeTableTokenSections.PaginatorTop = {
+export const paginatorTop = {
     borderColor: '{content.border.color}',
     borderWidth: '0 0 1px 0'
 };
 
-export const paginatorBottom: TreeTableTokenSections.PaginatorBottom = {
+export const paginatorBottom = {
     borderColor: '{content.border.color}',
     borderWidth: '0 0 1px 0'
 };
 
-export const colorScheme: TreeTableTokenSections.ColorScheme = {
+export const colorScheme = {
     light: {
         root: {
             borderColor: '{content.border.color}'
@@ -141,7 +139,7 @@ export const colorScheme: TreeTableTokenSections.ColorScheme = {
     }
 };
 
-export const css: TreeTableTokenSections.CSS = /*css*/ `
+export const css = /*css*/ `
     .p-treetable-mask.p-overlay-mask {
         --px-mask-background: light-dark(rgba(255,255,255,0.5),rgba(0,0,0,0.3));
     }
@@ -166,4 +164,4 @@ export default {
     paginatorBottom,
     colorScheme,
     css
-} satisfies TreeTableDesignTokens;
+};

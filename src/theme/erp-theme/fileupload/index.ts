@@ -1,6 +1,4 @@
-import type { FileUploadDesignTokens, FileUploadTokenSections } from '@primeuix/themes/types/fileupload';
-
-export const root: FileUploadTokenSections.Root = {
+export const root = {
     background: '{content.background}',
     borderColor: '{content.border.color}',
     color: '{content.color}',
@@ -8,7 +6,7 @@ export const root: FileUploadTokenSections.Root = {
     transitionDuration: '{transition.duration}'
 };
 
-export const header: FileUploadTokenSections.Header = {
+export const header = {
     background: 'transparent',
     color: '{text.color}',
     padding: '1.125rem',
@@ -18,13 +16,13 @@ export const header: FileUploadTokenSections.Header = {
     gap: '0.5rem'
 };
 
-export const content: FileUploadTokenSections.Content = {
+export const content = {
     highlightBorderColor: '{primary.color}',
     padding: '0 1.125rem 1.125rem 1.125rem',
     gap: '1rem'
 };
 
-export const file: FileUploadTokenSections.File = {
+export const file = {
     padding: '1rem',
     gap: '1rem',
     borderColor: '{content.border.color}',
@@ -33,15 +31,15 @@ export const file: FileUploadTokenSections.File = {
     }
 };
 
-export const fileList: FileUploadTokenSections.FileList = {
+export const fileList = {
     gap: '0.5rem'
 };
 
-export const progressbar: FileUploadTokenSections.Progressbar = {
+export const progressbar = {
     height: '0.25rem'
 };
 
-export const basic: FileUploadTokenSections.Basic = {
+export const basic = {
     gap: '0.5rem'
 };
 
@@ -53,4 +51,4 @@ export default {
     fileList,
     progressbar,
     basic
-} satisfies FileUploadDesignTokens;
+};

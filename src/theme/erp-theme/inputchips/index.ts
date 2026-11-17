@@ -1,6 +1,4 @@
-import type { InputChipsDesignTokens, InputChipsTokenSections } from '@primeuix/themes/types/inputchips';
-
-export const root: InputChipsTokenSections.Root = {
+export const root = {
     background: '{form.field.background}',
     disabledBackground: '{form.field.disabled.background}',
     filledBackground: '{form.field.filled.background}',
@@ -26,11 +24,11 @@ export const root: InputChipsTokenSections.Root = {
     transitionDuration: '{form.field.transition.duration}'
 };
 
-export const chip: InputChipsTokenSections.Chip = {
+export const chip = {
     borderRadius: '{border.radius.sm}'
 };
 
-export const colorScheme: InputChipsTokenSections.ColorScheme = {
+export const colorScheme = {
     light: {
         chip: {
             focusBackground: '{surface.200}',
@@ -49,4 +47,4 @@ export default {
     root,
     chip,
     colorScheme
-} satisfies InputChipsDesignTokens;
+};

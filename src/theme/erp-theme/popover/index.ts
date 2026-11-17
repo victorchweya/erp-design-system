@@ -1,6 +1,4 @@
-import type { PopoverDesignTokens, PopoverTokenSections } from '@primeuix/themes/types/popover';
-
-export const root: PopoverTokenSections.Root = {
+export const root = {
     background: '{overlay.popover.background}',
     borderColor: '{overlay.popover.border.color}',
     color: '{overlay.popover.color}',
@@ -10,11 +8,11 @@ export const root: PopoverTokenSections.Root = {
     arrowOffset: '1.25rem'
 };
 
-export const content: PopoverTokenSections.Content = {
+export const content = {
     padding: '{overlay.popover.padding}'
 };
 
 export default {
     root,
     content
-} satisfies PopoverDesignTokens;
+};

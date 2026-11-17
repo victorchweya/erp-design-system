@@ -1,14 +1,12 @@
-import type { OrderListDesignTokens, OrderListTokenSections } from '@primeuix/themes/types/orderlist';
-
-export const root: OrderListTokenSections.Root = {
+export const root = {
     gap: '1.125rem'
 };
 
-export const controls: OrderListTokenSections.Controls = {
+export const controls = {
     gap: '0.5rem'
 };
 
 export default {
     root,
     controls
-} satisfies OrderListDesignTokens;
+};

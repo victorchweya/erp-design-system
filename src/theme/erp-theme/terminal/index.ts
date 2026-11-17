@@ -1,6 +1,4 @@
-import type { TerminalDesignTokens, TerminalTokenSections } from '@primeuix/themes/types/terminal';
-
-export const root: TerminalTokenSections.Root = {
+export const root = {
     background: '{form.field.background}',
     borderColor: '{form.field.border.color}',
     color: '{form.field.color}',
@@ -9,11 +7,11 @@ export const root: TerminalTokenSections.Root = {
     borderRadius: '{form.field.border.radius}'
 };
 
-export const prompt: TerminalTokenSections.Prompt = {
+export const prompt = {
     gap: '0.25rem'
 };
 
-export const commandResponse: TerminalTokenSections.CommandResponse = {
+export const commandResponse = {
     margin: '2px 0'
 };
 
@@ -21,4 +19,4 @@ export default {
     root,
     prompt,
     commandResponse
-} satisfies TerminalDesignTokens;
+};

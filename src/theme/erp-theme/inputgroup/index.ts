@@ -1,6 +1,4 @@
-import type { InputGroupDesignTokens, InputGroupTokenSections } from '@primeuix/themes/types/inputgroup';
-
-export const addon: InputGroupTokenSections.Addon = {
+export const addon = {
     background: '{form.field.background}',
     borderColor: '{form.field.border.color}',
     color: '{form.field.icon.color}',
@@ -11,4 +9,4 @@ export const addon: InputGroupTokenSections.Addon = {
 
 export default {
     addon
-} satisfies InputGroupDesignTokens;
+};

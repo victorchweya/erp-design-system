@@ -1,20 +1,18 @@
-import type { SliderDesignTokens, SliderTokenSections } from '@primeuix/themes/types/slider';
-
-export const root: SliderTokenSections.Root = {
+export const root = {
     transitionDuration: '{transition.duration}'
 };
 
-export const track: SliderTokenSections.Track = {
+export const track = {
     background: '{content.border.color}',
     borderRadius: '{content.border.radius}',
     size: '3px'
 };
 
-export const range: SliderTokenSections.Range = {
+export const range = {
     background: '{primary.color}'
 };
 
-export const handle: SliderTokenSections.Handle = {
+export const handle = {
     width: '20px',
     height: '20px',
     borderRadius: '50%',
@@ -36,7 +34,7 @@ export const handle: SliderTokenSections.Handle = {
     }
 };
 
-export const colorScheme: SliderTokenSections.ColorScheme = {
+export const colorScheme = {
     light: {
         handle: {
             content: {
@@ -59,4 +57,4 @@ export default {
     range,
     handle,
     colorScheme
-} satisfies SliderDesignTokens;
+};

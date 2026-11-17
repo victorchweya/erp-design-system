@@ -1,6 +1,4 @@
-import type { OverlayBadgeDesignTokens, OverlayBadgeTokenSections } from '@primeuix/themes/types/overlaybadge';
-
-export const root: OverlayBadgeTokenSections.Root = {
+export const root = {
     outline: {
         width: '2px',
         color: '{content.background}'
@@ -9,4 +7,4 @@ export const root: OverlayBadgeTokenSections.Root = {
 
 export default {
     root
-} satisfies OverlayBadgeDesignTokens;
+};

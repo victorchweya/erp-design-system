@@ -1,6 +1,4 @@
-import type { ToggleButtonDesignTokens, ToggleButtonTokenSections } from '@primeuix/themes/types/togglebutton';
-
-export const root: ToggleButtonTokenSections.Root = {
+export const root = {
     padding: '0.25rem',
     borderRadius: '{content.border.radius}',
     gap: '0.5rem',
@@ -27,11 +25,11 @@ export const root: ToggleButtonTokenSections.Root = {
     }
 };
 
-export const icon: ToggleButtonTokenSections.Icon = {
+export const icon = {
     disabledColor: '{form.field.disabled.color}'
 };
 
-export const content: ToggleButtonTokenSections.Content = {
+export const content = {
     padding: '0.25rem 0.75rem',
     borderRadius: '{content.border.radius}',
     checkedShadow: '0px 1px 2px 0px rgba(0, 0, 0, 0.02), 0px 1px 2px 0px rgba(0, 0, 0, 0.04)',
@@ -43,7 +41,7 @@ export const content: ToggleButtonTokenSections.Content = {
     }
 };
 
-export const colorScheme: ToggleButtonTokenSections.ColorScheme = {
+export const colorScheme = {
     light: {
         root: {
             background: '{surface.100}',
@@ -91,4 +89,4 @@ export default {
     icon,
     content,
     colorScheme
-} satisfies ToggleButtonDesignTokens;
+};

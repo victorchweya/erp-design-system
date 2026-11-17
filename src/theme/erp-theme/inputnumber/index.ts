@@ -1,16 +1,14 @@
-import type { InputNumberDesignTokens, InputNumberTokenSections } from '@primeuix/themes/types/inputnumber';
-
-export const root: InputNumberTokenSections.Root = {
+export const root = {
     transitionDuration: '{transition.duration}'
 };
 
-export const button: InputNumberTokenSections.Button = {
+export const button = {
     width: '2.5rem',
     borderRadius: '{form.field.border.radius}',
     verticalPadding: '{form.field.padding.y}'
 };
 
-export const colorScheme: InputNumberTokenSections.ColorScheme = {
+export const colorScheme = {
     light: {
         button: {
             background: 'transparent',
@@ -43,4 +41,4 @@ export default {
     root,
     button,
     colorScheme
-} satisfies InputNumberDesignTokens;
+};

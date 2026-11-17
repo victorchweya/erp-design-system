@@ -1,14 +1,12 @@
-import type { StepsDesignTokens, StepsTokenSections } from '@primeuix/themes/types/steps';
-
-export const root: StepsTokenSections.Root = {
+export const root = {
     transitionDuration: '{transition.duration}'
 };
 
-export const separator: StepsTokenSections.Separator = {
+export const separator = {
     background: '{content.border.color}'
 };
 
-export const itemLink: StepsTokenSections.ItemLink = {
+export const itemLink = {
     borderRadius: '{content.border.radius}',
     focusRing: {
         width: '{focus.ring.width}',
@@ -20,13 +18,13 @@ export const itemLink: StepsTokenSections.ItemLink = {
     gap: '0.5rem'
 };
 
-export const itemLabel: StepsTokenSections.ItemLabel = {
+export const itemLabel = {
     color: '{text.muted.color}',
     activeColor: '{primary.color}',
     fontWeight: '500'
 };
 
-export const itemNumber: StepsTokenSections.ItemNumber = {
+export const itemNumber = {
     background: '{content.background}',
     activeBackground: '{content.background}',
     borderColor: '{content.border.color}',
@@ -46,4 +44,4 @@ export default {
     itemLink,
     itemLabel,
     itemNumber
-} satisfies StepsDesignTokens;
+};

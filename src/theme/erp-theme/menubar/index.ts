@@ -1,6 +1,4 @@
-import type { MenubarDesignTokens, MenubarTokenSections } from '@primeuix/themes/types/menubar';
-
-export const root: MenubarTokenSections.Root = {
+export const root = {
     background: '{content.background}',
     borderColor: '{content.border.color}',
     borderRadius: '{content.border.radius}',
@@ -10,12 +8,12 @@ export const root: MenubarTokenSections.Root = {
     transitionDuration: '{transition.duration}'
 };
 
-export const baseItem: MenubarTokenSections.BaseItem = {
+export const baseItem = {
     borderRadius: '{content.border.radius}',
     padding: '{navigation.item.padding}'
 };
 
-export const item: MenubarTokenSections.Item = {
+export const item = {
     focusBackground: '{navigation.item.focus.background}',
     activeBackground: '{navigation.item.active.background}',
     color: '{navigation.item.color}',
@@ -31,7 +29,7 @@ export const item: MenubarTokenSections.Item = {
     }
 };
 
-export const submenu: MenubarTokenSections.Submenu = {
+export const submenu = {
     padding: '{navigation.list.padding}',
     gap: '{navigation.list.gap}',
     background: '{content.background}',
@@ -47,11 +45,11 @@ export const submenu: MenubarTokenSections.Submenu = {
     }
 };
 
-export const separator: MenubarTokenSections.Separator = {
+export const separator = {
     borderColor: '{content.border.color}'
 };
 
-export const mobileButton: MenubarTokenSections.MobileButton = {
+export const mobileButton = {
     borderRadius: '50%',
     size: '1.75rem',
     color: '{text.muted.color}',
@@ -73,4 +71,4 @@ export default {
     submenu,
     separator,
     mobileButton
-} satisfies MenubarDesignTokens;
+};

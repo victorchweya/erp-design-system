@@ -1,6 +1,4 @@
-import type { ProgressSpinnerDesignTokens, ProgressSpinnerTokenSections } from '@primeuix/themes/types/progressspinner';
-
-export const colorScheme: ProgressSpinnerTokenSections.ColorScheme = {
+export const colorScheme = {
     light: {
         root: {
             colorOne: '{red.500}',
@@ -21,4 +19,4 @@ export const colorScheme: ProgressSpinnerTokenSections.ColorScheme = {
 
 export default {
     colorScheme
-} satisfies ProgressSpinnerDesignTokens;
+};

@@ -1,10 +1,8 @@
-import type { ColorPickerDesignTokens, ColorPickerTokenSections } from '@primeuix/themes/types/colorpicker';
-
-export const root: ColorPickerTokenSections.Root = {
+export const root = {
     transitionDuration: '{transition.duration}'
 };
 
-export const preview: ColorPickerTokenSections.Preview = {
+export const preview = {
     width: '1.5rem',
     height: '1.5rem',
     borderRadius: '{form.field.border.radius}',
@@ -17,12 +15,12 @@ export const preview: ColorPickerTokenSections.Preview = {
     }
 };
 
-export const panel: ColorPickerTokenSections.Panel = {
+export const panel = {
     shadow: '{overlay.popover.shadow}',
     borderRadius: '{overlay.popover.borderRadius}'
 };
 
-export const colorScheme: ColorPickerTokenSections.ColorScheme = {
+export const colorScheme = {
     light: {
         panel: {
             background: '{surface.800}',
@@ -48,4 +46,4 @@ export default {
     preview,
     panel,
     colorScheme
-} satisfies ColorPickerDesignTokens;
+};

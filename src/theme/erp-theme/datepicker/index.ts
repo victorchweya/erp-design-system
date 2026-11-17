@@ -1,10 +1,8 @@
-import type { DatePickerDesignTokens, DatePickerTokenSections } from '@primeuix/themes/types/datepicker';
-
-export const root: DatePickerTokenSections.Root = {
+export const root = {
     transitionDuration: '{transition.duration}'
 };
 
-export const panel: DatePickerTokenSections.Panel = {
+export const panel = {
     background: '{content.background}',
     borderColor: '{content.border.color}',
     color: '{content.color}',
@@ -13,19 +11,19 @@ export const panel: DatePickerTokenSections.Panel = {
     padding: '{overlay.popover.padding}'
 };
 
-export const header: DatePickerTokenSections.Header = {
+export const header = {
     background: '{content.background}',
     borderColor: '{content.border.color}',
     color: '{content.color}',
     padding: '0 0 0.5rem 0'
 };
 
-export const title: DatePickerTokenSections.Title = {
+export const title = {
     gap: '0.5rem',
     fontWeight: '500'
 };
 
-export const dropdown: DatePickerTokenSections.Dropdown = {
+export const dropdown = {
     width: '2.5rem',
     sm: {
         width: '2rem'
@@ -46,11 +44,11 @@ export const dropdown: DatePickerTokenSections.Dropdown = {
     }
 };
 
-export const inputIcon: DatePickerTokenSections.InputIcon = {
+export const inputIcon = {
     color: '{form.field.icon.color}'
 };
 
-export const selectMonth: DatePickerTokenSections.SelectMonth = {
+export const selectMonth = {
     hoverBackground: '{content.hover.background}',
     color: '{content.color}',
     hoverColor: '{content.hover.color}',
@@ -58,7 +56,7 @@ export const selectMonth: DatePickerTokenSections.SelectMonth = {
     borderRadius: '{content.border.radius}'
 };
 
-export const selectYear: DatePickerTokenSections.SelectYear = {
+export const selectYear = {
     hoverBackground: '{content.hover.background}',
     color: '{content.color}',
     hoverColor: '{content.hover.color}',
@@ -66,22 +64,22 @@ export const selectYear: DatePickerTokenSections.SelectYear = {
     borderRadius: '{content.border.radius}'
 };
 
-export const group: DatePickerTokenSections.Group = {
+export const group = {
     borderColor: '{content.border.color}',
     gap: '{overlay.popover.padding}'
 };
 
-export const dayView: DatePickerTokenSections.DayView = {
+export const dayView = {
     margin: '0.5rem 0 0 0'
 };
 
-export const weekDay: DatePickerTokenSections.WeekDay = {
+export const weekDay = {
     padding: '0.25rem',
     fontWeight: '500',
     color: '{content.color}'
 };
 
-export const date: DatePickerTokenSections.Date = {
+export const date = {
     hoverBackground: '{content.hover.background}',
     selectedBackground: '{primary.color}',
     rangeSelectedBackground: '{highlight.background}',
@@ -102,37 +100,37 @@ export const date: DatePickerTokenSections.Date = {
     }
 };
 
-export const monthView: DatePickerTokenSections.MonthView = {
+export const monthView = {
     margin: '0.5rem 0 0 0'
 };
 
-export const month: DatePickerTokenSections.Month = {
+export const month = {
     padding: '0.375rem',
     borderRadius: '{content.border.radius}'
 };
 
-export const yearView: DatePickerTokenSections.YearView = {
+export const yearView = {
     margin: '0.5rem 0 0 0'
 };
 
-export const year: DatePickerTokenSections.Year = {
+export const year = {
     padding: '0.375rem',
     borderRadius: '{content.border.radius}'
 };
 
-export const buttonbar: DatePickerTokenSections.Buttonbar = {
+export const buttonbar = {
     padding: '0.5rem 0 0 0',
     borderColor: '{content.border.color}'
 };
 
-export const timePicker: DatePickerTokenSections.TimePicker = {
+export const timePicker = {
     padding: '0.5rem 0 0 0',
     borderColor: '{content.border.color}',
     gap: '0.5rem',
     buttonGap: '0.25rem'
 };
 
-export const colorScheme: DatePickerTokenSections.ColorScheme = {
+export const colorScheme = {
     light: {
         dropdown: {
             background: '{surface.100}',
@@ -183,4 +181,4 @@ export default {
     buttonbar,
     timePicker,
     colorScheme
-} satisfies DatePickerDesignTokens;
+};

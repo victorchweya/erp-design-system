@@ -1,16 +1,14 @@
-import type { PasswordDesignTokens, PasswordTokenSections } from '@primeuix/themes/types/password';
-
-export const meter: PasswordTokenSections.Meter = {
+export const meter = {
     background: '{content.border.color}',
     borderRadius: '{content.border.radius}',
     height: '.75rem'
 };
 
-export const icon: PasswordTokenSections.Icon = {
+export const icon = {
     color: '{form.field.icon.color}'
 };
 
-export const overlay: PasswordTokenSections.Overlay = {
+export const overlay = {
     background: '{overlay.popover.background}',
     borderColor: '{overlay.popover.border.color}',
     borderRadius: '{overlay.popover.border.radius}',
@@ -19,11 +17,11 @@ export const overlay: PasswordTokenSections.Overlay = {
     shadow: '{overlay.popover.shadow}'
 };
 
-export const content: PasswordTokenSections.Content = {
+export const content = {
     gap: '0.5rem'
 };
 
-export const colorScheme: PasswordTokenSections.ColorScheme = {
+export const colorScheme = {
     light: {
         strength: {
             weakBackground: '{red.500}',
@@ -46,4 +44,4 @@ export default {
     overlay,
     content,
     colorScheme
-} satisfies PasswordDesignTokens;
+};

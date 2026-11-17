@@ -1,6 +1,4 @@
-import type { TreeDesignTokens, TreeTokenSections } from '@primeuix/themes/types/tree';
-
-export const root: TreeTokenSections.Root = {
+export const root = {
     background: '{content.background}',
     color: '{content.color}',
     padding: '1rem',
@@ -9,7 +7,7 @@ export const root: TreeTokenSections.Root = {
     transitionDuration: '{transition.duration}'
 };
 
-export const node: TreeTokenSections.Node = {
+export const node = {
     padding: '0.25rem 0.5rem',
     borderRadius: '{content.border.radius}',
     hoverBackground: '{content.hover.background}',
@@ -27,13 +25,13 @@ export const node: TreeTokenSections.Node = {
     gap: '0.25rem'
 };
 
-export const nodeIcon: TreeTokenSections.NodeIcon = {
+export const nodeIcon = {
     color: '{text.muted.color}',
     hoverColor: '{text.hover.muted.color}',
     selectedColor: '{highlight.color}'
 };
 
-export const nodeToggleButton: TreeTokenSections.NodeToggleButton = {
+export const nodeToggleButton = {
     borderRadius: '50%',
     size: '1.75rem',
     hoverBackground: '{content.hover.background}',
@@ -50,15 +48,15 @@ export const nodeToggleButton: TreeTokenSections.NodeToggleButton = {
     }
 };
 
-export const loadingIcon: TreeTokenSections.LoadingIcon = {
+export const loadingIcon = {
     size: '2rem'
 };
 
-export const filter: TreeTokenSections.Filter = {
+export const filter = {
     margin: '0 0 0.5rem 0'
 };
 
-export const css: TreeTokenSections.CSS = /*css*/ `
+export const css = /*css*/ `
     .p-tree-mask.p-overlay-mask {
         --px-mask-background: light-dark(rgba(255,255,255,0.5),rgba(0,0,0,0.3));
     }
@@ -72,4 +70,4 @@ export default {
     loadingIcon,
     filter,
     css
-} satisfies TreeDesignTokens;
+};

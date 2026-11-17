@@ -1,6 +1,4 @@
-import type { RippleDesignTokens, RippleTokenSections } from '@primeuix/themes/types/ripple';
-
-export const colorScheme: RippleTokenSections.ColorScheme = {
+export const colorScheme = {
     light: {
         root: {
             background: 'rgba(0,0,0,0.1)'
@@ -15,4 +13,4 @@ export const colorScheme: RippleTokenSections.ColorScheme = {
 
 export default {
     colorScheme
-} satisfies RippleDesignTokens;
+};

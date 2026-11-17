@@ -1,6 +1,4 @@
-import type { AutoCompleteDesignTokens, AutoCompleteTokenSections } from '@primeuix/themes/types/autocomplete';
-
-export const root: AutoCompleteTokenSections.Root = {
+export const root = {
     background: '{form.field.background}',
     disabledBackground: '{form.field.disabled.background}',
     filledBackground: '{form.field.filled.background}',
@@ -28,7 +26,7 @@ export const root: AutoCompleteTokenSections.Root = {
     transitionDuration: '{form.field.transition.duration}'
 };
 
-export const overlay: AutoCompleteTokenSections.Overlay = {
+export const overlay = {
     background: '{overlay.select.background}',
     borderColor: '{overlay.select.border.color}',
     borderRadius: '{overlay.select.border.radius}',
@@ -36,12 +34,12 @@ export const overlay: AutoCompleteTokenSections.Overlay = {
     shadow: '{overlay.select.shadow}'
 };
 
-export const list: AutoCompleteTokenSections.List = {
+export const list = {
     padding: '{list.padding}',
     gap: '{list.gap}'
 };
 
-export const option: AutoCompleteTokenSections.Option = {
+export const option = {
     focusBackground: '{list.option.focus.background}',
     selectedBackground: '{list.option.selected.background}',
     selectedFocusBackground: '{list.option.selected.focus.background}',
@@ -53,14 +51,14 @@ export const option: AutoCompleteTokenSections.Option = {
     borderRadius: '{list.option.border.radius}'
 };
 
-export const optionGroup: AutoCompleteTokenSections.OptionGroup = {
+export const optionGroup = {
     background: '{list.option.group.background}',
     color: '{list.option.group.color}',
     fontWeight: '{list.option.group.font.weight}',
     padding: '{list.option.group.padding}'
 };
 
-export const dropdown: AutoCompleteTokenSections.Dropdown = {
+export const dropdown = {
     width: '2.5rem',
     sm: {
         width: '2rem'
@@ -81,15 +79,15 @@ export const dropdown: AutoCompleteTokenSections.Dropdown = {
     }
 };
 
-export const chip: AutoCompleteTokenSections.Chip = {
+export const chip = {
     borderRadius: '{border.radius.sm}'
 };
 
-export const emptyMessage: AutoCompleteTokenSections.EmptyMessage = {
+export const emptyMessage = {
     padding: '{list.option.padding}'
 };
 
-export const colorScheme: AutoCompleteTokenSections.ColorScheme = {
+export const colorScheme = {
     light: {
         chip: {
             focusBackground: '{surface.200}',
@@ -130,4 +128,4 @@ export default {
     chip,
     emptyMessage,
     colorScheme
-} satisfies AutoCompleteDesignTokens;
+};

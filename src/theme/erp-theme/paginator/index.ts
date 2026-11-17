@@ -1,6 +1,4 @@
-import type { PaginatorDesignTokens, PaginatorTokenSections } from '@primeuix/themes/types/paginator';
-
-export const root: PaginatorTokenSections.Root = {
+export const root = {
     padding: '0.5rem 1rem',
     gap: '0.25rem',
     borderRadius: '{content.border.radius}',
@@ -9,7 +7,7 @@ export const root: PaginatorTokenSections.Root = {
     transitionDuration: '{transition.duration}'
 };
 
-export const navButton: PaginatorTokenSections.NavButton = {
+export const navButton = {
     background: 'transparent',
     hoverBackground: '{content.hover.background}',
     selectedBackground: '{highlight.background}',
@@ -28,11 +26,11 @@ export const navButton: PaginatorTokenSections.NavButton = {
     }
 };
 
-export const currentPageReport: PaginatorTokenSections.CurrentPageReport = {
+export const currentPageReport = {
     color: '{text.muted.color}'
 };
 
-export const jumpToPageInput: PaginatorTokenSections.JumpToPageInput = {
+export const jumpToPageInput = {
     maxWidth: '2.5rem'
 };
 
@@ -41,4 +39,4 @@ export default {
     navButton,
     currentPageReport,
     jumpToPageInput
-} satisfies PaginatorDesignTokens;
+};

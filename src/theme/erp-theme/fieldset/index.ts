@@ -1,6 +1,4 @@
-import type { FieldsetDesignTokens, FieldsetTokenSections } from '@primeuix/themes/types/fieldset';
-
-export const root: FieldsetTokenSections.Root = {
+export const root = {
     background: '{content.background}',
     borderColor: '{content.border.color}',
     borderRadius: '{content.border.radius}',
@@ -9,7 +7,7 @@ export const root: FieldsetTokenSections.Root = {
     transitionDuration: '{transition.duration}'
 };
 
-export const legend: FieldsetTokenSections.Legend = {
+export const legend = {
     background: '{content.background}',
     hoverBackground: '{content.hover.background}',
     color: '{content.color}',
@@ -29,12 +27,12 @@ export const legend: FieldsetTokenSections.Legend = {
     }
 };
 
-export const toggleIcon: FieldsetTokenSections.ToggleIcon = {
+export const toggleIcon = {
     color: '{text.muted.color}',
     hoverColor: '{text.hover.muted.color}'
 };
 
-export const content: FieldsetTokenSections.Content = {
+export const content = {
     padding: '0'
 };
 
@@ -43,4 +41,4 @@ export default {
     legend,
     toggleIcon,
     content
-} satisfies FieldsetDesignTokens;
+};

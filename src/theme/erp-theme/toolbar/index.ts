@@ -1,6 +1,4 @@
-import type { ToolbarDesignTokens, ToolbarTokenSections } from '@primeuix/themes/types/toolbar';
-
-export const root: ToolbarTokenSections.Root = {
+export const root = {
     background: '{content.background}',
     borderColor: '{content.border.color}',
     borderRadius: '{content.border.radius}',
@@ -11,4 +9,4 @@ export const root: ToolbarTokenSections.Root = {
 
 export default {
     root
-} satisfies ToolbarDesignTokens;
+};

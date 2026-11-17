@@ -1,6 +1,4 @@
-import type { TieredMenuDesignTokens, TieredMenuTokenSections } from '@primeuix/themes/types/tieredmenu';
-
-export const root: TieredMenuTokenSections.Root = {
+export const root = {
     background: '{content.background}',
     borderColor: '{content.border.color}',
     color: '{content.color}',
@@ -9,12 +7,12 @@ export const root: TieredMenuTokenSections.Root = {
     transitionDuration: '{transition.duration}'
 };
 
-export const list: TieredMenuTokenSections.List = {
+export const list = {
     padding: '{navigation.list.padding}',
     gap: '{navigation.list.gap}'
 };
 
-export const item: TieredMenuTokenSections.Item = {
+export const item = {
     focusBackground: '{navigation.item.focus.background}',
     activeBackground: '{navigation.item.active.background}',
     color: '{navigation.item.color}',
@@ -30,18 +28,18 @@ export const item: TieredMenuTokenSections.Item = {
     }
 };
 
-export const submenu: TieredMenuTokenSections.Submenu = {
+export const submenu = {
     mobileIndent: '1rem'
 };
 
-export const submenuIcon: TieredMenuTokenSections.SubmenuIcon = {
+export const submenuIcon = {
     size: '{navigation.submenu.icon.size}',
     color: '{navigation.submenu.icon.color}',
     focusColor: '{navigation.submenu.icon.focus.color}',
     activeColor: '{navigation.submenu.icon.active.color}'
 };
 
-export const separator: TieredMenuTokenSections.Separator = {
+export const separator = {
     borderColor: '{content.border.color}'
 };
 
@@ -52,4 +50,4 @@ export default {
     submenu,
     submenuIcon,
     separator
-} satisfies TieredMenuDesignTokens;
+};

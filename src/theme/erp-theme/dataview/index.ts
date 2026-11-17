@@ -1,13 +1,11 @@
-import type { DataViewDesignTokens, DataViewTokenSections } from '@primeuix/themes/types/dataview';
-
-export const root: DataViewTokenSections.Root = {
+export const root = {
     borderColor: 'transparent',
     borderWidth: '0',
     borderRadius: '0',
     padding: '0'
 };
 
-export const header: DataViewTokenSections.Header = {
+export const header = {
     background: '{content.background}',
     color: '{content.color}',
     borderColor: '{content.border.color}',
@@ -16,7 +14,7 @@ export const header: DataViewTokenSections.Header = {
     borderRadius: '0'
 };
 
-export const content: DataViewTokenSections.Content = {
+export const content = {
     background: '{content.background}',
     color: '{content.color}',
     borderColor: 'transparent',
@@ -25,7 +23,7 @@ export const content: DataViewTokenSections.Content = {
     borderRadius: '0'
 };
 
-export const footer: DataViewTokenSections.Footer = {
+export const footer = {
     background: '{content.background}',
     color: '{content.color}',
     borderColor: '{content.border.color}',
@@ -34,12 +32,12 @@ export const footer: DataViewTokenSections.Footer = {
     borderRadius: '0'
 };
 
-export const paginatorTop: DataViewTokenSections.PaginatorTop = {
+export const paginatorTop = {
     borderColor: '{content.border.color}',
     borderWidth: '0 0 1px 0'
 };
 
-export const paginatorBottom: DataViewTokenSections.PaginatorBottom = {
+export const paginatorBottom = {
     borderColor: '{content.border.color}',
     borderWidth: '1px 0 0 0'
 };
@@ -51,4 +49,4 @@ export default {
     footer,
     paginatorTop,
     paginatorBottom
-} satisfies DataViewDesignTokens;
+};

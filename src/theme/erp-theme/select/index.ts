@@ -1,6 +1,4 @@
-import type { SelectDesignTokens, SelectTokenSections } from '@primeuix/themes/types/select';
-
-export const root: SelectTokenSections.Root = {
+export const root = {
     background: '{form.field.background}',
     disabledBackground: '{form.field.disabled.background}',
     filledBackground: '{form.field.filled.background}',
@@ -38,12 +36,12 @@ export const root: SelectTokenSections.Root = {
     }
 };
 
-export const dropdown: SelectTokenSections.Dropdown = {
+export const dropdown = {
     width: '2.5rem',
     color: '{form.field.icon.color}'
 };
 
-export const overlay: SelectTokenSections.Overlay = {
+export const overlay = {
     background: '{overlay.select.background}',
     borderColor: '{overlay.select.border.color}',
     borderRadius: '{overlay.select.border.radius}',
@@ -51,7 +49,7 @@ export const overlay: SelectTokenSections.Overlay = {
     shadow: '{overlay.select.shadow}'
 };
 
-export const list: SelectTokenSections.List = {
+export const list = {
     padding: '{list.padding}',
     gap: '{list.gap}',
     header: {
@@ -59,7 +57,7 @@ export const list: SelectTokenSections.List = {
     }
 };
 
-export const option: SelectTokenSections.Option = {
+export const option = {
     focusBackground: '{list.option.focus.background}',
     selectedBackground: '{list.option.selected.background}',
     selectedFocusBackground: '{list.option.selected.focus.background}',
@@ -71,24 +69,24 @@ export const option: SelectTokenSections.Option = {
     borderRadius: '{list.option.border.radius}'
 };
 
-export const optionGroup: SelectTokenSections.OptionGroup = {
+export const optionGroup = {
     background: '{list.option.group.background}',
     color: '{list.option.group.color}',
     fontWeight: '{list.option.group.font.weight}',
     padding: '{list.option.group.padding}'
 };
 
-export const clearIcon: SelectTokenSections.ClearIcon = {
+export const clearIcon = {
     color: '{form.field.icon.color}'
 };
 
-export const checkmark: SelectTokenSections.Checkmark = {
+export const checkmark = {
     color: '{list.option.color}',
     gutterStart: '-0.375rem',
     gutterEnd: '0.375rem'
 };
 
-export const emptyMessage: SelectTokenSections.EmptyMessage = {
+export const emptyMessage = {
     padding: '{list.option.padding}'
 };
 
@@ -102,4 +100,4 @@ export default {
     clearIcon,
     checkmark,
     emptyMessage
-} satisfies SelectDesignTokens;
+};

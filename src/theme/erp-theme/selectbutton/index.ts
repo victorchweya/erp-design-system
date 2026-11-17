@@ -1,10 +1,8 @@
-import type { SelectButtonDesignTokens, SelectButtonTokenSections } from '@primeuix/themes/types/selectbutton';
-
-export const root: SelectButtonTokenSections.Root = {
+export const root = {
     borderRadius: '{form.field.border.radius}'
 };
 
-export const colorScheme: SelectButtonTokenSections.ColorScheme = {
+export const colorScheme = {
     light: {
         root: {
             invalidBorderColor: '{form.field.invalid.border.color}'
@@ -20,4 +18,4 @@ export const colorScheme: SelectButtonTokenSections.ColorScheme = {
 export default {
     root,
     colorScheme
-} satisfies SelectButtonDesignTokens;
+};

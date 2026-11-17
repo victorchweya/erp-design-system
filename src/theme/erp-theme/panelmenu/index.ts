@@ -1,11 +1,9 @@
-import type { PanelMenuDesignTokens, PanelMenuTokenSections } from '@primeuix/themes/types/panelmenu';
-
-export const root: PanelMenuTokenSections.Root = {
+export const root = {
     gap: '0.5rem',
     transitionDuration: '{transition.duration}'
 };
 
-export const panel: PanelMenuTokenSections.Panel = {
+export const panel = {
     background: '{content.background}',
     borderColor: '{content.border.color}',
     borderWidth: '1px',
@@ -22,7 +20,7 @@ export const panel: PanelMenuTokenSections.Panel = {
     }
 };
 
-export const item: PanelMenuTokenSections.Item = {
+export const item = {
     focusBackground: '{navigation.item.focus.background}',
     color: '{navigation.item.color}',
     focusColor: '{navigation.item.focus.color}',
@@ -35,11 +33,11 @@ export const item: PanelMenuTokenSections.Item = {
     }
 };
 
-export const submenu: PanelMenuTokenSections.Submenu = {
+export const submenu = {
     indent: '1rem'
 };
 
-export const submenuIcon: PanelMenuTokenSections.SubmenuIcon = {
+export const submenuIcon = {
     color: '{navigation.submenu.icon.color}',
     focusColor: '{navigation.submenu.icon.focus.color}'
 };
@@ -50,4 +48,4 @@ export default {
     item,
     submenu,
     submenuIcon
-} satisfies PanelMenuDesignTokens;
+};

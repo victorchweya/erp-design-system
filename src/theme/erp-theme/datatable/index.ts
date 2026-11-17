@@ -1,10 +1,8 @@
-import type { DataTableDesignTokens, DataTableTokenSections } from '@primeuix/themes/types/datatable';
-
-export const root: DataTableTokenSections.Root = {
+export const root = {
     transitionDuration: '{transition.duration}'
 };
 
-export const header: DataTableTokenSections.Header = {
+export const header = {
     background: '{content.background}',
     borderColor: '{datatable.border.color}',
     color: '{content.color}',
@@ -18,7 +16,7 @@ export const header: DataTableTokenSections.Header = {
     }
 };
 
-export const headerCell: DataTableTokenSections.HeaderCell = {
+export const headerCell = {
     background: '{content.background}',
     hoverBackground: '{content.hover.background}',
     selectedBackground: '{highlight.background}',
@@ -43,11 +41,11 @@ export const headerCell: DataTableTokenSections.HeaderCell = {
     }
 };
 
-export const columnTitle: DataTableTokenSections.ColumnTitle = {
+export const columnTitle = {
     fontWeight: '600'
 };
 
-export const row: DataTableTokenSections.Row = {
+export const row = {
     background: '{content.background}',
     hoverBackground: '{content.hover.background}',
     selectedBackground: '{highlight.background}',
@@ -63,7 +61,7 @@ export const row: DataTableTokenSections.Row = {
     }
 };
 
-export const bodyCell: DataTableTokenSections.BodyCell = {
+export const bodyCell = {
     borderColor: '{datatable.border.color}',
     padding: '0.75rem 1rem',
     sm: {
@@ -74,7 +72,7 @@ export const bodyCell: DataTableTokenSections.BodyCell = {
     }
 };
 
-export const footerCell: DataTableTokenSections.FooterCell = {
+export const footerCell = {
     background: '{content.background}',
     borderColor: '{datatable.border.color}',
     color: '{content.color}',
@@ -87,11 +85,11 @@ export const footerCell: DataTableTokenSections.FooterCell = {
     }
 };
 
-export const columnFooter: DataTableTokenSections.ColumnFooter = {
+export const columnFooter = {
     fontWeight: '600'
 };
 
-export const footer: DataTableTokenSections.Footer = {
+export const footer = {
     background: '{content.background}',
     borderColor: '{datatable.border.color}',
     color: '{content.color}',
@@ -105,30 +103,30 @@ export const footer: DataTableTokenSections.Footer = {
     }
 };
 
-export const dropPoint: DataTableTokenSections.DropPoint = {
+export const dropPoint = {
     color: '{primary.color}'
 };
 
-export const columnResizer: DataTableTokenSections.ColumnResizer = {
+export const columnResizer = {
     width: '0.5rem'
 };
 
-export const resizeIndicator: DataTableTokenSections.ResizeIndicator = {
+export const resizeIndicator = {
     width: '1px',
     color: '{primary.color}'
 };
 
-export const sortIcon: DataTableTokenSections.SortIcon = {
+export const sortIcon = {
     color: '{text.muted.color}',
     hoverColor: '{text.hover.muted.color}',
     size: '0.875rem'
 };
 
-export const loadingIcon: DataTableTokenSections.LoadingIcon = {
+export const loadingIcon = {
     size: '2rem'
 };
 
-export const rowToggleButton: DataTableTokenSections.RowToggleButton = {
+export const rowToggleButton = {
     hoverBackground: '{content.hover.background}',
     selectedHoverBackground: '{content.background}',
     color: '{text.muted.color}',
@@ -145,7 +143,7 @@ export const rowToggleButton: DataTableTokenSections.RowToggleButton = {
     }
 };
 
-export const filter: DataTableTokenSections.Filter = {
+export const filter = {
     inlineGap: '0.5rem',
     overlaySelect: {
         background: '{overlay.select.background}',
@@ -186,17 +184,17 @@ export const filter: DataTableTokenSections.Filter = {
     }
 };
 
-export const paginatorTop: DataTableTokenSections.PaginatorTop = {
+export const paginatorTop = {
     borderColor: '{datatable.border.color}',
     borderWidth: '0 0 1px 0'
 };
 
-export const paginatorBottom: DataTableTokenSections.PaginatorBottom = {
+export const paginatorBottom = {
     borderColor: '{datatable.border.color}',
     borderWidth: '0 0 1px 0'
 };
 
-export const colorScheme: DataTableTokenSections.ColorScheme = {
+export const colorScheme = {
     light: {
         root: {
             borderColor: '{content.border.color}'
@@ -221,7 +219,7 @@ export const colorScheme: DataTableTokenSections.ColorScheme = {
     }
 };
 
-export const css: DataTableTokenSections.CSS = /*css*/ `
+export const css = /*css*/ `
     .p-datatable-mask.p-overlay-mask {
         --px-mask-background: light-dark(rgba(255,255,255,0.5),rgba(0,0,0,0.3));
     }
@@ -248,4 +246,4 @@ export default {
     paginatorBottom,
     colorScheme,
     css
-} satisfies DataTableDesignTokens;
+};

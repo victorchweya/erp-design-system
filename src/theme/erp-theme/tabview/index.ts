@@ -1,15 +1,13 @@
-import type { TabViewDesignTokens, TabViewTokenSections } from '@primeuix/themes/types/tabview';
-
-export const root: TabViewTokenSections.Root = {
+export const root = {
     transitionDuration: '{transition.duration}'
 };
 
-export const tabList: TabViewTokenSections.TabList = {
+export const tabList = {
     background: '{content.background}',
     borderColor: '{content.border.color}'
 };
 
-export const tab: TabViewTokenSections.Tab = {
+export const tab = {
     borderColor: '{content.border.color}',
     activeBorderColor: '{primary.color}',
     color: '{text.muted.color}',
@@ -17,18 +15,18 @@ export const tab: TabViewTokenSections.Tab = {
     activeColor: '{primary.color}'
 };
 
-export const tabPanel: TabViewTokenSections.TabPanel = {
+export const tabPanel = {
     background: '{content.background}',
     color: '{content.color}'
 };
 
-export const navButton: TabViewTokenSections.NavButton = {
+export const navButton = {
     background: '{content.background}',
     color: '{text.muted.color}',
     hoverColor: '{text.color}'
 };
 
-export const colorScheme: TabViewTokenSections.ColorScheme = {
+export const colorScheme = {
     light: {
         navButton: {
             shadow: '0px 0px 10px 50px rgba(255, 255, 255, 0.6)'
@@ -48,4 +46,4 @@ export default {
     tabPanel,
     navButton,
     colorScheme
-} satisfies TabViewDesignTokens;
+};

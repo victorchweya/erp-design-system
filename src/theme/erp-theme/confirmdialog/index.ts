@@ -1,15 +1,13 @@
-import type { ConfirmDialogDesignTokens, ConfirmDialogTokenSections } from '@primeuix/themes/types/confirmdialog';
-
-export const icon: ConfirmDialogTokenSections.Icon = {
+export const icon = {
     size: '2rem',
     color: '{overlay.modal.color}'
 };
 
-export const content: ConfirmDialogTokenSections.Content = {
+export const content = {
     gap: '1rem'
 };
 
 export default {
     icon,
     content
-} satisfies ConfirmDialogDesignTokens;
+};

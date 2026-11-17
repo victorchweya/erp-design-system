@@ -1,10 +1,8 @@
-import type { ScrollPanelDesignTokens, ScrollPanelTokenSections } from '@primeuix/themes/types/scrollpanel';
-
-export const root: ScrollPanelTokenSections.Root = {
+export const root = {
     transitionDuration: '{transition.duration}'
 };
 
-export const bar: ScrollPanelTokenSections.Bar = {
+export const bar = {
     size: '9px',
     borderRadius: '{border.radius.sm}',
     focusRing: {
@@ -16,7 +14,7 @@ export const bar: ScrollPanelTokenSections.Bar = {
     }
 };
 
-export const colorScheme: ScrollPanelTokenSections.ColorScheme = {
+export const colorScheme = {
     light: {
         bar: {
             background: '{surface.100}'
@@ -33,4 +31,4 @@ export default {
     root,
     bar,
     colorScheme
-} satisfies ScrollPanelDesignTokens;
+};

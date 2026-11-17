@@ -1,6 +1,4 @@
-import type { BadgeDesignTokens, BadgeTokenSections } from '@primeuix/themes/types/badge';
-
-export const root: BadgeTokenSections.Root = {
+export const root = {
     borderRadius: '{border.radius.md}',
     padding: '0 0.5rem',
     fontSize: '0.75rem',
@@ -8,28 +6,28 @@ export const root: BadgeTokenSections.Root = {
     minWidth: '1.5rem',
     height: '1.5rem'
 };
-export const dot: BadgeTokenSections.Dot = {
+export const dot = {
     size: '0.5rem'
 };
-export const sm: BadgeTokenSections.Sm = {
+export const sm = {
     fontSize: '0.625rem',
     minWidth: '1.25rem',
     height: '1.25rem'
 };
 
-export const lg: BadgeTokenSections.Lg = {
+export const lg = {
     fontSize: '0.875rem',
     minWidth: '1.75rem',
     height: '1.75rem'
 };
 
-export const xl: BadgeTokenSections.Xl = {
+export const xl = {
     fontSize: '1rem',
     minWidth: '2rem',
     height: '2rem'
 };
 
-export const colorScheme: BadgeTokenSections.ColorScheme = {
+export const colorScheme = {
     light: {
         primary: {
             background: '{primary.color}',
@@ -99,4 +97,4 @@ export default {
     lg,
     xl,
     colorScheme
-} satisfies BadgeDesignTokens;
+};

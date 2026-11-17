@@ -1,6 +1,4 @@
-import type { KnobDesignTokens, KnobTokenSections } from '@primeuix/themes/types/knob';
-
-export const root: KnobTokenSections.Root = {
+export const root = {
     transitionDuration: '{transition.duration}',
     focusRing: {
         width: '{focus.ring.width}',
@@ -11,15 +9,15 @@ export const root: KnobTokenSections.Root = {
     }
 };
 
-export const value: KnobTokenSections.Value = {
+export const value = {
     background: '{primary.color}'
 };
 
-export const range: KnobTokenSections.Range = {
+export const range = {
     background: '{content.border.color}'
 };
 
-export const text: KnobTokenSections.Text = {
+export const text = {
     color: '{text.muted.color}'
 };
 
@@ -28,4 +26,4 @@ export default {
     value,
     range,
     text
-} satisfies KnobDesignTokens;
+};

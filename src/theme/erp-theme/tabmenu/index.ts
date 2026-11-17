@@ -1,16 +1,14 @@
-import type { TabmenuDesignTokens, TabmenuTokenSections } from '@primeuix/themes/types/tabmenu';
-
-export const root: TabmenuTokenSections.Root = {
+export const root = {
     transitionDuration: '{transition.duration}'
 };
 
-export const tablist: TabmenuTokenSections.Tablist = {
+export const tablist = {
     borderWidth: '0 0 1px 0',
     background: '{content.background}',
     borderColor: '{content.border.color}'
 };
 
-export const item: TabmenuTokenSections.Item = {
+export const item = {
     background: 'transparent',
     hoverBackground: 'transparent',
     activeBackground: 'transparent',
@@ -34,13 +32,13 @@ export const item: TabmenuTokenSections.Item = {
     }
 };
 
-export const itemIcon: TabmenuTokenSections.ItemIcon = {
+export const itemIcon = {
     color: '{text.muted.color}',
     hoverColor: '{text.color}',
     activeColor: '{primary.color}'
 };
 
-export const activeBar: TabmenuTokenSections.ActiveBar = {
+export const activeBar = {
     height: '1px',
     bottom: '-1px',
     background: '{primary.color}'
@@ -52,4 +50,4 @@ export default {
     item,
     itemIcon,
     activeBar
-} satisfies TabmenuDesignTokens;
+};

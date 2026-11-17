@@ -1,6 +1,4 @@
-import type { RadioButtonDesignTokens, RadioButtonTokenSections } from '@primeuix/themes/types/radiobutton';
-
-export const root: RadioButtonTokenSections.Root = {
+export const root = {
     width: '1.25rem',
     height: '1.25rem',
     background: '{form.field.background}',
@@ -35,7 +33,7 @@ export const root: RadioButtonTokenSections.Root = {
     }
 };
 
-export const icon: RadioButtonTokenSections.Icon = {
+export const icon = {
     size: '0.75rem',
     checkedColor: '{primary.contrast.color}',
     checkedHoverColor: '{primary.contrast.color}',
@@ -51,4 +49,4 @@ export const icon: RadioButtonTokenSections.Icon = {
 export default {
     root,
     icon
-} satisfies RadioButtonDesignTokens;
+};

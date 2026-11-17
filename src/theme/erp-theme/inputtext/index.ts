@@ -1,6 +1,4 @@
-import type { InputTextDesignTokens, InputTextTokenSections } from '@primeuix/themes/types/inputtext';
-
-export const root: InputTextTokenSections.Root = {
+export const root = {
     background: '{form.field.background}',
     disabledBackground: '{form.field.disabled.background}',
     filledBackground: '{form.field.filled.background}',
@@ -40,4 +38,4 @@ export const root: InputTextTokenSections.Root = {
 
 export default {
     root
-} satisfies InputTextDesignTokens;
+};

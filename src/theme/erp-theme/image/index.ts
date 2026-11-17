@@ -1,10 +1,8 @@
-import type { ImageDesignTokens, ImageTokenSections } from '@primeuix/themes/types/image';
-
-export const root: ImageTokenSections.Root = {
+export const root = {
     transitionDuration: '{transition.duration}'
 };
 
-export const preview: ImageTokenSections.Preview = {
+export const preview = {
     icon: {
         size: '1.5rem'
     },
@@ -14,7 +12,7 @@ export const preview: ImageTokenSections.Preview = {
     }
 };
 
-export const toolbar: ImageTokenSections.Toolbar = {
+export const toolbar = {
     position: {
         left: 'auto',
         right: '1rem',
@@ -30,7 +28,7 @@ export const toolbar: ImageTokenSections.Toolbar = {
     gap: '0.5rem'
 };
 
-export const action: ImageTokenSections.Action = {
+export const action = {
     hoverBackground: 'rgba(255,255,255,0.1)',
     color: '{surface.50}',
     hoverColor: '{surface.0}',
@@ -51,4 +49,4 @@ export default {
     preview,
     toolbar,
     action
-} satisfies ImageDesignTokens;
+};

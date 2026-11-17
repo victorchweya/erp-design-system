@@ -1,12 +1,10 @@
-import type { MessageDesignTokens, MessageTokenSections } from '@primeuix/themes/types/message';
-
-export const root: MessageTokenSections.Root = {
+export const root = {
     borderRadius: '{content.border.radius}',
     borderWidth: '1px',
     transitionDuration: '{transition.duration}'
 };
 
-export const content: MessageTokenSections.Content = {
+export const content = {
     padding: '0.5rem 0.75rem',
     gap: '0.5rem',
     sm: {
@@ -17,7 +15,7 @@ export const content: MessageTokenSections.Content = {
     }
 };
 
-export const text: MessageTokenSections.Text = {
+export const text = {
     fontSize: '1rem',
     fontWeight: '500',
     sm: {
@@ -28,7 +26,7 @@ export const text: MessageTokenSections.Text = {
     }
 };
 
-export const icon: MessageTokenSections.Icon = {
+export const icon = {
     size: '1.125rem',
     sm: {
         size: '1rem'
@@ -38,7 +36,7 @@ export const icon: MessageTokenSections.Icon = {
     }
 };
 
-export const closeButton: MessageTokenSections.CloseButton = {
+export const closeButton = {
     width: '1.75rem',
     height: '1.75rem',
     borderRadius: '50%',
@@ -49,7 +47,7 @@ export const closeButton: MessageTokenSections.CloseButton = {
     }
 };
 
-export const closeIcon: MessageTokenSections.CloseIcon = {
+export const closeIcon = {
     size: '1rem',
     sm: {
         size: '0.875rem'
@@ -59,19 +57,19 @@ export const closeIcon: MessageTokenSections.CloseIcon = {
     }
 };
 
-export const outlined: MessageTokenSections.Outlined = {
+export const outlined = {
     root: {
         borderWidth: '1px'
     }
 };
 
-export const simple: MessageTokenSections.Simple = {
+export const simple = {
     content: {
         padding: '0'
     }
 };
 
-export const colorScheme: MessageTokenSections.ColorScheme = {
+export const colorScheme = {
     light: {
         info: {
             background: 'color-mix(in srgb, {blue.50}, transparent 5%)',
@@ -328,4 +326,4 @@ export default {
     outlined,
     simple,
     colorScheme
-} satisfies MessageDesignTokens;
+};

@@ -1,6 +1,4 @@
-import type { TreeSelectDesignTokens, TreeSelectTokenSections } from '@primeuix/themes/types/treeselect';
-
-export const root: TreeSelectTokenSections.Root = {
+export const root = {
     background: '{form.field.background}',
     disabledBackground: '{form.field.disabled.background}',
     filledBackground: '{form.field.filled.background}',
@@ -38,12 +36,12 @@ export const root: TreeSelectTokenSections.Root = {
     }
 };
 
-export const dropdown: TreeSelectTokenSections.Dropdown = {
+export const dropdown = {
     width: '2.5rem',
     color: '{form.field.icon.color}'
 };
 
-export const overlay: TreeSelectTokenSections.Overlay = {
+export const overlay = {
     background: '{overlay.select.background}',
     borderColor: '{overlay.select.border.color}',
     borderRadius: '{overlay.select.border.radius}',
@@ -51,19 +49,19 @@ export const overlay: TreeSelectTokenSections.Overlay = {
     shadow: '{overlay.select.shadow}'
 };
 
-export const tree: TreeSelectTokenSections.Tree = {
+export const tree = {
     padding: '{list.padding}'
 };
 
-export const emptyMessage: TreeSelectTokenSections.EmptyMessage = {
+export const emptyMessage = {
     padding: '{list.option.padding}'
 };
 
-export const chip: TreeSelectTokenSections.Chip = {
+export const chip = {
     borderRadius: '{border.radius.sm}'
 };
 
-export const clearIcon: TreeSelectTokenSections.ClearIcon = {
+export const clearIcon = {
     color: '{form.field.icon.color}'
 };
 
@@ -75,4 +73,4 @@ export default {
     emptyMessage,
     chip,
     clearIcon
-} satisfies TreeSelectDesignTokens;
+};

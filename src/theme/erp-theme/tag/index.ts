@@ -1,6 +1,4 @@
-import type { TagDesignTokens, TagTokenSections } from '@primeuix/themes/types/tag';
-
-export const root: TagTokenSections.Root = {
+export const root = {
     fontSize: '0.875rem',
     fontWeight: '700',
     padding: '0.25rem 0.5rem',
@@ -9,11 +7,11 @@ export const root: TagTokenSections.Root = {
     roundedBorderRadius: '{border.radius.xl}'
 };
 
-export const icon: TagTokenSections.Icon = {
+export const icon = {
     size: '0.75rem'
 };
 
-export const colorScheme: TagTokenSections.ColorScheme = {
+export const colorScheme = {
     light: {
         primary: {
             background: '{primary.100}',
@@ -80,4 +78,4 @@ export default {
     root,
     icon,
     colorScheme
-} satisfies TagDesignTokens;
+};

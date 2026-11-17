@@ -1,13 +1,11 @@
-import type { BreadcrumbDesignTokens, BreadcrumbTokenSections } from '@primeuix/themes/types/breadcrumb';
-
-export const root: BreadcrumbTokenSections.Root = {
+export const root = {
     padding: '1rem',
     background: '{content.background}',
     gap: '0.5rem',
     transitionDuration: '{transition.duration}'
 };
 
-export const item: BreadcrumbTokenSections.Item = {
+export const item = {
     color: '{text.muted.color}',
     hoverColor: '{text.color}',
     borderRadius: '{content.border.radius}',
@@ -25,7 +23,7 @@ export const item: BreadcrumbTokenSections.Item = {
     }
 };
 
-export const separator: BreadcrumbTokenSections.Separator = {
+export const separator = {
     color: '{navigation.item.icon.color}'
 };
 
@@ -33,4 +31,4 @@ export default {
     root,
     item,
     separator
-} satisfies BreadcrumbDesignTokens;
+};

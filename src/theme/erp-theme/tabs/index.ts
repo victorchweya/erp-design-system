@@ -1,16 +1,14 @@
-import type { TabsDesignTokens, TabsTokenSections } from '@primeuix/themes/types/tabs';
-
-export const root: TabsTokenSections.Root = {
+export const root = {
     transitionDuration: '{transition.duration}'
 };
 
-export const tablist: TabsTokenSections.Tablist = {
+export const tablist = {
     borderWidth: '0 0 1px 0',
     background: '{content.background}',
     borderColor: '{content.border.color}'
 };
 
-export const tab: TabsTokenSections.Tab = {
+export const tab = {
     background: 'transparent',
     hoverBackground: 'transparent',
     activeBackground: 'transparent',
@@ -34,7 +32,7 @@ export const tab: TabsTokenSections.Tab = {
     }
 };
 
-export const tabpanel: TabsTokenSections.Tabpanel = {
+export const tabpanel = {
     background: '{content.background}',
     color: '{content.color}',
     padding: '0.875rem 1.125rem 1.125rem 1.125rem',
@@ -47,7 +45,7 @@ export const tabpanel: TabsTokenSections.Tabpanel = {
     }
 };
 
-export const navButton: TabsTokenSections.NavButton = {
+export const navButton = {
     background: '{content.background}',
     color: '{text.muted.color}',
     hoverColor: '{text.color}',
@@ -61,13 +59,13 @@ export const navButton: TabsTokenSections.NavButton = {
     }
 };
 
-export const activeBar: TabsTokenSections.ActiveBar = {
+export const activeBar = {
     height: '1px',
     bottom: '-1px',
     background: '{primary.color}'
 };
 
-export const colorScheme: TabsTokenSections.ColorScheme = {
+export const colorScheme = {
     light: {
         navButton: {
             shadow: '0px 0px 10px 50px rgba(255, 255, 255, 0.6)'
@@ -88,4 +86,4 @@ export default {
     navButton,
     activeBar,
     colorScheme
-} satisfies TabsDesignTokens;
+};

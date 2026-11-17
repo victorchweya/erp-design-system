@@ -1,6 +1,4 @@
-import type { ImageCompareDesignTokens, ImageCompareTokenSections } from '@primeuix/themes/types/imagecompare';
-
-export const handle: ImageCompareTokenSections.Handle = {
+export const handle = {
     size: '15px',
     hoverSize: '30px',
     background: 'rgba(255,255,255,0.3)',
@@ -21,4 +19,4 @@ export const handle: ImageCompareTokenSections.Handle = {
 
 export default {
     handle
-} satisfies ImageCompareDesignTokens;
+};

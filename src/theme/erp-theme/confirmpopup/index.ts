@@ -1,6 +1,4 @@
-import type { ConfirmPopupDesignTokens, ConfirmPopupTokenSections } from '@primeuix/themes/types/confirmpopup';
-
-export const root: ConfirmPopupTokenSections.Root = {
+export const root = {
     background: '{overlay.popover.background}',
     borderColor: '{overlay.popover.border.color}',
     color: '{overlay.popover.color}',
@@ -10,17 +8,17 @@ export const root: ConfirmPopupTokenSections.Root = {
     arrowOffset: '1.25rem'
 };
 
-export const content: ConfirmPopupTokenSections.Content = {
+export const content = {
     padding: '{overlay.popover.padding}',
     gap: '1rem'
 };
 
-export const icon: ConfirmPopupTokenSections.Icon = {
+export const icon = {
     size: '1.5rem',
     color: '{overlay.popover.color}'
 };
 
-export const footer: ConfirmPopupTokenSections.Footer = {
+export const footer = {
     gap: '0.5rem',
     padding: '0 {overlay.popover.padding} {overlay.popover.padding} {overlay.popover.padding}'
 };
@@ -30,4 +28,4 @@ export default {
     content,
     icon,
     footer
-} satisfies ConfirmPopupDesignTokens;
+};

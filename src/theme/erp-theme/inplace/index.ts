@@ -1,6 +1,4 @@
-import type { InplaceDesignTokens, InplaceTokenSections } from '@primeuix/themes/types/inplace';
-
-export const root: InplaceTokenSections.Root = {
+export const root = {
     padding: '{form.field.padding.y} {form.field.padding.x}',
     borderRadius: '{content.border.radius}',
     focusRing: {
@@ -13,7 +11,7 @@ export const root: InplaceTokenSections.Root = {
     transitionDuration: '{transition.duration}'
 };
 
-export const display: InplaceTokenSections.Display = {
+export const display = {
     hoverBackground: '{content.hover.background}',
     hoverColor: '{content.hover.color}'
 };
@@ -21,4 +19,4 @@ export const display: InplaceTokenSections.Display = {
 export default {
     root,
     display
-} satisfies InplaceDesignTokens;
+};

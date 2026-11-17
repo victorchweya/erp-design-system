@@ -1,6 +1,4 @@
-import type { ToggleSwitchDesignTokens, ToggleSwitchTokenSections } from '@primeuix/themes/types/toggleswitch';
-
-export const root: ToggleSwitchTokenSections.Root = {
+export const root = {
     width: '2.5rem',
     height: '1.5rem',
     borderRadius: '30px',
@@ -23,12 +21,12 @@ export const root: ToggleSwitchTokenSections.Root = {
     slideDuration: '0.2s'
 };
 
-export const handle: ToggleSwitchTokenSections.Handle = {
+export const handle = {
     borderRadius: '50%',
     size: '1rem'
 };
 
-export const colorScheme: ToggleSwitchTokenSections.ColorScheme = {
+export const colorScheme = {
     light: {
         root: {
             background: '{surface.300}',
@@ -75,4 +73,4 @@ export default {
     root,
     handle,
     colorScheme
-} satisfies ToggleSwitchDesignTokens;
+};

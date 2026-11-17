@@ -1,6 +1,4 @@
-import type { TooltipDesignTokens, TooltipTokenSections } from '@primeuix/themes/types/tooltip';
-
-export const root: TooltipTokenSections.Root = {
+export const root = {
     maxWidth: '12.5rem',
     gutter: '0.25rem',
     shadow: '{overlay.popover.shadow}',
@@ -8,7 +6,7 @@ export const root: TooltipTokenSections.Root = {
     borderRadius: '{overlay.popover.border.radius}'
 };
 
-export const colorScheme: TooltipTokenSections.ColorScheme = {
+export const colorScheme = {
     light: {
         root: {
             background: '{surface.700}',
@@ -26,4 +24,4 @@ export const colorScheme: TooltipTokenSections.ColorScheme = {
 export default {
     root,
     colorScheme
-} satisfies TooltipDesignTokens;
+};

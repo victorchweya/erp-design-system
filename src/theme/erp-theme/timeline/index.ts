@@ -1,22 +1,20 @@
-import type { TimelineDesignTokens, TimelineTokenSections } from '@primeuix/themes/types/timeline';
-
-export const event: TimelineTokenSections.Event = {
+export const event = {
     minHeight: '5rem'
 };
 
-export const horizontal: TimelineTokenSections.Horizontal = {
+export const horizontal = {
     eventContent: {
         padding: '1rem 0'
     }
 };
 
-export const vertical: TimelineTokenSections.Vertical = {
+export const vertical = {
     eventContent: {
         padding: '0 1rem'
     }
 };
 
-export const eventMarker: TimelineTokenSections.EventMarker = {
+export const eventMarker = {
     size: '1.125rem',
     borderRadius: '50%',
     borderWidth: '2px',
@@ -30,7 +28,7 @@ export const eventMarker: TimelineTokenSections.EventMarker = {
     }
 };
 
-export const eventConnector: TimelineTokenSections.EventConnector = {
+export const eventConnector = {
     color: '{content.border.color}',
     size: '2px'
 };
@@ -41,4 +39,4 @@ export default {
     vertical,
     eventMarker,
     eventConnector
-} satisfies TimelineDesignTokens;
+};

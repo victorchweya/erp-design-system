@@ -1,6 +1,4 @@
-import type { DialogDesignTokens, DialogTokenSections } from '@primeuix/themes/types/dialog';
-
-export const root: DialogTokenSections.Root = {
+export const root = {
     background: '{overlay.modal.background}',
     borderColor: '{overlay.modal.border.color}',
     color: '{overlay.modal.color}',
@@ -8,21 +6,21 @@ export const root: DialogTokenSections.Root = {
     shadow: '{overlay.modal.shadow}'
 };
 
-export const header: DialogTokenSections.Header = {
+export const header = {
     padding: '{overlay.modal.padding}',
     gap: '0.5rem'
 };
 
-export const title: DialogTokenSections.Title = {
+export const title = {
     fontSize: '1.25rem',
     fontWeight: '600'
 };
 
-export const content: DialogTokenSections.Content = {
+export const content = {
     padding: '0 {overlay.modal.padding} {overlay.modal.padding} {overlay.modal.padding}'
 };
 
-export const footer: DialogTokenSections.Footer = {
+export const footer = {
     padding: '0 {overlay.modal.padding} {overlay.modal.padding} {overlay.modal.padding}',
     gap: '0.5rem'
 };
@@ -33,4 +31,4 @@ export default {
     title,
     content,
     footer
-} satisfies DialogDesignTokens;
+};
