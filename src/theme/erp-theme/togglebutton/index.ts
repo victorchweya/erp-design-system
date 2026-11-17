@@ -1,8 +1,9 @@
 export const root = {
+    fontSize: '{form.field.font.size}',
     padding: '0.25rem',
     borderRadius: '{content.border.radius}',
     gap: '0.5rem',
-    fontWeight: '500',
+    fontWeight: '{font.weight.medium}',
     disabledBackground: '{form.field.disabled.background}',
     disabledBorderColor: '{form.field.disabled.background}',
     disabledColor: '{form.field.disabled.color}',

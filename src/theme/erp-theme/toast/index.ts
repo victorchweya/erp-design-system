@@ -19,13 +19,13 @@ export const text = {
 };
 
 export const summary = {
-    fontWeight: '500',
-    fontSize: '1rem'
+    fontWeight: '{font.weight.medium}',
+    fontSize: '{font.size.base}'
 };
 
 export const detail = {
-    fontWeight: '500',
-    fontSize: '0.875rem'
+    fontWeight: '{font.weight.medium}',
+    fontSize: '{font.size.sm}'
 };
 
 export const closeButton = {

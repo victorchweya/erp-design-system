@@ -1,4 +1,5 @@
 export const root = {
+    fontSize: '{form.field.font.size}',
     borderRadius: '{form.field.border.radius}',
     roundedBorderRadius: '2rem',
     gap: '0.5rem',
@@ -18,7 +19,7 @@ export const root = {
         iconOnlyWidth: '3rem'
     },
     label: {
-        fontWeight: '500'
+        fontWeight: '{font.weight.medium}'
     },
     raisedShadow: '0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12)',
     focusRing: {

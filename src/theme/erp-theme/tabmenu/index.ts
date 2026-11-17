@@ -20,7 +20,7 @@ export const item = {
     hoverColor: '{text.color}',
     activeColor: '{primary.color}',
     padding: '1rem 1.125rem',
-    fontWeight: '600',
+    fontWeight: '{font.weight.semibold}',
     margin: '0 0 -1px 0',
     gap: '0.5rem',
     focusRing: {

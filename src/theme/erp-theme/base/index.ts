@@ -1,6 +1,8 @@
 import { brandTokenReferences, primitives } from '../foundations/palette'
+import { fontFamily, fontTokens } from '../foundations/typography'
 
 export const primitive = {
+    font: fontTokens,
     // The namespace separates FTF tokens from inherited component palette names.
     ftf: {
         ...primitives,
@@ -40,7 +42,10 @@ export const primitive = {
 
 export const semantic = {
     typography: {
-        fontFamily: "'Rubik', system-ui, sans-serif"
+        fontFamily,
+        fontSize: '{font.size.base}',
+        fontWeight: '{font.weight.normal}',
+        lineHeight: '1.5'
     },
     transitionDuration: '0.2s',
     focusRing: {
@@ -67,15 +72,17 @@ export const semantic = {
         950: '{ftf.green.950}'
     },
     formField: {
+        fontSize: '{typography.font.size}',
+        fontWeight: '{typography.font.weight}',
         paddingX: '0.75rem',
         paddingY: '0.5rem',
         sm: {
-            fontSize: '0.875rem',
+            fontSize: '{font.size.sm}',
             paddingX: '0.625rem',
             paddingY: '0.375rem'
         },
         lg: {
-            fontSize: '1.125rem',
+            fontSize: '{font.size.lg}',
             paddingX: '0.875rem',
             paddingY: '0.625rem'
         },
@@ -101,7 +108,7 @@ export const semantic = {
         },
         optionGroup: {
             padding: '0.5rem 0.75rem',
-            fontWeight: '600'
+            fontWeight: '{font.weight.semibold}'
         }
     },
     content: {
@@ -122,7 +129,7 @@ export const semantic = {
         },
         submenuLabel: {
             padding: '0.5rem 0.75rem',
-            fontWeight: '600'
+            fontWeight: '{font.weight.semibold}'
         },
         submenuIcon: {
             size: '0.875rem'

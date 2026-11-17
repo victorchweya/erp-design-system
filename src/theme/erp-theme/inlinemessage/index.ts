@@ -5,7 +5,7 @@ export const root = {
 };
 
 export const text = {
-    fontWeight: '500'
+    fontWeight: '{font.weight.medium}'
 };
 
 export const icon = {

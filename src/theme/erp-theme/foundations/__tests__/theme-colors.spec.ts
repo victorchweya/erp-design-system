@@ -4,10 +4,13 @@ import postcss from 'postcss'
 import tailwindcss from 'tailwindcss'
 import ErpTheme from '@/theme/erp-theme'
 import loadConfig from 'tailwindcss/loadConfig'
+import resolveConfig from 'tailwindcss/resolveConfig'
+import defaultTheme from 'tailwindcss/defaultTheme'
 import { resolve } from 'node:path'
 
 import { brandTokenReferences, primitives } from '../palette'
 import { colorRoles, colorValue, contrastRatio, roleByName, semanticColors } from '../color-tokens'
+import { fontSizes, fontWeights } from '../typography'
 
 const tailwindConfig = loadConfig(resolve('tailwind.config.js'))
 const previousTheme = Theme.getTheme() ?? {}
@@ -18,6 +21,40 @@ beforeEach(() => {
   })
 })
 afterEach(() => Theme.setTheme(previousTheme))
+
+it('keeps the public PrimeVue typography scale aligned with default Tailwind utilities', () => {
+  const tailwind = resolveConfig(tailwindConfig)
+  for (const [name, [size, lineHeight]] of Object.entries(fontSizes)) {
+    const expected = [size, { lineHeight }]
+    expect(defaultTheme.fontSize[name as keyof typeof fontSizes]).toEqual(expected)
+    expect(tailwind.theme.fontSize[name as keyof typeof fontSizes]).toEqual(expected)
+    expect($dt(`font.size.${name}`).value).toBe(size)
+  }
+  for (const [name, value] of Object.entries(fontWeights)) {
+    expect(tailwind.theme.fontWeight[name as keyof typeof fontWeights]).toBe(value)
+    expect($dt(`font.weight.${name}`).value).toBe(value)
+  }
+  for (const token of [
+    'typography.font.size',
+    'form.field.font.size',
+    'button.font.size',
+    'inputtext.font.size',
+    'select.font.size',
+    'multiselect.font.size',
+    'cascadeselect.font.size',
+    'treeselect.font.size',
+    'textarea.font.size',
+    'togglebutton.font.size',
+  ]) {
+    expect($dt(token).value).toBe(fontSizes.base[0])
+  }
+  expect($dt('typography.line.height').value).toBe('1.5')
+  expect($dt('button.sm.font.size').value).toBe(fontSizes.sm[0])
+  expect($dt('inputtext.lg.font.size').value).toBe(fontSizes.lg[0])
+  expect($dt('badge.sm.font.size').value).toBe(fontSizes.xs[0])
+  expect($dt('stepper.step.number.font.size').value).toBe(fontSizes.lg[0])
+  expect($dt('avatar.xl.font.size').value).toBe(fontSizes['3xl'][0])
+})
 
 it('publishes the verified palette and brand aliases without filling missing shades', () => {
   for (const [family, shades] of Object.entries(primitives)) {

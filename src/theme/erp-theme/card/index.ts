@@ -15,8 +15,8 @@ export const caption = {
 };
 
 export const title = {
-    fontSize: '1.25rem',
-    fontWeight: '500'
+    fontSize: '{font.size.xl}',
+    fontWeight: '{font.weight.medium}'
 };
 
 export const subtitle = {

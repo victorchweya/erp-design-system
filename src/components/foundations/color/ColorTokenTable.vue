@@ -17,7 +17,7 @@ const modes = [
     dataKey="name"
     size="small"
     scrollable
-    tableClass="text-xs"
+    tableClass="text-sm"
     :tableStyle="{ minWidth: '52rem' }"
     :tableProps="{
       'aria-label': 'FTF color token reference',

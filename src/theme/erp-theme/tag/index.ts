@@ -1,6 +1,6 @@
 export const root = {
-    fontSize: '0.875rem',
-    fontWeight: '700',
+    fontSize: '{font.size.sm}',
+    fontWeight: '{font.weight.bold}',
     padding: '0.25rem 0.5rem',
     gap: '0.25rem',
     borderRadius: '{content.border.radius}',

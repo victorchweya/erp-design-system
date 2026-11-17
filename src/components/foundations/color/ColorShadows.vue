@@ -24,7 +24,7 @@ const shadows = [
         aria-hidden="true"
       />
       <figcaption class="flex flex-col gap-1">
-        <h3 class="text-sm font-medium">{{ shadow.label }}</h3>
+        <h3 class="text-base font-medium">{{ shadow.label }}</h3>
         <code class="text-xs text-muted-color">{{ shadow.utility }}</code>
       </figcaption>
     </figure>

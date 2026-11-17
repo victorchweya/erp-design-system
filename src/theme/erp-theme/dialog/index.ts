@@ -12,8 +12,8 @@ export const header = {
 };
 
 export const title = {
-    fontSize: '1.25rem',
-    fontWeight: '600'
+    fontSize: '{font.size.xl}',
+    fontWeight: '{font.weight.semibold}'
 };
 
 export const content = {

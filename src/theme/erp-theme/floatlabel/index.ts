@@ -6,10 +6,10 @@ export const root = {
     transitionDuration: '0.2s',
     positionX: '{form.field.padding.x}',
     positionY: '{form.field.padding.y}',
-    fontWeight: '500',
+    fontWeight: '{font.weight.medium}',
     active: {
-        fontSize: '0.75rem',
-        fontWeight: '400'
+        fontSize: '{font.size.xs}',
+        fontWeight: '{font.weight.normal}'
     }
 };
 

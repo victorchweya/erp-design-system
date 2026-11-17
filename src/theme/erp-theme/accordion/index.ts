@@ -13,7 +13,7 @@ export const header = {
     activeColor: '{text.color}',
     activeHoverColor: '{text.color}',
     padding: '1.125rem',
-    fontWeight: '600',
+    fontWeight: '{font.weight.semibold}',
     borderRadius: '0',
     borderWidth: '0',
     borderColor: '{content.border.color}',

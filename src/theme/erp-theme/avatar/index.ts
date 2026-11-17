@@ -1,7 +1,7 @@
 export const root = {
     width: '2rem',
     height: '2rem',
-    fontSize: '1rem',
+    fontSize: '{font.size.base}',
     background: '{content.border.color}',
     color: '{content.color}',
     borderRadius: '{content.border.radius}'
@@ -19,7 +19,7 @@ export const group = {
 export const lg = {
     width: '3rem',
     height: '3rem',
-    fontSize: '1.5rem',
+    fontSize: '{font.size.2xl}',
     icon: {
         size: '1.5rem'
     },
@@ -31,7 +31,7 @@ export const lg = {
 export const xl = {
     width: '4rem',
     height: '4rem',
-    fontSize: '2rem',
+    fontSize: '{font.size.3xl}',
     icon: {
         size: '2rem'
     },

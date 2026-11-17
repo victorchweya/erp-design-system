@@ -1,6 +1,7 @@
 import PrimeUI from 'tailwindcss-primeui'
 import { brandTokenReferences, primitives } from './src/theme/erp-theme/foundations/palette.ts'
 import { semanticColors } from './src/theme/erp-theme/foundations/color-tokens.ts'
+import { fontFamily } from './src/theme/erp-theme/foundations/typography.ts'
 
 const themeColor = (token) =>
   `color-mix(in srgb, var(--p-${token}) calc(100% * <alpha-value>), transparent)`
@@ -61,7 +62,7 @@ export default {
         surface: themeColor('content-background'),
       },
       fontFamily: {
-        sans: ["var(--p-typography-font-family, 'Rubik', system-ui, sans-serif)"],
+        sans: [`var(--p-typography-font-family, ${fontFamily})`],
       },
     },
   },

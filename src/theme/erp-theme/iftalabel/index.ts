@@ -5,8 +5,8 @@ export const root = {
     transitionDuration: '0.2s',
     positionX: '{form.field.padding.x}',
     top: '{form.field.padding.y}',
-    fontSize: '0.75rem',
-    fontWeight: '400'
+    fontSize: '{font.size.xs}',
+    fontWeight: '{font.weight.normal}'
 };
 
 export const input = {

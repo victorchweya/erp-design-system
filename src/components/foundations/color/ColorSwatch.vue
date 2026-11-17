@@ -12,7 +12,7 @@ defineProps<{ color: ColorValue & { label?: string; purpose?: string }; compact?
       aria-hidden="true"
     />
     <figcaption class="flex flex-col gap-1 p-3">
-      <span class="font-medium">{{ color.label ?? color.name }}</span>
+      <span class="text-base font-medium">{{ color.label ?? color.name }}</span>
       <span class="font-mono text-xs">{{ color.value }}</span>
       <code class="break-all text-xs text-muted-color">{{ color.name }}</code>
       <span v-if="color.purpose" class="text-xs text-muted-color">{{ color.purpose }}</span>

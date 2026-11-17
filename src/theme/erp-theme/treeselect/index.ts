@@ -1,4 +1,6 @@
 export const root = {
+    fontWeight: '{form.field.font.weight}',
+    fontSize: '{form.field.font.size}',
     background: '{form.field.background}',
     disabledBackground: '{form.field.disabled.background}',
     filledBackground: '{form.field.filled.background}',

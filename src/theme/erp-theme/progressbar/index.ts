@@ -10,8 +10,8 @@ export const value = {
 
 export const label = {
     color: '{primary.contrast.color}',
-    fontSize: '0.75rem',
-    fontWeight: '600'
+    fontSize: '{font.size.xs}',
+    fontWeight: '{font.weight.semibold}'
 };
 
 export default {

@@ -1,8 +1,8 @@
 export const root = {
     borderRadius: '{border.radius.md}',
     padding: '0 0.5rem',
-    fontSize: '0.75rem',
-    fontWeight: '700',
+    fontSize: '{font.size.xs}',
+    fontWeight: '{font.weight.bold}',
     minWidth: '1.5rem',
     height: '1.5rem'
 };
@@ -10,19 +10,19 @@ export const dot = {
     size: '0.5rem'
 };
 export const sm = {
-    fontSize: '0.625rem',
+    fontSize: '{font.size.xs}',
     minWidth: '1.25rem',
     height: '1.25rem'
 };
 
 export const lg = {
-    fontSize: '0.875rem',
+    fontSize: '{font.size.sm}',
     minWidth: '1.75rem',
     height: '1.75rem'
 };
 
 export const xl = {
-    fontSize: '1rem',
+    fontSize: '{font.size.base}',
     minWidth: '2rem',
     height: '2rem'
 };

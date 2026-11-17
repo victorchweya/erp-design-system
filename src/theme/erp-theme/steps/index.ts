@@ -21,7 +21,7 @@ export const itemLink = {
 export const itemLabel = {
     color: '{text.muted.color}',
     activeColor: '{primary.color}',
-    fontWeight: '500'
+    fontWeight: '{font.weight.medium}'
 };
 
 export const itemNumber = {
@@ -32,8 +32,8 @@ export const itemNumber = {
     color: '{text.muted.color}',
     activeColor: '{primary.color}',
     size: '2rem',
-    fontSize: '1.143rem',
-    fontWeight: '500',
+    fontSize: '{font.size.lg}',
+    fontWeight: '{font.weight.medium}',
     borderRadius: '50%',
     shadow: '0px 0.5px 0px 0px rgba(0, 0, 0, 0.06), 0px 1px 1px 0px rgba(0, 0, 0, 0.12)'
 };

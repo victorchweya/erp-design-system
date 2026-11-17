@@ -30,7 +30,7 @@ const swatches = [
     >
       <div class="h-14" :style="{ backgroundColor: swatch.variable }" aria-hidden="true" />
       <figcaption class="flex flex-col gap-1 p-3">
-        <h3 class="text-sm font-medium">{{ swatch.label }}</h3>
+        <h3 class="text-base font-medium">{{ swatch.label }}</h3>
         <code class="break-all text-xs text-muted-color">{{ swatch.token }}</code>
         <span class="font-mono text-xs">Light {{ swatch.light }}</span>
         <span class="font-mono text-xs">Dark {{ swatch.dark }}</span>

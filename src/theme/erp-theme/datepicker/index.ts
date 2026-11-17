@@ -20,7 +20,7 @@ export const header = {
 
 export const title = {
     gap: '0.5rem',
-    fontWeight: '500'
+    fontWeight: '{font.weight.medium}'
 };
 
 export const dropdown = {
@@ -75,7 +75,7 @@ export const dayView = {
 
 export const weekDay = {
     padding: '0.25rem',
-    fontWeight: '500',
+    fontWeight: '{font.weight.medium}',
     color: '{content.color}'
 };
 

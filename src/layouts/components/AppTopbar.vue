@@ -11,7 +11,7 @@ defineEmits<{ toggleSidebar: [] }>()
 <template>
   <header
     class="fixed inset-x-0 top-0 z-20 flex h-16 items-center justify-between border-b border-surface-200 bg-surface-0 px-4 transition-[left] duration-200 motion-reduce:transition-none dark:border-surface-700 dark:bg-surface-900 sm:px-6 lg:px-8"
-    :class="{ 'lg:left-72': sidebarVisible }"
+    :class="{ 'lg:left-64': sidebarVisible }"
   >
     <div class="flex min-w-0 items-center gap-3">
       <SidebarToggle

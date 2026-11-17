@@ -24,7 +24,7 @@ const swatches = computed(() =>
       :key="swatch.name"
       class="min-w-0 overflow-hidden rounded-lg border border-surface"
     >
-      <div class="flex h-14 font-medium" aria-hidden="true">
+      <div class="flex h-14 text-base font-medium" aria-hidden="true">
         <div
           v-for="mode in modes"
           :key="mode"
@@ -38,7 +38,7 @@ const swatches = computed(() =>
         </div>
       </div>
       <figcaption class="flex flex-col gap-1 p-3">
-        <h3 class="text-sm font-medium">{{ swatch.label }}</h3>
+        <h3 class="break-words text-base font-medium">{{ swatch.label }}</h3>
         <code class="break-all text-xs text-muted-color">{{ swatch.token }}</code>
         <span class="font-mono text-xs">Light {{ swatch.lightValue }}</span>
         <span class="font-mono text-xs">Dark {{ swatch.darkValue }}</span>
