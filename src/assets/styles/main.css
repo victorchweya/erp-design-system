@@ -5,12 +5,19 @@
 
   html {
     color-scheme: light;
+    scroll-behavior: smooth;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
   }
 
   body {
     min-width: 320px;
     color: var(--p-text-color);
-    background: var(--p-surface-50);
+    background: var(--p-surface-0);
   }
 
   #app {

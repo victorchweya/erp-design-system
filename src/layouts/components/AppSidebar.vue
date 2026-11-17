@@ -18,7 +18,7 @@ function restoreTriggerFocus() {
     id="app-sidebar"
     aria-label="Application sidebar"
     :inert="!visible"
-    class="fixed inset-y-0 left-0 z-30 flex w-72 flex-col border-r border-surface-200 bg-surface-0 transition-transform duration-200 motion-reduce:transition-none dark:border-surface-700 dark:bg-surface-900"
+    class="fixed inset-y-0 left-0 z-30 flex w-64 flex-col border-r border-surface-200 bg-surface-0 transition-transform duration-200 motion-reduce:transition-none dark:border-surface-700 dark:bg-surface-900"
     :class="visible ? 'translate-x-0' : '-translate-x-full'"
   >
     <div
@@ -40,7 +40,7 @@ function restoreTriggerFocus() {
     v-model:visible="visible"
     aria-label="Application sidebar"
     blockScroll
-    class="w-72"
+    class="w-64"
     :dt="{ header: { padding: '0 1.25rem' }, content: { padding: '0.5rem' } }"
     :pt="{ header: { class: 'h-16 shrink-0 border-b border-surface' } }"
     @after-hide="restoreTriggerFocus"

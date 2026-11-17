@@ -1,10 +1,28 @@
 import { afterEach, expect, it } from 'vitest'
+import { readFileSync } from 'node:fs'
+import { resolve } from 'node:path'
+import { compileStyle, parse } from '@vue/compiler-sfc'
 import { enableAutoUnmount, flushPromises, mount } from '@vue/test-utils'
 import { createMemoryHistory, createRouter } from 'vue-router'
 import appRouter from '@/router'
 import AppMenu from '../components/AppMenu.vue'
 
 enableAutoUnmount(afterEach)
+
+it('keeps the active group label scoped and uses the theme text colour for both modes', () => {
+  const filename = resolve('src/layouts/components/AppMenu.vue')
+  const { descriptor } = parse(readFileSync(filename, 'utf8'))
+  const style = compileStyle({
+    source: descriptor.styles[0]!.content,
+    filename,
+    id: 'data-v-menu',
+    scoped: true,
+  })
+  expect(style.errors).toEqual([])
+  expect(style.code).toContain('.menu-group-label[data-v-menu]')
+  expect(style.code).toContain('color: var(--p-text-color)')
+  expect(style.code).not.toContain('.app-dark {')
+})
 
 it('navigates to the documentation pages and marks the current link', async () => {
   const router = createRouter({ history: createMemoryHistory(), routes: appRouter.options.routes })
@@ -27,6 +45,7 @@ it('navigates to the documentation pages and marks the current link', async () =
     await flushPromises()
     expect(router.currentRoute.value.matched).toHaveLength(1)
     expect(wrapper.get(`a[href="${path}"]`).attributes('aria-current')).toBe('page')
+    expect(wrapper.get(`a[href="${path}"]`).classes()).toContain('font-medium')
     expect(wrapper.findAll('a[aria-current="page"]')).toHaveLength(1)
     expect(wrapper.find('.menu-group:has([aria-current="page"])').exists()).toBe(
       path.startsWith('/foundations/'),

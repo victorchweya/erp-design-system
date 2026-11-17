@@ -29,7 +29,7 @@ onBeforeUnmount(() => desktopQuery.removeEventListener('change', updateViewport)
 </script>
 
 <template>
-  <div class="h-dvh overflow-hidden bg-surface-0 dark:bg-surface-950">
+  <div class="min-h-dvh bg-surface-0 dark:bg-surface-950">
     <a href="#main-content" class="sr-only focus:not-sr-only">Skip to components</a>
 
     <AppSidebar
@@ -40,8 +40,8 @@ onBeforeUnmount(() => desktopQuery.removeEventListener('change', updateViewport)
     />
 
     <div
-      class="h-full min-w-0 transition-[padding] duration-200 motion-reduce:transition-none"
-      :class="{ 'lg:pl-72': sidebarVisible }"
+      class="min-w-0 transition-[padding] duration-200 motion-reduce:transition-none"
+      :class="{ 'lg:pl-64': sidebarVisible }"
     >
       <AppTopbar
         :sidebar-visible="sidebarVisible"
@@ -52,7 +52,7 @@ onBeforeUnmount(() => desktopQuery.removeEventListener('change', updateViewport)
       <main
         id="main-content"
         tabindex="-1"
-        class="h-full scroll-pt-20 overflow-y-auto bg-surface-50 pt-16 dark:bg-surface-900"
+        class="min-h-dvh bg-surface-0 pt-16 dark:bg-surface-900"
       >
         <slot />
       </main>

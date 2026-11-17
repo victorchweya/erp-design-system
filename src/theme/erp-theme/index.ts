@@ -1,4 +1,5 @@
-import type { Preset } from '@primeuix/styled';
+import { definePreset, type Preset } from '@primeuix/styled';
+import foundationColors from './foundations/theme';
 
 import accordion from './accordion';
 import autocomplete from './autocomplete';
@@ -91,7 +92,7 @@ import treeselect from './treeselect';
 import treetable from './treetable';
 import virtualscroller from './virtualscroller';
 
-export default {
+export default definePreset({
     ...base,
     components: {
         accordion,
@@ -184,4 +185,4 @@ export default {
         virtualscroller
     },
     css
-} satisfies Preset;
+} satisfies Preset, foundationColors);

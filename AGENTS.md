@@ -30,13 +30,20 @@ This repository builds a PrimeVue design system with Vue 3, TypeScript, and Vite
 - Preserve accessibility, including labels, keyboard operation, and focus behavior.
 - Keep changes focused on the requested outcome; avoid unrelated refactors and new dependencies.
 
-## Verification
+## Tests and verification
 
+- Before adding or expanding a test, identify the concrete user-facing failure or business-rule violation it would catch that existing tests do not. If there is no meaningful failure to protect against, do not add the test. A changed line or new conditional alone is not a reason to add coverage.
+- Copy, labels, typos, and purely visual changes do not need new tests or assertions. Review the wording or rendered result. Add coverage only if the change also affects behavior, accessibility, or an explicit legal or safety requirement.
+- Test observable outcomes and public contracts. Avoid assertions that merely duplicate exact UI wording, source text, CSS classes, internal structure, or call order unless that detail is itself a required contract. Existing tests should normally survive refactoring that preserves behavior.
+- For meaningful changes to validation, navigation, calculations, authentication, payments, or data integrity, extend the nearest existing suite with focused regression coverage. Exercise the real behavior under test rather than only asserting what mocks were told to do.
+- Reuse existing test files and fixtures. Do not create a standalone self-check for each fix or introduce a test framework or runner for a small change. Add a test file only when the coverage does not fit an existing suite.
+- Running existing checks and writing new tests are separate decisions. Keep verification proportional to risk; do not automatically run the full suite or production build for a copy-only change.
+- Keep one-off debugging and verification scripts in `/tmp`; do not leave them in the repository.
 - Check affected callers, exports, and tests when changing shared behavior.
-- For code changes, run `npm run type-check` and the relevant checks:
-  - `npm run test:unit -- --run` for unit tests.
+- Choose relevant existing checks based on the change:
+  - `npm run type-check` for Vue and TypeScript changes.
+  - `npm run test:unit -- --run` for affected unit tests.
   - `npm run build-only` for build or integration changes.
-- Add or update a focused test for new non-trivial behavior and bug fixes.
 - For visual changes, inspect the result in a browser when available.
 - Run Playwright only when explicitly requested by the user.
 - State what was checked and any remaining limitations. Documentation-only changes do not require application tests.

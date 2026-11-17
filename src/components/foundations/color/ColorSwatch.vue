@@ -5,14 +5,13 @@ defineProps<{ color: ColorValue & { label?: string; purpose?: string }; compact?
 </script>
 
 <template>
-  <figure class="flex min-w-0 flex-col gap-2">
+  <figure class="min-w-0 overflow-hidden rounded-lg border border-surface">
     <div
-      class="rounded-md border border-surface"
       :class="compact ? 'h-10' : 'h-14'"
       :style="{ backgroundColor: color.value }"
       aria-hidden="true"
     />
-    <figcaption class="flex flex-col gap-1">
+    <figcaption class="flex flex-col gap-1 p-3">
       <span class="font-medium">{{ color.label ?? color.name }}</span>
       <span class="font-mono text-xs">{{ color.value }}</span>
       <code class="break-all text-xs text-muted-color">{{ color.name }}</code>

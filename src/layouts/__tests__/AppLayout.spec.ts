@@ -36,11 +36,14 @@ it('starts open on desktop, toggles the sidebar, and resets it when the viewport
   const { wrapper, media } = await mountLayout(true)
   const toggle = () => wrapper.get('#sidebar-toggle')
   expect(toggle().attributes('aria-expanded')).toBe('true')
+  expect(wrapper.get('aside').classes()).toContain('w-64')
+  expect(wrapper.get('main').element.parentElement?.classList.contains('lg:pl-64')).toBe(true)
   expect(wrapper.find('aside #sidebar-toggle').exists()).toBe(true)
   expect(wrapper.find('header #sidebar-toggle').exists()).toBe(false)
 
   await toggle().trigger('click')
   expect(toggle().attributes('aria-expanded')).toBe('false')
+  expect(wrapper.get('main').element.parentElement?.classList.contains('lg:pl-64')).toBe(false)
   expect(wrapper.find('header #sidebar-toggle').exists()).toBe(true)
   expect(wrapper.findAll('#sidebar-toggle')).toHaveLength(1)
   expect(wrapper.get('aside').attributes()).toHaveProperty('inert')
@@ -70,6 +73,7 @@ it('starts closed on mobile and dismisses the drawer after selecting a section',
 
   await toggle.trigger('click')
   expect(toggle.attributes('aria-expanded')).toBe('true')
+  expect(document.getElementById('app-sidebar')?.classList.contains('w-64')).toBe(true)
   const link = document.querySelector<HTMLAnchorElement>(
     '#app-sidebar a[href="/foundations/color"]',
   )!

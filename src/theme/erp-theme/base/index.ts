@@ -1,4 +1,11 @@
+import { brandTokenReferences, primitives } from '../foundations/palette'
+
 export const primitive = {
+    // The namespace separates FTF tokens from inherited component palette names.
+    ftf: {
+        ...primitives,
+        ...Object.fromEntries(Object.entries(brandTokenReferences).map(([name, reference]) => [name, `{ftf.${reference}}`]))
+    },
     borderRadius: {
         none: '0',
         xs: '2px',
@@ -47,17 +54,17 @@ export const semantic = {
     iconSize: '1rem',
     anchorGutter: '2px',
     primary: {
-        50: '{emerald.50}',
-        100: '{emerald.100}',
-        200: '{emerald.200}',
-        300: '{emerald.300}',
-        400: '{emerald.400}',
-        500: '{emerald.500}',
-        600: '{emerald.600}',
-        700: '{emerald.700}',
-        800: '{emerald.800}',
-        900: '{emerald.900}',
-        950: '{emerald.950}'
+        50: '{ftf.green.50}',
+        100: '{ftf.green.100}',
+        200: '{ftf.green.200}',
+        300: '{ftf.green.300}',
+        400: '{ftf.green.400}',
+        500: '{ftf.green.500}',
+        600: '{ftf.green.600}',
+        700: '{ftf.green.700}',
+        800: '{ftf.green.800}',
+        900: '{ftf.green.900}',
+        950: '{ftf.green.950}'
     },
     formField: {
         paddingX: '0.75rem',
@@ -143,22 +150,22 @@ export const semantic = {
     colorScheme: {
         light: {
             surface: {
-                0: '#ffffff',
-                50: '{slate.50}',
-                100: '{slate.100}',
-                200: '{slate.200}',
-                300: '{slate.300}',
-                400: '{slate.400}',
-                500: '{slate.500}',
-                600: '{slate.600}',
-                700: '{slate.700}',
-                800: '{slate.800}',
-                900: '{slate.900}',
-                950: '{slate.950}'
+                0: '{ftf.neutral.0}',
+                50: '{ftf.neutral.50}',
+                100: '{ftf.neutral.100}',
+                200: '{ftf.neutral.200}',
+                300: '{ftf.neutral.300}',
+                400: '{ftf.neutral.400}',
+                500: '{ftf.neutral.500}',
+                600: '{ftf.neutral.600}',
+                700: '{ftf.neutral.700}',
+                800: '{ftf.neutral.800}',
+                900: '{ftf.neutral.900}',
+                950: '{ftf.neutral.950}'
             },
             primary: {
                 color: '{primary.500}',
-                contrastColor: '#ffffff',
+                contrastColor: '{ftf.neutral.0}',
                 hoverColor: '{primary.600}',
                 activeColor: '{primary.700}'
             },
@@ -268,24 +275,24 @@ export const semantic = {
         },
         dark: {
             surface: {
-                0: '#ffffff',
-                50: '{zinc.50}',
-                100: '{zinc.100}',
-                200: '{zinc.200}',
-                300: '{zinc.300}',
-                400: '{zinc.400}',
-                500: '{zinc.500}',
-                600: '{zinc.600}',
-                700: '{zinc.700}',
-                800: '{zinc.800}',
-                900: '{zinc.900}',
-                950: '{zinc.950}'
+                0: '{ftf.neutral.0}',
+                50: '{ftf.neutral.50}',
+                100: '{ftf.neutral.100}',
+                200: '{ftf.neutral.200}',
+                300: '{ftf.neutral.300}',
+                400: '{ftf.neutral.400}',
+                500: '{ftf.neutral.500}',
+                600: '{ftf.neutral.600}',
+                700: '{ftf.neutral.700}',
+                800: '{ftf.neutral.800}',
+                900: '{ftf.neutral.900}',
+                950: '{ftf.neutral.950}'
             },
             primary: {
-                color: '{primary.400}',
-                contrastColor: '{surface.900}',
-                hoverColor: '{primary.300}',
-                activeColor: '{primary.200}'
+                color: '{primary.300}',
+                contrastColor: '{ftf.green.900}',
+                hoverColor: '{primary.200}',
+                activeColor: '{primary.100}'
             },
             highlight: {
                 background: 'color-mix(in srgb, {primary.400}, transparent 84%)',
