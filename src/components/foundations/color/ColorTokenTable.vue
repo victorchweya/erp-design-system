@@ -10,9 +10,10 @@ import { tokenRows } from '@/theme/erp-theme/foundations/color-tokens'
   <DataTable
     :value="tokenRows"
     dataKey="name"
+    size="small"
     scrollable
-    scrollHeight="36rem"
-    :tableStyle="{ minWidth: '64rem' }"
+    tableClass="text-xs"
+    :tableStyle="{ minWidth: '52rem' }"
     :tableProps="{
       'aria-label': 'FTF color token reference',
       'aria-describedby': 'color-table-help',
@@ -26,7 +27,7 @@ import { tokenRows } from '@/theme/erp-theme/foundations/color-tokens'
     <Column field="purpose" header="Purpose" />
     <Column header="Light · foreground / background">
       <template #body="{ data }">
-        <div class="flex flex-col gap-2">
+        <div class="flex flex-col gap-1">
           <code class="text-xs">{{ data.light }}</code
           ><span class="text-xs text-muted-color">{{ data.pairing }}</span>
         </div>
@@ -34,7 +35,7 @@ import { tokenRows } from '@/theme/erp-theme/foundations/color-tokens'
     </Column>
     <Column header="Dark · foreground / background">
       <template #body="{ data }">
-        <div class="flex flex-col gap-2">
+        <div class="flex flex-col gap-1">
           <code class="text-xs">{{ data.dark }}</code
           ><span class="text-xs text-muted-color">{{ data.darkPairing }}</span>
         </div>
@@ -42,7 +43,7 @@ import { tokenRows } from '@/theme/erp-theme/foundations/color-tokens'
     </Column>
     <Column header="Evidence">
       <template #body="{ data }"
-        ><div class="flex flex-col gap-2">
+        ><div class="flex flex-col gap-1">
           <span class="font-medium">{{ data.evidence }}</span
           ><span class="text-xs text-muted-color">{{ data.source }}</span>
         </div></template

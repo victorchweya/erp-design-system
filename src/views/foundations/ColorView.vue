@@ -74,7 +74,6 @@ const primary = roleByName('primary.color').light
   >
     <div class="min-w-0">
       <header class="mb-8 flex flex-col gap-3">
-        <p class="text-muted-color">Foundations / Color</p>
         <h1 class="text-3xl font-medium tracking-tight sm:text-4xl">Color</h1>
         <p class="max-w-3xl text-base leading-relaxed text-muted-color">
           The FTF palette, its intended pairings, and the evidence behind each token. Start with a
@@ -121,7 +120,7 @@ const primary = roleByName('primary.color').light
             </li>
             <li>
               Normal text needs 4.5:1; essential icons and identifying boundaries need 3:1. Swatch
-              labels choose black or white for legibility, not as a new semantic role.
+              labels sit outside the color samples; use the documented pairs for text on color.
             </li>
             <li>
               “Verified” means the value or pair is present in the source. “Proposal” means a new

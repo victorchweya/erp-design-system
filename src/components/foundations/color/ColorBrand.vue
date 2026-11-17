@@ -4,7 +4,7 @@ import ColorSwatch from './ColorSwatch.vue'
 </script>
 
 <template>
-  <div class="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+  <div class="grid grid-cols-2 gap-x-3 gap-y-5 lg:grid-cols-4">
     <ColorSwatch v-for="color in brandColors" :key="color.name" :color="color" />
   </div>
   <div class="flex flex-col gap-4">
@@ -12,7 +12,7 @@ import ColorSwatch from './ColorSwatch.vue'
     <p class="text-muted-color">
       Existing accent and semantic families from the FTF color reference.
     </p>
-    <div class="grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
+    <div class="grid grid-cols-2 gap-x-3 gap-y-5 lg:grid-cols-4">
       <ColorSwatch v-for="color in secondaryColors" :key="color.name" :color="color" compact />
     </div>
   </div>
