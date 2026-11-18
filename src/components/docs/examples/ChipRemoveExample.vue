@@ -23,7 +23,7 @@ const filters = ref(['Vegetables', 'In season', 'Local'])
             size="small"
             :aria-label="`Remove ${filter}`"
             @click="removeCallback"
-            ><Times :size="12" aria-hidden="true"
+            ><Times aria-hidden="true"
           /></Button>
         </template>
       </Chip>

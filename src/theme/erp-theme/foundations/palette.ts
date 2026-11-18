@@ -1,6 +1,19 @@
 // Verified against Farm2Feed/ftfdesignsystem, commit ac29ac16cc12f7a69c49cbc10ba09f75b6149c03.
 // Legacy 950 aliases and neutral endpoints are retained; new decisions are listed below.
 export const primitives: Record<string, Record<string, string>> = {
+  emerald: {
+    '50': '#EAF6EE',
+    '100': '#D5EDDC',
+    '200': '#AEDDBD',
+    '300': '#7BCB91',
+    '400': '#4FAE6B',
+    '500': '#2F7D4A',
+    '600': '#286A3F',
+    '700': '#205534',
+    '800': '#1A462B',
+    '900': '#163D25',
+    '950': '#0E2818',
+  },
   green: {
     '50': '#F0F6F3',
     '100': '#DFEDDF',
@@ -135,6 +148,10 @@ export const primitives: Record<string, Record<string, string>> = {
 }
 
 export const paletteDecisions: Record<string, string> = {
+  'emerald.50': 'Soft success background distinct from the Kale primary scale.',
+  'emerald.300': 'Success foreground for dark surfaces.',
+  'emerald.500': 'Success action and status colour distinct from the Kale primary.',
+  'emerald.900': 'Dark-mode success background.',
   'neutral.50': 'Adjusted to space the light neutral shades more evenly.',
   'neutral.100': 'Adjusted to space the light neutral shades more evenly.',
   'orange.200': 'Brand identity guideline, page 19 · secondary peach #F1D3AF.',

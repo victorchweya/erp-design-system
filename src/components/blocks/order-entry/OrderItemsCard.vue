@@ -33,7 +33,7 @@ function add() {
           <Tag severity="secondary">{{ items.length }} products · {{ packs }} packs</Tag>
         </div>
         <Button type="button" size="small" severity="secondary" text @click="emit('reorder')">
-          <Replay :size="12" aria-hidden="true" /> Reorder last order
+          <Replay aria-hidden="true" /> Reorder last order
         </Button>
       </div>
     </template>
@@ -89,7 +89,7 @@ function add() {
               iconOnly
               :aria-label="`Remove ${data.name}`"
               @click="emit('remove', data.id)"
-              ><Trash :size="12" aria-hidden="true"
+              ><Trash aria-hidden="true"
             /></Button>
           </template>
         </Column>

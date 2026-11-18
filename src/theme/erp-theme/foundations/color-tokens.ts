@@ -54,7 +54,11 @@ export const brandColors = [
   { label: 'Kale', purpose: 'Primary brand', ...colorValue(brandTokenReferences.kale) },
   { label: 'Lime', purpose: 'Natural brand accent', ...colorValue(brandTokenReferences.lime) },
   { label: 'Carrot', purpose: 'Warm brand accent', ...colorValue(brandTokenReferences.carrot) },
-  { label: 'Tamarind', purpose: 'Earthy brand accent', ...colorValue(brandTokenReferences.tamarind) },
+  {
+    label: 'Tamarind',
+    purpose: 'Earthy brand accent',
+    ...colorValue(brandTokenReferences.tamarind),
+  },
 ]
 
 export const secondaryColors = [
@@ -471,12 +475,12 @@ export const colorRoles: ColorRole[] = [
     backgroundToken: 'message.success.background',
     scope: 'component',
     purpose:
-      'Primary-coloured success text and icon on a soft green surface. Tag, Badge, and Toast share this pair.',
+      'Emerald success text and icon on a soft emerald surface. Tag, Badge, and Toast share this pair.',
     group: 'status',
     evidence: 'FTF decision',
-    source: 'FTF v1 decision · green feedback pairs in both modes.',
-    light: { foreground: primaryPairs.light.background, background: colorValue('green.50') },
-    dark: { foreground: primaryPairs.dark.background, background: colorValue('green.900') },
+    source: 'FTF decision · emerald feedback pairs distinguish success from primary actions.',
+    light: pair('emerald.500', 'emerald.50'),
+    dark: pair('emerald.300', 'emerald.900'),
   },
   {
     name: 'message.warn.color',
@@ -573,7 +577,7 @@ const severityDefinitions = {
       background: 'neutral.100',
       hover: 'neutral.200',
       active: 'neutral.300',
-      text: 'neutral.500',
+      text: 'neutral.600',
     },
     dark: {
       foreground: 'neutral.300',
@@ -583,7 +587,22 @@ const severityDefinitions = {
       text: 'neutral.400',
     },
   },
-  success: primaryDefinition,
+  success: {
+    light: {
+      foreground: 'neutral.0',
+      background: 'emerald.500',
+      hover: 'emerald.600',
+      active: 'emerald.700',
+      text: 'emerald.500',
+    },
+    dark: {
+      foreground: 'emerald.950',
+      background: 'emerald.300',
+      hover: 'emerald.200',
+      active: 'emerald.100',
+      text: 'emerald.300',
+    },
+  },
   info: {
     light: {
       foreground: 'neutral.0',

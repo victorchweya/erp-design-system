@@ -21,7 +21,7 @@ const view = shallowRef('List')
           class="min-w-0 w-full flex-1"
         />
         <Button type="button" :size="size" iconOnly aria-label="Search preview"
-          ><Search size="var(--p-icon-size)" aria-hidden="true"
+          ><Search aria-hidden="true"
         /></Button>
       </div>
     </div>
@@ -30,7 +30,6 @@ const view = shallowRef('List')
       <Button type="button" :size="size" severity="secondary" outlined>Cancel</Button>
       <Button type="button" :size="size" disabled aria-busy="true"
         ><Spinner
-          size="var(--p-icon-size)"
           class="animate-spin motion-reduce:animate-none"
           aria-hidden="true"
         />Saving</Button

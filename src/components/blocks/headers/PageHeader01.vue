@@ -19,7 +19,7 @@ const feedback = shallowRef('')
       </div>
       <div class="flex flex-wrap gap-2">
         <Button type="button" @click="feedback = 'Create order selected in this preview.'">
-          <Plus :size="16" aria-hidden="true" />
+          <Plus aria-hidden="true" />
           Create order
         </Button>
       </div>

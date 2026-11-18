@@ -11,8 +11,7 @@ import Bell from '@primeicons/vue/bell'
       aria-label="More than 99 items"
     />
     <Button type="button" severity="secondary" outlined aria-label="Notifications, 3 unread">
-      <Bell :size="20" aria-hidden="true" /><span>Notifications</span
-      ><Badge value="3" aria-hidden="true" />
+      <Bell aria-hidden="true" /><span>Notifications</span><Badge value="3" aria-hidden="true" />
     </Button>
   </div>
 </template>

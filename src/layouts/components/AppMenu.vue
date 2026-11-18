@@ -24,6 +24,7 @@ const groups: MenuGroup[] = [
       { label: 'Spacing', to: '/foundations/spacing' },
       { label: 'Icons', to: '/foundations/icons' },
       { label: 'Typography', to: '/foundations/typography' },
+      { label: 'Formatting', to: '/foundations/formatting' },
     ],
   },
   ...Array.from(new Set(componentPages.map((page) => page.group))).map((label, index) => ({

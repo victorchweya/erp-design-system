@@ -16,7 +16,11 @@ import { colorMode } from '@/theme/color-mode'
     :title="colorMode === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'"
     @click="colorMode = colorMode === 'dark' ? 'light' : 'dark'"
   >
-    <Sun v-if="colorMode === 'dark'" :size="18" aria-hidden="true" />
-    <Moon v-else :size="18" aria-hidden="true" />
+    <Sun v-if="colorMode === 'dark'" aria-hidden="true" />
+    <Moon v-else aria-hidden="true" />
+    <span
+      class="pointer-events-none absolute left-1/2 top-1/2 size-12 -translate-x-1/2 -translate-y-1/2 pointer-fine:hidden"
+      aria-hidden="true"
+    />
   </Button>
 </template>

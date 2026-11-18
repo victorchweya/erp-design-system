@@ -9,7 +9,7 @@ const examples = [
     id: 'tag-0',
     title: 'Severities',
     description:
-      'Primary and success share our green. Warn uses orange. Native Tag supports primary, secondary, success, info, warn, danger, and contrast; help is a Button severity.',
+      'Primary uses Kale and success uses emerald. Warn uses orange. Native Tag supports primary, secondary, success, info, warn, danger, and contrast; help is a Button severity.',
     component: TagSeverityExample,
     code: code0,
   },

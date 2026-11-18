@@ -79,6 +79,26 @@ it('uses orange for warnings and dark contrast text on the Carrot fill', () => {
   ).toBeGreaterThanOrEqual(4.5)
 })
 
+it('uses an accessible emerald success scale distinct from the Kale primary', () => {
+  const success = semanticColors.find((role) => role.name === 'success')!
+  expect(success.light.background.value).toBe('#2F7D4A')
+  expect(success.dark.background.value).toBe('#7BCB91')
+  expect(success.light.background.value).not.toBe(colorValue('green.500').value)
+  expect(
+    contrastRatio(success.light.foreground.value, success.light.background.value),
+  ).toBeGreaterThanOrEqual(4.5)
+  expect(
+    contrastRatio(success.dark.foreground.value, success.dark.background.value),
+  ).toBeGreaterThanOrEqual(4.5)
+  expect(contrastRatio(success.light.text.value, '#FFFFFF')).toBeGreaterThanOrEqual(4.5)
+})
+
+it('uses strong neutral text for light secondary actions', () => {
+  const secondary = semanticColors.find((role) => role.name === 'secondary')!
+  expect(secondary.light.text.value).toBe('#404040')
+  expect(secondary.dark.text.value).toBe('#808080')
+})
+
 it('keeps every palette swatch label readable without assigning it a semantic role', () => {
   for (const steps of Object.values(primitives)) {
     for (const background of Object.values(steps)) {

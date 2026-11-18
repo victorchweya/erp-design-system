@@ -143,7 +143,7 @@ function search({ query }: AutoCompleteCompleteEvent) {
             text
             severity="secondary"
             aria-label="Check amount"
-            ><Check size="var(--p-icon-size)" aria-hidden="true" /></Button></InputGroupAddon
+            ><Check aria-hidden="true" /></Button></InputGroupAddon
       ></InputGroup>
     </div>
     <fieldset class="min-w-0">

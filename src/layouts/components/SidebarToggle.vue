@@ -11,6 +11,7 @@ defineEmits<{ toggle: [] }>()
     rounded
     variant="text"
     severity="secondary"
+    size="small"
     :aria-label="visible ? 'Hide sidebar' : 'Show sidebar'"
     :aria-expanded="visible"
     aria-controls="app-sidebar"
@@ -31,5 +32,9 @@ defineEmits<{ toggle: [] }>()
       <rect height="18" rx="2" ry="2" width="18" x="3" y="3" />
       <line x1="9" x2="9" y1="3" y2="21" />
     </svg>
+    <span
+      class="pointer-events-none absolute left-1/2 top-1/2 size-12 -translate-x-1/2 -translate-y-1/2 pointer-fine:hidden"
+      aria-hidden="true"
+    />
   </Button>
 </template>

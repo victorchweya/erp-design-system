@@ -40,7 +40,7 @@ const items = [
       :aria-controls="`${id}-menu`"
       :aria-expanded="visible"
       @click="menu?.toggle($event)"
-      >Order actions<ChevronDown :size="16" aria-hidden="true"
+      >Order actions<ChevronDown aria-hidden="true"
     /></Button>
     <p role="status" class="text-sm text-muted" :class="{ 'sr-only': !feedback }">{{ feedback }}</p>
   </div>

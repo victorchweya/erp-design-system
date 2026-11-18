@@ -33,7 +33,7 @@ const items = [
           size="small"
           @click="feedback = 'Back to orders selected in this preview.'"
         >
-          <ArrowLeft :size="16" aria-hidden="true" />
+          <ArrowLeft aria-hidden="true" />
           Back to orders
         </Button>
       </div>
@@ -62,7 +62,7 @@ const items = [
         </div>
         <div class="flex flex-wrap items-center gap-2">
           <Button type="button" @click="feedback = 'Edit order selected in this preview.'">
-            <Pencil :size="16" aria-hidden="true" />
+            <Pencil aria-hidden="true" />
             Edit order
           </Button>
           <Button
@@ -76,7 +76,7 @@ const items = [
             :aria-expanded="menuOpen"
             @click="menu?.toggle($event)"
           >
-            <EllipsisV :size="16" aria-hidden="true" />
+            <EllipsisV aria-hidden="true" />
           </Button>
           <Menu
             :id="menuId"

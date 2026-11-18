@@ -72,6 +72,12 @@ const router = createRouter({
       meta: { breadcrumb: ['Foundations', 'Typography'] },
       component: () => import('../views/foundations/TypographyView.vue'),
     },
+    {
+      path: '/foundations/formatting',
+      name: 'foundation-formatting',
+      meta: { breadcrumb: ['Foundations', 'Formatting'] },
+      component: () => import('../views/foundations/FormattingView.vue'),
+    },
   ],
 })
 

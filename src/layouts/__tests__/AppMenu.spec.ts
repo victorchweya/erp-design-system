@@ -42,6 +42,7 @@ it('navigates to the documentation pages and marks the current link', async () =
     '/foundations/spacing',
     '/foundations/icons',
     '/foundations/typography',
+    '/foundations/formatting',
     '/components/core-elements/button',
     '/ui-blocks/headers',
   ]) {
@@ -56,7 +57,7 @@ it('navigates to the documentation pages and marks the current link', async () =
       path !== '/general',
     )
   }
-  expect(wrapper.emitted('navigate')).toHaveLength(8)
+  expect(wrapper.emitted('navigate')).toHaveLength(9)
   await router.push('/general')
   await flushPromises()
   expect(wrapper.find('.menu-group:has([aria-current="page"])').exists()).toBe(false)

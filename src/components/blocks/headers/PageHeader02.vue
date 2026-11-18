@@ -28,11 +28,11 @@ const feedback = shallowRef('')
           outlined
           @click="feedback = 'Export selected in this preview.'"
         >
-          <Download :size="16" aria-hidden="true" />
+          <Download aria-hidden="true" />
           Export
         </Button>
         <Button type="button" @click="feedback = 'Create order selected in this preview.'">
-          <Plus :size="16" aria-hidden="true" />
+          <Plus aria-hidden="true" />
           Create order
         </Button>
       </div>

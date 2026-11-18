@@ -63,8 +63,8 @@ async function copyCode() {
             :title="`Copy ${title} code`"
             @click="copyCode"
           >
-            <Check v-if="copyState === 'copied'" :size="16" aria-hidden="true" />
-            <Copy v-else :size="16" aria-hidden="true" />
+            <Check v-if="copyState === 'copied'" aria-hidden="true" />
+            <Copy v-else aria-hidden="true" />
           </Button>
         </div>
       </div>

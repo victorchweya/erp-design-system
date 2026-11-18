@@ -6,11 +6,11 @@ import Search from '@primeicons/vue/search'
 <template>
   <div class="flex flex-wrap items-center gap-4">
     <Button type="button" size="small">
-      <Plus :size="12" class="shrink-0" aria-hidden="true" focusable="false" />
+      <Plus class="shrink-0" aria-hidden="true" focusable="false" />
       Add produce
     </Button>
     <Button type="button" iconOnly severity="secondary" outlined aria-label="Search produce">
-      <Search :size="16" aria-hidden="true" focusable="false" />
+      <Search aria-hidden="true" focusable="false" />
     </Button>
   </div>
 </template>

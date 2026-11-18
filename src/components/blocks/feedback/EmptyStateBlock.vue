@@ -17,7 +17,7 @@ const created = shallowRef(false)
           </p>
         </div>
         <Button type="button" @click="created = true"
-          ><Plus :size="16" aria-hidden="true" />Create order</Button
+          ><Plus aria-hidden="true" />Create order</Button
         >
       </div>
       <div v-else class="flex flex-col items-start gap-4">

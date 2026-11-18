@@ -26,7 +26,7 @@ async function mountLayout(desktop: boolean) {
   await router.isReady()
   const wrapper = mount(AppLayout, {
     attachTo: document.body,
-    global: { plugins: [PrimeVue, router] },
+    global: { plugins: [PrimeVue, router], stubs: { transition: false } },
     slots: { default: '<h1>Documentation</h1>' },
   })
   return { wrapper, media }
@@ -35,6 +35,27 @@ async function mountLayout(desktop: boolean) {
 it('starts open on desktop, toggles the sidebar, and resets it when the viewport changes', async () => {
   const { wrapper, media } = await mountLayout(true)
   const toggle = () => wrapper.get('#sidebar-toggle')
+  expect(wrapper.get('header').classes()).toContain('h-14')
+  expect(wrapper.get('main').classes()).toContain('pt-14')
+  expect(
+    wrapper
+      .get('nav[aria-label="Top navigation"] a[href="/components/core-elements/button"]')
+      .text(),
+  ).toBe('Components')
+  expect(wrapper.get('nav[aria-label="Top navigation"] a[href="/ui-blocks/headers"]').text()).toBe(
+    'UI blocks',
+  )
+
+  const userMenu = wrapper.get('#user-menu-trigger')
+  expect(userMenu.attributes('aria-expanded')).toBe('false')
+  await userMenu.trigger('click')
+  await flushPromises()
+  await expect.poll(() => userMenu.attributes('aria-expanded')).toBe('true')
+  await expect
+    .poll(() => document.getElementById('user-menu')?.textContent)
+    .toContain('Amina Hassan')
+  expect(document.getElementById('user-menu')?.textContent).toContain('Profile')
+
   expect(toggle().attributes('aria-expanded')).toBe('true')
   expect(wrapper.get('aside').classes()).toContain('w-64')
   expect(wrapper.get('main').element.parentElement?.classList.contains('lg:pl-64')).toBe(true)

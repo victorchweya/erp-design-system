@@ -296,24 +296,14 @@ it('resolves finalized feedback component defaults and input roles from the foun
   expect(Theme.getCommon().semantic.css).toContain('--p-severity-warn-color:')
 })
 
-it('uses the same primary and success colors across PrimeVue button variants and feedback text', () => {
-  for (const token of [
-    'background',
-    'hover.background',
-    'active.background',
-    'color',
-    'hover.color',
-    'active.color',
-  ]) {
-    expect($dt(`button.success.${token}`).value).toBe($dt(`button.primary.${token}`).value)
-  }
-  for (const variant of ['text', 'outlined']) {
-    expect($dt(`button.${variant}.success.color`).value).toBe(
-      $dt(`button.${variant}.primary.color`).value,
-    )
-  }
-  expect($dt('severity.success.color').value).toBe($dt('primary.color').value)
-  expect($dt('message.success.color').value).toBe($dt('primary.color').value)
+it('keeps success emerald and distinct from the Kale primary across components', () => {
+  expect($dt('severity.success.background').value).toBe('light-dark(#2F7D4A,#7BCB91)')
+  expect($dt('severity.success.color').value).toBe('light-dark(#2F7D4A,#7BCB91)')
+  expect($dt('message.success.background').value).toBe('light-dark(#EAF6EE,#163D25)')
+  expect($dt('message.success.color').value).toBe('light-dark(#2F7D4A,#7BCB91)')
+  expect($dt('button.success.background').value).not.toBe($dt('button.primary.background').value)
+  expect($dt('tag.success.background').value).toBe($dt('message.success.background').value)
+  expect($dt('badge.success.background').value).toBe($dt('message.success.background').value)
 })
 
 it('shares accessible severity roles with filled, text, and outlined PrimeVue buttons', () => {

@@ -1,3 +1,5 @@
+import { formatCurrency } from '@/utils/format'
+
 export interface ProduceItem {
   id: string
   name: string
@@ -32,9 +34,4 @@ export const customer = {
   outstanding: 60000,
 }
 
-const currency = new Intl.NumberFormat('en-KE', {
-  style: 'currency',
-  currency: 'KES',
-  maximumFractionDigits: 0,
-})
-export const money = (amount: number) => currency.format(amount)
+export const money = formatCurrency
