@@ -17,7 +17,7 @@ const feedback = shallowRef('')
           </component>
           <Tag severity="warn">8 awaiting confirmation</Tag>
         </div>
-        <p class="text-base leading-relaxed text-muted">
+        <p class="text-sm leading-relaxed text-muted">
           Review incoming produce and confirm quantities.
         </p>
       </div>

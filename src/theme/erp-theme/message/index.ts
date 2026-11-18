@@ -16,13 +16,13 @@ export const content = {
 };
 
 export const text = {
-    fontSize: '{font.size.base}',
-    fontWeight: '{font.weight.medium}',
+    fontSize: '{font.size.sm}',
+    fontWeight: '{font.weight.normal}',
     sm: {
-        fontSize: '{font.size.sm}'
+        fontSize: '{font.size.xs}'
     },
     lg: {
-        fontSize: '{font.size.lg}'
+        fontSize: '{font.size.base}'
     }
 };
 

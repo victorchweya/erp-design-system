@@ -3,6 +3,13 @@ import { roleByName, semanticColors } from './color-tokens'
 const modes = ['light', 'dark'] as const
 type Mode = (typeof modes)[number]
 
+const messageBorderTokens: Record<string, Record<Mode, string>> = {
+  success: { light: 'emerald.100', dark: 'emerald.800' },
+  info: { light: 'indigo.100', dark: 'indigo.800' },
+  warn: { light: 'orange.100', dark: 'orange.800' },
+  error: { light: 'red.100', dark: 'red.800' },
+}
+
 function pairTokens(name: string, mode: Mode) {
   const pair = roleByName(name)[mode]
   return {
@@ -94,8 +101,8 @@ function feedbackScheme(mode: Mode) {
         severity,
         {
           ...pair,
-          borderColor: pair.color,
-          shadow: `0px 4px 8px 0px color-mix(in srgb, ${pair.color}, transparent 96%)`,
+          borderColor: pair.background,
+          shadow: 'none',
           closeButton: {
             hoverBackground: '{content.hover.background}',
             focusRing: { color: pair.color, shadow: 'none' },
@@ -113,6 +120,7 @@ function componentScheme(mode: Mode) {
       severity,
       {
         ...tokens,
+        borderColor: `{ftf.${messageBorderTokens[severity]![mode]}}`,
         outlined: { color: tokens.color, borderColor: tokens.color },
         simple: { color: tokens.color },
       },

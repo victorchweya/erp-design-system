@@ -42,7 +42,7 @@ export const headerCell = {
 };
 
 export const columnTitle = {
-    fontWeight: '{font.weight.semibold}'
+    fontWeight: '{font.weight.medium}'
 };
 
 export const row = {
@@ -199,6 +199,10 @@ export const colorScheme = {
         root: {
             borderColor: '{content.border.color}'
         },
+        headerCell: {
+            background: '{surface.50}',
+            hoverBackground: '{surface.100}'
+        },
         row: {
             stripedBackground: '{surface.50}'
         },
@@ -209,6 +213,10 @@ export const colorScheme = {
     dark: {
         root: {
             borderColor: '{surface.800}'
+        },
+        headerCell: {
+            background: '{surface.800}',
+            hoverBackground: '{surface.700}'
         },
         row: {
             stripedBackground: '{surface.950}'

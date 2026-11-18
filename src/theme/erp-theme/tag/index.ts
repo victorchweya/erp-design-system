@@ -1,6 +1,6 @@
 export const root = {
     fontSize: '{font.size.xs}',
-    fontWeight: '{font.weight.bold}',
+    fontWeight: '{font.weight.semibold}',
     padding: '{spacing.0.5} {spacing.1.5}',
     gap: '{spacing.1}',
     borderRadius: '{content.border.radius}',

@@ -13,7 +13,7 @@ const feedback = shallowRef('')
         <component :is="headingTag" class="text-xl font-medium tracking-tight sm:text-2xl">
           Orders
         </component>
-        <p class="text-base leading-relaxed text-muted">
+        <p class="text-sm leading-relaxed text-muted">
           Manage orders from confirmation to delivery.
         </p>
       </div>

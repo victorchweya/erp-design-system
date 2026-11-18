@@ -72,9 +72,18 @@ const action = computed(() => {
       <template #title><h3 class="text-lg font-medium">Credit check</h3></template>
       <template #content>
         <div class="flex flex-col gap-4">
-          <Message severity="warn">
+          <Message
+            severity="warn"
+            :pt="{
+              content: { class: 'items-start' },
+              text: { class: 'min-w-0 flex-1' },
+            }"
+          >
             <template #icon
-              ><ExclamationTriangle size="var(--p-message-icon-size)" aria-hidden="true"
+              ><ExclamationTriangle
+                size="var(--p-message-icon-size)"
+                class="mt-0.5 shrink-0"
+                aria-hidden="true"
             /></template>
             <span class="text-sm font-normal"
               >{{ money(shortfall) }} over available credit. Resolve this before dispatch.</span

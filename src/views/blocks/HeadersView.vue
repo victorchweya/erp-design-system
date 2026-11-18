@@ -3,9 +3,11 @@ import BlockDoc from '@/components/blocks/BlockDoc.vue'
 import PageHeader01 from '@/components/blocks/headers/PageHeader01.vue'
 import PageHeader02 from '@/components/blocks/headers/PageHeader02.vue'
 import PageHeader03 from '@/components/blocks/headers/PageHeader03.vue'
+import PageHeader04 from '@/components/blocks/headers/PageHeader04.vue'
 import header01Code from '@/components/blocks/headers/PageHeader01.vue?raw'
 import header02Code from '@/components/blocks/headers/PageHeader02.vue?raw'
 import header03Code from '@/components/blocks/headers/PageHeader03.vue?raw'
+import header04Code from '@/components/blocks/headers/PageHeader04.vue?raw'
 
 const examples = [
   {
@@ -32,6 +34,14 @@ const examples = [
     component: PageHeader03,
     props: { headingTag: 'h3' },
     code: header03Code,
+  },
+  {
+    id: 'feature-status',
+    title: 'Feature status and action',
+    description: 'Pair a feature label and supporting text with one secondary action.',
+    component: PageHeader04,
+    props: { headingTag: 'h3' },
+    code: header04Code,
   },
 ]
 </script>

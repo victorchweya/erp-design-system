@@ -4,11 +4,6 @@ import CheckCircle from '@primeicons/vue/check-circle'
 import TimesCircle from '@primeicons/vue/times-circle'
 
 const state = shallowRef<'error' | 'loaded' | 'dismissed'>('error')
-const messageLayout = {
-  content: { class: 'items-start gap-3 p-4' },
-  text: { class: 'min-w-0 flex-1' },
-  closeButton: { class: '-mr-1 -mt-1' },
-}
 </script>
 
 <template>
@@ -19,7 +14,15 @@ const messageLayout = {
       :severity="state === 'error' ? 'error' : 'success'"
       closable
       :closeButtonProps="{ 'aria-label': 'Dismiss order history notice' }"
-      :pt="messageLayout"
+      :pt="
+        state === 'error'
+          ? {
+              content: { class: 'items-start' },
+              text: { class: 'min-w-0 flex-1' },
+              closeButton: { class: 'shrink-0 self-start' },
+            }
+          : undefined
+      "
       class="w-full"
       @close="state = 'dismissed'"
     >
@@ -27,22 +30,17 @@ const messageLayout = {
         <component
           :is="state === 'error' ? TimesCircle : CheckCircle"
           size="var(--p-message-icon-size)"
-          class="mt-0.5 shrink-0"
+          :class="['shrink-0', { 'mt-0.5': state === 'error' }]"
           aria-hidden="true"
         />
       </template>
-      <div class="flex min-w-0 flex-col gap-2 text-sm font-normal">
-        <p class="font-medium">
-          {{ state === 'error' ? 'Order history could not be loaded' : 'Order history loaded' }}
-        </p>
-        <p v-if="state === 'error'">Your order is safe. Try loading the history again.</p>
-        <p v-else>Order history loaded in this preview.</p>
-        <div v-if="state === 'error'" class="-ml-2 flex flex-wrap gap-2 pt-1">
-          <Button type="button" severity="danger" text size="small" @click="state = 'loaded'"
-            >Try again</Button
-          >
-        </div>
+      <div v-if="state === 'error'" class="flex min-w-0 flex-col items-start gap-2">
+        <span>Order history could not be loaded. Your order is safe.</span>
+        <Button type="button" severity="danger" outlined size="small" @click="state = 'loaded'"
+          >Try again</Button
+        >
       </div>
+      <span v-else>Order history loaded.</span>
     </Message>
     <Button
       v-if="state !== 'error'"

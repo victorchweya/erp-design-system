@@ -78,8 +78,15 @@ const css = /*css*/ `
     .p-inputtags .p-autocomplete {
         font-size: inherit;
     }
+    .p-inputgroupaddon:has(> .p-button) {
+        width: var(--p-inputgroup-addon-min-width);
+    }
     .p-inputgroupaddon > .p-button {
+        width: 100%;
+        align-self: stretch;
+        min-width: 0;
         border: 0;
+        border-radius: 0;
     }
     .p-inputtags .p-inputtags-item .p-chip-label {
         line-height: inherit;

@@ -5,11 +5,12 @@ import HeadersView from '@/views/blocks/HeadersView.vue'
 import PageHeader01 from '../headers/PageHeader01.vue'
 import PageHeader02 from '../headers/PageHeader02.vue'
 import PageHeader03 from '../headers/PageHeader03.vue'
+import PageHeader04 from '../headers/PageHeader04.vue'
 
 enableAutoUnmount(afterEach)
 const global = { plugins: [PrimeVue], stubs: { transition: false } }
 
-it.each([PageHeader01, PageHeader02, PageHeader03])(
+it.each([PageHeader01, PageHeader02, PageHeader03, PageHeader04])(
   'provides a section heading that can fit an embedded context',
   async (component) => {
     const wrapper = mount(component, { global })
@@ -23,8 +24,8 @@ it.each([PageHeader01, PageHeader02, PageHeader03])(
 it('keeps one page heading and announces actions in each gallery preview', async () => {
   const wrapper = mount(HeadersView, { global, attachTo: document.body })
   expect(wrapper.findAll('h1')).toHaveLength(1)
-  expect(wrapper.findAll('h3')).toHaveLength(3)
-  for (const component of [PageHeader01, PageHeader02, PageHeader03]) {
+  expect(wrapper.findAll('h3')).toHaveLength(4)
+  for (const component of [PageHeader01, PageHeader02, PageHeader03, PageHeader04]) {
     const block = wrapper.getComponent(component)
     expect(block.get('[role="status"]').text()).toBe('')
     await block.get('button').trigger('click')

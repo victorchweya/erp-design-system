@@ -4,11 +4,6 @@ import CheckCircle from '@primeicons/vue/check-circle'
 import ExclamationTriangle from '@primeicons/vue/exclamation-triangle'
 
 const state = shallowRef<'review' | 'reviewed' | 'dismissed'>('review')
-const messageLayout = {
-  content: { class: 'items-start gap-3 p-4' },
-  text: { class: 'min-w-0 flex-1' },
-  closeButton: { class: '-mr-1 -mt-1' },
-}
 </script>
 
 <template>
@@ -19,7 +14,15 @@ const messageLayout = {
       :severity="state === 'review' ? 'warn' : 'success'"
       closable
       :closeButtonProps="{ 'aria-label': 'Dismiss quantities notice' }"
-      :pt="messageLayout"
+      :pt="
+        state === 'review'
+          ? {
+              content: { class: 'items-start' },
+              text: { class: 'min-w-0 flex-1' },
+              closeButton: { class: 'shrink-0 self-start' },
+            }
+          : undefined
+      "
       class="w-full"
       @close="state = 'dismissed'"
     >
@@ -27,24 +30,17 @@ const messageLayout = {
         <component
           :is="state === 'review' ? ExclamationTriangle : CheckCircle"
           size="var(--p-message-icon-size)"
-          class="mt-0.5 shrink-0"
+          :class="['shrink-0', { 'mt-0.5': state === 'review' }]"
           aria-hidden="true"
         />
       </template>
-      <div class="flex min-w-0 flex-col gap-2 text-sm font-normal">
-        <p class="font-medium">
-          {{ state === 'review' ? 'Quantities need review' : 'Quantities reviewed' }}
-        </p>
-        <p v-if="state === 'review'">
-          Two items changed since this order was created. Review them before confirming.
-        </p>
-        <p v-else>Quantities reviewed in this preview. The order is ready for confirmation.</p>
-        <div v-if="state === 'review'" class="-ml-2 flex flex-wrap gap-2 pt-1">
-          <Button type="button" severity="warn" size="small" text @click="state = 'reviewed'"
-            >Mark as reviewed</Button
-          >
-        </div>
+      <div v-if="state === 'review'" class="flex min-w-0 flex-col items-start gap-2">
+        <span>Two quantities changed. Review them before confirming.</span>
+        <Button type="button" severity="warn" size="small" outlined @click="state = 'reviewed'"
+          >Mark as reviewed</Button
+        >
       </div>
+      <span v-else>Quantities reviewed. The order is ready for confirmation.</span>
     </Message>
     <Button
       v-if="state !== 'review'"

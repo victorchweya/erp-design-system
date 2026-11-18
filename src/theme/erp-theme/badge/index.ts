@@ -2,7 +2,7 @@ export const root = {
     borderRadius: '{border.radius.md}',
     padding: '0 0.5rem',
     fontSize: '{font.size.xs}',
-    fontWeight: '{font.weight.bold}',
+    fontWeight: '{font.weight.semibold}',
     minWidth: '1.5rem',
     height: '1.5rem'
 };
