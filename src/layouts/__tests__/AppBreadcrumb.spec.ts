@@ -35,4 +35,9 @@ it('updates the breadcrumb and current page when navigating between sections', a
     expect(breadcrumb.get('[aria-current="page"]').text()).toBe('Button')
     expect(breadcrumb.findAll('[aria-current="page"]')).toHaveLength(1)
   }
+
+  await router.push('/ui-blocks')
+  expect(router.currentRoute.value.path).toBe('/ui-blocks/headers')
+  expect(breadcrumb.text()).toContain('UI blocks')
+  expect(breadcrumb.get('[aria-current="page"]').text()).toBe('Headers')
 })

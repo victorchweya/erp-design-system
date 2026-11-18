@@ -7,6 +7,7 @@ import { createMemoryHistory, createRouter } from 'vue-router'
 import appRouter from '@/router'
 import AppMenu from '../components/AppMenu.vue'
 import { componentPages } from '@/data/component-pages'
+import { blockPages } from '@/data/block-pages'
 
 enableAutoUnmount(afterEach)
 
@@ -42,6 +43,7 @@ it('navigates to the documentation pages and marks the current link', async () =
     '/foundations/icons',
     '/foundations/typography',
     '/components/core-elements/button',
+    '/ui-blocks/headers',
   ]) {
     await wrapper.get(`a[href="${path}"]`).trigger('click')
     await expect.poll(() => router.currentRoute.value.path).toBe(path)
@@ -54,7 +56,7 @@ it('navigates to the documentation pages and marks the current link', async () =
       path !== '/general',
     )
   }
-  expect(wrapper.emitted('navigate')).toHaveLength(7)
+  expect(wrapper.emitted('navigate')).toHaveLength(8)
   await router.push('/general')
   await flushPromises()
   expect(wrapper.find('.menu-group:has([aria-current="page"])').exists()).toBe(false)
@@ -79,4 +81,21 @@ it('opens every component page and keeps its group and current link active', asy
     ])
   }
   expect(wrapper.emitted('navigate')).toHaveLength(componentPages.length)
+})
+
+it('opens every block category with the correct active link and breadcrumb', async () => {
+  const router = createRouter({ history: createMemoryHistory(), routes: appRouter.options.routes })
+  await router.push('/ui-blocks')
+  await router.isReady()
+  const wrapper = mount(AppMenu, { global: { plugins: [router] } })
+  for (const page of blockPages) {
+    await wrapper.get(`a[href="${page.path}"]`).trigger('click')
+    await expect.poll(() => router.currentRoute.value.path).toBe(page.path)
+    await flushPromises()
+    const current = wrapper.get('a[aria-current="page"]')
+    expect(current.attributes('href')).toBe(page.path)
+    expect(current.element.closest('details')?.open).toBe(true)
+    expect(router.currentRoute.value.meta.breadcrumb).toEqual(['UI blocks', page.label])
+  }
+  expect(wrapper.emitted('navigate')).toHaveLength(blockPages.length)
 })

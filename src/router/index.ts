@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import { componentPages } from '@/data/component-pages'
+import { blockPages } from '@/data/block-pages'
 
 declare module 'vue-router' {
   interface RouteMeta {
@@ -23,6 +24,16 @@ const router = createRouter({
       path: page.path,
       name: `component-${page.path.split('/').pop()}`,
       meta: { breadcrumb: ['Components', page.group, page.label] },
+      component: page.load,
+    })),
+    {
+      path: '/ui-blocks',
+      redirect: '/ui-blocks/headers',
+    },
+    ...blockPages.map((page) => ({
+      path: page.path,
+      name: `blocks-${page.path.split('/').pop()}`,
+      meta: { breadcrumb: ['UI blocks', page.label] },
       component: page.load,
     })),
     {

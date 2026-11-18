@@ -3,6 +3,7 @@ import AngleDown from '@primeicons/vue/angle-down'
 import { computed } from 'vue'
 import { RouterLink, useRoute } from 'vue-router'
 import { componentPages } from '@/data/component-pages'
+import { blockPages } from '@/data/block-pages'
 
 defineEmits<{ navigate: [] }>()
 
@@ -39,6 +40,11 @@ const groups: MenuGroup[] = [
     items: componentPages
       .filter((page) => page.group === 'Forms')
       .map((page) => ({ label: page.label, to: page.path })),
+  },
+  {
+    id: 'ui-blocks',
+    label: 'UI blocks',
+    items: blockPages.map((page) => ({ label: page.label, to: page.path })),
   },
 ]
 const menuGroups = computed(() =>

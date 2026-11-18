@@ -1,6 +1,6 @@
 # ERP Design System
 
-FTF design-system foundations and component documentation, built with Vue 3, TypeScript, PrimeVue, and Tailwind CSS. The ERP theme is a standalone local preset.
+FTF design-system foundations, component documentation, and UI blocks, built with Vue 3, TypeScript, PrimeVue, and Tailwind CSS. The ERP theme is a standalone local preset.
 
 ## Getting started
 
@@ -29,6 +29,39 @@ Open `/foundations/spacing` for the spacing scale, padding and gap examples, Pri
 Open `/foundations/icons` for PrimeIcons imports, sizes, semantic colours, button examples, accessibility guidance, and the full searchable icon library. All examples use the installed `@primeicons/vue` package.
 
 General (`/general`) and the Motion foundation page are still placeholders.
+
+## UI blocks
+
+Open `/ui-blocks` for the pattern library. All nine categories are available from the sidebar, with 26 working examples adapted to the local ERP theme and installed PrimeVue version.
+
+| Category | Route | Patterns |
+| --- | --- | --- |
+| Headers | `/ui-blocks/headers` | Primary action, status and actions, record detail |
+| Navigation | `/ui-blocks/navigation` | AnchorNav article, record tabs |
+| Feedback | `/ui-blocks/feedback` | Alert with action, error and retry, empty state |
+| Tables | `/ui-blocks/tables` | Search/filter/pagination, selection and bulk actions |
+| Drawers | `/ui-blocks/drawers` | Full/half/third/quarter widths, record details, validated edit form |
+| Forms | `/ui-blocks/forms` | Supplier details with validation, explicit filter form |
+| Authentication | `/ui-blocks/authentication` | Sign in, sign up, forgot/reset password, email verification, two-factor authentication |
+| Modals | `/ui-blocks/modals` | ConfirmDialog, assignment Dialog |
+| Popups | `/ui-blocks/popups` | ConfirmPopup, customer Popover, actions Menu |
+
+Each block has Preview and Code views with copyable Vue source. Examples live in `src/components/blocks/`; the galleries import their source directly so the copied code matches the preview. Actions use local state and never send data to a backend. Connect them to application navigation and data when reusing the source. Headers default to `h1`; the gallery passes `headingTag="h3"` to preserve its heading hierarchy.
+
+[BlockDoc.vue](src/components/blocks/BlockDoc.vue) provides the shared gallery layout. [CodeExample.vue](src/components/CodeExample.vue) provides Preview/Code switching through its optional `tabbed` prop; existing foundation and component examples keep their stacked layout. The [block page registry](src/data/block-pages.ts) drives both routes and sidebar entries.
+
+Tables combine search and status filters, reset pagination when filtering, and limit bulk updates to selected rows. Drawer and modal edits commit only on Save; cancellation leaves saved values intact. Supplier validation uses the installed `@primevue/forms` package. Dialogs use native focus trapping and restoration; drawers explicitly restore trigger focus. The article-navigation example reuses `AnchorNav` and `useActiveSection`, which must also be available when copying it into another project.
+
+Authentication patterns also use `@primevue/forms`. They validate input locally without authenticating users, sending email, changing passwords, or verifying tokens and codes. Connect them to an authentication service and replace example anchor links with product routes. New-password examples use a 12-character minimum; sign-in does not impose that policy on existing passwords.
+
+`ConfirmDialog` and `ConfirmPopup` use `useConfirm` and the `ConfirmationService` plugin, registered once in `src/main.ts`. When copying them to another application, add the plugin before mounting:
+
+```ts
+import ConfirmationService from 'primevue/confirmationservice'
+app.use(ConfirmationService)
+```
+
+Each confirmation uses a per-instance group to keep callbacks isolated. ConfirmPopup also receives its trigger as `target` for positioning. Both initially focus the reject action and update local records only after acceptance. Popover and popup Menu use template refs and do not require the service.
 
 Light mode is the default. The header's sun/moon button switches modes and remembers the selection in this browser. PrimeVue and Tailwind share the `.app-dark` selector.
 
@@ -102,6 +135,7 @@ Smooth scrolling is set on `html` and respects reduced-motion preferences. Secti
 - Favicon: `public/favicon.svg`, a copy of the brand symbol.
 - Global styles: `src/assets/styles/main.css`.
 - Component pages: `src/views/components/`; examples and their copyable source: `src/components/docs/`.
+- UI blocks: `src/views/blocks/`; copyable block examples: `src/components/blocks/`.
 - App shell: `src/layouts/`, adapted from the FTF sidebar and top app navigation.
 - PrimeVue components are auto-imported in templates; `src/components.d.ts` is generated.
 - PrimeIcons are SVG components from `@primeicons/vue`; import individual icons as needed.
