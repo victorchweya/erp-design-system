@@ -68,8 +68,9 @@ const activeSection = useActiveSection(sections.map(({ id }) => id))
         >
           <h2 id="icons-buttons-title" class="text-2xl font-medium">With buttons</h2>
           <p class="text-muted-color">
-            Use 16px icons in small buttons and 20px icons in default buttons. Let the icon inherit
-            the button’s colour. Give icon-only buttons a label that describes the action.
+            Use 12px icons in small controls and chips, and 16px icons in default and large
+            controls. Reserve 20px icons for larger standalone actions. Let the icon inherit the
+            button’s colour. Give icon-only buttons a label that describes the action.
           </p>
           <CodeExample title="Button icons" :code="buttonCode">
             <IconButtonExample />

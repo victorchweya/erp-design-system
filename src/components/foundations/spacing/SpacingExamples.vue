@@ -1,30 +1,5 @@
 <script setup lang="ts">
-import { spacing } from '@/theme/erp-theme/foundations/spacing'
-
-const controls = [
-  {
-    label: 'Small',
-    size: 'small',
-    x: 2.5,
-    y: 1.5,
-    token: 'form.field.sm',
-    utility: 'px-2.5 py-1.5',
-  },
-  { label: 'Default', size: undefined, x: 3, y: 2, token: 'form.field', utility: 'px-3 py-2' },
-  {
-    label: 'Large',
-    size: 'large',
-    x: 3.5,
-    y: 2.5,
-    token: 'form.field.lg',
-    utility: 'px-3.5 py-2.5',
-  },
-] as const
-const examples = controls.map((control) => ({
-  ...control,
-  horizontal: `${Number.parseFloat(spacing[control.x]) * 16}px`,
-  vertical: `${Number.parseFloat(spacing[control.y]) * 16}px`,
-}))
+import ControlDensityExample from './ControlDensityExample.vue'
 </script>
 
 <template>
@@ -79,40 +54,13 @@ const examples = controls.map((control) => ({
   >
     <h2 id="spacing-controls-title" class="text-2xl font-medium">Control spacing</h2>
     <p class="text-muted-color">
-      PrimeVue buttons and inputs share form.field padding tokens. Use the component’s size property
-      to change density. The utilities below describe the equivalent padding; they do not need to be
-      added to the controls.
+      Compact controls share one theme scale. Use size="small" for dense actions, the default for
+      ordinary forms, and size="large" for more prominent controls. At a 16px root, single-line
+      controls are approximately 31px, 35px, and 42px high, including borders. Textareas and chip
+      fields grow with content.
     </p>
-    <div class="grid gap-4 lg:grid-cols-3">
-      <Card v-for="control in examples" :key="control.label" class="min-w-0">
-        <template #title
-          ><h3>{{ control.label }}</h3></template
-        >
-        <template #content>
-          <div class="flex flex-col items-start gap-4">
-            <InputText
-              modelValue="Fresh produce"
-              :size="control.size"
-              readonly
-              :aria-label="`${control.label} input spacing example`"
-              class="w-full"
-            />
-            <Button :size="control.size">Confirm order</Button>
-          </div>
-        </template>
-        <template #footer>
-          <div class="flex flex-col gap-1">
-            <p class="text-sm text-muted-color">
-              {{ control.horizontal }} horizontal / {{ control.vertical }} vertical
-            </p>
-            <code class="text-xs text-muted-color">{{ control.utility }}</code>
-            <code class="break-all text-xs text-muted-color"
-              >{{ control.token }}.padding.x / .y</code
-            >
-          </div>
-        </template>
-      </Card>
-    </div>
+    <ControlDensityExample />
+
     <p class="text-sm text-muted-color">
       Cards use 20px padding and 8px gaps. Some existing component internals use 18px padding or a
       26px alignment margin; these remain component-specific rather than new scale steps.

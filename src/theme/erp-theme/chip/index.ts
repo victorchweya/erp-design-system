@@ -1,9 +1,9 @@
 export const root = {
     focusBackground: '{content.hover.background}',
     borderRadius: '16px',
-    paddingX: '0.75rem',
-    paddingY: '0.5rem',
-    gap: '0.5rem',
+    paddingX: '{spacing.2}',
+    paddingY: '{spacing.1}',
+    gap: '{spacing.1}',
     transitionDuration: '{transition.duration}'
 };
 
@@ -13,16 +13,16 @@ export const label = {
 };
 
 export const image = {
-    width: '2rem',
-    height: '2rem'
+    width: '{spacing.6}',
+    height: '{spacing.6}'
 };
 
 export const icon = {
-    size: '1rem'
+    size: '{font.size.xs}'
 };
 
 export const removeIcon = {
-    size: '1rem',
+    size: '{font.size.xs}',
     focusRing: {
         width: '{focus.ring.width}',
         style: '{focus.ring.style}',

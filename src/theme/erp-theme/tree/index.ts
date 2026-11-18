@@ -8,6 +8,7 @@ export const root = {
 };
 
 export const node = {
+    label: { fontSize: '{form.field.font.size}' },
     padding: '0.25rem 0.5rem',
     borderRadius: '{content.border.radius}',
     hoverBackground: '{content.hover.background}',

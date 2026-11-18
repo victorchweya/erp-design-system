@@ -52,21 +52,21 @@ const specimens = [
     label: 'Body',
     size: 'base',
     weight: 'normal',
-    description: 'Body copy and the default PrimeVue control size.',
+    description: 'Body copy and large controls.',
   },
   {
     id: 'typography-body-small',
     label: 'Body small',
     size: 'sm',
     weight: 'normal',
-    description: 'Navigation, tables, supporting copy, and small controls.',
+    description: 'Navigation, tables, supporting copy, small/default controls, and chips.',
   },
   {
     id: 'typography-caption',
     label: 'Caption',
     size: 'xs',
     weight: 'medium',
-    description: 'Short captions and compact metadata. Keep essential reading at body sizes.',
+    description: 'Short captions and compact metadata.',
   },
 ] satisfies {
   id: string
@@ -131,10 +131,9 @@ const weights = [
             for supporting text.
           </p>
           <p class="leading-relaxed text-muted-color">
-            PrimeVue uses the same sizes and weights. Default controls use 16px; small and large
-            controls use 14px and 18px. Component spacing and line heights retain PrimeVue’s layout.
-            Measurements below assume the browser’s default 16px root size; rem units respect font
-            preferences.
+            PrimeVue uses the same sizes and weights. Small and default controls use 14px; large
+            controls use 16px. Body text stays at 16px. Measurements below assume the browser’s
+            default 16px root size; rem units respect font preferences.
           </p>
         </section>
 

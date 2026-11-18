@@ -3,7 +3,7 @@ export const root = {
 };
 
 export const button = {
-    width: '2.5rem',
+    width: '{control.md.height}',
     borderRadius: '{form.field.border.radius}',
     verticalPadding: '{form.field.padding.y}'
 };

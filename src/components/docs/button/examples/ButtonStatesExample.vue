@@ -36,7 +36,7 @@ onBeforeUnmount(() => {
       >
         <Spinner
           v-if="state === 'loading'"
-          :size="20"
+          :size="16"
           class="motion-safe:animate-spin"
           aria-hidden="true"
           focusable="false"

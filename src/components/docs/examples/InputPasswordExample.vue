@@ -26,9 +26,9 @@ const mask = shallowRef(true)
           :aria-pressed="!mask"
           aria-controls="account-password"
           @click="mask = !mask"
-          ><Eye v-if="mask" :size="20" aria-hidden="true" /><EyeSlash
+          ><Eye v-if="mask" :size="16" aria-hidden="true" /><EyeSlash
             v-else
-            :size="20"
+            :size="16"
             aria-hidden="true" /></Button></InputGroupAddon
     ></InputGroup>
     <p id="password-help" class="text-muted-color">

@@ -1,6 +1,10 @@
+import { controlSizes } from '../foundations/controls';
+
+const contentPadding = Object.fromEntries(controlSizes.map(({ key, x, y }) => [key, `{spacing.${y - 0.5}} {spacing.${x - 0.5}}`]));
+
 export const root = {
     fontSize: '{form.field.font.size}',
-    padding: '0.25rem',
+    padding: '{spacing.0.5}',
     borderRadius: '{content.border.radius}',
     gap: '0.5rem',
     fontWeight: '{font.weight.medium}',
@@ -18,11 +22,11 @@ export const root = {
     transitionDuration: '{form.field.transition.duration}',
     sm: {
         fontSize: '{form.field.sm.font.size}',
-        padding: '0.25rem'
+        padding: '{spacing.0.5}'
     },
     lg: {
         fontSize: '{form.field.lg.font.size}',
-        padding: '0.25rem'
+        padding: '{spacing.0.5}'
     }
 };
 
@@ -31,14 +35,14 @@ export const icon = {
 };
 
 export const content = {
-    padding: '0.25rem 0.75rem',
+    padding: contentPadding.md,
     borderRadius: '{content.border.radius}',
     checkedShadow: '0px 1px 2px 0px rgba(0, 0, 0, 0.02), 0px 1px 2px 0px rgba(0, 0, 0, 0.04)',
     sm: {
-        padding: '0.25rem 0.75rem'
+        padding: contentPadding.sm
     },
     lg: {
-        padding: '0.25rem 0.75rem'
+        padding: contentPadding.lg
     }
 };
 

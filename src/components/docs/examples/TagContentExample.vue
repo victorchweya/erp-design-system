@@ -4,7 +4,7 @@ import Check from '@primeicons/vue/check'
 
 <template>
   <div class="flex flex-wrap items-center gap-3">
-    <Tag severity="success"><Check :size="14" aria-hidden="true" />Completed</Tag>
+    <Tag severity="success"><Check :size="12" aria-hidden="true" />Completed</Tag>
     <Tag severity="warn" rounded>Awaiting review</Tag><Tag severity="secondary">Vegetables</Tag>
   </div>
 </template>

@@ -5,18 +5,18 @@ export const root = {
     gap: '{spacing.2}',
     paddingX: '{form.field.padding.x}',
     paddingY: '{form.field.padding.y}',
-    iconOnlyWidth: '2.5rem',
+    iconOnlyWidth: '{control.md.height}',
     sm: {
         fontSize: '{form.field.sm.font.size}',
         paddingX: '{form.field.sm.padding.x}',
         paddingY: '{form.field.sm.padding.y}',
-        iconOnlyWidth: '2rem'
+        iconOnlyWidth: '{control.sm.height}'
     },
     lg: {
         fontSize: '{form.field.lg.font.size}',
         paddingX: '{form.field.lg.padding.x}',
         paddingY: '{form.field.lg.padding.y}',
-        iconOnlyWidth: '3rem'
+        iconOnlyWidth: '{control.lg.height}'
     },
     label: {
         fontWeight: '{font.weight.medium}'

@@ -39,7 +39,7 @@ export const root = {
 };
 
 export const dropdown = {
-    width: '2.5rem',
+    width: '{control.md.height}',
     color: '{form.field.icon.color}'
 };
 
@@ -60,7 +60,7 @@ export const list = {
 };
 
 export const option = {
-    fontSize: '{font.size.base}',
+    fontSize: '{form.field.font.size}',
     fontWeight: '{font.weight.normal}',
     selectedFontWeight: '{font.weight.medium}',
     focusBackground: '{list.option.focus.background}',

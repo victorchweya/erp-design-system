@@ -20,10 +20,10 @@ const filters = ref(['Vegetables', 'In season', 'Local'])
             text
             iconOnly
             severity="secondary"
-            class="h-6 w-6 p-0"
+            size="small"
             :aria-label="`Remove ${filter}`"
             @click="removeCallback"
-            ><Times :size="14" aria-hidden="true"
+            ><Times :size="12" aria-hidden="true"
           /></Button>
         </template>
       </Chip>

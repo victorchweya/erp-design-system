@@ -12,6 +12,7 @@ import { brandTokenReferences, primitives } from '../palette'
 import { colorRoles, colorValue, contrastRatio, roleByName, semanticColors } from '../color-tokens'
 import { fontSizes, fontWeights } from '../typography'
 import { spacing } from '../spacing'
+import { controlSizes } from '../controls'
 
 const tailwindConfig = loadConfig(resolve('tailwind.config.js'))
 const previousTheme = Theme.getTheme() ?? {}
@@ -29,19 +30,34 @@ it('keeps shared PrimeVue spacing aligned with Tailwind and preserves control de
   for (const [step, value] of Object.entries(spacing)) {
     expect($dt(`spacing.${step}`).value).toBe(value)
   }
-  for (const [size, x, y] of [
-    ['', spacing[3], spacing[2]],
-    ['sm.', spacing[2.5], spacing[1.5]],
-    ['lg.', spacing[3.5], spacing[2.5]],
-  ]) {
-    for (const group of ['form.field', 'button', 'inputtext', 'select', 'textarea']) {
-      expect($dt(`${group}.${size}padding.x`).value).toBe(x)
-      expect($dt(`${group}.${size}padding.y`).value).toBe(y)
+  for (const { key, x, y, font } of controlSizes) {
+    const size = key === 'md' ? '' : `${key}.`
+    for (const group of [
+      'form.field',
+      'button',
+      'inputtext',
+      'select',
+      'multiselect',
+      'cascadeselect',
+      'treeselect',
+      'textarea',
+    ]) {
+      expect($dt(`${group}.${size}padding.x`).value).toBe(spacing[x])
+      expect($dt(`${group}.${size}padding.y`).value).toBe(spacing[y])
+      expect($dt(`${group}.${size}font.size`).value).toBe(fontSizes[font][0])
+    }
+    for (const token of [
+      `button.${size}icon.only.width`,
+      `autocomplete.dropdown.${size}width`,
+      `datepicker.dropdown.${size}width`,
+      `inputotp.input.${size}width`,
+    ]) {
+      expect($dt(token).value).toContain($dt(`control.${key}.height`).value)
     }
   }
   expect($dt('card.body.padding').value).toBe(spacing[5])
   expect($dt('card.body.gap').value).toBe(spacing[2])
-  expect($dt('tag.padding').value).toBe(`${spacing[1]} ${spacing[2]}`)
+  expect($dt('tag.padding').value).toBe(`${spacing[0.5]} ${spacing[1.5]}`)
   expect($dt('datatable.body.cell.padding').value).toBe(`${spacing[3]} ${spacing[4]}`)
   expect($dt('dialog.content.padding').value).toBe(`0 ${spacing[5]} ${spacing[5]} ${spacing[5]}`)
 })
@@ -59,7 +75,6 @@ it('keeps the public PrimeVue typography scale aligned with default Tailwind uti
     expect($dt(`font.weight.${name}`).value).toBe(value)
   }
   for (const token of [
-    'typography.font.size',
     'form.field.font.size',
     'button.font.size',
     'inputtext.font.size',
@@ -70,11 +85,12 @@ it('keeps the public PrimeVue typography scale aligned with default Tailwind uti
     'textarea.font.size',
     'togglebutton.font.size',
   ]) {
-    expect($dt(token).value).toBe(fontSizes.base[0])
+    expect($dt(token).value).toBe(fontSizes.sm[0])
   }
+  expect($dt('typography.font.size').value).toBe(fontSizes.base[0])
   expect($dt('typography.line.height').value).toBe('1.5')
   expect($dt('button.sm.font.size').value).toBe(fontSizes.sm[0])
-  expect($dt('inputtext.lg.font.size').value).toBe(fontSizes.lg[0])
+  expect($dt('inputtext.lg.font.size').value).toBe(fontSizes.base[0])
   expect($dt('badge.sm.font.size').value).toBe(fontSizes.xs[0])
   expect($dt('stepper.step.number.font.size').value).toBe(fontSizes.lg[0])
   expect($dt('avatar.xl.font.size').value).toBe(fontSizes['3xl'][0])
@@ -138,7 +154,7 @@ it('styles current multi-value and colour controls with resolved shared theme to
   ])
     expect($dt(token).value, token).toBeDefined()
   for (const component of ['autocomplete', 'select', 'multiselect', 'listbox', 'cascadeselect']) {
-    expect($dt(`${component}.option.font.size`).value).toBe(fontSizes.base[0])
+    expect($dt(`${component}.option.font.size`).value).toBe(fontSizes.sm[0])
     expect($dt(`${component}.option.font.weight`).value).toBe(fontWeights.normal)
   }
 })

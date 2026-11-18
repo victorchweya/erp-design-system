@@ -8,18 +8,18 @@ import Heart from '@primeicons/vue/heart'
 <template>
   <div class="flex flex-wrap items-center gap-4">
     <Button type="button">
-      <Plus :size="20" class="shrink-0" aria-hidden="true" focusable="false" />
+      <Plus :size="16" class="shrink-0" aria-hidden="true" focusable="false" />
       Add produce
     </Button>
     <Button type="button" severity="secondary" outlined>
       Continue
-      <ArrowRight :size="20" class="shrink-0" aria-hidden="true" focusable="false" />
+      <ArrowRight :size="16" class="shrink-0" aria-hidden="true" focusable="false" />
     </Button>
     <Button type="button" iconOnly outlined aria-label="Search produce">
-      <Search :size="20" aria-hidden="true" focusable="false" />
+      <Search :size="16" aria-hidden="true" focusable="false" />
     </Button>
     <Button type="button" iconOnly rounded text aria-label="Save favourite">
-      <Heart :size="20" aria-hidden="true" focusable="false" />
+      <Heart :size="16" aria-hidden="true" focusable="false" />
     </Button>
   </div>
 </template>

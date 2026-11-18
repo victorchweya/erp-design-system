@@ -114,9 +114,15 @@ Fixed brand colours and raw FTF ramps keep their values across modes. Raw ramp u
 
 Typography uses Rubik and Tailwind's default type scale without custom size utilities. [typography.ts](src/theme/erp-theme/foundations/typography.ts) keeps a local copy of the default sizes, line heights, and the four UI weights for the standalone PrimeVue preset and documentation. The integration check verifies these against Tailwind's installed defaults and resolved configuration.
 
-PrimeVue font sizes reference `font.size.*` tokens and weights reference `font.weight.*`. Default controls use `text-base` (16px), small controls use `text-sm` (14px), and large controls use `text-lg` (18px). Component line heights retain PrimeVue's layout; Tailwind text utilities include their default line heights. The root font size stays at the browser default so rem units respect user preferences.
+PrimeVue font sizes reference `font.size.*` tokens and weights reference `font.weight.*`. Small and default controls use `text-sm` (14px); large controls use `text-base` (16px). Body text remains 16px. Component line heights retain PrimeVue's layout; Tailwind text utilities include their default line heights. The root font size stays at the browser default so rem units respect user preferences.
 
 ## Spacing
+
+Control density is defined once in [controls.ts](src/theme/erp-theme/foundations/controls.ts): small uses 8px horizontal / 4px vertical padding, default 10px / 6px, and large 12px / 8px. Single-line heights are approximately 31px, 35px, and 42px at a 16px root, including borders. Icon-only button widths, dropdown triggers, number steppers, OTP cells, and input-group add-ons follow the same scale. Textareas, wrapping labels, and chip fields grow with content. Checkbox, radio, and switch retain their native size hierarchy.
+
+Tags use 12px text with 2px vertical / 6px horizontal padding (approximately 22px high at a 16px root). Small controls and chips use 14px text with 12px icons (including chip remove icons). Default and large control icons use 16px. Badge sizes retain their existing scale.
+
+PrimeVue 5.0.5 has incomplete size support for some trigger widths and nested chip inputs. The preset's shared CSS adapts those using the same control tokens; keep these adjustments in the preset rather than page-level padding or height overrides. Review all three sizes in **Foundations → Spacing → Control spacing**, including states, grouped controls, chips, light/dark mode, and narrow screens when changing density.
 
 Spacing uses Tailwind v3's default scale. [spacing.ts](src/theme/erp-theme/foundations/spacing.ts) keeps the matching values local for the standalone preset and documentation; the integration check verifies them against the installed Tailwind defaults. Shared form fields, lists, navigation, overlays, buttons, cards, tags, tables, and dialogs reference `spacing.*` tokens. Existing component-specific 18px padding and the Stepper's 26px alignment margin remain unchanged.
 

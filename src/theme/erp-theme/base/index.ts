@@ -1,9 +1,11 @@
 import { brandTokenReferences, primitives } from '../foundations/palette'
 import { fontFamily, fontTokens } from '../foundations/typography'
 import { borderRadii, spacing } from '../foundations/spacing'
+import { controlTokens } from '../foundations/controls'
 
 export const primitive = {
     font: fontTokens,
+    control: controlTokens,
     spacing,
     // The namespace separates FTF tokens from inherited component palette names.
     ftf: {
@@ -67,19 +69,19 @@ export const semantic = {
         950: '{ftf.green.950}'
     },
     formField: {
-        fontSize: '{typography.font.size}',
+        fontSize: '{control.md.font.size}',
         fontWeight: '{typography.font.weight}',
-        paddingX: '{spacing.3}',
-        paddingY: '{spacing.2}',
+        paddingX: '{control.md.padding.x}',
+        paddingY: '{control.md.padding.y}',
         sm: {
-            fontSize: '{font.size.sm}',
-            paddingX: '{spacing.2.5}',
-            paddingY: '{spacing.1.5}'
+            fontSize: '{control.sm.font.size}',
+            paddingX: '{control.sm.padding.x}',
+            paddingY: '{control.sm.padding.y}'
         },
         lg: {
-            fontSize: '{font.size.lg}',
-            paddingX: '{spacing.3.5}',
-            paddingY: '{spacing.2.5}'
+            fontSize: '{control.lg.font.size}',
+            paddingX: '{control.lg.padding.x}',
+            paddingY: '{control.lg.padding.y}'
         },
         borderRadius: '{border.radius.md}',
         focusRing: {
@@ -98,11 +100,11 @@ export const semantic = {
             padding: '{spacing.2} {spacing.4} {spacing.1} {spacing.4}'
         },
         option: {
-            padding: '{spacing.2} {spacing.3}',
+            padding: '{form.field.padding.y} {form.field.padding.x}',
             borderRadius: '{border.radius.sm}'
         },
         optionGroup: {
-            padding: '{spacing.2} {spacing.3}',
+            padding: '{form.field.padding.y} {form.field.padding.x}',
             fontWeight: '{font.weight.semibold}'
         }
     },

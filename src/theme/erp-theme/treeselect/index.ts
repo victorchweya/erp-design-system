@@ -39,7 +39,7 @@ export const root = {
 };
 
 export const dropdown = {
-    width: '2.5rem',
+    width: '{control.md.height}',
     color: '{form.field.icon.color}'
 };
 

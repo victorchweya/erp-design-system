@@ -6,8 +6,9 @@ import ExclamationTriangle from '@primeicons/vue/exclamation-triangle'
 import TimesCircle from '@primeicons/vue/times-circle'
 
 const sizes = [
-  { pixels: 16, usage: 'Small buttons and inline text' },
-  { pixels: 20, usage: 'Default buttons and navigation' },
+  { pixels: 12, usage: 'Small controls and chips' },
+  { pixels: 16, usage: 'Default and large controls' },
+  { pixels: 20, usage: 'Larger standalone actions and navigation' },
   { pixels: 24, usage: 'Standalone icons' },
   { pixels: 32, usage: 'Feature and empty-state icons' },
 ]
@@ -29,10 +30,10 @@ const colours = [
   >
     <h2 id="icons-sizes-title" class="text-2xl font-medium">Sizes</h2>
     <p class="text-muted-color">
-      Use 16, 20, 24, or 32px to match the surrounding content. The size property sets both width
-      and height. Keep the icon size consistent within a group.
+      Use 12, 16, 20, 24, or 32px to match the surrounding content. The size property sets both
+      width and height. Keep the icon size consistent within a group.
     </p>
-    <div class="grid grid-cols-2 gap-4 lg:grid-cols-4">
+    <div class="grid grid-cols-2 gap-4 lg:grid-cols-5">
       <Card v-for="size in sizes" :key="size.pixels" class="min-w-0">
         <template #content>
           <div class="flex h-12 items-center text-primary">

@@ -14,8 +14,9 @@ export const navButton = {
     color: '{text.muted.color}',
     hoverColor: '{text.hover.muted.color}',
     selectedColor: '{highlight.color}',
-    width: '2.5rem',
-    height: '2.5rem',
+    fontSize: '{form.field.font.size}',
+    width: '{control.md.height}',
+    height: '{control.md.height}',
     borderRadius: '50%',
     focusRing: {
         width: '{focus.ring.width}',
@@ -27,6 +28,7 @@ export const navButton = {
 };
 
 export const currentPageReport = {
+    fontSize: '{form.field.font.size}',
     color: '{text.muted.color}'
 };
 

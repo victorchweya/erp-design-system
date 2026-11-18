@@ -19,7 +19,7 @@ export const list = {
 };
 
 export const option = {
-    fontSize: '{font.size.base}',
+    fontSize: '{form.field.font.size}',
     fontWeight: '{font.weight.normal}',
     selectedFontWeight: '{font.weight.medium}',
     focusBackground: '{list.option.focus.background}',

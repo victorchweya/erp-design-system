@@ -40,7 +40,7 @@ export const list = {
 };
 
 export const option = {
-    fontSize: '{font.size.base}',
+    fontSize: '{form.field.font.size}',
     fontWeight: '{font.weight.normal}',
     focusBackground: '{list.option.focus.background}',
     selectedBackground: '{list.option.selected.background}',
@@ -62,12 +62,12 @@ export const optionGroup = {
 };
 
 export const dropdown = {
-    width: '2.5rem',
+    width: '{control.md.height}',
     sm: {
-        width: '2rem'
+        width: '{control.sm.height}'
     },
     lg: {
-        width: '3rem'
+        width: '{control.lg.height}'
     },
     borderColor: '{form.field.border.color}',
     hoverBorderColor: '{form.field.border.color}',

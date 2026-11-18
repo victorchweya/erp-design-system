@@ -25,12 +25,12 @@ export const title = {
 };
 
 export const dropdown = {
-    width: '2.5rem',
+    width: '{control.md.height}',
     sm: {
-        width: '2rem'
+        width: '{control.sm.height}'
     },
     lg: {
-        width: '3rem'
+        width: '{control.lg.height}'
     },
     borderColor: '{form.field.border.color}',
     hoverBorderColor: '{form.field.border.color}',
