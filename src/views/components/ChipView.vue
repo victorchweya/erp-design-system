@@ -49,7 +49,7 @@ const accessibility = [
 <template>
   <ComponentDoc
     title="Chip"
-    category="Core elements"
+    category="Misc"
     description="Represent selected items, filters, or people in a compact form."
     usage="Use label for the item name. Enable removable when users can remove a selection and update the backing collection on remove."
     :examples="examples"

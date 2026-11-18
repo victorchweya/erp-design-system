@@ -22,7 +22,7 @@ const accessibility = [
   <ComponentDoc
     title="Tooltip"
     componentName="Tooltip"
-    category="Overlays"
+    category="Overlay"
     description="Show supplementary help on keyboard focus."
     usage="is a directive. Import it explicitly as vTooltip when copying the example."
     :examples="examples"

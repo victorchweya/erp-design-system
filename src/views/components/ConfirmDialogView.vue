@@ -23,7 +23,7 @@ const accessibility = [
   <ComponentDoc
     title="ConfirmDialog"
     componentName="ConfirmDialog"
-    category="Overlays"
+    category="Overlay"
     description="Ask for confirmation before committing an action."
     usage="uses useConfirm with the ConfirmationService registered once in main.ts."
     :examples="examples"

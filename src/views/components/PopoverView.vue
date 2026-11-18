@@ -23,7 +23,7 @@ const accessibility = [
   <ComponentDoc
     title="Popover"
     componentName="Popover"
-    category="Overlays"
+    category="Overlay"
     description="Show contextual record details without leaving the page."
     usage="opens relative to its trigger through the component toggle method."
     :examples="examples"

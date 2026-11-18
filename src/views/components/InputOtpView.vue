@@ -74,7 +74,7 @@ const accessibility = [
 <template>
   <ComponentDoc
     title="InputOtp"
-    category="Forms"
+    category="Form"
     description="Enter a short verification code across connected fields."
     usage="Bind one string with v-model. Set length to the required number of characters and integerOnly for numeric codes. Verification belongs to the server."
     :examples="examples"

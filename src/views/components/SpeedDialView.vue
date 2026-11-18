@@ -52,7 +52,7 @@ const accessibility = [
 <template>
   <ComponentDoc
     title="SpeedDial"
-    category="Core elements"
+    category="Button"
     description="Reveal a small set of related actions from one floating trigger."
     usage="Supply a model with a label and command for each item. Reserve enough space for the expanded menu. Use Toolbar when actions should always be visible."
     :examples="examples"

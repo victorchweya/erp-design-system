@@ -53,7 +53,7 @@ const accessibility = [
 <template>
   <ComponentDoc
     title="ToggleButton"
-    category="Forms"
+    category="Form"
     description="Represent a persistent on or off choice as a button."
     usage="Bind a boolean value and provide labels for both states. Use a normal Button for one-time actions."
     :examples="examples"

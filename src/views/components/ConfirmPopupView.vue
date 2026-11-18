@@ -23,7 +23,7 @@ const accessibility = [
   <ComponentDoc
     title="ConfirmPopup"
     componentName="ConfirmPopup"
-    category="Overlays"
+    category="Overlay"
     description="Confirm a contextual action next to its trigger."
     usage="uses useConfirm and the trigger element as target. Register ConfirmationService once."
     :examples="examples"

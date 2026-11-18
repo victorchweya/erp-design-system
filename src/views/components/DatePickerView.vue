@@ -81,7 +81,7 @@ const accessibility = [
 <template>
   <ComponentDoc
     title="DatePicker"
-    category="Forms"
+    category="Form"
     description="Choose a date or date range from a calendar."
     usage="The model contains Date objects. Use dateFormat for display, selectionMode for a range, and minDate or maxDate when the application has date limits."
     :examples="examples"

@@ -75,7 +75,7 @@ const accessibility = [
 <template>
   <ComponentDoc
     title="InputTags"
-    category="Forms"
+    category="Form"
     description="Enter a list of short text values as removable chips."
     usage="Bind an array of strings. Use delimiter to split entries and max to limit the list. Duplicates are rejected by default."
     :examples="examples"

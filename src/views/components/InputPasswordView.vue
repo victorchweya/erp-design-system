@@ -69,7 +69,7 @@ const accessibility = [
 <template>
   <ComponentDoc
     title="InputPassword"
-    category="Forms"
+    category="Form"
     description="Enter a masked password with an optional reveal action."
     usage="Use mask to control whether the value is hidden. PrimeVue 5 uses a native-style input; add an accessible Button to let users reveal it."
     :examples="examples"

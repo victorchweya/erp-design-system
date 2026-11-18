@@ -29,7 +29,7 @@ const accessibility = [
   <ComponentDoc
     title="Stepper"
     componentName="Stepper"
-    category="Panels"
+    category="Panel"
     description="Guide users through a short delivery workflow."
     usage="connects Step and StepPanel with matching values. Next and Back call the panel\u2019s activateCallback."
     :examples="examples"

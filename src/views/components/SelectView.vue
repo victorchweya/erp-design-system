@@ -87,7 +87,7 @@ const accessibility = [
 <template>
   <ComponentDoc
     title="Select"
-    category="Forms"
+    category="Form"
     description="Choose one item from a list of options."
     usage="Bind a single value with v-model. Use optionLabel and optionValue for objects, filter for longer lists, and showClear when the selection is optional."
     :examples="examples"

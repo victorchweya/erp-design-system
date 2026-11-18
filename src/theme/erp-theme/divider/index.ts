@@ -1,5 +1,5 @@
 export const root = {
-    borderColor: '{content.border.color}'
+    borderColor: '{ftf.neutral.100}'
 };
 
 export const content = {

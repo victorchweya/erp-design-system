@@ -49,7 +49,7 @@ const accessibility = [
 <template>
   <ComponentDoc
     title="ToggleSwitch"
-    category="Forms"
+    category="Form"
     description="Turn a setting on or off with an immediate toggle."
     usage="Bind a boolean model and keep its label stable. Use Checkbox for a choice that is submitted as part of a form."
     :examples="examples"

@@ -24,7 +24,7 @@ const accessibility = [
   <ComponentDoc
     title="TieredMenu"
     componentName="TieredMenu"
-    category="Menus"
+    category="Menu"
     description="Navigate related actions using the native TieredMenu component."
     usage="accepts a model of labelled items and local command handlers. Replace commands with product navigation when copying."
     :examples="examples"

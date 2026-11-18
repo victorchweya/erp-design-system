@@ -72,7 +72,7 @@ const accessibility = [
 <template>
   <ComponentDoc
     title="InputText"
-    category="Forms"
+    category="Form"
     description="Capture a short text value with a clear label and useful hint."
     usage="Bind the value with v-model. Use a suitable native type and autocomplete value. Placeholder text supplements the visible label."
     :examples="examples"

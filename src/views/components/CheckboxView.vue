@@ -74,7 +74,7 @@ const accessibility = [
 <template>
   <ComponentDoc
     title="Checkbox"
-    category="Forms"
+    category="Form"
     description="Select independent options or turn a boolean preference on or off."
     usage="Use binary for a boolean model. For a list, bind the same array and give each Checkbox its own value and inputId."
     :examples="examples"

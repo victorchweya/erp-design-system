@@ -22,7 +22,7 @@ const accessibility = [
   <ComponentDoc
     title="Tabs"
     componentName="Tabs"
-    category="Panels"
+    category="Panel"
     description="Switch between details for the same record."
     usage="uses matching values for each Tab and TabPanel."
     :examples="examples"

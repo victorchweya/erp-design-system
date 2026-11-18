@@ -2,8 +2,10 @@ export const root = {
     maxWidth: '12.5rem',
     gutter: '0.25rem',
     shadow: '{overlay.popover.shadow}',
-    padding: '0.5rem 0.75rem',
-    borderRadius: '{overlay.popover.border.radius}'
+    padding: '{spacing.1.5} {spacing.2}',
+    borderRadius: '{overlay.popover.border.radius}',
+    fontSize: '{font.size.sm}',
+    fontWeight: '{font.weight.normal}'
 };
 
 export const colorScheme = {

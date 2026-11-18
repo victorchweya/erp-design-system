@@ -29,7 +29,7 @@ const accessibility = ['Each icon action needs a text label in the model and key
   <ComponentDoc
     title="Dock"
     componentName="Dock"
-    category="Menus"
+    category="Menu"
     description="A compact row of icon-based actions."
     usage="accepts a menu model and a custom itemicon slot."
     :examples="examples"

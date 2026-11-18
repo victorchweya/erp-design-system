@@ -74,7 +74,7 @@ const accessibility = [
 <template>
   <ComponentDoc
     title="FileUpload"
-    category="Forms"
+    category="File"
     description="Select files with browsing, drag and drop, and useful limits."
     usage="Use accept, maxFileSize, and fileLimit to guide selection. Use customUpload to handle selected files in your application. Both examples below process selection locally."
     :examples="examples"

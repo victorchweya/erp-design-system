@@ -22,7 +22,7 @@ const accessibility = [
   <ComponentDoc
     title="ScrollArea"
     componentName="ScrollArea"
-    category="Panels"
+    category="Panel"
     description="A bounded, keyboard-accessible scrolling region."
     usage="composes a viewport, content, scrollbar, and handle."
     :examples="examples"

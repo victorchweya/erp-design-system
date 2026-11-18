@@ -86,7 +86,7 @@ const accessibility = [
 <template>
   <ComponentDoc
     title="CascadeSelect"
-    category="Forms"
+    category="Form"
     description="Choose a final item from a small, ordered hierarchy."
     usage="Set optionGroupChildren in hierarchy order. Group labels describe each level; optionLabel describes the selectable leaf."
     :examples="examples"

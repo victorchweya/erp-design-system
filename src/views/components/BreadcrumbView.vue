@@ -24,7 +24,7 @@ const accessibility = [
   <ComponentDoc
     title="Breadcrumb"
     componentName="Breadcrumb"
-    category="Menus"
+    category="Menu"
     description="Show the current position in a page hierarchy."
     usage="accepts a model of items. This example keeps parent actions local; use router links for real navigation."
     :examples="examples"

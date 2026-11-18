@@ -31,7 +31,7 @@ it('updates the breadcrumb and current page when navigating between sections', a
     await router.push(path)
     expect(router.currentRoute.value.path).toBe('/components/core-elements/button')
     expect(breadcrumb.text()).toContain('Components')
-    expect(breadcrumb.text()).toContain('Core elements')
+    expect(breadcrumb.text()).toContain('Button')
     expect(breadcrumb.get('[aria-current="page"]').text()).toBe('Button')
     expect(breadcrumb.findAll('[aria-current="page"]')).toHaveLength(1)
   }

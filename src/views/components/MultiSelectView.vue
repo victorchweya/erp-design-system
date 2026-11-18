@@ -74,7 +74,7 @@ const accessibility = [
 <template>
   <ComponentDoc
     title="MultiSelect"
-    category="Forms"
+    category="Form"
     description="Choose several items from a dropdown list."
     usage="Bind an array with v-model. Display selected values as chips and use filter for larger lists."
     :examples="examples"

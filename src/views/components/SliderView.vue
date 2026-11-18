@@ -73,7 +73,7 @@ const accessibility = [
 <template>
   <ComponentDoc
     title="Slider"
-    category="Forms"
+    category="Form"
     description="Adjust a value or range within known limits."
     usage="Set min, max, and step. Provide a numeric input alongside a slider when users need to enter a precise value."
     :examples="examples"

@@ -23,7 +23,7 @@ const accessibility = [
   <ComponentDoc
     title="Drawer"
     componentName="Drawer"
-    category="Overlays"
+    category="Overlay"
     description="Use a side panel for contextual content."
     usage="binds visible and supports full, half, third, and quarter-width layouts."
     :examples="examples"

@@ -20,7 +20,7 @@ const accessibility = ['Do not defer essential navigation or content needed to c
   <ComponentDoc
     title="DeferredContent"
     componentName="DeferredContent"
-    category="Panels"
+    category="Panel"
     description="Load content when it reaches the viewport."
     usage="wraps content that can wait until it becomes visible. It does not automatically fetch data."
     :examples="examples"

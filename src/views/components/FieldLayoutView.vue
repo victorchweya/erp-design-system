@@ -33,7 +33,7 @@ const accessibility = [
   <ComponentDoc
     title="Labels &amp; field layout"
     componentName="FloatLabel"
-    category="Forms"
+    category="Form"
     description="Label, group, and space form fields using the native PrimeVue helpers."
     usage="Start with a visible label above a field. FloatLabel and IftaLabel are optional presentations. InputGroup adds units or actions, and IconField adds a decorative icon."
     :examples="examples"

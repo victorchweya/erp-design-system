@@ -130,6 +130,9 @@ const css = /*css*/ `
         box-shadow: none;
         background: var(--p-content-hover-background);
     }
+    .p-tooltip-text {
+        line-height: 1.25;
+    }
 
     li.p-autocomplete-option,
     div.p-cascadeselect-option-content,

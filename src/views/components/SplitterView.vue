@@ -22,7 +22,7 @@ const accessibility = [
   <ComponentDoc
     title="Splitter"
     componentName="Splitter"
-    category="Panels"
+    category="Panel"
     description="Resize neighbouring content areas."
     usage="uses SplitterPanel size and minSize values as percentages."
     :examples="examples"

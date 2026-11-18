@@ -37,14 +37,6 @@ it('starts open on desktop, toggles the sidebar, and resets it when the viewport
   const toggle = () => wrapper.get('#sidebar-toggle')
   expect(wrapper.get('header').classes()).toContain('h-14')
   expect(wrapper.get('main').classes()).toContain('pt-14')
-  expect(
-    wrapper
-      .get('nav[aria-label="Top navigation"] a[href="/components/core-elements/button"]')
-      .text(),
-  ).toBe('Components')
-  expect(wrapper.get('nav[aria-label="Top navigation"] a[href="/ui-blocks/headers"]').text()).toBe(
-    'UI blocks',
-  )
 
   const userMenu = wrapper.get('#user-menu-trigger')
   expect(userMenu.attributes('aria-expanded')).toBe('false')

@@ -21,7 +21,7 @@ const accessibility = [
 <template>
   <ComponentDoc
     title="Toolbar"
-    category="Core elements"
+    category="Panel"
     description="Keep related actions together above the content they affect."
     usage="Use the start, center, and end slots to arrange actions. Keep the number of actions small and allow space for narrower screens."
     :examples="examples"

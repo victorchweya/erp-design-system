@@ -36,7 +36,7 @@ const accessibility = [
   <ComponentDoc
     title="CommandMenu"
     componentName="CommandMenu"
-    category="Menus"
+    category="Menu"
     description="Search and run a command from one list."
     usage="accepts grouped menu items and filters them as the user types."
     :examples="examples"

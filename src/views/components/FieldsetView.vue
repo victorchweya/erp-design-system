@@ -30,7 +30,7 @@ const accessibility = [
   <ComponentDoc
     title="Fieldset"
     componentName="Fieldset"
-    category="Panels"
+    category="Panel"
     description="Group related delivery details with a legend."
     usage="provides a legend and an optional toggle button."
     :examples="examples"

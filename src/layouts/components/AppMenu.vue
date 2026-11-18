@@ -14,6 +14,18 @@ type MenuGroup = {
   heading?: string
   items: { label: string; to: string }[]
 }
+const componentGroupOrder = [
+  'Form',
+  'Button',
+  'Data',
+  'Panel',
+  'Overlay',
+  'File',
+  'Menu',
+  'Messages',
+  'Media',
+  'Misc',
+]
 const groups: MenuGroup[] = [
   {
     id: 'foundations',
@@ -27,12 +39,13 @@ const groups: MenuGroup[] = [
       { label: 'Formatting', to: '/foundations/formatting' },
     ],
   },
-  ...Array.from(new Set(componentPages.map((page) => page.group))).map((label, index) => ({
+  ...componentGroupOrder.map((label, index) => ({
     id: label.toLowerCase().replace(/ /g, '-'),
     label,
     heading: index === 0 ? 'Components' : undefined,
     items: componentPages
       .filter((page) => page.group === label)
+      .sort((a, b) => (label === 'Misc' ? a.label.localeCompare(b.label) : 0))
       .map((page) => ({ label: page.label, to: page.path })),
   })),
   {

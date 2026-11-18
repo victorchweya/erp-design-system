@@ -30,7 +30,7 @@ const accessibility = [
   <ComponentDoc
     title="Panel"
     componentName="Panel"
-    category="Panels"
+    category="Panel"
     description="A titled container with collapsible content."
     usage="uses header for its title and toggleable for optional collapse controls."
     :examples="examples"

@@ -73,7 +73,7 @@ const accessibility = [
 <template>
   <ComponentDoc
     title="SelectButton"
-    category="Forms"
+    category="Form"
     description="Choose between a small number of visible alternatives."
     usage="Use one model value for exclusive selection or an array with multiple. Set allowEmpty to false when one choice must remain selected."
     :examples="examples"

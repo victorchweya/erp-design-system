@@ -23,7 +23,7 @@ const accessibility = [
   <ComponentDoc
     title="Dialog"
     componentName="Dialog"
-    category="Overlays"
+    category="Overlay"
     description="Edit a small task in a modal dialog."
     usage="binds visible and uses native focus trapping, Escape handling, and labelled headers."
     :examples="examples"

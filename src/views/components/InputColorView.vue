@@ -56,7 +56,7 @@ const accessibility = [
 <template>
   <ComponentDoc
     title="InputColor"
-    category="Forms"
+    category="Form"
     description="Choose a custom colour where the product explicitly allows it."
     usage="Compose the native InputColor parts for the area, slider, swatch, and input. Keep ordinary interface colours on our semantic tokens; this control is for user-authored content."
     :examples="examples"

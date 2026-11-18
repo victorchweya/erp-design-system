@@ -24,7 +24,7 @@ const accessibility = [
   <ComponentDoc
     title="Menu"
     componentName="Menu"
-    category="Menus"
+    category="Menu"
     description="Navigate related actions using the native Menu component."
     usage="accepts a model of labelled items and local command handlers. Replace commands with product navigation when copying."
     :examples="examples"

@@ -31,7 +31,7 @@ const accessibility = [
   <ComponentDoc
     title="DynamicDialog"
     componentName="DynamicDialog"
-    category="Overlays"
+    category="Overlay"
     description="Create a dialog from a reusable content component."
     usage="uses useDialog with DialogService registered once in main.ts. Copy both source files below."
     :examples="examples"

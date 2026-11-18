@@ -22,7 +22,7 @@ const accessibility = ['Use clear group labels and retain native keyboard naviga
   <ComponentDoc
     title="MegaMenu"
     componentName="MegaMenu"
-    category="Menus"
+    category="Menu"
     description="Organise a larger navigation menu into columns."
     usage="uses nested arrays of menu groups for each top-level item."
     :examples="examples"

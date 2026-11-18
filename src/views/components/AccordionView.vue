@@ -29,7 +29,7 @@ const accessibility = [
   <ComponentDoc
     title="Accordion"
     componentName="Accordion"
-    category="Panels"
+    category="Panel"
     description="Expand related delivery information."
     usage="composes AccordionPanel, AccordionHeader, and AccordionContent with matching values."
     :examples="examples"

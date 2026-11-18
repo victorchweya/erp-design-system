@@ -62,7 +62,7 @@ const accessibility = [
 <template>
   <ComponentDoc
     title="Skeleton"
-    category="Core elements"
+    category="Misc"
     description="Reserve space for content while it loads."
     usage="Match the placeholder to the content shape. Place related skeletons inside a container marked aria-busy, then replace the whole group when loading completes."
     :examples="examples"

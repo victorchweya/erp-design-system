@@ -73,7 +73,7 @@ const accessibility = [
 <template>
   <ComponentDoc
     title="Textarea"
-    category="Forms"
+    category="Form"
     description="Capture longer text such as notes and instructions."
     usage="Use v-model for the text value, rows for the starting height, and autoResize when the field should grow with its content."
     :examples="examples"

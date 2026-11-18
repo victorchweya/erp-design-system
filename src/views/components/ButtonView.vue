@@ -79,7 +79,7 @@ const activeSection = useActiveSection(sections.map(({ id }) => id))
   <div class="mx-auto flex w-full max-w-screen-xl gap-10 px-6 py-10 text-sm">
     <div class="min-w-0 flex-1">
       <header class="mb-8 flex flex-col gap-3">
-        <p class="font-medium uppercase tracking-wide text-primary">Core elements</p>
+        <p class="font-medium uppercase tracking-wide text-primary">Button</p>
         <h1 class="text-3xl font-medium tracking-tight sm:text-4xl">Button</h1>
         <p class="text-base leading-relaxed text-muted-color">
           Trigger an action with PrimeVue Button. Use the shared theme for consistent colours,

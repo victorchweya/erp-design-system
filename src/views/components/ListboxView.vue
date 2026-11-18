@@ -67,7 +67,7 @@ const accessibility = [
 <template>
   <ComponentDoc
     title="Listbox"
-    category="Forms"
+    category="Form"
     description="Keep selectable options visible without opening a popup."
     usage="Use a single value by default or an array with multiple. Turn off metaKeySelection when each item should toggle independently."
     :examples="examples"

@@ -81,7 +81,7 @@ const accessibility = [
 <template>
   <ComponentDoc
     title="TreeSelect"
-    category="Forms"
+    category="Form"
     description="Select from an expandable tree of related items."
     usage="Give each node a stable key and label. Choose single, multiple, or checkbox selection for the task, and use filter for larger trees."
     :examples="examples"

@@ -50,7 +50,7 @@ const accessibility = [
 <template>
   <ComponentDoc
     title="Badge"
-    category="Core elements"
+    category="Misc"
     description="Show a count or small indicator alongside related content."
     usage="Use value for the count and size for density. Put the badge next to the item it describes. Choose Tag for a status phrase."
     :examples="examples"

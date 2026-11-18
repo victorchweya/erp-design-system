@@ -69,7 +69,7 @@ const accessibility = [
 <template>
   <ComponentDoc
     title="AutoComplete"
-    category="Forms"
+    category="Form"
     description="Suggest matching values as users type."
     usage="Update suggestions from the complete event. Use forceSelection when values must come from the list. Keep remote requests cancellable in an application."
     :examples="examples"

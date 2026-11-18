@@ -91,7 +91,7 @@ const accessibility = [
 <template>
   <ComponentDoc
     title="InputNumber"
-    category="Forms"
+    category="Form"
     description="Enter a numeric quantity or a formatted amount."
     usage="The model contains a number, separate from its display formatting. Set min, max, and step to match the allowed range; use currency and locale for money display."
     :examples="examples"

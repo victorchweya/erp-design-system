@@ -55,7 +55,7 @@ const accessibility = [
 <template>
   <ComponentDoc
     title="Avatar"
-    category="Core elements"
+    category="Misc"
     description="Represent a person or a team with initials, an image, or an icon."
     usage="Use label for initials, image for a photo, and shape for square or circle. Group people with AvatarGroup."
     :examples="examples"

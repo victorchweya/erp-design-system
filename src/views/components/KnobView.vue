@@ -64,7 +64,7 @@ const accessibility = [
 <template>
   <ComponentDoc
     title="Knob"
-    category="Forms"
+    category="Form"
     description="Adjust or display one bounded numeric value in a circular control."
     usage="Use min, max, and step for the range. Keep explicit increment actions when they make the value easier to adjust."
     :examples="examples"

@@ -46,7 +46,7 @@ const accessibility = [
 <template>
   <ComponentDoc
     title="Rating"
-    category="Forms"
+    category="Form"
     description="Collect a rating on a short, clearly described scale."
     usage="Bind a number with v-model. Use stars to set the scale, readonly to display a recorded score, and disabled when editing is unavailable."
     :examples="examples"

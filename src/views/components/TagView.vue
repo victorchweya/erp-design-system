@@ -51,7 +51,7 @@ const accessibility = [
 <template>
   <ComponentDoc
     title="Tag"
-    category="Core elements"
+    category="Misc"
     description="Label content, categories, and statuses with a short phrase."
     usage="Put readable text in the default slot. Use severity for status and rounded for a pill shape. Choose Badge for counts."
     :examples="examples"

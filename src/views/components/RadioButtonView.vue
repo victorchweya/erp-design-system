@@ -67,7 +67,7 @@ const accessibility = [
 <template>
   <ComponentDoc
     title="RadioButton"
-    category="Forms"
+    category="Form"
     description="Choose exactly one option from a visible group."
     usage="Give every option the same model and name, a distinct value, and a distinct inputId. Use a fieldset and legend to describe the decision."
     :examples="examples"

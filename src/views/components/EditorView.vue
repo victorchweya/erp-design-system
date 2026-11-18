@@ -56,7 +56,7 @@ const accessibility = [
 <template>
   <ComponentDoc
     title="Editor"
-    category="Forms"
+    category="Form"
     description="Edit formatted text when plain text is not sufficient."
     usage="Bind an HTML string with v-model and provide a small, labelled toolbar. This installed Editor uses Quill. PrimeVue marks this component deprecated in v5; use Textarea when formatting is unnecessary."
     :examples="examples"

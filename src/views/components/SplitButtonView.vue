@@ -67,7 +67,7 @@ const accessibility = [
 <template>
   <ComponentDoc
     title="SplitButton"
-    category="Core elements"
+    category="Button"
     description="Pair a frequent action with a menu of related alternatives."
     usage="Use label for the primary action and model for the menu items. Handle the main click separately from each menu command."
     :examples="examples"

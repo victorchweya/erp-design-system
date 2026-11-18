@@ -54,7 +54,7 @@ const accessibility = [
   <ComponentDoc
     title="Form validation"
     componentName="Form"
-    category="Forms"
+    category="Form"
     description="Manage field state and show useful validation before submitting."
     usage="Use Form from @primevue/forms. Link each PrimeVue control with name; Form owns its value and validation state. Return field-keyed errors from a resolver and handle submit only when valid."
     :examples="examples"

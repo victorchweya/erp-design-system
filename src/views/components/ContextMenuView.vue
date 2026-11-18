@@ -24,7 +24,7 @@ const accessibility = [
   <ComponentDoc
     title="ContextMenu"
     componentName="ContextMenu"
-    category="Menus"
+    category="Menu"
     description="Open record actions by pointer or keyboard."
     usage="calls show with the context-menu event or toggle from a visible action button."
     :examples="examples"

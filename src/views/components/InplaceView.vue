@@ -41,7 +41,7 @@ const accessibility = [
 <template>
   <ComponentDoc
     title="Inplace"
-    category="Forms"
+    category="Form"
     description="Switch a small piece of displayed content into an editing field."
     usage="Put the read view in display and the editor in content. Use the content slot\u2019s closeCallback to close the editor and restore focus. Keep a draft so Cancel discards edits."
     :examples="examples"

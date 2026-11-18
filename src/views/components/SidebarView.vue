@@ -42,7 +42,7 @@ const accessibility = [
   <ComponentDoc
     title="Sidebar"
     componentName="Sidebar"
-    category="Menus"
+    category="Menu"
     description="A collapsible navigation panel contained within this preview."
     usage="composes SidebarLayout, Sidebar, its panel sections, and SidebarMain. This example does not replace the documentation sidebar."
     :examples="examples"

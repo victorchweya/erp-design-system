@@ -30,7 +30,7 @@ const accessibility = [
 <template>
   <ComponentDoc
     title="Card"
-    category="Core elements"
+    category="Panel"
     description="Group related content and actions in a bordered container."
     usage="Use title, subtitle, content, and footer slots. The theme supplies the border, padding, gap, and radius; cards have no default shadow."
     :examples="examples"

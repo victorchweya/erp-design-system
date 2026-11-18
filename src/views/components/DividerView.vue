@@ -50,7 +50,7 @@ const accessibility = [
 <template>
   <ComponentDoc
     title="Divider"
-    category="Core elements"
+    category="Panel"
     description="Separate related groups of content with a quiet rule."
     usage="Use the default horizontal divider between sections. Set layout to vertical between items in a row."
     :examples="examples"
