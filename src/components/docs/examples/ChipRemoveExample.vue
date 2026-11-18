@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import Times from '@primeicons/vue/times'
 const filters = ref(['Vegetables', 'In season', 'Local'])
 </script>
 
@@ -13,20 +12,7 @@ const filters = ref(['Vegetables', 'In season', 'Local'])
         :label="filter"
         removable
         @remove="filters = filters.filter((value) => value !== filter)"
-      >
-        <template #removeicon="{ removeCallback }">
-          <Button
-            type="button"
-            text
-            iconOnly
-            severity="secondary"
-            size="small"
-            :aria-label="`Remove ${filter}`"
-            @click="removeCallback"
-            ><Times aria-hidden="true"
-          /></Button>
-        </template>
-      </Chip>
+      />
     </div>
     <p role="status" class="text-muted-color">{{ filters.length }} filters selected.</p>
     <Button
