@@ -51,8 +51,11 @@ function clear() {
       </div>
     </template>
     <template #header>
-      <div class="flex flex-col gap-4">
-        <h5 class="text-lg font-medium">Orders</h5>
+      <div class="flex flex-col gap-2">
+        <div>
+          <h5 class="text-base font-medium">Orders</h5>
+          <p class="text-sm text-muted">Search and review customer orders.</p>
+        </div>
         <div class="flex flex-wrap items-end gap-3">
           <div class="min-w-0 flex-1 basis-48">
             <IconField class="w-full">
@@ -96,11 +99,6 @@ function clear() {
           >Reset search</Button
         >
       </div></template
-    >
-    <template #footer
-      ><p role="status" class="text-sm font-normal text-muted">
-        {{ filtered.length }} matching orders
-      </p></template
     >
   </DataTable>
 </template>

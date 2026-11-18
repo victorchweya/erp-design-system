@@ -37,6 +37,7 @@ const feedback = shallowRef('')
 const orders = [
   {
     orderDate: '13 Nov 2026, 10:28',
+    orderDateValue: '2026-11-13T10:28',
     orderNumber: 'CO-2026-11-004',
     orderType: 'regular',
     customer: 'Anouk FTF Boertien',
@@ -48,10 +49,12 @@ const orders = [
     location: 'kerarapon drive',
     deliveryType: 'Pickup',
     deliveryDate: '20 Nov 2026',
+    deliveryDateValue: '2026-11-20',
     deliverySlot: '06:00–08:00',
   },
   {
     orderDate: '13 Nov 2026, 10:19',
+    orderDateValue: '2026-11-13T10:19',
     orderNumber: 'CO-2026-11-003',
     orderType: 'regular',
     customer: 'Aero Kitchen',
@@ -63,10 +66,12 @@ const orders = [
     location: 'Aero Kitchen, PKF Kenya, Kalamu house, grevillea grove',
     deliveryType: 'Pickup',
     deliveryDate: '18 Nov 2026',
+    deliveryDateValue: '2026-11-18',
     deliverySlot: null,
   },
   {
     orderDate: '12 Nov 2026, 13:56',
+    orderDateValue: '2026-11-12T13:56',
     orderNumber: 'CO-2026-11-002',
     orderType: 'regular',
     customer: 'Avic Design',
@@ -78,10 +83,12 @@ const orders = [
     location: 'Naivasha',
     deliveryType: 'Delivery',
     deliveryDate: '13 Nov 2026',
+    deliveryDateValue: '2026-11-13',
     deliverySlot: null,
   },
   {
     orderDate: '10 Nov 2026, 09:20',
+    orderDateValue: '2026-11-10T09:20',
     orderNumber: 'CO-2026-11-001',
     orderType: 'regular',
     customer: 'Felix Holdingg',
@@ -93,10 +100,12 @@ const orders = [
     location: 'Farm to Feed (Warehouse)',
     deliveryType: 'Pickup',
     deliveryDate: '11 Nov 2026',
+    deliveryDateValue: '2026-11-11',
     deliverySlot: null,
   },
   {
     orderDate: '26 Oct 2026, 23:08',
+    orderDateValue: '2026-10-26T23:08',
     orderNumber: 'CO-2026-10-015',
     orderType: 'regular',
     customer: 'QA Branch B Karen',
@@ -108,10 +117,12 @@ const orders = [
     location: 'QA Branch B Karen Kitchen',
     deliveryType: 'Delivery',
     deliveryDate: '28 Oct 2026',
+    deliveryDateValue: '2026-10-28',
     deliverySlot: '06:00–14:00',
   },
   {
     orderDate: '23 Oct 2026, 12:30',
+    orderDateValue: '2026-10-23T12:30',
     orderNumber: 'RJ-CO-2026-08-002',
     orderType: 'chaser',
     customer: 'A and a',
@@ -123,6 +134,7 @@ const orders = [
     location: 'Farm to Feed (Warehouse)',
     deliveryType: 'Delivery',
     deliveryDate: '24 Oct 2026',
+    deliveryDateValue: '2026-10-24',
     deliverySlot: '06:00–08:00',
   },
 ]
@@ -221,8 +233,8 @@ function resetFilters() {
 <template>
   <div class="flex flex-col gap-4">
     <div>
-      <h5 class="text-lg font-medium">Sales order data stress test</h5>
-      <p class="mt-1 text-sm text-muted">Filter real order data and change the table display.</p>
+      <h5 class="text-lg font-medium">Order filters and sorting</h5>
+      <p class="mt-1 text-sm text-muted">Search, filter, sort, and change the table display.</p>
     </div>
 
     <div class="flex flex-wrap items-center gap-x-5 gap-y-3 rounded-lg bg-surface-50 p-3">
@@ -256,12 +268,13 @@ function resetFilters() {
         :size="size"
         :showGridlines="showGridlines"
         :stripedRows="stripedRows"
+        removableSort
         paginator
         :rowsPerPageOptions="[3, 6]"
         paginatorTemplate="RowsPerPageDropdown PrevPageLink PageLinks NextPageLink"
         scrollable
         tableStyle="min-width: 110rem"
-        :tableProps="{ 'aria-label': 'Sales order data stress test' }"
+        :tableProps="{ 'aria-label': 'Sales orders with filters and sorting' }"
         class="stress-table"
       >
         <template #paginatorstart>
@@ -315,32 +328,44 @@ function resetFilters() {
             </div>
           </div>
         </template>
-        <Column field="orderDate" header="Order Date" style="min-width: 9rem" />
-        <Column field="orderNumber" header="Order Number" style="min-width: 10rem" />
-        <Column field="orderType" header="Order Type" style="min-width: 7rem" />
-        <Column field="customer" header="Customer" style="min-width: 12rem" />
-        <Column field="source" header="Source" style="min-width: 9rem">
+        <Column
+          field="orderDate"
+          sortField="orderDateValue"
+          header="Order Date"
+          sortable
+          style="min-width: 9rem"
+        />
+        <Column field="orderNumber" header="Order Number" sortable style="min-width: 10rem" />
+        <Column field="orderType" header="Order Type" sortable style="min-width: 7rem" />
+        <Column field="customer" header="Customer" sortable style="min-width: 12rem" />
+        <Column field="source" header="Source" sortable style="min-width: 9rem">
           <template #body="{ data }">{{ data.source ?? '—' }}</template>
         </Column>
-        <Column field="status" header="Status" style="min-width: 8rem">
+        <Column field="status" header="Status" sortable style="min-width: 8rem">
           <template #body="{ data }">
             <Tag :severity="data.status === 'Cancelled' ? 'danger' : 'info'">{{ data.status }}</Tag>
           </template>
         </Column>
-        <Column field="items" header="Items" style="min-width: 6rem" />
+        <Column field="items" header="Items" sortable style="min-width: 6rem" />
         <Column field="totalUnits" header="Total Items/Unit" style="min-width: 10rem" />
-        <Column field="amount" header="Amount" style="min-width: 9rem">
+        <Column field="amount" header="Amount" sortable style="min-width: 9rem">
           <template #body="{ data }"
             ><span class="tabular-nums">{{ formatCurrency(data.amount) }}</span></template
           >
         </Column>
-        <Column field="location" header="Delivery Location" style="min-width: 13rem">
+        <Column field="location" header="Delivery Location" sortable style="min-width: 13rem">
           <template #body="{ data }"
             ><span class="block whitespace-normal break-words">{{ data.location }}</span></template
           >
         </Column>
-        <Column field="deliveryType" header="Delivery Type" style="min-width: 9rem" />
-        <Column field="deliveryDate" header="Delivery Date" style="min-width: 9rem" />
+        <Column field="deliveryType" header="Delivery Type" sortable style="min-width: 9rem" />
+        <Column
+          field="deliveryDate"
+          sortField="deliveryDateValue"
+          header="Delivery Date"
+          sortable
+          style="min-width: 9rem"
+        />
         <Column field="deliverySlot" header="Delivery Slot" style="min-width: 9rem">
           <template #body="{ data }">{{ data.deliverySlot ?? '—' }}</template>
         </Column>

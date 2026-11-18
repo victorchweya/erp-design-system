@@ -24,10 +24,10 @@ const examples = [
     code: code1,
   },
   {
-    id: 'data-stress-test',
-    title: 'Data and container stress test',
+    id: 'filters-and-sorting',
+    title: 'Filters and sorting',
     description:
-      'Check realistic sales-order data, long delivery locations, missing values, status variation, and horizontal overflow in a narrow container.',
+      'Search sales orders, apply advanced filters, sort columns, and review the table at mobile width.',
     component: DataStressTableBlock,
     code: code2,
     mobilePreview: true,
@@ -37,7 +37,6 @@ const usage = [
   'Use the native DataTable, Column, sorting, selection, and paginator. These examples use small sizing and showGridlines with the theme’s default rounded border.',
   'Search and status filters combine, and changing a filter returns to the first page. Bulk actions update only selected records and clear the selection afterwards.',
   'These examples use local arrays. Connect filtering, loading, errors, and mutations to your data source when adapting them for server pagination.',
-  'Use the stress test before shipping a table pattern. Content should wrap without overlapping controls, missing values should remain clear, and narrow containers should scroll horizontally.',
 ]
 </script>
 
