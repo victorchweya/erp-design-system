@@ -133,9 +133,23 @@ function componentScheme(mode: Mode) {
     ]),
   )
   const toast = Object.fromEntries(
-    Object.entries(feedback).map(([severity, tokens]) => [
+    Object.entries({
+      ...feedback,
+      secondary: { color: '{surface.600}' },
+      contrast: { color: '{surface.950}' },
+    }).map(([severity, tokens]) => [
       severity,
-      { ...tokens, detailColor: tokens.color },
+      {
+        ...tokens,
+        background: '{surface.0}',
+        borderColor: '{surface.50}',
+        detailColor: '{surface.600}',
+        shadow: '0 1px 2px 0 rgb(0 0 0 / 0.05)',
+        closeButton: {
+          hoverBackground: '{surface.50}',
+          focusRing: { color: tokens.color, shadow: 'none' },
+        },
+      },
     ]),
   )
   return { message, tag, badge: tag, toast }
@@ -189,6 +203,6 @@ export default {
     tag: { colorScheme: { light: light.tag, dark: dark.tag } },
     badge: { colorScheme: { light: light.badge, dark: dark.badge } },
     message: { colorScheme: { light: light.message, dark: dark.message } },
-    toast: { colorScheme: { light: light.toast, dark: dark.toast } },
+    toast: { colorScheme: { light: light.toast, dark: light.toast } },
   },
 }

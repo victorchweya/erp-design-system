@@ -266,7 +266,7 @@ it('resolves finalized feedback component defaults and input roles from the foun
     light === dark ? light : `light-dark(${light},${dark})`
   for (const severity of ['success', 'info', 'warn', 'error']) {
     const role = roleByName(`message.${severity}.color`)
-    for (const component of ['message', 'toast', 'tag', 'badge']) {
+    for (const component of ['message', 'tag', 'badge']) {
       const componentSeverity =
         severity === 'error' && ['tag', 'badge'].includes(component) ? 'danger' : severity
       expect($dt(`${component}.${componentSeverity}.background`).value).toBe(
@@ -276,6 +276,11 @@ it('resolves finalized feedback component defaults and input roles from the foun
         resolvedPairValue(role.light.foreground.value, role.dark.foreground.value),
       )
     }
+    expect($dt(`toast.${severity}.background`).value).toBe($dt('surface.0').value)
+    expect($dt(`toast.${severity}.border.color`).value).toBe($dt('surface.50').value)
+    expect($dt(`toast.${severity}.color`).value).toBe(role.light.foreground.value)
+    expect($dt(`toast.${severity}.detail.color`).value).toBe($dt('surface.600').value)
+    expect($dt(`toast.${severity}.shadow`).value).toBe('0 1px 2px 0 rgb(0 0 0 / 0.05)')
   }
   for (const role of colorRoles) {
     expect($dt(role.foregroundToken).value).toBe(

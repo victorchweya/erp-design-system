@@ -1,12 +1,13 @@
 export const root = {
-    width: '25rem',
-    borderRadius: '{content.border.radius}',
+    width: '28rem',
+    borderRadius: '{border.radius.xl}',
     borderWidth: '1px',
     transitionDuration: '{transition.duration}'
 };
 
 export const icon = {
-    size: '1.125rem'
+    size: '1.125rem',
+    margin: '0.4375rem 0 0'
 };
 
 export const content = {
@@ -15,7 +16,7 @@ export const content = {
 };
 
 export const text = {
-    gap: '0.5rem'
+    gap: '0.25rem'
 };
 
 export const summary = {
@@ -24,13 +25,13 @@ export const summary = {
 };
 
 export const detail = {
-    fontWeight: '{font.weight.medium}',
+    fontWeight: '{font.weight.normal}',
     fontSize: '{font.size.sm}'
 };
 
 export const closeButton = {
-    width: '1.75rem',
-    height: '1.75rem',
+    width: '1.5rem',
+    height: '1.5rem',
     borderRadius: '50%',
     focusRing: {
         width: '{focus.ring.width}',

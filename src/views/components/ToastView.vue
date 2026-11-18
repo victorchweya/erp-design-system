@@ -6,8 +6,8 @@ import code from '@/components/docs/examples/ToastExample.vue?raw'
 const examples = [
   {
     id: 'example',
-    title: 'Basic usage',
-    description: 'Transient feedback after a local action.',
+    title: 'Severity',
+    description: 'Success, information, warning, error, secondary, and contrast feedback.',
     component: Example,
     code: code,
   },

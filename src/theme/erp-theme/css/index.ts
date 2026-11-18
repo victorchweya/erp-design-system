@@ -91,6 +91,15 @@ const css = /*css*/ `
     .p-inputtags .p-inputtags-item .p-chip-label {
         line-height: inherit;
     }
+    .p-toast-close-button {
+        position: static;
+    }
+    .p-toast-message-content > div:has(> .p-toast-close-button) {
+        flex: 0 0 auto;
+    }
+    .p-toast-message-text {
+        margin-top: 0.25rem;
+    }
 
     li.p-autocomplete-option,
     div.p-cascadeselect-option-content,

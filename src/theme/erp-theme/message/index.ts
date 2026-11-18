@@ -5,13 +5,13 @@ export const root = {
 };
 
 export const content = {
-    padding: '0.5rem 0.75rem',
-    gap: '0.5rem',
+    padding: '{spacing.3} {spacing.4}',
+    gap: '{spacing.3}',
     sm: {
-        padding: '0.375rem 0.625rem'
+        padding: '{spacing.2} {spacing.3}'
     },
     lg: {
-        padding: '0.625rem 0.875rem'
+        padding: '{spacing.4} {spacing.5}'
     }
 };
 
@@ -75,7 +75,7 @@ export const colorScheme = {
             background: 'color-mix(in srgb, {blue.50}, transparent 5%)',
             borderColor: '{blue.200}',
             color: '{blue.600}',
-            shadow: '0px 4px 8px 0px color-mix(in srgb, {blue.500}, transparent 96%)',
+            shadow: 'none',
             closeButton: {
                 hoverBackground: '{blue.100}',
                 focusRing: {
@@ -95,7 +95,7 @@ export const colorScheme = {
             background: 'color-mix(in srgb, {green.50}, transparent 5%)',
             borderColor: '{green.200}',
             color: '{green.600}',
-            shadow: '0px 4px 8px 0px color-mix(in srgb, {green.500}, transparent 96%)',
+            shadow: 'none',
             closeButton: {
                 hoverBackground: '{green.100}',
                 focusRing: {
@@ -115,7 +115,7 @@ export const colorScheme = {
             background: 'color-mix(in srgb,{yellow.50}, transparent 5%)',
             borderColor: '{yellow.200}',
             color: '{yellow.600}',
-            shadow: '0px 4px 8px 0px color-mix(in srgb, {yellow.500}, transparent 96%)',
+            shadow: 'none',
             closeButton: {
                 hoverBackground: '{yellow.100}',
                 focusRing: {
@@ -135,7 +135,7 @@ export const colorScheme = {
             background: 'color-mix(in srgb, {red.50}, transparent 5%)',
             borderColor: '{red.200}',
             color: '{red.600}',
-            shadow: '0px 4px 8px 0px color-mix(in srgb, {red.500}, transparent 96%)',
+            shadow: 'none',
             closeButton: {
                 hoverBackground: '{red.100}',
                 focusRing: {
@@ -155,7 +155,7 @@ export const colorScheme = {
             background: '{surface.100}',
             borderColor: '{surface.200}',
             color: '{surface.600}',
-            shadow: '0px 4px 8px 0px color-mix(in srgb, {surface.500}, transparent 96%)',
+            shadow: 'none',
             closeButton: {
                 hoverBackground: '{surface.200}',
                 focusRing: {
@@ -175,7 +175,7 @@ export const colorScheme = {
             background: '{surface.900}',
             borderColor: '{surface.950}',
             color: '{surface.50}',
-            shadow: '0px 4px 8px 0px color-mix(in srgb, {surface.950}, transparent 96%)',
+            shadow: 'none',
             closeButton: {
                 hoverBackground: '{surface.800}',
                 focusRing: {
@@ -197,7 +197,7 @@ export const colorScheme = {
             background: 'color-mix(in srgb, {blue.500}, transparent 84%)',
             borderColor: 'color-mix(in srgb, {blue.700}, transparent 64%)',
             color: '{blue.500}',
-            shadow: '0px 4px 8px 0px color-mix(in srgb, {blue.500}, transparent 96%)',
+            shadow: 'none',
             closeButton: {
                 hoverBackground: 'rgba(255, 255, 255, 0.05)',
                 focusRing: {
@@ -217,7 +217,7 @@ export const colorScheme = {
             background: 'color-mix(in srgb, {green.500}, transparent 84%)',
             borderColor: 'color-mix(in srgb, {green.700}, transparent 64%)',
             color: '{green.500}',
-            shadow: '0px 4px 8px 0px color-mix(in srgb, {green.500}, transparent 96%)',
+            shadow: 'none',
             closeButton: {
                 hoverBackground: 'rgba(255, 255, 255, 0.05)',
                 focusRing: {
@@ -237,7 +237,7 @@ export const colorScheme = {
             background: 'color-mix(in srgb, {yellow.500}, transparent 84%)',
             borderColor: 'color-mix(in srgb, {yellow.700}, transparent 64%)',
             color: '{yellow.500}',
-            shadow: '0px 4px 8px 0px color-mix(in srgb, {yellow.500}, transparent 96%)',
+            shadow: 'none',
             closeButton: {
                 hoverBackground: 'rgba(255, 255, 255, 0.05)',
                 focusRing: {
@@ -257,7 +257,7 @@ export const colorScheme = {
             background: 'color-mix(in srgb, {red.500}, transparent 84%)',
             borderColor: 'color-mix(in srgb, {red.700}, transparent 64%)',
             color: '{red.500}',
-            shadow: '0px 4px 8px 0px color-mix(in srgb, {red.500}, transparent 96%)',
+            shadow: 'none',
             closeButton: {
                 hoverBackground: 'rgba(255, 255, 255, 0.05)',
                 focusRing: {
@@ -277,7 +277,7 @@ export const colorScheme = {
             background: '{surface.800}',
             borderColor: '{surface.700}',
             color: '{surface.300}',
-            shadow: '0px 4px 8px 0px color-mix(in srgb, {surface.500}, transparent 96%)',
+            shadow: 'none',
             closeButton: {
                 hoverBackground: '{surface.700}',
                 focusRing: {
@@ -297,7 +297,7 @@ export const colorScheme = {
             background: '{surface.0}',
             borderColor: '{surface.100}',
             color: '{surface.950}',
-            shadow: '0px 4px 8px 0px color-mix(in srgb, {surface.950}, transparent 96%)',
+            shadow: 'none',
             closeButton: {
                 hoverBackground: '{surface.100}',
                 focusRing: {
@@ -316,6 +316,67 @@ export const colorScheme = {
     }
 };
 
+export const css = /*css*/ `
+    :is(
+        .p-message-info,
+        .p-message-success,
+        .p-message-warn,
+        .p-message-error,
+        .p-message-secondary
+    ):not(.p-message-outlined):not(.p-message-simple) .p-message-text {
+        color: dt('content.color');
+    }
+
+    .p-message:not(.p-message-simple)
+        .p-message-content:not(:has(> :is(.p-message-icon, svg, i)))::before {
+        content: var(--p-message-symbol);
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        flex: 0 0 auto;
+        width: dt('message.icon.size');
+        height: dt('message.icon.size');
+        border: 1.5px solid currentColor;
+        border-radius: 50%;
+        font-size: 0.75em;
+        font-weight: dt('font.weight.semibold');
+        line-height: 1;
+    }
+
+    .p-message-sm:not(.p-message-simple)
+        .p-message-content:not(:has(> :is(.p-message-icon, svg, i)))::before {
+        width: dt('message.icon.sm.size');
+        height: dt('message.icon.sm.size');
+    }
+
+    .p-message-lg:not(.p-message-simple)
+        .p-message-content:not(:has(> :is(.p-message-icon, svg, i)))::before {
+        width: dt('message.icon.lg.size');
+        height: dt('message.icon.lg.size');
+    }
+
+    .p-message-info,
+    .p-message-secondary {
+        --p-message-symbol: 'i';
+    }
+
+    .p-message-success {
+        --p-message-symbol: '✓';
+    }
+
+    .p-message-warn {
+        --p-message-symbol: '!';
+    }
+
+    .p-message-error {
+        --p-message-symbol: '×';
+    }
+
+    .p-message-contrast {
+        --p-message-symbol: '!';
+    }
+`;
+
 export default {
     root,
     content,
@@ -325,5 +386,6 @@ export default {
     closeIcon,
     outlined,
     simple,
-    colorScheme
+    colorScheme,
+    css
 };
