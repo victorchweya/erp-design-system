@@ -19,6 +19,7 @@ import EmptyStateBlock from '../feedback/EmptyStateBlock.vue'
 import ConfirmPopupBlock from '../popups/ConfirmPopupBlock.vue'
 import RecordPopoverBlock from '../popups/RecordPopoverBlock.vue'
 import ActionsMenuBlock from '../popups/ActionsMenuBlock.vue'
+import OrderEntryBlock from '../order-entry/OrderEntryBlock.vue'
 
 enableAutoUnmount(afterEach)
 beforeEach(() => {
@@ -362,9 +363,93 @@ it.each([RetryAlertBlock, ActionAlertBlock, EmptyStateBlock])(
   async (component) => {
     const wrapper = mount(component, options)
     const initial = wrapper.text()
-    await wrapper.get('button').trigger('click')
+    await wrapper
+      .findAll('button')
+      .find((button) => button.text().trim())!
+      .trigger('click')
     expect(wrapper.text()).not.toBe(initial)
-    await wrapper.get('button').trigger('click')
+    await wrapper
+      .findAll('button')
+      .find((button) => button.text().trim())!
+      .trigger('click')
     expect(wrapper.text()).toBe(initial)
   },
 )
+
+it.each([RetryAlertBlock, ActionAlertBlock])(
+  'lets a dismissed notice be restored and used again',
+  async (component) => {
+    const wrapper = mount(component, options)
+    const initial = wrapper.text()
+    const dismiss = wrapper
+      .findAll('button')
+      .find((button) => button.attributes('aria-label')?.startsWith('Dismiss'))!
+    await dismiss.trigger('click')
+    await expect.poll(() => wrapper.find('[role="alert"]').exists()).toBe(false)
+    await wrapper.get('button').trigger('click')
+    expect(wrapper.text()).toBe(initial)
+    await wrapper
+      .findAll('button')
+      .find((button) => button.text().trim())!
+      .trigger('click')
+    expect(wrapper.find('[role="alert"]').exists()).toBe(true)
+    expect(wrapper.text()).not.toBe(initial)
+  },
+)
+
+it('recalculates order totals and credit needs after quantity changes and item removal', async () => {
+  const wrapper = mount(OrderEntryBlock, options)
+  const totals = () => wrapper.get('[aria-label="Order totals"]').text()
+  expect(totals()).toContain('51,800')
+  expect(button(wrapper, /Prepare payment request/).exists()).toBe(true)
+  const quantity = wrapper.get<HTMLInputElement>('input[aria-label="Tomatoes quantity"]')
+  quantity.element.value = '2'
+  await quantity.trigger('blur')
+  expect(totals()).toContain('39,800')
+  expect(button(wrapper, /Confirm order/).exists()).toBe(true)
+  expect(wrapper.find('input[type="radio"]').exists()).toBe(false)
+  await wrapper.get('button[aria-label="Remove Carrots"]').trigger('click')
+  expect(totals()).toContain('30,300')
+  expect(wrapper.get('tbody').text()).not.toContain('Carrots')
+  await button(wrapper, /Reorder last order/).trigger('click')
+  expect(totals()).toContain('51,800')
+  expect(wrapper.get('tbody').text()).toContain('Carrots')
+})
+
+it('adds produce without duplicating a row and keeps quantities within stock', async () => {
+  const wrapper = mount(OrderEntryBlock, options)
+  await flushPromises()
+  await selectOption(wrapper.get<HTMLElement>('[role="combobox"]').element, 'Red onions')
+  await button(wrapper, /^Add$/).trigger('click')
+  expect(wrapper.get('tbody').text()).toContain('Red onions')
+  expect(wrapper.get('[aria-label="Order totals"]').text()).toContain('52,900')
+  expect(button(wrapper, /^Add$/).attributes('disabled')).toBeDefined()
+  const quantity = wrapper.get<HTMLInputElement>('input[aria-label="Red onions quantity"]')
+  quantity.element.value = '99'
+  await quantity.trigger('blur')
+  expect(
+    wrapper.get<HTMLInputElement>('input[aria-label="Red onions quantity"]').element.value,
+  ).toBe('30')
+  expect(wrapper.get('[aria-label="Order totals"]').text()).toContain('84,800')
+})
+
+it('uses the selected credit resolution and blocks an empty or undeliverable order', async () => {
+  const wrapper = mount(OrderEntryBlock, options)
+  await wrapper.findAll('input[type="radio"]')[1]!.setValue(true)
+  await button(wrapper, /Send for credit review/).trigger('click')
+  expect(wrapper.get('[role="status"]').text()).toContain('Dispatch remains on hold')
+  await wrapper.findAll('input[type="radio"]')[2]!.setValue(true)
+  await button(wrapper, /Prepare split order/).trigger('click')
+  expect(wrapper.get('[role="status"]').text()).toContain('40,000')
+  expect(wrapper.get('[role="status"]').text()).toContain('No items have been allocated')
+  await wrapper.get('input[required]').setValue('   ')
+  expect(button(wrapper, /Prepare split order/).attributes('disabled')).toBeDefined()
+  expect(button(wrapper, /Send to sales lead/).attributes('disabled')).toBeDefined()
+  await wrapper.get('input[required]').setValue('14 Muthithi Road, Nairobi')
+  for (const remove of wrapper.findAll('button[aria-label^="Remove "]'))
+    await remove.trigger('click')
+  expect(wrapper.get('[aria-label="Order totals"]').get('dd[aria-live="polite"]').text()).toMatch(
+    /\b0$/,
+  )
+  expect(button(wrapper, /Confirm order/).attributes('disabled')).toBeDefined()
+})

@@ -29,7 +29,7 @@ function submit(event: FormSubmitEvent) {
     @input="result = ''"
   >
     <Card>
-      <template #title><h3 class="text-2xl font-medium">Two-factor authentication</h3></template>
+      <template #title><h4 class="text-xl font-medium">Two-factor authentication</h4></template>
       <template #subtitle>Enter the six-digit code from your authenticator app.</template>
       <template #content
         ><div class="flex flex-col gap-4 text-sm">

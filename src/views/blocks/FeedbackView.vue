@@ -30,7 +30,7 @@ const examples = [
   },
 ]
 const usage = [
-  'Use Message for feedback and Card for a larger empty state. Keep a visible explanation alongside each action.',
+  'Use Message for feedback and Card for a larger empty state. Align the icon with the title, stack descriptions and actions below it, and keep dismissal at the top right.',
   'Warning uses the orange ramp. Message calls danger severity error. Retry and create actions here update local preview state.',
 ]
 </script>

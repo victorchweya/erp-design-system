@@ -10,12 +10,12 @@ enableAutoUnmount(afterEach)
 const global = { plugins: [PrimeVue], stubs: { transition: false } }
 
 it.each([PageHeader01, PageHeader02, PageHeader03])(
-  'provides a page heading that can fit an embedded context',
+  'provides a section heading that can fit an embedded context',
   async (component) => {
     const wrapper = mount(component, { global })
-    expect(wrapper.findAll('h1')).toHaveLength(1)
+    expect(wrapper.findAll('h2')).toHaveLength(1)
     await wrapper.setProps({ headingTag: 'h3' })
-    expect(wrapper.find('h1').exists()).toBe(false)
+    expect(wrapper.find('h2').exists()).toBe(false)
     expect(wrapper.findAll('h3')).toHaveLength(1)
   },
 )

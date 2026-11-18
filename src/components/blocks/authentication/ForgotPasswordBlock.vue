@@ -32,7 +32,7 @@ function submit(event: FormSubmitEvent) {
     @input="result = ''"
   >
     <Card>
-      <template #title><h3 class="text-2xl font-medium">Forgot your password?</h3></template>
+      <template #title><h4 class="text-xl font-medium">Forgot your password?</h4></template>
       <template #subtitle>Enter your email to request a password reset link.</template>
       <template #content
         ><div class="flex flex-col gap-4 text-sm">

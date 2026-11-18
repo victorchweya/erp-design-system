@@ -2,7 +2,7 @@
 import { shallowRef } from 'vue'
 import Plus from '@primeicons/vue/plus'
 
-withDefaults(defineProps<{ headingTag?: 'h1' | 'h2' | 'h3' }>(), { headingTag: 'h1' })
+withDefaults(defineProps<{ headingTag?: 'h1' | 'h2' | 'h3' }>(), { headingTag: 'h2' })
 const feedback = shallowRef('')
 </script>
 
@@ -10,7 +10,7 @@ const feedback = shallowRef('')
   <div class="flex flex-col gap-4 text-color">
     <header class="flex flex-wrap items-start justify-between gap-4">
       <div class="min-w-0 flex-1 basis-64 space-y-2">
-        <component :is="headingTag" class="text-2xl font-medium tracking-tight sm:text-3xl">
+        <component :is="headingTag" class="text-xl font-medium tracking-tight sm:text-2xl">
           Orders
         </component>
         <p class="text-base leading-relaxed text-muted">

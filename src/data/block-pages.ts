@@ -1,6 +1,11 @@
 export const blockPages = [
   {
-    label: 'Headers',
+    label: 'Order entry',
+    path: '/ui-blocks/order-entry',
+    load: () => import('@/views/blocks/OrderEntryView.vue'),
+  },
+  {
+    label: 'Section headers',
     path: '/ui-blocks/headers',
     load: () => import('@/views/blocks/HeadersView.vue'),
   },

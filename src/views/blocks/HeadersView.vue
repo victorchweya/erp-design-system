@@ -11,7 +11,7 @@ const examples = [
   {
     id: 'primary-action',
     title: 'Title and primary action',
-    description: 'A page title, supporting text, and one clear action for a list page.',
+    description: 'A section title, supporting text, and one clear action for a list page.',
     component: PageHeader01,
     props: { headingTag: 'h3' },
     code: header01Code,
@@ -38,10 +38,10 @@ const examples = [
 
 <template>
   <BlockDoc
-    title="Headers"
-    description="Page headers for lists and record details. Built with PrimeVue controls and our shared foundations."
+    title="Section headers"
+    description="Section headers for lists and record details. Built with PrimeVue controls and our shared foundations."
     :usage="[
-      'Headers use h1 by default. Set headingTag to match the surrounding hierarchy; these previews use h3.',
+      'Section headers use h2 by default. Set headingTag to match the surrounding hierarchy; these previews use h3.',
       'Actions wrap below the title on small screens. Keep one primary action, use Tag for status, and use a route link for Back navigation in your application.',
     ]"
     :examples="examples"

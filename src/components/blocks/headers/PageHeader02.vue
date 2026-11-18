@@ -3,7 +3,7 @@ import { shallowRef } from 'vue'
 import Download from '@primeicons/vue/download'
 import Plus from '@primeicons/vue/plus'
 
-withDefaults(defineProps<{ headingTag?: 'h1' | 'h2' | 'h3' }>(), { headingTag: 'h1' })
+withDefaults(defineProps<{ headingTag?: 'h1' | 'h2' | 'h3' }>(), { headingTag: 'h2' })
 const feedback = shallowRef('')
 </script>
 
@@ -12,7 +12,7 @@ const feedback = shallowRef('')
     <header class="flex flex-wrap items-start justify-between gap-4">
       <div class="min-w-0 flex-1 basis-64 space-y-2">
         <div class="flex flex-wrap items-center gap-3">
-          <component :is="headingTag" class="text-2xl font-medium tracking-tight sm:text-3xl">
+          <component :is="headingTag" class="text-xl font-medium tracking-tight sm:text-2xl">
             Supplier orders
           </component>
           <Tag severity="warn">8 awaiting confirmation</Tag>

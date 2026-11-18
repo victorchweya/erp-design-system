@@ -34,7 +34,7 @@ function submit(event: FormSubmitEvent) {
     @input="result = ''"
   >
     <Card>
-      <template #title><h3 class="text-2xl font-medium">Create your account</h3></template>
+      <template #title><h4 class="text-xl font-medium">Create your account</h4></template>
       <template #subtitle>Get started with Farm to Feed.</template>
       <template #content
         ><div class="flex flex-col gap-4 text-sm">

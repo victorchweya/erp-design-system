@@ -7,7 +7,7 @@ const props = withDefaults(
   defineProps<{
     code: string
     title: string
-    language?: 'Vue' | 'CSS'
+    language?: 'Vue' | 'CSS' | 'TypeScript'
     tabbed?: boolean
   }>(),
   { language: 'Vue' },

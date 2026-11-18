@@ -33,7 +33,7 @@ function submit(event: FormSubmitEvent) {
     @input="result = ''"
   >
     <Card>
-      <template #title><h3 class="text-2xl font-medium">Welcome back</h3></template>
+      <template #title><h4 class="text-xl font-medium">Welcome back</h4></template>
       <template #subtitle>Sign in to your Farm to Feed account.</template>
       <template #content
         ><div class="flex flex-col gap-4 text-sm">

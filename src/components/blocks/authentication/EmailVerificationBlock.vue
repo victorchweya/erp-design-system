@@ -10,7 +10,7 @@ const result = shallowRef('')
     <template #title
       ><div class="flex flex-col gap-4">
         <Envelope aria-hidden="true" class="size-8 text-primary" />
-        <h3 class="text-2xl font-medium">Check your email</h3>
+        <h4 class="text-xl font-medium">Check your email</h4>
       </div></template
     >
     <template #subtitle>Verify your email address to finish setting up your account.</template>

@@ -31,7 +31,7 @@ function submit(event: FormSubmitEvent) {
     @input="result = ''"
   >
     <Card>
-      <template #title><h3 class="text-2xl font-medium">Set a new password</h3></template>
+      <template #title><h4 class="text-xl font-medium">Set a new password</h4></template>
       <template #subtitle>Choose a password you have not used for this account.</template>
       <template #content
         ><div class="flex flex-col gap-4 text-sm">
