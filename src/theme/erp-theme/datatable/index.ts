@@ -86,7 +86,7 @@ export const footerCell = {
 };
 
 export const columnFooter = {
-    fontWeight: '{font.weight.semibold}'
+    fontWeight: '{font.weight.medium}'
 };
 
 export const footer = {

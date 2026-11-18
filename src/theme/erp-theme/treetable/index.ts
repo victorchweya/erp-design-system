@@ -30,7 +30,7 @@ export const headerCell = {
 };
 
 export const columnTitle = {
-    fontWeight: '{font.weight.semibold}'
+    fontWeight: '{font.weight.medium}'
 };
 
 export const row = {
@@ -63,7 +63,7 @@ export const footerCell = {
 };
 
 export const columnFooter = {
-    fontWeight: '{font.weight.semibold}'
+    fontWeight: '{font.weight.medium}'
 };
 
 export const footer = {

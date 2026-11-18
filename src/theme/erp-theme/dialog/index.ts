@@ -12,16 +12,16 @@ export const header = {
 };
 
 export const title = {
-    fontSize: '{font.size.xl}',
-    fontWeight: '{font.weight.semibold}'
+    fontSize: '{font.size.lg}',
+    fontWeight: '{font.weight.medium}'
 };
 
 export const content = {
-    padding: '0 {overlay.modal.padding} {overlay.modal.padding} {overlay.modal.padding}'
+    padding: '{overlay.modal.padding}'
 };
 
 export const footer = {
-    padding: '0 {overlay.modal.padding} {overlay.modal.padding} {overlay.modal.padding}',
+    padding: '{overlay.modal.padding}',
     gap: '{spacing.2}'
 };
 

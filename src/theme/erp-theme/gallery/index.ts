@@ -9,7 +9,7 @@ export default {
   item: { transitionDuration: '{transition.duration}' },
   action: {
     size: '2.5rem',
-    borderRadius: '{border.radius.md}',
+    borderRadius: '{border.radius.lg}',
     color: '{text.color}',
     hoverBackground: '{content.hover.background}',
     hoverColor: '{text.hover.color}',
@@ -20,7 +20,7 @@ export default {
   navigation: {
     background: '{content.background}',
     size: '2.5rem',
-    borderRadius: '{border.radius.md}',
+    borderRadius: '{border.radius.lg}',
     color: '{text.color}',
     hoverBackground: '{content.hover.background}',
     hoverColor: '{text.hover.color}',

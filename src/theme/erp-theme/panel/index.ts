@@ -19,7 +19,7 @@ export const toggleableHeader = {
 };
 
 export const title = {
-    fontWeight: '{font.weight.semibold}'
+    fontWeight: '{font.weight.medium}'
 };
 
 export const content = {

@@ -20,7 +20,7 @@ export const tab = {
     hoverColor: '{text.color}',
     activeColor: '{primary.color}',
     padding: '1rem 1.125rem',
-    fontWeight: '{font.weight.semibold}',
+    fontWeight: '{font.weight.medium}',
     fontSize: '{font.size.base}',
     margin: '0 0 -1px 0',
     gap: '0.5rem',

@@ -339,7 +339,7 @@ export const css = /*css*/ `
         border: 1.5px solid currentColor;
         border-radius: 50%;
         font-size: 0.75em;
-        font-weight: dt('font.weight.semibold');
+        font-weight: dt('font.weight.medium');
         line-height: 1;
     }
 

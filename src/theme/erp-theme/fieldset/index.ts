@@ -17,7 +17,7 @@ export const legend = {
     borderColor: 'transparent',
     padding: '0.5rem 0.75rem',
     gap: '0.5rem',
-    fontWeight: '{font.weight.semibold}',
+    fontWeight: '{font.weight.medium}',
     focusRing: {
         width: '{focus.ring.width}',
         style: '{focus.ring.style}',

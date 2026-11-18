@@ -103,6 +103,33 @@ const css = /*css*/ `
     .p-toast {
         width: min(var(--p-toast-width), calc(100vw - 2rem)) !important;
     }
+    .p-confirmdialog {
+        --p-dialog-title-font-size: var(--p-font-size-lg);
+        --p-dialog-title-font-weight: var(--p-font-weight-medium);
+        --p-dialog-header-padding: var(--p-spacing-5) var(--p-spacing-5) var(--p-spacing-3);
+        --p-dialog-content-padding: 0 var(--p-spacing-5) var(--p-spacing-5);
+        --p-dialog-footer-padding: 0 var(--p-spacing-5) var(--p-spacing-5);
+    }
+    .p-confirmdialog .p-dialog-content {
+        align-items: flex-start;
+    }
+    .p-confirmdialog-icon {
+        align-self: flex-start;
+        flex: 0 0 auto;
+    }
+    .p-dialog:not(.p-confirmdialog) > .p-dialog-header,
+    .p-drawer > .p-drawer-header {
+        border-block-end: 1px solid var(--p-content-border-color);
+    }
+    .p-drawer > .p-drawer-footer {
+        border-block-start: 1px solid var(--p-content-border-color);
+    }
+    .p-dialog .p-dialog-close-button.p-button:focus-visible {
+        border-color: transparent;
+        outline: none;
+        box-shadow: none;
+        background: var(--p-content-hover-background);
+    }
 
     li.p-autocomplete-option,
     div.p-cascadeselect-option-content,

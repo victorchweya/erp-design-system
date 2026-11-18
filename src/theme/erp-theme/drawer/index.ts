@@ -6,20 +6,20 @@ export const root = {
 };
 
 export const header = {
-    padding: '{overlay.modal.padding}'
+    padding: '{spacing.2} {overlay.modal.padding}'
 };
 
 export const title = {
-    fontSize: '{font.size.2xl}',
-    fontWeight: '{font.weight.semibold}'
+    fontSize: '{font.size.lg}',
+    fontWeight: '{font.weight.medium}'
 };
 
 export const content = {
-    padding: '0 {overlay.modal.padding} {overlay.modal.padding} {overlay.modal.padding}'
+    padding: '{overlay.modal.padding}'
 };
 
 export const footer = {
-    padding: '{overlay.modal.padding}'
+    padding: '{spacing.2} {overlay.modal.padding}'
 };
 
 export default {

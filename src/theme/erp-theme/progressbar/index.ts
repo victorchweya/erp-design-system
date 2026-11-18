@@ -11,7 +11,7 @@ export const value = {
 export const label = {
     color: '{primary.contrast.color}',
     fontSize: '{font.size.xs}',
-    fontWeight: '{font.weight.semibold}'
+    fontWeight: '{font.weight.medium}'
 };
 
 export default {

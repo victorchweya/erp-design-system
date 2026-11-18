@@ -1,6 +1,6 @@
 export const root = {
     fontSize: '{form.field.font.size}',
-    borderRadius: '{form.field.border.radius}',
+    borderRadius: '{border.radius.lg}',
     roundedBorderRadius: '2rem',
     gap: '{spacing.2}',
     paddingX: '{form.field.padding.x}',

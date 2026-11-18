@@ -83,7 +83,7 @@ export const semantic = {
             paddingX: '{control.lg.padding.x}',
             paddingY: '{control.lg.padding.y}'
         },
-        borderRadius: '{border.radius.md}',
+        borderRadius: '{border.radius.lg}',
         focusRing: {
             width: '0',
             style: 'none',
@@ -105,11 +105,11 @@ export const semantic = {
         },
         optionGroup: {
             padding: '{form.field.padding.y} {form.field.padding.x}',
-            fontWeight: '{font.weight.semibold}'
+            fontWeight: '{font.weight.medium}'
         }
     },
     content: {
-        borderRadius: '{border.radius.md}'
+        borderRadius: '{border.radius.lg}'
     },
     mask: {
         transitionDuration: '0.3s'
@@ -126,7 +126,7 @@ export const semantic = {
         },
         submenuLabel: {
             padding: '{spacing.2} {spacing.3}',
-            fontWeight: '{font.weight.semibold}'
+            fontWeight: '{font.weight.medium}'
         },
         submenuIcon: {
             size: '0.875rem'
@@ -134,11 +134,11 @@ export const semantic = {
     },
     overlay: {
         select: {
-            borderRadius: '{border.radius.md}',
+            borderRadius: '{border.radius.lg}',
             shadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1)'
         },
         popover: {
-            borderRadius: '{border.radius.md}',
+            borderRadius: '{border.radius.lg}',
             padding: '{spacing.3}',
             shadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1)'
         },

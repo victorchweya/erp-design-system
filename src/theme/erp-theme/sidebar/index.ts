@@ -9,7 +9,7 @@ const menuButton = {
   padding: '0.5rem',
   gap: '0.5rem',
   height: '2.5rem',
-  borderRadius: '{border.radius.md}',
+  borderRadius: '{border.radius.lg}',
   fontSize: '{font.size.sm}',
   fontWeight: '{font.weight.normal}',
   color: '{text.color}',
