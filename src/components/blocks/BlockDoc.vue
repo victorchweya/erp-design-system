@@ -15,6 +15,7 @@ const props = defineProps<{
     component: Component
     code: string
     props?: Record<string, unknown>
+    mobilePreview?: boolean
   }[]
 }>()
 const sections = computed(() => [
@@ -61,7 +62,12 @@ const activeSection = useActiveSection(() => sections.value.map(({ id }) => id))
         >
           <h2 :id="`${example.id}-title`" class="text-2xl font-medium">{{ example.title }}</h2>
           <p class="leading-relaxed text-muted">{{ example.description }}</p>
-          <CodeExample :title="example.title" :code="example.code" tabbed>
+          <CodeExample
+            :title="example.title"
+            :code="example.code"
+            :mobilePreview="example.mobilePreview"
+            tabbed
+          >
             <component :is="example.component" v-bind="example.props" />
           </CodeExample>
         </section>

@@ -11,7 +11,7 @@ const view = shallowRef('List')
 
 <template>
   <div class="flex min-w-0 flex-col gap-4">
-    <div class="flex flex-col gap-2">
+    <div class="flex flex-col gap-1">
       <label :for="`${id}-search`" class="font-medium">Mixed control alignment</label>
       <div class="flex items-start gap-2">
         <InputText
@@ -58,7 +58,7 @@ const view = shallowRef('List')
       :allowEmpty="false"
       aria-label="Layout preview"
     />
-    <div class="flex flex-col gap-2">
+    <div class="flex flex-col gap-1">
       <label :for="`${id}-invalid`" class="font-medium">Invalid</label>
       <InputText
         :id="`${id}-invalid`"
@@ -69,11 +69,11 @@ const view = shallowRef('List')
       />
       <p :id="`${id}-error`" class="text-sm text-danger">Enter a valid reference.</p>
     </div>
-    <div class="flex flex-col gap-2">
+    <div class="flex flex-col gap-1">
       <label :for="`${id}-disabled`" class="font-medium">Disabled</label>
       <InputText :id="`${id}-disabled`" :size="size" modelValue="Unavailable" disabled fluid />
     </div>
-    <div class="flex flex-col gap-2">
+    <div class="flex flex-col gap-1">
       <label :for="`${id}-filled`" class="font-medium">Filled</label>
       <InputText :id="`${id}-filled`" :size="size" modelValue="FTF-1042" variant="filled" fluid />
     </div>

@@ -9,7 +9,7 @@ const examples = [
     id: 'field-layout-0',
     title: 'Label styles',
     description:
-      'Every style still connects label for with input id. The default layout uses gap-2 within fields and gap-6 between groups.',
+      'Every style still connects label for with input id. The default layout uses gap-1 within fields and gap-6 between groups.',
     component: FieldLabelsExample,
     code: code0,
   },

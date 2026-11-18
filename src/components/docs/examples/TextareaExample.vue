@@ -4,7 +4,7 @@ const notes = shallowRef('')
 </script>
 
 <template>
-  <div class="flex max-w-lg flex-col gap-2">
+  <div class="flex max-w-lg flex-col gap-1">
     <label for="delivery-notes" class="font-medium">Delivery notes</label
     ><Textarea
       id="delivery-notes"

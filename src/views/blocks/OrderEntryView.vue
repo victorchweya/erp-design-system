@@ -50,7 +50,7 @@ const source = computed(() => files.find((file) => file.name === selectedFile.va
     <section class="flex min-w-0 flex-col gap-4" aria-labelledby="order-example-title">
       <div class="flex flex-wrap items-end justify-between gap-4">
         <h2 id="order-example-title" class="text-2xl font-medium">Customer order</h2>
-        <div class="flex min-w-0 flex-col gap-2">
+        <div class="flex min-w-0 flex-col gap-1">
           <label for="order-source" class="font-medium">Source file</label>
           <Select
             inputId="order-source"

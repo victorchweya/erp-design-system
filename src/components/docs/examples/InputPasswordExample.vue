@@ -7,7 +7,7 @@ const mask = shallowRef(true)
 </script>
 
 <template>
-  <div class="flex max-w-sm flex-col gap-2">
+  <div class="flex max-w-sm flex-col gap-1">
     <label for="account-password" class="font-medium">Password</label
     ><InputGroup
       ><InputPassword

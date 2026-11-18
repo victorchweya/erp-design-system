@@ -20,7 +20,7 @@ const categories = [
 </script>
 
 <template>
-  <div class="flex max-w-sm flex-col gap-2">
+  <div class="flex max-w-sm flex-col gap-1">
     <label for="produce-cascade" class="font-medium">Produce category</label
     ><CascadeSelect
       inputId="produce-cascade"

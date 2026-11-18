@@ -7,7 +7,7 @@ const infield = shallowRef('')
 
 <template>
   <div class="grid items-end gap-8 sm:grid-cols-3">
-    <div class="flex flex-col gap-2">
+    <div class="flex flex-col gap-1">
       <label for="plain-label" class="font-medium">Visible label</label
       ><InputText id="plain-label" v-model="plain" fluid />
     </div>

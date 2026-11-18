@@ -6,7 +6,7 @@ const range = ref<(Date | null)[] | null>(null)
 
 <template>
   <div class="grid gap-6 sm:grid-cols-2">
-    <div class="flex flex-col gap-2">
+    <div class="flex flex-col gap-1">
       <label for="delivery-date" class="font-medium">Delivery date</label
       ><DatePicker
         inputId="delivery-date"
@@ -18,7 +18,7 @@ const range = ref<(Date | null)[] | null>(null)
       />
       <p class="text-muted-color">Day / month / year</p>
     </div>
-    <div class="flex flex-col gap-2">
+    <div class="flex flex-col gap-1">
       <label for="delivery-range" class="font-medium">Delivery window</label
       ><DatePicker
         inputId="delivery-range"

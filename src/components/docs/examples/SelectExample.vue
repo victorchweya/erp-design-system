@@ -9,7 +9,7 @@ const options = [
 </script>
 
 <template>
-  <div class="flex max-w-sm flex-col gap-2">
+  <div class="flex max-w-sm flex-col gap-1">
     <label for="produce-select" class="font-medium">Produce</label
     ><Select
       inputId="produce-select"

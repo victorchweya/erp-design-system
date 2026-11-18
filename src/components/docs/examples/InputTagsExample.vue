@@ -4,7 +4,7 @@ const tags = ref(['Kale', 'Carrot'])
 </script>
 
 <template>
-  <div class="flex max-w-lg flex-col gap-2">
+  <div class="flex max-w-lg flex-col gap-1">
     <label for="produce-tags" class="font-medium">Produce tags</label
     ><InputTags
       inputId="produce-tags"

@@ -35,7 +35,7 @@ function submit(event: FormSubmitEvent) {
       <template #subtitle>Choose a password you have not used for this account.</template>
       <template #content
         ><div class="flex flex-col gap-4 text-sm">
-          <div class="flex flex-col gap-2">
+          <div class="flex flex-col gap-1">
             <label :for="`${id}-password`" class="font-medium">New password</label>
             <InputPassword
               :id="`${id}-password`"
@@ -55,7 +55,7 @@ function submit(event: FormSubmitEvent) {
               >{{ $form.password.error?.message }}</Message
             >
           </div>
-          <div class="flex flex-col gap-2">
+          <div class="flex flex-col gap-1">
             <label :for="`${id}-confirmation`" class="font-medium">Confirm new password</label>
             <InputPassword
               :id="`${id}-confirmation`"

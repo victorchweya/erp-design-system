@@ -4,6 +4,7 @@ import Search from '@primeicons/vue/search'
 const query = shallowRef('')
 const status = shallowRef<string | null>(null)
 const first = shallowRef(0)
+const rows = shallowRef(5)
 const orders = [
   { reference: 'FTF-1042', customer: 'Green Basket', items: 12, status: 'Confirmed' },
   { reference: 'FTF-1043', customer: 'Harvest Kitchen', items: 8, status: 'Pending' },
@@ -32,16 +33,23 @@ function clear() {
 <template>
   <DataTable
     v-model:first="first"
+    v-model:rows="rows"
     :value="filtered"
     dataKey="reference"
     size="small"
     showGridlines
     paginator
-    :rows="5"
-    paginatorTemplate="PrevPageLink CurrentPageReport NextPageLink"
-    currentPageReportTemplate="{first}–{last} of {totalRecords}"
+    :rowsPerPageOptions="[5, 10, 20]"
+    paginatorTemplate="RowsPerPageDropdown PrevPageLink PageLinks NextPageLink"
     :tableProps="{ 'aria-label': 'Customer orders' }"
+    class="orders-table"
   >
+    <template #paginatorstart>
+      <div class="flex w-full items-center text-sm text-muted">
+        <span role="status">{{ filtered.length }} rows</span>
+        <span class="ml-auto mr-2">Rows per page</span>
+      </div>
+    </template>
     <template #header>
       <div class="flex flex-col gap-4">
         <h5 class="text-lg font-medium">Orders</h5>
@@ -96,3 +104,17 @@ function clear() {
     >
   </DataTable>
 </template>
+
+<style scoped>
+:deep(.p-paginator) {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+}
+
+:deep(.p-paginator-content-start) {
+  display: flex;
+  width: 100%;
+  min-width: 0;
+}
+</style>

@@ -47,7 +47,7 @@ function save() {
   >
     <form :id="`${id}-form`" novalidate class="flex flex-col gap-4 text-sm" @submit.prevent="save">
       <p class="text-muted">Choose who will coordinate order FTF-1042.</p>
-      <div class="flex flex-col gap-2">
+      <div class="flex flex-col gap-1">
         <label :for="`${id}-owner`" class="font-medium">Team member</label
         ><Select
           :inputId="`${id}-owner`"

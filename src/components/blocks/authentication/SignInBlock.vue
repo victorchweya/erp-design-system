@@ -37,7 +37,7 @@ function submit(event: FormSubmitEvent) {
       <template #subtitle>Sign in to your Farm to Feed account.</template>
       <template #content
         ><div class="flex flex-col gap-4 text-sm">
-          <div class="flex flex-col gap-2">
+          <div class="flex flex-col gap-1">
             <label :for="`${id}-email`" class="font-medium">Email</label>
             <InputText
               :id="`${id}-email`"
@@ -58,7 +58,7 @@ function submit(event: FormSubmitEvent) {
               >{{ $form.email.error?.message }}</Message
             >
           </div>
-          <div class="flex flex-col gap-2">
+          <div class="flex flex-col gap-1">
             <label :for="`${id}-password`" class="font-medium">Password</label>
             <InputGroup>
               <InputPassword

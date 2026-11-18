@@ -11,7 +11,7 @@ const slot = defineModel<string>('slot', { required: true })
     <template #title><h3 class="text-lg font-medium">Delivery</h3></template>
     <template #content>
       <div class="grid gap-4 sm:grid-cols-2">
-        <div class="flex min-w-0 flex-col gap-2">
+        <div class="flex min-w-0 flex-col gap-1">
           <label :for="`${id}-warehouse`" class="text-sm font-medium">Dispatch from</label>
           <Select
             :inputId="`${id}-warehouse`"
@@ -20,7 +20,7 @@ const slot = defineModel<string>('slot', { required: true })
             fluid
           />
         </div>
-        <div class="flex min-w-0 flex-col gap-2">
+        <div class="flex min-w-0 flex-col gap-1">
           <label :for="`${id}-slot`" class="text-sm font-medium">Delivery slot</label>
           <Select
             :inputId="`${id}-slot`"
@@ -29,7 +29,7 @@ const slot = defineModel<string>('slot', { required: true })
             fluid
           />
         </div>
-        <div class="flex min-w-0 flex-col gap-2 sm:col-span-2">
+        <div class="flex min-w-0 flex-col gap-1 sm:col-span-2">
           <label :for="`${id}-address`" class="text-sm font-medium">Drop-off address</label>
           <InputText :id="`${id}-address`" v-model="address" required fluid />
           <p class="text-xs text-muted">

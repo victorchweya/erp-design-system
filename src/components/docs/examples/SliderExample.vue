@@ -6,7 +6,7 @@ const range = ref([10, 40])
 
 <template>
   <div class="flex max-w-lg flex-col gap-8">
-    <div class="flex flex-col gap-4">
+    <div class="flex flex-col gap-1">
       <label id="weight-slider-label" for="weight-input" class="font-medium"
         >Order weight (kg)</label
       ><InputNumber

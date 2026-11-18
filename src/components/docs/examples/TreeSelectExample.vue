@@ -16,7 +16,7 @@ const nodes = [
 </script>
 
 <template>
-  <div class="flex max-w-sm flex-col gap-2">
+  <div class="flex max-w-sm flex-col gap-1">
     <label for="produce-tree" class="font-medium">Produce groups</label
     ><TreeSelect
       inputId="produce-tree"

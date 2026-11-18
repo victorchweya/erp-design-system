@@ -97,7 +97,7 @@ function add() {
       </DataTable>
     </template>
     <template #footer>
-      <div class="flex flex-col gap-2">
+      <div class="flex flex-col gap-1">
         <label :for="`${id}-produce`" class="text-sm font-medium">Add produce</label>
         <div class="flex gap-2">
           <Select

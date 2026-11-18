@@ -25,7 +25,7 @@ function submit(event: FormSubmitEvent) {
     class="flex max-w-sm flex-col gap-4"
     @submit="submit"
   >
-    <div class="flex flex-col gap-2">
+    <div class="flex flex-col gap-1">
       <label for="form-produce" class="font-medium">Produce name</label
       ><InputText
         id="form-produce"

@@ -2,6 +2,7 @@
 import { shallowRef } from 'vue'
 import Copy from '@primeicons/vue/copy'
 import Check from '@primeicons/vue/check'
+import Mobile from '@primeicons/vue/mobile'
 
 const props = withDefaults(
   defineProps<{
@@ -9,12 +10,14 @@ const props = withDefaults(
     title: string
     language?: 'Vue' | 'CSS' | 'TypeScript'
     tabbed?: boolean
+    mobilePreview?: boolean
   }>(),
   { language: 'Vue' },
 )
 
 const copyState = shallowRef<'idle' | 'copied' | 'failed'>('idle')
 const view = shallowRef('Preview')
+const mobile = shallowRef(false)
 
 async function copyCode() {
   try {
@@ -38,9 +41,11 @@ async function copyCode() {
         class="flex flex-wrap items-center justify-between gap-4 border-b border-surface px-4 py-3 text-sm"
       >
         <div class="flex min-w-0 flex-wrap items-center gap-3">
-          <span class="rounded bg-surface-100 px-2 py-1 text-xs font-medium dark:bg-surface-800">{{
-            language
-          }}</span>
+          <span
+            v-if="language !== 'Vue'"
+            class="rounded bg-surface-100 px-2 py-1 text-xs font-medium dark:bg-surface-800"
+            >{{ language }}</span
+          >
           <span class="font-medium">{{ title }}</span>
         </div>
         <div class="flex items-center gap-3">
@@ -52,6 +57,20 @@ async function copyCode() {
             size="small"
             :aria-label="`${title} view`"
           />
+          <Button
+            v-if="mobilePreview && tabbed"
+            type="button"
+            iconOnly
+            size="small"
+            :severity="mobile ? 'primary' : 'secondary'"
+            :outlined="!mobile"
+            :aria-pressed="mobile"
+            aria-label="Toggle mobile preview"
+            title="Toggle mobile preview"
+            @click="mobile = !mobile"
+          >
+            <Mobile aria-hidden="true" />
+          </Button>
           <Button
             type="button"
             iconOnly
@@ -70,7 +89,9 @@ async function copyCode() {
       </div>
     </template>
     <template #content>
-      <div v-if="tabbed" v-show="view === 'Preview'" class="p-4 sm:p-6"><slot /></div>
+      <div v-if="tabbed" v-show="view === 'Preview'" class="p-4 sm:p-6">
+        <div :class="mobile ? 'mx-auto w-[24rem] max-w-full' : 'w-full'"><slot /></div>
+      </div>
       <pre
         v-show="!tabbed || view === 'Code'"
         class="m-0 overflow-x-auto p-4 text-sm"

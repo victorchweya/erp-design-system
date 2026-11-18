@@ -38,7 +38,7 @@ function submit(event: FormSubmitEvent) {
       <template #subtitle>Get started with Farm to Feed.</template>
       <template #content
         ><div class="flex flex-col gap-4 text-sm">
-          <div class="flex flex-col gap-2">
+          <div class="flex flex-col gap-1">
             <label :for="`${id}-name`" class="font-medium">Full name</label>
             <InputText
               :id="`${id}-name`"
@@ -59,7 +59,7 @@ function submit(event: FormSubmitEvent) {
               >{{ $form.name.error?.message }}</Message
             >
           </div>
-          <div class="flex flex-col gap-2">
+          <div class="flex flex-col gap-1">
             <label :for="`${id}-email`" class="font-medium">Email</label>
             <InputText
               :id="`${id}-email`"
@@ -80,7 +80,7 @@ function submit(event: FormSubmitEvent) {
               >{{ $form.email.error?.message }}</Message
             >
           </div>
-          <div class="flex flex-col gap-2">
+          <div class="flex flex-col gap-1">
             <label :for="`${id}-password`" class="font-medium">Password</label>
             <InputPassword
               :id="`${id}-password`"

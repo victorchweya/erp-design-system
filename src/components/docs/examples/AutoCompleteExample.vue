@@ -11,7 +11,7 @@ function search(event: AutoCompleteCompleteEvent) {
 </script>
 
 <template>
-  <div class="flex max-w-sm flex-col gap-2">
+  <div class="flex max-w-sm flex-col gap-1">
     <label for="produce-search" class="font-medium">Find produce</label
     ><AutoComplete
       inputId="produce-search"

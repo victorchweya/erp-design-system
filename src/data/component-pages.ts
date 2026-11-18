@@ -6,6 +6,12 @@ export const componentPages = [
     load: () => import('@/views/components/ButtonView.vue'),
   },
   {
+    label: 'Links',
+    group: 'Button',
+    path: '/components/core-elements/links',
+    load: () => import('@/views/components/LinkView.vue'),
+  },
+  {
     label: 'Tag',
     group: 'Misc',
     path: '/components/core-elements/tag',

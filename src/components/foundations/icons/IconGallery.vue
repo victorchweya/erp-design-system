@@ -32,7 +32,7 @@ const visibleIcons = computed(() => {
       All {{ icons.length }} icons from our installed @primeicons/vue package. Use the path below
       each icon after @primeicons/vue/ when importing it.
     </p>
-    <div class="flex flex-col gap-2">
+    <div class="flex flex-col gap-1">
       <label for="icon-search" class="text-sm font-medium">Search icons</label>
       <InputText
         id="icon-search"

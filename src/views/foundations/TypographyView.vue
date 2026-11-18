@@ -149,6 +149,14 @@ const weights = [
             controls use 16px. Body text stays at 16px. Measurements below assume the browser’s
             default 16px root size; rem units respect font preferences.
           </p>
+          <p class="leading-relaxed text-muted-color">
+            Typography defines the text scale. Navigation styling and behaviour are documented in
+            <RouterLink
+              to="/components/core-elements/links"
+              class="rounded-sm text-primary underline underline-offset-4 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+              >Links</RouterLink
+            >.
+          </p>
         </section>
 
         <TypographySpecimen v-for="specimen in specimens" :key="specimen.id" v-bind="specimen" />

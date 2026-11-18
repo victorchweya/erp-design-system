@@ -23,11 +23,11 @@ function clear() {
     <template #content>
       <form class="flex flex-col gap-4 text-sm" @submit.prevent="apply" @reset.prevent="clear">
         <div class="flex flex-wrap items-end gap-4">
-          <div class="flex min-w-0 flex-1 basis-48 flex-col gap-2">
+          <div class="flex min-w-0 flex-1 basis-48 flex-col gap-1">
             <label :for="`${id}-search`" class="font-medium">Reference or customer</label
             ><InputText :id="`${id}-search`" v-model="filters.search" fluid />
           </div>
-          <div class="flex flex-1 basis-40 flex-col gap-2">
+          <div class="flex flex-1 basis-40 flex-col gap-1">
             <label :for="`${id}-status`" class="font-medium">Status</label
             ><Select
               :inputId="`${id}-status`"

@@ -6,7 +6,7 @@ const price = shallowRef<number | null>(250)
 
 <template>
   <div class="grid gap-6 sm:grid-cols-2">
-    <div class="flex flex-col gap-2">
+    <div class="flex flex-col gap-1">
       <label for="order-quantity" class="font-medium">Quantity (kg)</label
       ><InputNumber
         inputId="order-quantity"
@@ -19,7 +19,7 @@ const price = shallowRef<number | null>(250)
       />
       <p class="text-muted-color">Between 1 and 100 kg.</p>
     </div>
-    <div class="flex flex-col gap-2">
+    <div class="flex flex-col gap-1">
       <label for="unit-price" class="font-medium">Unit price</label
       ><InputNumber
         inputId="unit-price"

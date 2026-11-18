@@ -34,7 +34,7 @@ function submit(event: FormSubmitEvent) {
       <template #content>
         <div class="flex flex-col gap-6 text-sm">
           <div class="grid gap-4 md:grid-cols-2">
-            <div class="flex flex-col gap-2">
+            <div class="flex flex-col gap-1">
               <label :for="`${id}-name`" class="font-medium">Supplier name</label
               ><InputText
                 :id="`${id}-name`"
@@ -51,7 +51,7 @@ function submit(event: FormSubmitEvent) {
                 >{{ $form.name.error?.message }}</Message
               >
             </div>
-            <div class="flex flex-col gap-2">
+            <div class="flex flex-col gap-1">
               <label :for="`${id}-email`" class="font-medium">Contact email</label
               ><InputText
                 :id="`${id}-email`"
@@ -71,7 +71,7 @@ function submit(event: FormSubmitEvent) {
               >
             </div>
           </div>
-          <div class="flex flex-col gap-2">
+          <div class="flex flex-col gap-1">
             <label :for="`${id}-notes`" class="font-medium"
               >Notes <span class="font-normal text-muted">(optional)</span></label
             ><Textarea

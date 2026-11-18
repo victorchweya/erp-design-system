@@ -22,15 +22,15 @@ function search({ query }: AutoCompleteCompleteEvent) {
 
 <template>
   <div class="flex min-w-0 flex-col gap-4">
-    <div class="flex flex-col gap-2">
+    <div class="flex flex-col gap-1">
       <label :for="`${id}-text`" class="font-medium">Text</label>
       <InputText :id="`${id}-text`" :size="size" modelValue="Fresh produce" fluid />
     </div>
-    <div class="flex flex-col gap-2">
+    <div class="flex flex-col gap-1">
       <label :for="`${id}-password`" class="font-medium">Password</label>
       <InputPassword :id="`${id}-password`" :size="size" autocomplete="new-password" fluid />
     </div>
-    <div class="flex flex-col gap-2">
+    <div class="flex flex-col gap-1">
       <label :for="`${id}-quantity`" class="font-medium">Number with spinner</label>
       <InputNumber
         :inputId="`${id}-quantity`"
@@ -41,7 +41,7 @@ function search({ query }: AutoCompleteCompleteEvent) {
         fluid
       />
     </div>
-    <div class="flex flex-col gap-2">
+    <div class="flex flex-col gap-1">
       <label :for="`${id}-quantity-horizontal`" class="font-medium">Horizontal spinner</label>
       <InputNumber
         :inputId="`${id}-quantity-horizontal`"
@@ -53,11 +53,11 @@ function search({ query }: AutoCompleteCompleteEvent) {
         fluid
       />
     </div>
-    <div class="flex flex-col gap-2">
+    <div class="flex flex-col gap-1">
       <label :for="`${id}-select`" class="font-medium">Select</label>
       <Select :inputId="`${id}-select`" v-model="selected" :options="produce" :size="size" fluid />
     </div>
-    <div class="flex flex-col gap-2">
+    <div class="flex flex-col gap-1">
       <label :for="`${id}-multi`" class="font-medium">MultiSelect with chips</label>
       <MultiSelect
         :inputId="`${id}-multi`"
@@ -68,7 +68,7 @@ function search({ query }: AutoCompleteCompleteEvent) {
         fluid
       />
     </div>
-    <div class="flex flex-col gap-2">
+    <div class="flex flex-col gap-1">
       <label :for="`${id}-auto`" class="font-medium">AutoComplete</label>
       <AutoComplete
         :inputId="`${id}-auto`"
@@ -80,7 +80,7 @@ function search({ query }: AutoCompleteCompleteEvent) {
         fluid
       />
     </div>
-    <div class="flex flex-col gap-2">
+    <div class="flex flex-col gap-1">
       <label :for="`${id}-auto-multi`" class="font-medium">AutoComplete with chips</label>
       <AutoComplete
         :inputId="`${id}-auto-multi`"
@@ -92,11 +92,11 @@ function search({ query }: AutoCompleteCompleteEvent) {
         fluid
       />
     </div>
-    <div class="flex flex-col gap-2">
+    <div class="flex flex-col gap-1">
       <label :for="`${id}-date`" class="font-medium">DatePicker with trigger</label>
       <DatePicker :inputId="`${id}-date`" v-model="date" :size="size" showIcon fluid />
     </div>
-    <div class="flex flex-col gap-2">
+    <div class="flex flex-col gap-1">
       <label :for="`${id}-tree`" class="font-medium">TreeSelect</label>
       <TreeSelect
         :inputId="`${id}-tree`"
@@ -106,7 +106,7 @@ function search({ query }: AutoCompleteCompleteEvent) {
         fluid
       />
     </div>
-    <div class="flex flex-col gap-2">
+    <div class="flex flex-col gap-1">
       <label :for="`${id}-cascade`" class="font-medium">CascadeSelect</label>
       <CascadeSelect
         :inputId="`${id}-cascade`"
@@ -119,15 +119,15 @@ function search({ query }: AutoCompleteCompleteEvent) {
         fluid
       />
     </div>
-    <div class="flex flex-col gap-2">
+    <div class="flex flex-col gap-1">
       <label :for="`${id}-tags`" class="font-medium">InputTags</label>
       <InputTags :inputId="`${id}-tags`" v-model="tags" :size="size" fluid />
     </div>
-    <div class="flex flex-col gap-2">
+    <div class="flex flex-col gap-1">
       <label :for="`${id}-notes`" class="font-medium">Textarea</label>
       <Textarea :id="`${id}-notes`" :size="size" :rows="2" placeholder="Delivery notes" fluid />
     </div>
-    <div class="flex flex-col gap-2">
+    <div class="flex flex-col gap-1">
       <label :for="`${id}-group`" class="font-medium">Input group</label>
       <InputGroup
         ><InputGroupAddon>KES</InputGroupAddon

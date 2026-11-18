@@ -53,7 +53,7 @@ function save() {
       <p class="text-muted">
         Update the address for order FTF-1042. Changes apply only after saving.
       </p>
-      <div class="flex flex-col gap-2">
+      <div class="flex flex-col gap-1">
         <label :for="`${id}-address`" class="font-medium">Delivery address</label>
         <Textarea
           :id="`${id}-address`"

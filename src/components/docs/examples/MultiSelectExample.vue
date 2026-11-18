@@ -5,7 +5,7 @@ const produce = ['Kale', 'Carrot', 'Spinach', 'Lime', 'Tomato']
 </script>
 
 <template>
-  <div class="flex max-w-lg flex-col gap-2">
+  <div class="flex max-w-lg flex-col gap-1">
     <label for="produce-multiple" class="font-medium">Produce in this order</label
     ><MultiSelect
       inputId="produce-multiple"

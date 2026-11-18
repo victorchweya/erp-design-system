@@ -36,7 +36,7 @@ function submit(event: FormSubmitEvent) {
       <template #subtitle>Enter your email to request a password reset link.</template>
       <template #content
         ><div class="flex flex-col gap-4 text-sm">
-          <div class="flex flex-col gap-2">
+          <div class="flex flex-col gap-1">
             <label :for="`${id}-email`" class="font-medium">Email</label>
             <InputText
               :id="`${id}-email`"

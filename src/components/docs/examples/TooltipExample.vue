@@ -5,7 +5,7 @@ const id = useId()
 </script>
 
 <template>
-  <div class="flex flex-col gap-2">
+  <div class="flex flex-col gap-1">
     <label :for="id" class="font-medium">Order reference</label
     ><InputText
       :id="id"
