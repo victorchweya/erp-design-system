@@ -20,6 +20,11 @@ export const blockPages = [
     load: () => import('@/views/blocks/FeedbackView.vue'),
   },
   {
+    label: 'Empty states',
+    path: '/ui-blocks/empty-states',
+    load: () => import('@/views/blocks/EmptyStatesView.vue'),
+  },
+  {
     label: 'Tables',
     path: '/ui-blocks/tables',
     load: () => import('@/views/blocks/TablesView.vue'),

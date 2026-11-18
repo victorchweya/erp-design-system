@@ -8,7 +8,10 @@ const created = shallowRef(false)
 <template>
   <Card>
     <template #content>
-      <div v-if="!created" class="flex flex-col items-center gap-4 py-6 text-center">
+      <div
+        v-if="!created"
+        class="flex min-h-56 flex-col items-center justify-center gap-4 text-center"
+      >
         <Inbox :size="32" aria-hidden="true" class="text-muted" />
         <div class="space-y-2">
           <h3 class="text-xl font-medium">No supplier orders yet</h3>
@@ -16,13 +19,18 @@ const created = shallowRef(false)
             Create your first order to start planning incoming produce.
           </p>
         </div>
-        <Button type="button" @click="created = true"
+        <Button type="button" size="small" @click="created = true"
           ><Plus aria-hidden="true" />Create order</Button
         >
       </div>
       <div v-else class="flex flex-col items-start gap-4">
         <Message severity="success">A draft order was created in this preview.</Message>
-        <Button type="button" severity="secondary" outlined @click="created = false"
+        <Button
+          type="button"
+          severity="secondary"
+          size="small"
+          outlined
+          @click="created = false"
           >Reset preview</Button
         >
       </div>

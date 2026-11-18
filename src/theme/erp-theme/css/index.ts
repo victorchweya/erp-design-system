@@ -100,6 +100,9 @@ const css = /*css*/ `
     .p-toast-message-text {
         margin-top: 0.25rem;
     }
+    .p-toast {
+        width: min(var(--p-toast-width), calc(100vw - 2rem)) !important;
+    }
 
     li.p-autocomplete-option,
     div.p-cascadeselect-option-content,

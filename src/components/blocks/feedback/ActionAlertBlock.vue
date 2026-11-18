@@ -28,6 +28,7 @@ const result = ref('')
           <Button
             type="button"
             severity="secondary"
+            size="small"
             outlined
             @click="result = 'Customer search opened in this preview.'"
           >
@@ -36,6 +37,7 @@ const result = ref('')
           <Button
             type="button"
             severity="secondary"
+            size="small"
             outlined
             @click="result = 'Add customer opened in this preview.'"
           >
@@ -61,6 +63,7 @@ const result = ref('')
         <Button
           type="button"
           severity="danger"
+          size="small"
           outlined
           @click="result = 'Order history retry started in this preview.'"
         >

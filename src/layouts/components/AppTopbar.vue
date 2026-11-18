@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import Bell from '@primeicons/vue/bell'
-import { RouterLink } from 'vue-router'
 import ColorModeToggle from '@/components/ColorModeToggle.vue'
 import AppBreadcrumb from './AppBreadcrumb.vue'
 import SidebarToggle from './SidebarToggle.vue'
@@ -26,16 +25,15 @@ defineEmits<{ toggleSidebar: [] }>()
     </div>
 
     <div class="ml-auto flex shrink-0 items-center pl-3">
-      <div class="flex items-center gap-1">
+      <div class="flex items-center gap-3">
         <ColorModeToggle />
-        <span class="mx-1 h-5 w-px bg-surface" aria-hidden="true" />
+
         <Button
           type="button"
           iconOnly
           rounded
           text
           severity="secondary"
-          size="small"
           aria-label="Notifications"
           title="Notifications"
         >
@@ -45,7 +43,7 @@ defineEmits<{ toggleSidebar: [] }>()
             aria-hidden="true"
           />
         </Button>
-        <span class="mx-1 h-5 w-px bg-surface" aria-hidden="true" />
+
         <AppUserMenu />
       </div>
     </div>

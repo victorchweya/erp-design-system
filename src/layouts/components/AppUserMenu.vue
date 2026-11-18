@@ -26,7 +26,6 @@ const items = [
     rounded
     text
     severity="secondary"
-    size="small"
     aria-label="Open user menu"
     aria-haspopup="menu"
     aria-controls="user-menu"

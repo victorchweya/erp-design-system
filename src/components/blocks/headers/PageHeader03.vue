@@ -47,15 +47,15 @@ const items = [
           </div>
           <dl class="flex flex-wrap gap-x-6 gap-y-2 text-sm">
             <div class="flex flex-wrap gap-x-2">
-              <dt class="text-muted">Customer</dt>
+              <dt class="text-muted">Customer:</dt>
               <dd>Green Basket</dd>
             </div>
             <div class="flex flex-wrap gap-x-2">
-              <dt class="text-muted">Delivery</dt>
+              <dt class="text-muted">Delivery:</dt>
               <dd><time datetime="2026-11-20">20 Nov 2026</time></dd>
             </div>
             <div class="flex flex-wrap gap-x-2">
-              <dt class="text-muted">Items</dt>
+              <dt class="text-muted">Items:</dt>
               <dd>12</dd>
             </div>
           </dl>

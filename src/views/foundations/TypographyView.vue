@@ -41,6 +41,20 @@ const specimens = [
     description: 'Smaller section and card headings.',
   },
   {
+    id: 'typography-h5',
+    label: 'H5',
+    size: 'lg',
+    weight: 'medium',
+    description: 'Table titles and compact panel headings.',
+  },
+  {
+    id: 'typography-h6',
+    label: 'H6',
+    size: 'base',
+    weight: 'medium',
+    description: 'The smallest heading for grouped content and dense interfaces.',
+  },
+  {
     id: 'typography-body-large',
     label: 'Body large',
     size: 'lg',

@@ -31,7 +31,7 @@ function confirmSelected() {
     >
       <template #header
         ><div class="flex flex-wrap items-center justify-between gap-3">
-          <h3 class="text-xl font-medium">Supplier orders</h3>
+          <h5 class="text-lg font-medium">Supplier orders</h5>
           <Button type="button" size="small" :disabled="!selected.length" @click="confirmSelected"
             >Confirm selected ({{ selected.length }})</Button
           >

@@ -1,5 +1,5 @@
 export const root = {
-    width: '28rem',
+    width: '25rem',
     borderRadius: '{border.radius.xl}',
     borderWidth: '1px',
     transitionDuration: '{transition.duration}'

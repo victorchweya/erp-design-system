@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { computed, shallowRef, useId, watch } from 'vue'
-const id = useId()
+import { computed, shallowRef, watch } from 'vue'
+import Search from '@primeicons/vue/search'
 const query = shallowRef('')
 const status = shallowRef<string | null>(null)
 const first = shallowRef(0)
@@ -44,23 +44,24 @@ function clear() {
   >
     <template #header>
       <div class="flex flex-col gap-4">
-        <h3 class="text-xl font-medium">Orders</h3>
+        <h5 class="text-lg font-medium">Orders</h5>
         <div class="flex flex-wrap items-end gap-3">
-          <div class="flex min-w-0 flex-1 basis-48 flex-col gap-2">
-            <label :for="`${id}-search`" class="text-sm font-medium">Search orders</label
-            ><InputText
-              :id="`${id}-search`"
-              v-model="query"
-              placeholder="Reference or customer"
-              fluid
-            />
+          <div class="min-w-0 flex-1 basis-48">
+            <IconField class="w-full">
+              <InputIcon><Search aria-hidden="true" /></InputIcon>
+              <InputText
+                v-model="query"
+                aria-label="Search orders"
+                placeholder="Reference or customer"
+                fluid
+              />
+            </IconField>
           </div>
-          <div class="flex flex-1 basis-40 flex-col gap-2">
-            <label :for="`${id}-status`" class="text-sm font-medium">Status</label
-            ><Select
-              :inputId="`${id}-status`"
+          <div class="flex-1 basis-40">
+            <Select
               v-model="status"
               :options="['Pending', 'Confirmed']"
+              aria-label="Filter orders by status"
               placeholder="All statuses"
               showClear
               fluid

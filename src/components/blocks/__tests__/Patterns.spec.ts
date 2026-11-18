@@ -15,7 +15,7 @@ import AssignmentModalBlock from '../modals/AssignmentModalBlock.vue'
 import RecordTabsBlock from '../navigation/RecordTabsBlock.vue'
 import RetryAlertBlock from '../feedback/RetryAlertBlock.vue'
 import ActionAlertBlock from '../feedback/ActionAlertBlock.vue'
-import EmptyStateBlock from '../feedback/EmptyStateBlock.vue'
+import EmptyStateWithActionBlock from '../empty-states/EmptyStateWithActionBlock.vue'
 import ConfirmPopupBlock from '../popups/ConfirmPopupBlock.vue'
 import RecordPopoverBlock from '../popups/RecordPopoverBlock.vue'
 import ActionsMenuBlock from '../popups/ActionsMenuBlock.vue'
@@ -358,7 +358,7 @@ it('runs a popup menu command and restores focus on Escape', async () => {
   expect(document.activeElement).toBe(trigger.element)
 })
 
-it.each([RetryAlertBlock, ActionAlertBlock, EmptyStateBlock])(
+it.each([RetryAlertBlock, EmptyStateWithActionBlock])(
   'provides feedback and a way to restore its initial state',
   async (component) => {
     const wrapper = mount(component, options)
@@ -376,7 +376,15 @@ it.each([RetryAlertBlock, ActionAlertBlock, EmptyStateBlock])(
   },
 )
 
-it.each([RetryAlertBlock, ActionAlertBlock])(
+it('announces feedback alert actions without replacing the notices', async () => {
+  const wrapper = mount(ActionAlertBlock, options)
+  const notices = wrapper.findAll('[role="alert"]').length
+  await button(wrapper, /Search customers/).trigger('click')
+  expect(wrapper.get('[aria-live="polite"]').text()).not.toBe('')
+  expect(wrapper.findAll('[role="alert"]')).toHaveLength(notices)
+})
+
+it.each([RetryAlertBlock])(
   'lets a dismissed notice be restored and used again',
   async (component) => {
     const wrapper = mount(component, options)

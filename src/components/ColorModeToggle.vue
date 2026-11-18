@@ -11,7 +11,6 @@ import { colorMode } from '@/theme/color-mode'
     rounded
     text
     severity="secondary"
-    size="small"
     :aria-label="colorMode === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'"
     :title="colorMode === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'"
     @click="colorMode = colorMode === 'dark' ? 'light' : 'dark'"

@@ -39,7 +39,6 @@ function submit(event: FormSubmitEvent) {
               name="code"
               :length="6"
               integerOnly
-              class="grid grid-cols-6"
               @change="result = ''"
             >
               <template #default="{ attrs, events, index }">
@@ -55,7 +54,7 @@ function submit(event: FormSubmitEvent) {
                   :autocomplete="index === 1 ? 'one-time-code' : 'off'"
                   maxlength="1"
                   required
-                  class="min-w-0 w-full text-center"
+                  class="size-10 shrink-0 text-center"
                 />
               </template>
             </InputOtp>
