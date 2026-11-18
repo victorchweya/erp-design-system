@@ -26,21 +26,14 @@ const groups: MenuGroup[] = [
       { label: 'Typography', to: '/foundations/typography' },
     ],
   },
-  {
-    id: 'core-elements',
-    label: 'Core elements',
-    heading: 'Components',
+  ...Array.from(new Set(componentPages.map((page) => page.group))).map((label, index) => ({
+    id: label.toLowerCase().replace(/ /g, '-'),
+    label,
+    heading: index === 0 ? 'Components' : undefined,
     items: componentPages
-      .filter((page) => page.group === 'Core elements')
+      .filter((page) => page.group === label)
       .map((page) => ({ label: page.label, to: page.path })),
-  },
-  {
-    id: 'forms',
-    label: 'Forms',
-    items: componentPages
-      .filter((page) => page.group === 'Forms')
-      .map((page) => ({ label: page.label, to: page.path })),
-  },
+  })),
   {
     id: 'ui-blocks',
     label: 'UI blocks',

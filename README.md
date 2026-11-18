@@ -9,12 +9,21 @@ npm install
 npm run dev
 ```
 
-Open `/` or `/components` to reach `/components/core-elements/button`. All 38 pages in Core elements and Forms are available from the sidebar. Pages include live examples, copyable Vue source, usage guidance, accessibility notes, and key props where applicable.
+Open `/` or `/components` to reach `/components/core-elements/button`. All 88 component pages are available from the sidebar. Pages include live examples, copyable Vue source, usage guidance, accessibility notes, and key props where applicable.
 
 - **Core elements:** Button, SplitButton, SpeedDial, Avatar, Badge, Card, Chip, Divider, Tag, Toolbar, and Skeleton.
 - **Forms:** text and numeric inputs, password and code entry, tags, autocomplete, selects and lists, checkboxes and radio buttons, toggles, dates, sliders, ratings, Knob, colour selection, FileUpload, Editor, Inplace, field layout, and validation.
+- **Data:** DataTable, DataView, OrderList, OrganizationChart, Paginator, PickList, Timeline, Tree, TreeTable, and VirtualScroller.
+- **Panels:** Accordion, DeferredContent, Fieldset, Panel, ScrollArea, Splitter, Stepper, and Tabs. Card, Divider, and Toolbar retain their existing Core elements pages.
+- **Overlays:** ConfirmDialog, ConfirmPopup, Dialog, Drawer, DynamicDialog, Popover, and Tooltip.
+- **Menus:** Breadcrumb, CommandMenu, ContextMenu, Dock, MegaMenu, Menu, Menubar, Sidebar, and TieredMenu.
+- **Messages:** Message and Toast.
+- **Media:** Carousel, Compare, and Gallery, using local content and assets.
+- **Misc:** AnimateOnScroll, BlockUI, Fluid, FocusTrap, MeterGroup, ProgressBar, ProgressSpinner, Ripple, ScrollTop, StyleClass, and Terminal. Existing Avatar, Badge, Chip, Skeleton, and Tag pages remain in Core elements.
 
-The sidebar and routes use the same [component page registry](src/data/component-pages.ts). Each page loads independently; Quill only loads when the Editor example is opened. [ComponentDoc.vue](src/components/docs/ComponentDoc.vue) provides the shared documentation layout while each example owns its local state.
+The sidebar and routes use the same [component page registry](src/data/component-pages.ts). Each page loads independently; Quill only loads when the Editor example is opened. Existing page URLs are preserved. The component called Deferred in the reference is documented under its installed name, DeferredContent. [ComponentDoc.vue](src/components/docs/ComponentDoc.vue) provides the shared documentation layout while each example owns its local state.
+
+ToastService and DialogService are registered once in `src/main.ts`, alongside ConfirmationService. Ripple is enabled in the PrimeVue configuration. Copy these service registrations when reusing the corresponding examples in another app. New PrimeVue 5 compound components have local preset tokens in `src/theme/erp-theme/`.
 
 Examples do not send form values, passwords, codes, or files to a backend. FileUpload uses `customUpload` to report local selections. Form validation uses `@primevue/forms` with a small custom resolver. Editor uses Quill; the installed PrimeVue 5 component is deprecated, so prefer Textarea when formatted content is unnecessary.
 

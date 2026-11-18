@@ -18,6 +18,11 @@ import colorpicker from './colorpicker';
 import confirmdialog from './confirmdialog';
 import confirmpopup from './confirmpopup';
 import contextmenu from './contextmenu';
+import commandmenu from './commandmenu';
+import compare from './compare';
+import scrollarea from './scrollarea';
+import gallery from './gallery';
+import sidebar from './sidebar';
 import css from './css';
 import datatable from './datatable';
 import dataview from './dataview';
@@ -97,6 +102,11 @@ import virtualscroller from './virtualscroller';
 export default definePreset({
     ...base,
     components: {
+        commandmenu,
+        compare,
+        scrollarea,
+        gallery,
+        sidebar,
         accordion,
         autocomplete,
         avatar,
