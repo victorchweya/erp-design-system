@@ -1,4 +1,37 @@
-export const blockPages = [
+import type { Component } from 'vue'
+
+type BlockPage = {
+  label: string
+  group?: string
+  path: string
+  load: () => Promise<{ default: Component }>
+}
+
+export const blockPages: BlockPage[] = [
+  {
+    label: 'KPI',
+    group: 'KPI / Metric Card',
+    path: '/ui-blocks/kpi',
+    load: () => import('@/views/blocks/KpiView.vue'),
+  },
+  {
+    label: 'KPI Group',
+    group: 'KPI / Metric Card',
+    path: '/ui-blocks/kpi-group',
+    load: () => import('@/views/blocks/KpiGroupView.vue'),
+  },
+  {
+    label: 'Metric Card',
+    group: 'KPI / Metric Card',
+    path: '/ui-blocks/metric-card',
+    load: () => import('@/views/blocks/MetricCardView.vue'),
+  },
+  {
+    label: 'Metric Group',
+    group: 'KPI / Metric Card',
+    path: '/ui-blocks/metric-group',
+    load: () => import('@/views/blocks/MetricGroupView.vue'),
+  },
   {
     label: 'Order entry',
     path: '/ui-blocks/order-entry',

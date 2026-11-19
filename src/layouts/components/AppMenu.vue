@@ -51,7 +51,16 @@ const groups: MenuGroup[] = [
   {
     id: 'ui-blocks',
     label: 'UI blocks',
-    items: blockPages.map((page) => ({ label: page.label, to: page.path })),
+    items: blockPages
+      .filter((page) => !page.group)
+      .map((page) => ({ label: page.label, to: page.path })),
+  },
+  {
+    id: 'kpi-metric-card',
+    label: 'KPI / Metric Card',
+    items: blockPages
+      .filter((page) => page.group === 'KPI / Metric Card')
+      .map((page) => ({ label: page.label, to: page.path })),
   },
 ]
 const menuGroups = computed(() =>
@@ -64,7 +73,7 @@ const menuGroups = computed(() =>
 const linkClass =
   'flex rounded-lg px-2 py-2 leading-tight text-surface-700 transition-colors hover:bg-primary-50 hover:text-surface-900 dark:text-surface-200 dark:hover:bg-primary-950/40 dark:hover:text-surface-50'
 const activeClass =
-  'bg-primary-50 font-medium text-surface-900 dark:bg-primary-950/40 dark:text-surface-50'
+  'bg-primary-50 font-medium text-primary-600 dark:bg-primary-950/40 dark:text-surface-50'
 </script>
 
 <template>

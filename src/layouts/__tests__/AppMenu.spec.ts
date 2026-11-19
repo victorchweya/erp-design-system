@@ -96,7 +96,11 @@ it('opens every block category with the correct active link and breadcrumb', asy
     const current = wrapper.get('a[aria-current="page"]')
     expect(current.attributes('href')).toBe(page.path)
     expect(current.element.closest('details')?.open).toBe(true)
-    expect(router.currentRoute.value.meta.breadcrumb).toEqual(['UI blocks', page.label])
+    expect(router.currentRoute.value.meta.breadcrumb).toEqual([
+      'UI blocks',
+      ...(page.group ? [page.group] : []),
+      page.label,
+    ])
   }
   expect(wrapper.emitted('navigate')).toHaveLength(blockPages.length)
 })
