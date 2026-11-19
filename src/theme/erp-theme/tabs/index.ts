@@ -12,9 +12,9 @@ export const tab = {
     background: 'transparent',
     hoverBackground: 'transparent',
     activeBackground: 'transparent',
-    borderWidth: '0 0 1px 0',
-    borderColor: '{content.border.color}',
-    hoverBorderColor: '{content.border.color}',
+    borderWidth: '0 0 2px 0',
+    borderColor: 'transparent',
+    hoverBorderColor: '{primary.color}',
     activeBorderColor: '{primary.color}',
     color: '{text.muted.color}',
     hoverColor: '{text.color}',
@@ -61,7 +61,7 @@ export const navButton = {
 };
 
 export const activeBar = {
-    height: '1px',
+    height: '2px',
     bottom: '-1px',
     background: '{primary.color}'
 };

@@ -56,6 +56,7 @@ declare module 'vue' {
     FileUpload: typeof import('primevue/fileupload')['default']
     FloatLabel: typeof import('primevue/floatlabel')['default']
     Fluid: typeof import('primevue/fluid')['default']
+    Galleria: typeof import('primevue/galleria')['default']
     Gallery: typeof import('primevue/gallery')['default']
     GalleryBackdrop: typeof import('primevue/gallerybackdrop')['default']
     GalleryContent: typeof import('primevue/gallerycontent')['default']
@@ -152,5 +153,8 @@ declare module 'vue' {
     TreeSelect: typeof import('primevue/treeselect')['default']
     TreeTable: typeof import('primevue/treetable')['default']
     VirtualScroller: typeof import('primevue/virtualscroller')['default']
+  }
+  export interface GlobalDirectives {
+    Tooltip: typeof import('primevue/tooltip')['default']
   }
 }

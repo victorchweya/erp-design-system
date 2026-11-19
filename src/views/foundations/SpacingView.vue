@@ -34,7 +34,7 @@ const tokenCss = `.panel {
 </script>
 
 <template>
-  <div class="mx-auto flex w-full max-w-7xl gap-10 px-6 py-10 text-sm">
+  <div class="mx-auto flex w-full max-w-7xl gap-10 px-4 py-10 text-sm">
     <div class="min-w-0 flex-1">
       <header class="mb-8 flex flex-col gap-3">
         <p class="text-sm font-medium uppercase tracking-wide text-primary">Foundations</p>

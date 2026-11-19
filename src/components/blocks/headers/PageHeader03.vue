@@ -58,6 +58,10 @@ const items = [
               <dt class="text-muted">Items:</dt>
               <dd>12</dd>
             </div>
+            <div class="flex flex-wrap gap-x-2">
+              <dt class="text-muted">Last updated by:</dt>
+              <dd>Amina Hassan</dd>
+            </div>
           </dl>
         </div>
         <div class="flex flex-wrap items-center gap-2">

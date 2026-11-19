@@ -38,6 +38,11 @@ export const blockPages: BlockPage[] = [
     load: () => import('@/views/blocks/OrderEntryView.vue'),
   },
   {
+    label: 'Product detail',
+    path: '/ui-blocks/product-detail',
+    load: () => import('@/views/blocks/ProductDetailView.vue'),
+  },
+  {
     label: 'Section headers',
     path: '/ui-blocks/headers',
     load: () => import('@/views/blocks/HeadersView.vue'),
