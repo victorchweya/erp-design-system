@@ -13,6 +13,7 @@ type MenuGroup = {
   label: string
   heading?: string
   items: { label: string; to: string }[]
+  groups?: { label: string; items: { label: string; to: string }[] }[]
 }
 const componentGroupOrder = [
   'Form',
@@ -54,19 +55,21 @@ const groups: MenuGroup[] = [
     items: blockPages
       .filter((page) => !page.group)
       .map((page) => ({ label: page.label, to: page.path })),
-  },
-  {
-    id: 'kpi-metric-card',
-    label: 'KPI / Metric Card',
-    items: blockPages
-      .filter((page) => page.group === 'KPI / Metric Card')
-      .map((page) => ({ label: page.label, to: page.path })),
+    groups: ['KPI / Metric Card', 'Charts'].map((label) => ({
+      label,
+      items: blockPages
+        .filter((page) => page.group === label)
+        .map((page) => ({ label: page.label, to: page.path })),
+    })),
   },
 ]
 const menuGroups = computed(() =>
   groups.map((group) => ({
     ...group,
-    open: group.id === 'foundations' || group.items.some((item) => item.to === route.path),
+    open:
+      group.id === 'foundations' ||
+      group.items.some((item) => item.to === route.path) ||
+      group.groups?.some((nestedGroup) => nestedGroup.items.some((item) => item.to === route.path)),
   })),
 )
 
@@ -114,6 +117,39 @@ const activeClass =
               @click="$emit('navigate')"
               >{{ item.label }}</RouterLink
             >
+          </li>
+          <li v-for="nestedGroup in group.groups" :key="nestedGroup.label">
+            <details
+              :open="nestedGroup.items.some((item) => item.to === route.path)"
+              class="group/nested menu-group"
+            >
+              <summary
+                :class="[
+                  linkClass,
+                  'cursor-pointer list-none items-center gap-2 [&::-webkit-details-marker]:hidden',
+                ]"
+              >
+                <span class="menu-group-label">{{ nestedGroup.label }}</span>
+                <AngleDown
+                  :size="14"
+                  aria-hidden="true"
+                  class="ml-auto text-surface-500 transition-transform group-open/nested:rotate-180 dark:text-surface-400"
+                />
+              </summary>
+              <ul
+                class="ml-4 mt-1 flex flex-col gap-1 border-l border-surface-200 pl-2 dark:border-surface-700"
+              >
+                <li v-for="item in nestedGroup.items" :key="item.label">
+                  <RouterLink
+                    :to="item.to"
+                    :class="linkClass"
+                    :exact-active-class="activeClass"
+                    @click="$emit('navigate')"
+                    >{{ item.label }}</RouterLink
+                  >
+                </li>
+              </ul>
+            </details>
           </li>
         </ul>
       </details>

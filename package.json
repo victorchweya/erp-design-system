@@ -19,6 +19,7 @@
     "@primeicons/vue": "^8.0.2",
     "@primevue/forms": "^5.0.5",
     "@vueuse/core": "^13.8.0",
+    "chart.js": "^4.6.1",
     "pinia": "^4.0.3",
     "primevue": "^5.0.5",
     "quill": "^2.0.3",

@@ -31,6 +31,7 @@ declare module 'vue' {
     CarouselNext: typeof import('primevue/carouselnext')['default']
     CarouselPrev: typeof import('primevue/carouselprev')['default']
     CascadeSelect: typeof import('primevue/cascadeselect')['default']
+    Chart: typeof import('primevue/chart')['default']
     Checkbox: typeof import('primevue/checkbox')['default']
     Chip: typeof import('primevue/chip')['default']
     Column: typeof import('primevue/column')['default']

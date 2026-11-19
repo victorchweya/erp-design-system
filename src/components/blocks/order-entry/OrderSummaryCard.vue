@@ -105,7 +105,7 @@ const action = computed(() => {
               v-for="choice in choices"
               :key="choice.value"
               :for="`${id}-${choice.value}`"
-              class="flex cursor-pointer items-start gap-3 rounded-md border border-surface p-3"
+              class="flex cursor-pointer items-start gap-3 rounded-lg border border-surface p-3"
             >
               <RadioButton
                 v-model="resolution"

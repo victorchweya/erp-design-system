@@ -7,11 +7,11 @@ export const root = {
 
 export const body = {
     padding: '{spacing.5}',
-    gap: '{spacing.2}'
+    gap: '{spacing.4}'
 };
 
 export const caption = {
-    gap: '{spacing.2}'
+    gap: '{spacing.1}'
 };
 
 export const title = {

@@ -56,7 +56,8 @@ it('keeps shared PrimeVue spacing aligned with Tailwind and preserves control de
     }
   }
   expect($dt('card.body.padding').value).toBe(spacing[5])
-  expect($dt('card.body.gap').value).toBe(spacing[2])
+  expect($dt('card.body.gap').value).toBe(spacing[4])
+  expect($dt('card.caption.gap').value).toBe(spacing[1])
   expect($dt('tag.padding').value).toBe(`${spacing[0.5]} ${spacing[1.5]}`)
   expect($dt('datatable.body.cell.padding').value).toBe(`${spacing[3]} ${spacing[4]}`)
   expect($dt('dialog.content.padding').value).toBe(spacing[5])

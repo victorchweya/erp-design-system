@@ -4,6 +4,7 @@ import type Menu from 'primevue/menu'
 import type Popover from 'primevue/popover'
 import EllipsisV from '@primeicons/vue/ellipsis-v'
 import Eye from '@primeicons/vue/eye'
+import FilterSlash from '@primeicons/vue/filter-slash'
 import History from '@primeicons/vue/history'
 import Pencil from '@primeicons/vue/pencil'
 import Refresh from '@primeicons/vue/refresh'
@@ -319,12 +320,17 @@ function resetFilters() {
               />
               <Button
                 type="button"
+                aria-label="Reset filters"
+                title="Reset filters"
                 severity="secondary"
                 outlined
                 size="small"
                 @click="resetFilters"
-                >Reset filters</Button
               >
+                <template #icon="{ class: iconClass }">
+                  <FilterSlash :class="iconClass" aria-hidden="true" />
+                </template>
+              </Button>
             </div>
           </div>
         </template>
