@@ -8,7 +8,7 @@ const values = [142, 168, 155, 181, 196, 124, 38]
 const data = computed(() => ({
   labels,
   datasets: [
-    { label: 'Orders', data: values, backgroundColor: theme.value.primary, borderRadius: 6 },
+    { label: 'Orders', data: values, backgroundColor: theme.value.kale, borderRadius: 6 },
   ],
 }))
 const options = computed(() => ({

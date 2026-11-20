@@ -9,12 +9,13 @@ const data = computed(() => ({
     {
       data: [88, 74, 92, 81],
       backgroundColor: [
-        `${theme.value.primary}CC`,
-        `${theme.value.secondary}CC`,
-        `${theme.value.secondaryWarm}CC`,
-        `${theme.value.primary}88`,
+        `${theme.value.kale}CC`,
+        `${theme.value.carrot}CC`,
+        `${theme.value.lime}CC`,
+        `${theme.value.tamarind}CC`,
       ],
-      borderWidth: 0,
+      borderColor: [theme.value.kale, theme.value.carrot, theme.value.lime, theme.value.tamarind],
+      borderWidth: 2,
     },
   ],
 }))
@@ -41,9 +42,8 @@ const options = computed(() => ({
           'aria-label': 'Polar area chart with quality 88, speed 74, accuracy 92, and capacity 81.',
         }"
         class="h-80"
-      >
-        <p class="sr-only">Quality 88, speed 74, accuracy 92, and capacity 81.</p>
-      </Chart>
+      />
+      <p class="sr-only">Quality 88, speed 74, accuracy 92, and capacity 81.</p>
     </template>
   </Card>
 </template>

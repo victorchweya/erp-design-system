@@ -5,7 +5,6 @@ import DataVizChartGuide from '@/components/foundations/data-viz/DataVizChartGui
 import DataVizSwatches from '@/components/foundations/data-viz/DataVizSwatches.vue'
 import {
   categoricalSwatches,
-  extendedSwatches,
   sequentialSwatches,
   statusSwatches,
 } from '@/components/foundations/data-viz/data-viz'
@@ -52,9 +51,9 @@ const activeSection = useActiveSection(sections.map(({ id }) => id))
               ><code>@/composables/useChartTheme</code></Tag
             >
             and build the chart’s data and options as computed values. Use
-            <code>primary</code>, <code>secondary</code>, and <code>secondaryWarm</code> for series,
-            <code>text</code> for legends, <code>muted</code> for ticks, and <code>border</code> for
-            grid lines.
+            <code>kale</code>, <code>carrot</code>, <code>lime</code>, and <code>tamarind</code> for
+            series, <code>text</code> for legends, <code>muted</code> for ticks, and
+            <code>border</code> for grid lines.
           </p>
           <p class="leading-relaxed text-muted-color">
             Give every chart a title, a subtitle with the period and unit, and a text alternative.
@@ -69,22 +68,19 @@ const activeSection = useActiveSection(sections.map(({ id }) => id))
         >
           <h2 id="dataviz-categorical-title" class="text-2xl font-medium">Categorical colours</h2>
           <p class="leading-relaxed text-muted-color">
-            Assign series in this order. The chart blocks use these three values from
-            <code>useChartTheme</code>. Most give the main series primary and the comparison
-            secondary; the bar and composed blocks draw bars in secondary.
+            Assign series in this order. They are the core FTF colours, Kale, Carrot, Lime, and
+            Tamarind, read from <code>useChartTheme</code>. Most charts need only the first two.
           </p>
-          <DataVizSwatches :swatches="categoricalSwatches" label="Current series colours" />
+          <DataVizSwatches :swatches="categoricalSwatches" label="Series colours" />
           <p class="leading-relaxed text-muted-color">
-            Secondary and secondary warm are below 3:1 against the light surface. Pair them with a
-            legend, direct labels, or a pattern so colour is never the only cue. For lighter fills,
-            the area, radar, polar area, and bubble blocks add transparency to these values.
+            Each series colour reaches at least 3:1 against the chart surface in light and dark
+            mode, so some differ from the brand swatches: Lime and Carrot are too light for white
+            and use darker steps in light mode, and Tamarind uses a lighter step so it doesn’t blend
+            with Kale. Dark mode uses the brand Lime itself. Still pair series with a legend, direct
+            labels, or a pattern so colour is never the only cue. Translucent fills fall below 3:1;
+            when the area, radar, polar area, and bubble blocks add transparency, they keep a solid
+            line or border in the series colour. Group anything beyond four series as “Other”.
           </p>
-          <h3 class="text-lg font-medium">Recommended extension</h3>
-          <p class="leading-relaxed text-muted-color">
-            Recommendation, not yet in <code>useChartTheme</code>: when a chart needs a fourth or
-            fifth series, use these palette colours. Group anything beyond five series as “Other”.
-          </p>
-          <DataVizSwatches :swatches="extendedSwatches" label="Recommended extra series colours" />
         </section>
 
         <section
@@ -150,9 +146,10 @@ const activeSection = useActiveSection(sections.map(({ id }) => id))
               million in November.”
             </li>
             <li>
-              Content inside <code>&lt;Chart&gt;</code> becomes fallback content of the canvas. Use
-              a <code>sr-only</code> table with a caption and row headers when readers need exact
-              values, as the area, bar, stacked, and doughnut blocks do. Use a
+              PrimeVue Chart renders only its canvas and drops content placed inside
+              <code>&lt;Chart&gt;</code>, so place the alternative directly after the chart as a
+              sibling. Use a <code>sr-only</code> table with a caption and row headers when readers
+              need exact values, as the area, bar, stacked, and doughnut blocks do. Use a
               <code>sr-only</code> summary paragraph when the pattern matters more than each value.
             </li>
             <li>Keep the visible title and subtitle in the card, including the period and unit.</li>
@@ -167,9 +164,8 @@ const activeSection = useActiveSection(sections.map(({ id }) => id))
           <h2 id="dataviz-dark-mode-title" class="text-2xl font-medium">Dark mode</h2>
           <p class="leading-relaxed text-muted-color">
             <code>useChartTheme</code> reads the CSS variables again whenever the colour mode
-            changes, so charts built from its computed values update without a reload. Primary,
-            text, muted, and border values change with the mode. Secondary and secondary warm are
-            fixed palette colours and stay the same.
+            changes, so charts built from its computed values update without a reload. Every series
+            colour, and the text, muted, and border values, change with the mode.
           </p>
           <p class="leading-relaxed text-muted-color">
             Do not copy hex values into chart options; they will not follow the mode.

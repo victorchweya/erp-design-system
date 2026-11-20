@@ -63,7 +63,7 @@ const history: StatusEvent[] = [
   <Timeline :value="history" dataKey="status" aria-label="Purchase order PO-2318 status history">
     <template #marker="{ item }">
       <span
-        class="flex size-8 items-center justify-center rounded-full border"
+        class="flex size-8 shrink-0 items-center justify-center rounded-full border"
         :class="
           item.done
             ? 'border-primary bg-primary text-primary-contrast'

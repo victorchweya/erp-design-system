@@ -41,12 +41,13 @@ const activeSection = useActiveSection(() => sections.value.map(({ id }) => id))
           class="flex scroll-mt-24 flex-col gap-4"
         >
           <h2 id="usage-title" class="text-2xl font-medium">How to use</h2>
-          <p class="leading-relaxed text-muted-color">
-            <Tag severity="secondary" class="align-baseline"
+          <p class="flex items-center gap-2 text-muted-color">
+            Component
+            <Tag severity="secondary"
               ><code>{{ componentName ?? title }}</code></Tag
             >
-            {{ usage }}
           </p>
+          <p class="leading-relaxed text-muted-color">{{ usage }}</p>
         </section>
         <section
           v-for="example in examples"

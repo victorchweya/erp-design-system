@@ -12,8 +12,8 @@ const data = computed(() => ({
     {
       label: 'Revenue',
       data: values,
-      borderColor: theme.value.primary,
-      backgroundColor: theme.value.primary,
+      borderColor: theme.value.kale,
+      backgroundColor: theme.value.kale,
       tension: 0.35,
       pointRadius: 3,
       pointHoverRadius: 5,

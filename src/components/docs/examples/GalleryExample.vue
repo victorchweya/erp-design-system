@@ -13,8 +13,6 @@ const activeIndex = shallowRef(0)
 const caption = computed(
   () => `Image ${activeIndex.value + 1} of ${images.length}: ${images[activeIndex.value]?.alt}`,
 )
-const navFocus =
-  'focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary'
 </script>
 
 <template>
@@ -23,16 +21,12 @@ const navFocus =
       v-model:activeIndex="activeIndex"
       role="region"
       aria-label="Farm to Feed brand assets"
-      class="rounded-lg focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary"
+      class="rounded-lg"
       style="height: 20rem"
     >
       <GalleryBackdrop />
-      <GalleryPrev aria-label="Previous image" :class="navFocus"
-        ><ChevronLeft aria-hidden="true"
-      /></GalleryPrev>
-      <GalleryNext aria-label="Next image" :class="navFocus"
-        ><ChevronRight aria-hidden="true"
-      /></GalleryNext>
+      <GalleryPrev aria-label="Previous image"><ChevronLeft aria-hidden="true" /></GalleryPrev>
+      <GalleryNext aria-label="Next image"><ChevronRight aria-hidden="true" /></GalleryNext>
       <GalleryContent>
         <GalleryItem v-for="image in images" :key="image.alt">
           <img :src="image.src" :alt="image.alt" class="bg-surface-0 p-6" :class="image.class" />

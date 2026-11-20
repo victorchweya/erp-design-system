@@ -9,15 +9,15 @@ const data = computed(() => ({
     {
       label: 'Received',
       data: [2.8, 3.4, 3.1, 4.2, 4.6, 3.8, 4.9],
-      borderColor: theme.value.primary,
-      backgroundColor: theme.value.primary,
+      borderColor: theme.value.kale,
+      backgroundColor: theme.value.kale,
       tension: 0.35,
     },
     {
       label: 'Dispatched',
       data: [2.4, 3.0, 2.9, 3.7, 4.1, 3.5, 4.4],
-      borderColor: theme.value.secondary,
-      backgroundColor: theme.value.secondary,
+      borderColor: theme.value.carrot,
+      backgroundColor: theme.value.carrot,
       tension: 0.35,
     },
   ],
@@ -51,9 +51,8 @@ const options = computed(() => ({
             'Two-line chart comparing tonnes received and dispatched from Monday to Sunday.',
         }"
         class="h-72"
-      >
-        <p class="sr-only">Received volume remained above dispatched volume throughout the week.</p>
-      </Chart>
+      />
+      <p class="sr-only">Received volume remained above dispatched volume throughout the week.</p>
     </template>
   </Card>
 </template>

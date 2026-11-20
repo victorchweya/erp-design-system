@@ -277,10 +277,29 @@ it('resolves finalized feedback component defaults and input roles from the foun
         resolvedPairValue(role.light.foreground.value, role.dark.foreground.value),
       )
     }
-    expect($dt(`toast.${severity}.background`).value).toBe($dt('surface.0').value)
-    expect($dt(`toast.${severity}.border.color`).value).toBe($dt('surface.50').value)
-    expect($dt(`toast.${severity}.color`).value).toBe(role.light.foreground.value)
-    expect($dt(`toast.${severity}.detail.color`).value).toBe($dt('surface.600').value)
+    // Toasts use the light surface in light mode and the dark content surface in dark mode.
+    const darkRole = (name: string) => roleByName(name).dark
+    expect($dt(`toast.${severity}.background`).value).toBe(
+      resolvedPairValue(
+        String($dt('surface.0').value),
+        darkRole('content.background').background.value,
+      ),
+    )
+    expect($dt(`toast.${severity}.border.color`).value).toBe(
+      resolvedPairValue(
+        String($dt('surface.50').value),
+        darkRole('content.border.color').foreground.value,
+      ),
+    )
+    expect($dt(`toast.${severity}.color`).value).toBe(
+      resolvedPairValue(role.light.foreground.value, role.dark.foreground.value),
+    )
+    expect($dt(`toast.${severity}.detail.color`).value).toBe(
+      resolvedPairValue(
+        String($dt('surface.600').value),
+        darkRole('text.muted.color').foreground.value,
+      ),
+    )
     expect($dt(`toast.${severity}.shadow`).value).toBe('0 1px 2px 0 rgb(0 0 0 / 0.05)')
   }
   for (const role of colorRoles) {

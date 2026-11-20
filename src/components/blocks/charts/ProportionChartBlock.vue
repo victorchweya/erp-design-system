@@ -10,7 +10,7 @@ const data = computed(() => ({
   datasets: [
     {
       data: values,
-      backgroundColor: [theme.value.primary, theme.value.secondary, theme.value.secondaryWarm],
+      backgroundColor: [theme.value.kale, theme.value.carrot, theme.value.lime],
       borderWidth: 0,
     },
   ],
@@ -39,19 +39,18 @@ const options = computed(() => ({
             '68 percent of orders were confirmed, 24 percent pending, and 8 percent cancelled.',
         }"
         class="h-72"
-      >
-        <table class="sr-only">
-          <caption>
-            Order status share
-          </caption>
-          <tbody>
-            <tr v-for="(label, index) in labels" :key="label">
-              <th scope="row">{{ label }}</th>
-              <td>{{ values[index] }}%</td>
-            </tr>
-          </tbody>
-        </table>
-      </Chart>
+      />
+      <table class="sr-only">
+        <caption>
+          Order status share
+        </caption>
+        <tbody>
+          <tr v-for="(label, index) in labels" :key="label">
+            <th scope="row">{{ label }}</th>
+            <td>{{ values[index] }}%</td>
+          </tr>
+        </tbody>
+      </table>
     </template>
   </Card>
 </template>

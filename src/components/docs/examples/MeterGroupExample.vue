@@ -4,9 +4,9 @@ import { useId } from 'vue'
 const labelId = useId()
 // Colours follow the shared chart series tokens so meters match dashboards in both themes.
 const values = [
-  { label: 'Leafy greens', value: 32, color: 'var(--p-primary-color)' },
-  { label: 'Root vegetables', value: 21, color: 'var(--p-ftf-indigo-400)' },
-  { label: 'Fruit', value: 12, color: 'var(--p-ftf-orange-400)' },
+  { label: 'Leafy greens', value: 32, color: 'var(--p-chart-kale)' },
+  { label: 'Root vegetables', value: 21, color: 'var(--p-chart-carrot)' },
+  { label: 'Fruit', value: 12, color: 'var(--p-chart-lime)' },
 ]
 </script>
 

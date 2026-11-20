@@ -7,8 +7,6 @@ const highlights = [
   { name: 'Limes', note: 'Makueni, low stock' },
   { name: 'Kale', note: 'Limuru, harvested this morning' },
 ]
-const navClass =
-  'flex size-9 items-center justify-center rounded-md border border-surface hover:bg-emphasis focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary disabled:cursor-default disabled:opacity-50 disabled:hover:bg-transparent'
 </script>
 
 <template>
@@ -31,10 +29,10 @@ const navClass =
     <div class="flex flex-wrap items-center justify-between gap-4 pt-4">
       <CarouselIndicators />
       <div class="flex gap-2">
-        <CarouselPrev aria-label="Previous slide" :class="navClass">
+        <CarouselPrev aria-label="Previous slide">
           <ChevronLeft aria-hidden="true" />
         </CarouselPrev>
-        <CarouselNext aria-label="Next slide" :class="navClass">
+        <CarouselNext aria-label="Next slide">
           <ChevronRight aria-hidden="true" />
         </CarouselNext>
       </div>

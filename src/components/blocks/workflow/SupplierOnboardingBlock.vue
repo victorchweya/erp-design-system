@@ -23,6 +23,8 @@ const submitting = shallowRef(false)
 const reference = shallowRef('')
 const announcement = shallowRef('')
 
+// Stepper shows each Step's value in its number badge, so it gets 1-based numbers; the
+// wizard itself keeps named steps.
 const activeIndex = computed(() => steps.findIndex((step) => step.value === active.value))
 const nextLabel = computed(() => {
   const next = steps[activeIndex.value + 1]
@@ -104,21 +106,21 @@ function restart() {
       <Stepper
         v-else
         :key="formKey"
-        :value="active"
+        :value="activeIndex + 1"
         aria-label="Supplier onboarding"
-        @update:value="goTo($event as StepValue)"
+        @update:value="goTo(steps[Number($event) - 1]!.value)"
       >
         <StepList>
           <Step
             v-for="(step, index) in steps"
             :key="step.value"
-            :value="step.value"
+            :value="index + 1"
             :disabled="index > activeIndex"
             ><span class="sr-only sm:not-sr-only">{{ step.title }}</span></Step
           >
         </StepList>
         <StepPanels>
-          <StepPanel v-for="step in steps" :key="step.value" :value="step.value">
+          <StepPanel v-for="(step, index) in steps" :key="step.value" :value="index + 1">
             <div class="flex flex-col gap-6">
               <header class="flex flex-col gap-1 text-sm">
                 <h4

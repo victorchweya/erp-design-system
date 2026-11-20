@@ -10,7 +10,7 @@ const data = computed(() => ({
   datasets: [
     {
       data: values,
-      backgroundColor: [theme.value.primary, theme.value.secondary, theme.value.secondaryWarm],
+      backgroundColor: [theme.value.kale, theme.value.carrot, theme.value.lime],
       borderWidth: 0,
     },
   ],

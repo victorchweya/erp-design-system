@@ -48,15 +48,20 @@ function save() {
     <form :id="`${id}-form`" novalidate class="flex flex-col gap-4 text-sm" @submit.prevent="save">
       <p class="text-muted">Choose who will coordinate order FTF-1042.</p>
       <div class="flex flex-col gap-1">
-        <label :for="`${id}-owner`" class="font-medium">Team member</label
+        <span :id="`${id}-owner-label`" class="font-medium">Team member</span
         ><Select
-          :inputId="`${id}-owner`"
           v-model="draft"
           :options="owners"
           placeholder="Choose a team member"
           :invalid="!!error"
-          :aria-invalid="!!error"
-          :aria-describedby="`${id}-error`"
+          :aria-labelledby="`${id}-owner-label`"
+          :pt="{
+            label: {
+              autofocus: true,
+              'aria-invalid': !!error,
+              'aria-describedby': error ? `${id}-error` : undefined,
+            },
+          }"
           fluid
         /><Message
           v-if="error"

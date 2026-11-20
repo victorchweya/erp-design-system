@@ -126,8 +126,9 @@ const css = /*css*/ `
     }
     .p-dialog .p-dialog-close-button.p-button:focus-visible {
         border-color: transparent;
-        outline: none;
-        box-shadow: none;
+        outline: var(--p-focus-ring-width) var(--p-focus-ring-style) var(--p-focus-ring-color);
+        outline-offset: var(--p-focus-ring-offset);
+        box-shadow: var(--p-focus-ring-shadow);
         background: var(--p-content-hover-background);
     }
     .p-tooltip-text {

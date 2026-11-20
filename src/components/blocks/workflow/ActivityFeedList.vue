@@ -33,7 +33,7 @@ const typeIcon = { status: Sync, edit: Pencil, comment: Comment, system: Cog }
       >
         <template #marker="{ item }">
           <span
-            class="flex h-8 w-8 items-center justify-center rounded-full border border-surface text-muted"
+            class="flex size-8 shrink-0 items-center justify-center rounded-full border border-surface text-muted"
             aria-hidden="true"
           >
             <component :is="typeIcon[(item as ActivityEntry).type]" />

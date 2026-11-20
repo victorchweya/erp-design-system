@@ -13,6 +13,7 @@ defineProps<{
       <div
         class="h-12 rounded-md border border-surface"
         :class="swatch.className"
+        :style="swatch.color ? { backgroundColor: swatch.color } : undefined"
         aria-hidden="true"
       />
       <div class="flex min-w-0 flex-col gap-0.5">

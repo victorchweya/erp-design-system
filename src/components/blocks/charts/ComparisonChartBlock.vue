@@ -11,13 +11,13 @@ const values = [184, 132, 76, 98]
 const data = computed(() => ({
   labels,
   datasets: [
-    { label: 'Orders', data: values, backgroundColor: theme.value.secondary, borderRadius: 6 },
+    { label: 'Orders', data: values, backgroundColor: theme.value.carrot, borderRadius: 6 },
     ...(variant.value === 'Grouped' || variant.value === 'Stacked'
       ? [
           {
             label: 'Prior period',
             data: [156, 118, 69, 91],
-            backgroundColor: theme.value.primary,
+            backgroundColor: theme.value.kale,
             borderRadius: 6,
           },
         ]
@@ -71,19 +71,18 @@ const options = computed(() => ({
           'aria-label': 'Vegetables had 184 orders, fruit 132, herbs 76, and dry goods 98.',
         }"
         class="h-72"
-      >
-        <table class="sr-only">
-          <caption>
-            Confirmed orders by category
-          </caption>
-          <tbody>
-            <tr v-for="(label, index) in labels" :key="label">
-              <th scope="row">{{ label }}</th>
-              <td>{{ values[index] }}</td>
-            </tr>
-          </tbody>
-        </table>
-      </Chart>
+      />
+      <table class="sr-only">
+        <caption>
+          Confirmed orders by category
+        </caption>
+        <tbody>
+          <tr v-for="(label, index) in labels" :key="label">
+            <th scope="row">{{ label }}</th>
+            <td>{{ values[index] }}</td>
+          </tr>
+        </tbody>
+      </table>
     </template>
   </Card>
 </template>

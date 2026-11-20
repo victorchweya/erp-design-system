@@ -1,3 +1,4 @@
+import { chartSeries } from './chart-series'
 import { roleByName, semanticColors } from './color-tokens'
 
 const modes = ['light', 'dark'] as const
@@ -27,6 +28,7 @@ function semanticScheme(mode: Mode) {
   const highlight = role('highlight.background')
   const highlightFocus = role('highlight.focus.background')
   return {
+    chart: Object.fromEntries(chartSeries.map((series) => [series.key, `{ftf.${series[mode]}}`])),
     primary: {
       color: primary.background,
       contrastColor: primary.color,
@@ -132,21 +134,40 @@ function componentScheme(mode: Mode) {
       { color: tokens.color, background: tokens.background },
     ]),
   )
+  // Toasts sit on a content surface in both modes; severity colours keep at least 5:1 on it.
+  const toastSurface =
+    mode === 'light'
+      ? {
+          background: '{surface.0}',
+          borderColor: '{surface.50}',
+          detailColor: '{surface.600}',
+          secondary: '{surface.600}',
+          contrast: '{surface.950}',
+          closeHover: '{surface.50}',
+        }
+      : {
+          background: '{content.background}',
+          borderColor: '{content.border.color}',
+          detailColor: '{text.muted.color}',
+          secondary: '{text.muted.color}',
+          contrast: '{text.color}',
+          closeHover: '{content.hover.background}',
+        }
   const toast = Object.fromEntries(
     Object.entries({
       ...feedback,
-      secondary: { color: '{surface.600}' },
-      contrast: { color: '{surface.950}' },
+      secondary: { color: toastSurface.secondary },
+      contrast: { color: toastSurface.contrast },
     }).map(([severity, tokens]) => [
       severity,
       {
         ...tokens,
-        background: '{surface.0}',
-        borderColor: '{surface.50}',
-        detailColor: '{surface.600}',
+        background: toastSurface.background,
+        borderColor: toastSurface.borderColor,
+        detailColor: toastSurface.detailColor,
         shadow: '0 1px 2px 0 rgb(0 0 0 / 0.05)',
         closeButton: {
-          hoverBackground: '{surface.50}',
+          hoverBackground: toastSurface.closeHover,
           focusRing: { color: tokens.color, shadow: 'none' },
         },
       },
@@ -203,6 +224,6 @@ export default {
     tag: { colorScheme: { light: light.tag, dark: dark.tag } },
     badge: { colorScheme: { light: light.badge, dark: dark.badge } },
     message: { colorScheme: { light: light.message, dark: dark.message } },
-    toast: { colorScheme: { light: light.toast, dark: light.toast } },
+    toast: { colorScheme: { light: light.toast, dark: dark.toast } },
   },
 }

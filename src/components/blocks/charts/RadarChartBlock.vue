@@ -9,16 +9,16 @@ const data = computed(() => ({
     {
       label: 'Current supplier',
       data: [82, 91, 74, 68, 88],
-      borderColor: theme.value.primary,
-      backgroundColor: `${theme.value.primary}30`,
-      pointBackgroundColor: theme.value.primary,
+      borderColor: theme.value.kale,
+      backgroundColor: `${theme.value.kale}30`,
+      pointBackgroundColor: theme.value.kale,
     },
     {
       label: 'Target',
       data: [90, 90, 85, 80, 90],
-      borderColor: theme.value.secondary,
-      backgroundColor: `${theme.value.secondary}18`,
-      pointBackgroundColor: theme.value.secondary,
+      borderColor: theme.value.carrot,
+      backgroundColor: `${theme.value.carrot}18`,
+      pointBackgroundColor: theme.value.carrot,
     },
   ],
 }))
@@ -55,12 +55,11 @@ const options = computed(() => ({
             'Radar chart comparing current supplier scores with targets across five measures.',
         }"
         class="h-80"
-      >
-        <p class="sr-only">
-          The supplier is below target in availability, price, lead time, and reliability, and above
-          target in quality.
-        </p>
-      </Chart>
+      />
+      <p class="sr-only">
+        The supplier is below target in availability, price, lead time, and reliability, and above
+        target in quality.
+      </p>
     </template>
   </Card>
 </template>

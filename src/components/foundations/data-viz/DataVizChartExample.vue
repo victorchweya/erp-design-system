@@ -9,8 +9,8 @@ const planned = [45, 40, 50, 50, 54, 40]
 const data = computed(() => ({
   labels,
   datasets: [
-    { label: 'Delivered', data: delivered, backgroundColor: theme.value.primary, borderRadius: 4 },
-    { label: 'Planned', data: planned, backgroundColor: theme.value.secondary, borderRadius: 4 },
+    { label: 'Delivered', data: delivered, backgroundColor: theme.value.kale, borderRadius: 4 },
+    { label: 'Planned', data: planned, backgroundColor: theme.value.carrot, borderRadius: 4 },
   ],
 }))
 const options = computed(() => ({
@@ -42,27 +42,26 @@ const options = computed(() => ({
             'Delivered crates were close to plan all week, from 36 on Saturday to 55 on Friday.',
         }"
         class="h-64"
-      >
-        <table class="sr-only">
-          <caption>
-            Crates delivered and planned by day
-          </caption>
-          <thead>
-            <tr>
-              <th>Day</th>
-              <th>Delivered</th>
-              <th>Planned</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr v-for="(label, index) in labels" :key="label">
-              <th scope="row">{{ label }}</th>
-              <td>{{ delivered[index] }}</td>
-              <td>{{ planned[index] }}</td>
-            </tr>
-          </tbody>
-        </table>
-      </Chart>
+      />
+      <table class="sr-only">
+        <caption>
+          Crates delivered and planned by day
+        </caption>
+        <thead>
+          <tr>
+            <th>Day</th>
+            <th>Delivered</th>
+            <th>Planned</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="(label, index) in labels" :key="label">
+            <th scope="row">{{ label }}</th>
+            <td>{{ delivered[index] }}</td>
+            <td>{{ planned[index] }}</td>
+          </tr>
+        </tbody>
+      </table>
     </template>
   </Card>
 </template>

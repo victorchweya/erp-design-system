@@ -4,8 +4,8 @@ import { computed, useId } from 'vue'
 const labelId = useId()
 const capacityKg = 12000
 const values = [
-  { label: 'Received today', value: 4800, color: 'var(--p-primary-color)' },
-  { label: 'Held for dispatch', value: 2650, color: 'var(--p-ftf-orange-400)' },
+  { label: 'Received today', value: 4800, color: 'var(--p-chart-kale)' },
+  { label: 'Held for dispatch', value: 2650, color: 'var(--p-chart-carrot)' },
 ]
 const kg = new Intl.NumberFormat('en-KE')
 const usedKg = computed(() => values.reduce((total, item) => total + item.value, 0))

@@ -14,7 +14,9 @@ const data = computed(() => ({
         { x: 32, y: 73, r: 10 },
         { x: 41, y: 118, r: 18 },
       ],
-      backgroundColor: `${theme.value.secondary}99`,
+      backgroundColor: `${theme.value.carrot}99`,
+      borderColor: theme.value.carrot,
+      borderWidth: 2,
     },
   ],
 }))
@@ -51,11 +53,10 @@ const options = computed(() => ({
             'Bubble chart comparing items per order with order value for five customer groups.',
         }"
         class="h-72"
-      >
-        <p class="sr-only">
-          The plotted groups range from 8 items and Ksh 42,000 to 41 items and Ksh 118,000.
-        </p>
-      </Chart>
+      />
+      <p class="sr-only">
+        The plotted groups range from 8 items and Ksh 42,000 to 41 items and Ksh 118,000.
+      </p>
     </template>
   </Card>
 </template>

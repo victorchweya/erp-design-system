@@ -1,7 +1,13 @@
+import { chartSeries, chartSeriesVariable } from '@/theme/erp-theme/foundations/chart-series'
+import { colorValue, contrastRatio, roleByName } from '@/theme/erp-theme/foundations/color-tokens'
+
 export interface DataVizSwatch {
   label: string
   token: string
-  className: string
+  /** Utility class for the swatch fill. Use `color` when the fill is derived. */
+  className?: string
+  /** CSS colour for the swatch fill. */
+  color?: string
   detail: string
 }
 
@@ -12,43 +18,23 @@ export interface ChartGuideRow {
   blocks: readonly { label: string; to: string }[]
 }
 
-// Series order used by the chart blocks through useChartTheme.
-export const categoricalSwatches: readonly DataVizSwatch[] = [
-  {
-    label: '1 · Primary',
-    token: 'theme.primary',
-    className: 'bg-primary',
-    detail: '--p-primary-color · green 500, green 300 in dark mode',
-  },
-  {
-    label: '2 · Secondary',
-    token: 'theme.secondary',
-    className: 'bg-ftf-indigo-400',
-    detail: '--p-ftf-indigo-400',
-  },
-  {
-    label: '3 · Secondary warm',
-    token: 'theme.secondaryWarm',
-    className: 'bg-ftf-orange-400',
-    detail: '--p-ftf-orange-400',
-  },
-]
+// Charts sit on content.background (Card) in both modes.
+const chartSurface = roleByName('content.background')
+const ratioOnSurface = (light: string, dark = light) => {
+  const ratio = (color: string, background: string) =>
+    contrastRatio(colorValue(color).value, background).toFixed(2)
+  return `${ratio(light, chartSurface.light.background.value)}:1 light · ${ratio(dark, chartSurface.dark.background.value)}:1 dark`
+}
 
-// Recommendations from palette.ts; not yet exposed by useChartTheme.
-export const extendedSwatches: readonly DataVizSwatch[] = [
-  {
-    label: '4 · Violet',
-    token: '--p-ftf-violet-500',
-    className: 'bg-ftf-violet-500',
-    detail: 'At least 3:1 on light and dark surfaces',
-  },
-  {
-    label: '5 · Brown',
-    token: '--p-ftf-brown-500',
-    className: 'bg-ftf-brown-500',
-    detail: 'At least 3:1 on light and dark surfaces',
-  },
-]
+// Series order used by the chart blocks through useChartTheme.
+export const categoricalSwatches: readonly DataVizSwatch[] = chartSeries.map((series, index) => ({
+  label: `${index + 1} · ${series.label}`,
+  token: `theme.${series.key}`,
+  color: `var(${chartSeriesVariable(series.key)})`,
+  detail: `${chartSeriesVariable(series.key)} · ${
+    series.light === series.dark ? series.light : `${series.light}, ${series.dark} in dark mode`
+  } · ${ratioOnSurface(series.light, series.dark)}`,
+}))
 
 // Recommended single-hue ramp from the green (Kale) palette.
 export const sequentialSwatches: readonly DataVizSwatch[] = [

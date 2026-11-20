@@ -239,7 +239,7 @@ function reset() {
           >
             <template #marker="{ item }">
               <span
-                class="flex h-7 w-7 items-center justify-center rounded-full"
+                class="flex size-7 shrink-0 items-center justify-center rounded-full"
                 :class="markerClass[item.state as StepState]"
                 aria-hidden="true"
               >

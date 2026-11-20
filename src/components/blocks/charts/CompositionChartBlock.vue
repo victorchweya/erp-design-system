@@ -9,8 +9,8 @@ const pickup = [34, 38, 41, 47]
 const data = computed(() => ({
   labels,
   datasets: [
-    { label: 'Delivery', data: delivery, backgroundColor: theme.value.primary, borderRadius: 4 },
-    { label: 'Pickup', data: pickup, backgroundColor: theme.value.secondary, borderRadius: 4 },
+    { label: 'Delivery', data: delivery, backgroundColor: theme.value.kale, borderRadius: 4 },
+    { label: 'Pickup', data: pickup, backgroundColor: theme.value.carrot, borderRadius: 4 },
   ],
 }))
 const options = computed(() => ({
@@ -47,27 +47,26 @@ const options = computed(() => ({
             'Stacked monthly orders split between delivery and pickup from August to November.',
         }"
         class="h-72"
-      >
-        <table class="sr-only">
-          <caption>
-            Orders by fulfilment type
-          </caption>
-          <thead>
-            <tr>
-              <th>Month</th>
-              <th>Delivery</th>
-              <th>Pickup</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr v-for="(label, index) in labels" :key="label">
-              <th scope="row">{{ label }}</th>
-              <td>{{ delivery[index] }}</td>
-              <td>{{ pickup[index] }}</td>
-            </tr>
-          </tbody>
-        </table>
-      </Chart>
+      />
+      <table class="sr-only">
+        <caption>
+          Orders by fulfilment type
+        </caption>
+        <thead>
+          <tr>
+            <th>Month</th>
+            <th>Delivery</th>
+            <th>Pickup</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="(label, index) in labels" :key="label">
+            <th scope="row">{{ label }}</th>
+            <td>{{ delivery[index] }}</td>
+            <td>{{ pickup[index] }}</td>
+          </tr>
+        </tbody>
+      </table>
     </template>
   </Card>
 </template>
