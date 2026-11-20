@@ -2,14 +2,26 @@ import { afterEach, expect, it } from 'vitest'
 import { readFileSync } from 'node:fs'
 import { resolve } from 'node:path'
 import { compileStyle, parse } from '@vue/compiler-sfc'
-import { enableAutoUnmount, flushPromises, mount } from '@vue/test-utils'
-import { createMemoryHistory, createRouter } from 'vue-router'
-import appRouter from '@/router'
+import { type DOMWrapper, enableAutoUnmount, flushPromises, mount } from '@vue/test-utils'
+import type { Router } from 'vue-router'
 import AppMenu from '../components/AppMenu.vue'
 import { componentPages } from '@/data/component-pages'
 import { blockPages } from '@/data/block-pages'
+import { createDocsRouter } from './docs-router'
 
 enableAutoUnmount(afterEach)
+
+async function clickAndNavigate(router: Router, link: Pick<DOMWrapper<Element>, 'trigger'>) {
+  const navigated = new Promise<void>((done) => {
+    const stop = router.afterEach(() => {
+      stop()
+      done()
+    })
+  })
+  await link.trigger('click')
+  await navigated
+  await flushPromises()
+}
 
 it('keeps the active group label scoped and uses the theme text colour for both modes', () => {
   const filename = resolve('src/layouts/components/AppMenu.vue')
@@ -27,7 +39,7 @@ it('keeps the active group label scoped and uses the theme text colour for both 
 })
 
 it('navigates to the documentation pages and marks the current link', async () => {
-  const router = createRouter({ history: createMemoryHistory(), routes: appRouter.options.routes })
+  const router = createDocsRouter()
   await router.push('/')
   await router.isReady()
   const wrapper = mount(AppMenu, { global: { plugins: [router] } })
@@ -46,9 +58,8 @@ it('navigates to the documentation pages and marks the current link', async () =
     '/components/core-elements/button',
     '/ui-blocks/headers',
   ]) {
-    await wrapper.get(`a[href="${path}"]`).trigger('click')
-    await expect.poll(() => router.currentRoute.value.path).toBe(path)
-    await flushPromises()
+    await clickAndNavigate(router, wrapper.get(`a[href="${path}"]`))
+    expect(router.currentRoute.value.path).toBe(path)
     expect(router.currentRoute.value.matched).toHaveLength(1)
     expect(wrapper.get(`a[href="${path}"]`).attributes('aria-current')).toBe('page')
     expect(wrapper.get(`a[href="${path}"]`).classes()).toContain('font-medium')
@@ -64,14 +75,13 @@ it('navigates to the documentation pages and marks the current link', async () =
 })
 
 it('opens every component page and keeps its group and current link active', async () => {
-  const router = createRouter({ history: createMemoryHistory(), routes: appRouter.options.routes })
+  const router = createDocsRouter()
   await router.push('/')
   await router.isReady()
   const wrapper = mount(AppMenu, { global: { plugins: [router] } })
   for (const page of componentPages) {
-    await wrapper.get(`a[href="${page.path}"]`).trigger('click')
-    await expect.poll(() => router.currentRoute.value.path).toBe(page.path)
-    await flushPromises()
+    await clickAndNavigate(router, wrapper.get(`a[href="${page.path}"]`))
+    expect(router.currentRoute.value.path).toBe(page.path)
     const current = wrapper.get('a[aria-current="page"]')
     expect(current.attributes('href')).toBe(page.path)
     expect(current.element.closest('details')?.open).toBe(true)
@@ -85,14 +95,13 @@ it('opens every component page and keeps its group and current link active', asy
 })
 
 it('opens every block category with the correct active link and breadcrumb', async () => {
-  const router = createRouter({ history: createMemoryHistory(), routes: appRouter.options.routes })
+  const router = createDocsRouter()
   await router.push('/ui-blocks')
   await router.isReady()
   const wrapper = mount(AppMenu, { global: { plugins: [router] } })
   for (const page of blockPages) {
-    await wrapper.get(`a[href="${page.path}"]`).trigger('click')
-    await expect.poll(() => router.currentRoute.value.path).toBe(page.path)
-    await flushPromises()
+    await clickAndNavigate(router, wrapper.get(`a[href="${page.path}"]`))
+    expect(router.currentRoute.value.path).toBe(page.path)
     const current = wrapper.get('a[aria-current="page"]')
     expect(current.attributes('href')).toBe(page.path)
     expect(current.element.closest('details')?.open).toBe(true)

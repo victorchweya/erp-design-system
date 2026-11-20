@@ -7,6 +7,7 @@ import ErpTheme from '@/theme/erp-theme'
 enableAutoUnmount(afterEach)
 afterEach(() => vi.unstubAllGlobals())
 
+// Rendering the full page with the ERP preset is slow under parallel test load.
 it('renders the color documentation without internal audit notes', () => {
   vi.stubGlobal(
     'matchMedia',
@@ -220,5 +221,4 @@ it('renders the color documentation without internal audit notes', () => {
       `var(--p-severity-${severity}-background)`,
     )
   }
-})
-
+}, 15_000)

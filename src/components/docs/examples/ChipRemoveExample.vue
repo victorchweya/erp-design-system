@@ -11,6 +11,7 @@ const filters = ref(['Vegetables', 'In season', 'Local'])
         :key="filter"
         :label="filter"
         removable
+        :pt="{ removeIcon: { role: 'button', 'aria-label': `Remove ${filter}` } }"
         @remove="filters = filters.filter((value) => value !== filter)"
       />
     </div>

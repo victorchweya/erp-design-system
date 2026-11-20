@@ -2,8 +2,8 @@ import { afterEach, expect, it, vi } from 'vitest'
 import { enableAutoUnmount, flushPromises, mount } from '@vue/test-utils'
 import PrimeVue from 'primevue/config'
 import { nextTick } from 'vue'
-import { createMemoryHistory, createRouter } from 'vue-router'
-import appRouter from '@/router'
+import AppLayout from '../AppLayout.vue'
+import { createDocsRouter } from './docs-router'
 
 enableAutoUnmount(afterEach)
 afterEach(() => {
@@ -20,8 +20,7 @@ async function mountLayout(desktop: boolean) {
     'matchMedia',
     vi.fn(() => media),
   )
-  const { default: AppLayout } = await import('../AppLayout.vue')
-  const router = createRouter({ history: createMemoryHistory(), routes: appRouter.options.routes })
+  const router = createDocsRouter()
   await router.push('/')
   await router.isReady()
   const wrapper = mount(AppLayout, {

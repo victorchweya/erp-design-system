@@ -84,9 +84,10 @@ it('filters suggestions and handles a query with no matches', async () => {
 
 it('removes selected chips through a named button and can reset the selection', async () => {
   const wrapper = mount(ChipRemoveExample, { global })
-  await wrapper.get('button[aria-label="Remove Vegetables"]').trigger('click')
+  const removeVegetables = '[role="button"][aria-label="Remove Vegetables"]'
+  await wrapper.get(removeVegetables).trigger('click')
   expect(wrapper.get('[role="status"]').text()).toContain('2')
-  expect(wrapper.find('button[aria-label="Remove Vegetables"]').exists()).toBe(false)
+  expect(wrapper.find(removeVegetables).exists()).toBe(false)
   await wrapper
     .findAll('button')
     .find((button) => button.text() === 'Reset filters')!
