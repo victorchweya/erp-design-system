@@ -5,9 +5,10 @@ import code from '@/components/docs/examples/DockExample.vue?raw'
 
 const examples = [
   {
-    id: 'example',
-    title: 'Basic usage',
-    description: 'A compact row of icon-based actions.',
+    id: 'dock-basic',
+    title: 'Quick actions',
+    description:
+      'A row of icon actions pinned to the edge of its container. Each item has a label, which names it for screen readers and appears as a tooltip on hover.',
     component: Example,
     code: code,
   },
@@ -16,13 +17,40 @@ const api = [
   {
     name: 'model',
     type: 'MenuItem[]',
-    default: '-',
-    description: 'MenuModel instance to define the action items.',
+    default: '—',
+    description: 'Actions. Every item needs a label, an icon and a command or url.',
   },
-  { name: 'position', type: 'any', default: 'bottom', description: 'Position of element.' },
-  { name: 'class', type: 'any', default: '-', description: 'Style class of the element.' },
+  {
+    name: 'position',
+    type: "'bottom' | 'top' | 'left' | 'right'",
+    default: "'bottom'",
+    description: 'Edge of the container the dock sits on. left and right stack items vertically.',
+  },
+  {
+    name: 'tooltipOptions',
+    type: 'DockTooltipOptions',
+    default: '—',
+    description:
+      'Shows each item label as a tooltip. Set position and event, plus any Tooltip option.',
+  },
+  {
+    name: 'ariaLabel',
+    type: 'string',
+    default: '—',
+    description: 'Accessible name for the menu.',
+  },
+  {
+    name: 'itemicon',
+    type: 'slot',
+    default: '—',
+    description: 'Custom icon. Receives the item; mark the icon aria-hidden.',
+  },
 ]
-const accessibility = ['Each icon action needs a text label in the model and keyboard access.']
+const accessibility = [
+  'Dock uses the menu role. Name it with aria-label. Each item is a menuitem named by its label, so never leave the label empty.',
+  'Tab moves into the dock, arrow keys move between items, and Enter or Space runs the focused item.',
+  'Icons alone are hard to recognise. Show labels as tooltips, and prefer Menubar or a Toolbar with text buttons for core ERP navigation.',
+]
 </script>
 
 <template>
@@ -30,8 +58,8 @@ const accessibility = ['Each icon action needs a text label in the model and key
     title="Dock"
     componentName="Dock"
     category="Menu"
-    description="A compact row of icon-based actions."
-    usage="accepts a menu model and a custom itemicon slot."
+    description="Show a small set of frequent actions as icons along the edge of a screen or panel."
+    usage="accepts a menu model and an itemicon slot. Its parent needs position: relative and a height. Keep it to five or six actions."
     :examples="examples"
     :api="api"
     :accessibility="accessibility"

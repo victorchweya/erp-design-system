@@ -24,15 +24,15 @@ const examples = [
 const api = [
   {
     name: 'shape',
-    type: 'any',
+    type: "'rectangle' | 'circle'",
     default: 'rectangle',
-    description: 'Square or circle.',
+    description: 'Rectangle or circle.',
   },
   {
     name: 'size',
     type: 'string',
     default: '—',
-    description: 'CSS width and height for a square shape.',
+    description: 'CSS width and height together, for a square or circle.',
   },
   {
     name: 'width',
@@ -47,15 +47,21 @@ const api = [
     description: 'CSS height.',
   },
   {
+    name: 'borderRadius',
+    type: 'string',
+    default: '—',
+    description: 'Overrides the theme radius, for example to match a card.',
+  },
+  {
     name: 'animation',
-    type: 'any',
+    type: "'wave' | 'none'",
     default: 'wave',
-    description: 'Shimmer or none.',
+    description: 'Shimmer animation, or none for a static placeholder.',
   },
 ]
 const accessibility = [
-  'Skeletons are hidden from screen readers. Announce loading once on their containing region.',
-  'Use animation="none" when motion is unnecessary. Respect reduced-motion preferences.',
+  'Each Skeleton renders with aria-hidden="true". Set aria-busy on the container and announce loading once with a status message.',
+  'The global reduced-motion rule in main.css stops the shimmer for people who ask for less motion. Use animation="none" where many placeholders would move at once.',
 ]
 </script>
 

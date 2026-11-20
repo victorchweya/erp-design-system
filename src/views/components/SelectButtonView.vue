@@ -15,7 +15,8 @@ const examples = [
   {
     id: 'select-button-1',
     title: 'Invalid and disabled',
-    description: 'Use a Select dropdown when the number of choices becomes too large.',
+    description:
+      'SelectButton passes aria-describedby to its group, which is also the labelled element. Use a Select when the number of choices becomes too large.',
     component: SelectButtonStatesExample,
     code: code1,
   },
@@ -52,6 +53,18 @@ const api = [
     description: 'Allow more than one selection.',
   },
   {
+    name: 'allowEmpty',
+    type: 'boolean',
+    default: 'true',
+    description: 'Let users clear the selection by pressing the active option.',
+  },
+  {
+    name: 'optionDisabled',
+    type: 'string | Function',
+    default: '—',
+    description: 'Field or function that marks an option unavailable.',
+  },
+  {
     name: 'invalid',
     type: 'boolean',
     default: 'false',
@@ -65,8 +78,8 @@ const api = [
   },
 ]
 const accessibility = [
-  'Name the group with aria-labelledby and keep readable text for each option.',
-  'Each option announces its pressed state. Tab and Space operate the buttons.',
+  'Name the group with aria-labelledby. The root has the group role, and each option is a button with readable text.',
+  'Each option sets aria-pressed and is its own tab stop. Space or Enter toggles the focused option.',
 ]
 </script>
 

@@ -16,7 +16,8 @@ const examples = [
   {
     id: 'date-picker-1',
     title: 'Invalid and disabled',
-    description: 'Provide a helpful error when a chosen date is outside the allowed window.',
+    description:
+      'Say which dates are allowed. Error and help text reach the inner input through pt.',
     component: DatePickerStatesExample,
     code: code1,
   },
@@ -39,6 +40,18 @@ const api = [
     type: 'string',
     default: '—',
     description: 'Date display format.',
+  },
+  {
+    name: 'minDate',
+    type: 'Date',
+    default: '—',
+    description: 'Earliest selectable date.',
+  },
+  {
+    name: 'maxDate',
+    type: 'Date',
+    default: '—',
+    description: 'Latest selectable date.',
   },
   {
     name: 'showIcon',
@@ -74,6 +87,7 @@ const api = [
 const accessibility = [
   'Give every field a visible label. Match label for to id on native inputs or inputId on composite controls.',
   'Use help text for expected values and an associated error message for invalid fields. Keep the theme\u2019s visible focus and native keyboard behavior.',
+  'DatePicker puts extra attributes on its wrapper. Pass aria-describedby to the input with :pt="{ pcInputText: { root: { \'aria-describedby\': id } } }".',
   'Arrow keys navigate calendar days and Escape closes the popup. Keep the expected date format visible.',
 ]
 </script>

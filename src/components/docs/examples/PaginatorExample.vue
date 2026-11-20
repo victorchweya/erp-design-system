@@ -11,11 +11,6 @@ const page = computed(() => records.slice(first.value, first.value + rows.value)
     <ul class="flex flex-col gap-2">
       <li v-for="record in page" :key="record">{{ record }}</li>
     </ul>
-    <Paginator
-      v-model:first="first"
-      v-model:rows="rows"
-      :totalRecords="records.length"
-      :rowsPerPageOptions="[5, 10]"
-    />
+    <Paginator v-model:first="first" :rows="rows" :totalRecords="records.length" />
   </div>
 </template>

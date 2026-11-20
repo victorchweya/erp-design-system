@@ -30,10 +30,54 @@ const examples = [
     code: scrollableCode,
   },
 ]
-const api: never[] = []
+const api = [
+  {
+    name: 'value',
+    type: 'string | number',
+    default: '—',
+    description: 'Active tab. Required; use v-model:value to read or set it.',
+  },
+  {
+    name: 'scrollable',
+    type: 'boolean',
+    default: 'false',
+    description: 'Lets the tab list scroll when it is wider than its container.',
+  },
+  {
+    name: 'showNavigators',
+    type: 'boolean',
+    default: 'true',
+    description: 'Shows previous and next buttons when a scrollable tab list overflows.',
+  },
+  {
+    name: 'lazy',
+    type: 'boolean',
+    default: 'false',
+    description: 'Renders a panel only when its tab is active, instead of hiding it with CSS.',
+  },
+  {
+    name: 'selectOnFocus',
+    type: 'boolean',
+    default: 'false',
+    description: 'Activates a tab as soon as it receives focus with the arrow keys.',
+  },
+  {
+    name: 'Tab value / TabPanel value',
+    type: 'string | number',
+    default: '—',
+    description: 'Links a tab to its panel.',
+  },
+  {
+    name: 'Tab disabled',
+    type: 'boolean',
+    default: 'false',
+    description: 'Prevents the tab from being selected.',
+  },
+]
 const accessibility = [
-  'Keep tab labels short. Arrow keys navigate the tab list; Enter or Space activates a tab.',
-  'Use a clear TabList label when the surrounding heading does not describe the tabs.',
+  'Tabs use the tablist, tab, and tabpanel roles. Tab moves into the active tab; Left and Right Arrow, Home, and End move between tabs; Enter or Space activates one.',
+  'Give TabList an aria-label when the surrounding heading does not describe the tabs.',
+  'Hide decorative tab icons with aria-hidden and keep a visible text label on every tab.',
 ]
 </script>
 
@@ -42,8 +86,8 @@ const accessibility = [
     title="Tabs"
     componentName="Tabs"
     category="Panel"
-    description="Switch between details for the same record."
-    usage="uses matching values for each Tab and TabPanel. Keep labels short, align optional icons and labels in one row, and enable scrollable when the tab list may overflow."
+    description="Switch between related views of the same record without leaving the page."
+    usage="composes TabList, Tab, TabPanels, and TabPanel, linked by matching values. Keep labels short, align optional icons and labels in one row, and enable scrollable when the tab list may overflow."
     :examples="examples"
     :api="api"
     :accessibility="accessibility"

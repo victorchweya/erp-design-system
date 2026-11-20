@@ -48,7 +48,8 @@ const api = [
   },
 ]
 const accessibility = [
-  'Provide a visible group legend and label the text channels. Keep a text entry alternative to pointer interaction.',
+  'Provide a visible group legend. Channel inputs get an aria-label such as \u201chex\u201d, which overrides label for; add aria-labelledby to use your visible label.',
+  'The area and slider handles are keyboard sliders. Keep a text entry alternative for precise values.',
   'Do not use a selected colour alone to convey status or meaning.',
 ]
 </script>

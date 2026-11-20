@@ -6,32 +6,29 @@ const blocked = shallowRef(false)
 <template>
   <div class="flex flex-col gap-4">
     <div class="flex flex-wrap gap-2">
-      <Button type="button" :disabled="blocked" @click="blocked = true">Block region</Button
+      <Button type="button" :disabled="blocked" @click="blocked = true">Simulate saving</Button
       ><Button
         type="button"
         severity="secondary"
         outlined
         :disabled="!blocked"
         @click="blocked = false"
-        >Unblock region</Button
+        >Finish saving</Button
       >
     </div>
     <BlockUI :blocked="blocked"
       ><fieldset
         :disabled="blocked"
-        :aria-busy="blocked"
         class="flex flex-col gap-3 rounded-lg border border-surface p-4"
       >
-        <legend>Delivery actions</legend>
+        <legend>Delivery DLV-5104</legend>
         <Button type="button" severity="secondary" outlined class="self-start"
-          >Review delivery</Button
+          >Confirm received weight</Button
         >
       </fieldset></BlockUI
     >
     <p role="status">
-      {{
-        blocked ? 'Delivery actions are temporarily blocked.' : 'Delivery actions are available.'
-      }}
+      {{ blocked ? 'Saving delivery. Actions are paused.' : 'Delivery actions are available.' }}
     </p>
   </div>
 </template>

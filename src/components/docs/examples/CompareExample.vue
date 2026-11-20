@@ -6,7 +6,7 @@ import ArrowsH from '@primeicons/vue/arrows-h'
   <Compare aria-label="Compare order preparation" class="h-56 w-full"
     ><CompareItem position="before"
       ><div
-        class="flex h-56 w-full items-center justify-center bg-surface-100 p-8 text-xl font-medium text-color dark:bg-surface-800"
+        class="flex h-56 w-full items-center justify-center bg-emphasis p-8 text-xl font-medium text-color"
       >
         Before sorting
       </div></CompareItem

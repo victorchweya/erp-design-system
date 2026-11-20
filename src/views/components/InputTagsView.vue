@@ -16,7 +16,7 @@ const examples = [
     id: 'input-tags-1',
     title: 'Invalid and disabled',
     description:
-      'The current InputTags component uses the shared form-field border and surface tokens.',
+      'Use inputId for the label and inputProps for aria-describedby, so both reach the text input.',
     component: InputTagsStatesExample,
     code: code1,
   },
@@ -68,7 +68,8 @@ const api = [
 const accessibility = [
   'Give every field a visible label. Match label for to id on native inputs or inputId on composite controls.',
   'Use help text for expected values and an associated error message for invalid fields. Keep the theme\u2019s visible focus and native keyboard behavior.',
-  'Explain how to add and remove items. Preserve the component\u2019s keyboard support for editing chips.',
+  'Attributes set directly on InputTags land on the chip list, not the text input. Pass aria-describedby through inputProps.',
+  'Explain how to add and remove items. Enter adds a tag; with an empty input, Backspace removes the last tag and the Left arrow moves focus to the chips.',
 ]
 </script>
 

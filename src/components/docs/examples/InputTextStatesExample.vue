@@ -1,18 +1,30 @@
 <template>
   <div class="grid gap-6 sm:grid-cols-2">
     <div class="flex flex-col gap-2">
-      <span id="InputText-invalid-label" class="font-medium">Invalid</span
+      <label for="supplier-name-invalid" class="font-medium">Supplier name</label
       ><InputText
+        id="supplier-name-invalid"
         fluid
         invalid
-        aria-labelledby="InputText-invalid-label"
-        aria-describedby="InputText-error"
+        autocomplete="organization"
+        aria-describedby="supplier-name-invalid-error"
       />
-      <p id="InputText-error" class="text-danger">Choose a valid value to continue.</p>
+      <p id="supplier-name-invalid-error" class="text-danger">
+        Enter the supplier's registered business name.
+      </p>
     </div>
     <div class="flex flex-col gap-2">
-      <span id="InputText-disabled-label" class="font-medium">Disabled</span
-      ><InputText fluid disabled aria-labelledby="InputText-disabled-label" />
+      <label for="supplier-code-disabled" class="font-medium">Supplier code</label
+      ><InputText
+        id="supplier-code-disabled"
+        modelValue="SUP-0142"
+        fluid
+        disabled
+        aria-describedby="supplier-code-disabled-help"
+      />
+      <p id="supplier-code-disabled-help" class="text-muted-color">
+        Generated when the supplier is approved.
+      </p>
     </div>
   </div>
 </template>

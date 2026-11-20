@@ -1,20 +1,22 @@
 <template>
   <div class="grid gap-6 sm:grid-cols-2">
     <div class="flex flex-col gap-2">
-      <span id="TreeSelect-invalid-label" class="font-medium">Invalid</span
+      <span id="TreeSelect-invalid-label" class="font-medium">Storage location</span
       ><TreeSelect
-        placeholder="Choose produce"
+        :options="[]"
+        placeholder="Choose a location"
         fluid
         invalid
         aria-labelledby="TreeSelect-invalid-label"
-        aria-describedby="TreeSelect-error"
+        :inputProps="{ 'aria-describedby': 'TreeSelect-error', 'aria-invalid': true }"
       />
-      <p id="TreeSelect-error" class="text-danger">Choose a valid value to continue.</p>
+      <p id="TreeSelect-error" class="text-danger">Choose where this stock is stored.</p>
     </div>
     <div class="flex flex-col gap-2">
-      <span id="TreeSelect-disabled-label" class="font-medium">Disabled</span
+      <span id="TreeSelect-disabled-label" class="font-medium">Cost centre</span
       ><TreeSelect
-        placeholder="Choose produce"
+        :options="[]"
+        placeholder="Set by Finance"
         fluid
         disabled
         aria-labelledby="TreeSelect-disabled-label"

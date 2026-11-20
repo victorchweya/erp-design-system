@@ -15,7 +15,8 @@ const examples = [
   {
     id: 'toggle-switch-1',
     title: 'Invalid and disabled',
-    description: 'Use disabled when a setting cannot currently be changed.',
+    description:
+      'Pass aria-describedby to the switch with pt.input. Use disabled when a setting cannot currently be changed.',
     component: ToggleSwitchStatesExample,
     code: code1,
   },
@@ -23,9 +24,33 @@ const examples = [
 const api = [
   {
     name: 'modelValue',
-    type: 'string | boolean',
+    type: 'boolean | string',
     default: 'false',
     description: 'Bound value. Use v-model.',
+  },
+  {
+    name: 'trueValue',
+    type: 'any',
+    default: 'true',
+    description: 'Value bound when the switch is on.',
+  },
+  {
+    name: 'falseValue',
+    type: 'any',
+    default: 'false',
+    description: 'Value bound when the switch is off.',
+  },
+  {
+    name: 'inputId',
+    type: 'string',
+    default: '—',
+    description: 'Id of the native input; match it with the label for attribute.',
+  },
+  {
+    name: 'readonly',
+    type: 'boolean',
+    default: 'false',
+    description: 'Show the value without allowing changes.',
   },
   {
     name: 'invalid',
@@ -42,7 +67,8 @@ const api = [
 ]
 const accessibility = [
   'Provide a visible label with inputId. Keep the label consistent in both states.',
-  'Tab focuses the switch and Space changes it.',
+  'The input has the switch role. Tab focuses it and Space changes it.',
+  'Attributes such as aria-describedby set on ToggleSwitch go to its wrapper. Pass them to the input with pt.input.',
 ]
 </script>
 

@@ -28,21 +28,34 @@ const api = [
     description: 'Visible text label.',
   },
   {
+    name: 'icon',
+    type: 'string',
+    default: '—',
+    description: 'Icon class. Use the icon slot for an icon component.',
+  },
+  {
     name: 'image',
     type: 'string',
     default: '—',
-    description: 'Image URL.',
+    description: 'Image URL, for example a person or supplier logo.',
   },
   {
     name: 'removable',
     type: 'boolean',
     default: 'false',
-    description: 'Allow users to remove the item.',
+    description: 'Show a remove icon. The chip hides itself and emits remove.',
+  },
+  {
+    name: 'removeIcon',
+    type: 'string',
+    default: '—',
+    description: 'Icon class for the remove control. Use the removeicon slot for a component.',
   },
 ]
 const accessibility = [
-  'Removable chips support keyboard removal. Keep their label meaningful and preserve their native focus behavior.',
-  'Announce changes when removing selections affects results.',
+  'The remove icon is focusable and removes the chip with Enter or Backspace, but it has no role or name by default. Add role="button" and an aria-label such as "Remove Vegetables" through pt.removeIcon.',
+  'Removing a chip removes the focused element. Move focus to a sensible place, such as the next chip or the related field, and announce changes that affect results.',
+  'A chip without removable is not interactive. Do not use it as a button or a toggle.',
 ]
 </script>
 

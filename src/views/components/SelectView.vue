@@ -4,21 +4,31 @@ import SelectExample from '@/components/docs/examples/SelectExample.vue'
 import code0 from '@/components/docs/examples/SelectExample.vue?raw'
 import SelectStatesExample from '@/components/docs/examples/SelectStatesExample.vue'
 import code1 from '@/components/docs/examples/SelectStatesExample.vue?raw'
+import SelectSizesExample from '@/components/docs/examples/SelectSizesExample.vue'
+import code2 from '@/components/docs/examples/SelectSizesExample.vue?raw'
 const examples = [
   {
     id: 'select-0',
     title: 'Filter and clear',
-    description: 'The model stores the option value while the label remains readable.',
+    description:
+      'The model stores the supplier code from optionValue while the list shows the supplier name.',
     component: SelectExample,
     code: code0,
   },
   {
     id: 'select-1',
-    title: 'Invalid and disabled',
+    title: 'Invalid, disabled and loading',
     description:
-      'Use disabled for unavailable controls and invalid for a value that needs correction.',
+      'Link the error to the combobox through pt.label, because attributes set on Select land on its wrapper. Use loading while options are fetched.',
     component: SelectStatesExample,
     code: code1,
+  },
+  {
+    id: 'select-2',
+    title: 'Size and fill',
+    description: 'Select shares the form-field size scale and filled surface with InputText.',
+    component: SelectSizesExample,
+    code: code2,
   },
 ]
 const api = [
@@ -31,7 +41,7 @@ const api = [
   {
     name: 'fluid',
     type: 'boolean',
-    default: '—',
+    default: 'null',
     description: 'Fill the available width.',
   },
   {
@@ -71,6 +81,30 @@ const api = [
     description: 'Prevent interaction.',
   },
   {
+    name: 'loading',
+    type: 'boolean',
+    default: 'false',
+    description: 'Show a loading icon in place of the dropdown icon.',
+  },
+  {
+    name: 'size',
+    type: '"small" | "large"',
+    default: '—',
+    description: 'Control size; omit for the default.',
+  },
+  {
+    name: 'variant',
+    type: '"outlined" | "filled"',
+    default: 'null',
+    description: 'Field surface. Defaults to the global inputVariant.',
+  },
+  {
+    name: 'ariaLabelledby',
+    type: 'string',
+    default: '—',
+    description: 'Id of the visible label that names the combobox.',
+  },
+  {
     name: 'showClear',
     type: 'boolean',
     default: 'false',
@@ -78,9 +112,9 @@ const api = [
   },
 ]
 const accessibility = [
-  'Give every field a visible label. Match label for to id on native inputs or inputId on composite controls.',
-  'Use help text for expected values and an associated error message for invalid fields. Keep the theme\u2019s visible focus and native keyboard behavior.',
-  'Arrow keys move through options, Enter selects, and Escape closes the list.',
+  'Select renders a span with the combobox role, not an input, so label for does not name it. Give the visible label an id and pass it to aria-labelledby. Without one, the placeholder or selected value becomes the name.',
+  'Attributes such as aria-describedby set on Select go to the wrapper. Pass them to the combobox with pt.label so the error message is announced.',
+  'Space, Enter or Down arrow opens the list. Arrow keys move through options, Enter selects, and Escape closes the list and returns focus to the field.',
 ]
 </script>
 

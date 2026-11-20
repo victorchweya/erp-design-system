@@ -16,7 +16,8 @@ const examples = [
   {
     id: 'input-password-1',
     title: 'Invalid and disabled',
-    description: 'Use the shared form-field states rather than the older Password component API.',
+    description:
+      'Explain the error or why the field is unavailable, and link that text with aria-describedby.',
     component: InputPasswordStatesExample,
     code: code1,
   },

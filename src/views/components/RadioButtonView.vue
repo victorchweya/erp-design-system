@@ -17,7 +17,8 @@ const examples = [
   {
     id: 'radio-button-1',
     title: 'Invalid and disabled',
-    description: 'Use one error message for the group when a selection is required.',
+    description:
+      'Use one error message for the group and link it to the fieldset. A disabled group keeps the current choice visible.',
     component: RadioButtonStatesExample,
     code: code1,
   },
@@ -50,8 +51,14 @@ const api = [
     description: 'Field name used by the form.',
   },
   {
+    name: 'inputId',
+    type: 'string',
+    default: '—',
+    description: 'Id of the native input; match it with the label for attribute.',
+  },
+  {
     name: 'size',
-    type: 'any',
+    type: '"small" | "large"',
     default: '—',
     description: 'Control size; omit for the default.',
   },
@@ -70,7 +77,7 @@ const api = [
 ]
 const accessibility = [
   'Link every radio button to its own visible label.',
-  'Tab enters the group. Arrow keys move between options and Space selects.',
+  'Tab enters the group on the selected option. Arrow keys move to and select the next option; Space selects the focused option when none is selected.',
   'RadioButtonGroup renders a plain div with no role. Wrap it in a fieldset and legend so the decision is announced with each option.',
 ]
 </script>

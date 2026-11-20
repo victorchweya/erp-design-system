@@ -16,8 +16,9 @@ const price = shallowRef<number | null>(250)
         :max="100"
         :step="1"
         fluid
+        :pt="{ pcInputText: { root: { 'aria-describedby': 'order-quantity-help' } } }"
       />
-      <p class="text-muted-color">Between 1 and 100 kg.</p>
+      <p id="order-quantity-help" class="text-muted-color">Between 1 and 100 kg.</p>
     </div>
     <div class="flex flex-col gap-1">
       <label for="unit-price" class="font-medium">Unit price</label

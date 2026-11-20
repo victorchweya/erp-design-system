@@ -18,7 +18,8 @@ const examples = [
   {
     id: 'checkbox-1',
     title: 'Invalid and disabled',
-    description: 'Do not rely on the red border to explain a required choice.',
+    description:
+      'Do not rely on the red border to explain a required choice. Pass aria-describedby to the input with pt.input, because attributes set on Checkbox land on its wrapper.',
     component: CheckboxStatesExample,
     code: code1,
   },
@@ -53,8 +54,21 @@ const api = [
   {
     name: 'binary',
     type: 'boolean',
-    default: '—',
+    default: 'false',
     description: 'Bind a boolean rather than a selection list.',
+  },
+  {
+    name: 'indeterminate',
+    type: 'boolean',
+    default: 'false',
+    description:
+      'Show a partly selected state, such as a select-all box. Use v-model:indeterminate.',
+  },
+  {
+    name: 'inputId',
+    type: 'string',
+    default: '—',
+    description: 'Id of the native input; match it with the label for attribute.',
   },
   {
     name: 'size',
@@ -71,13 +85,14 @@ const api = [
   {
     name: 'disabled',
     type: 'boolean',
-    default: '—',
+    default: 'false',
     description: 'Prevent interaction.',
   },
 ]
 const accessibility = [
   'Connect every checkbox to a visible label and put related choices in a fieldset with a legend.',
   'Tab focuses the control and Space toggles it.',
+  'Attributes such as aria-describedby set on Checkbox go to its wrapper. Pass them to the native input with pt.input.',
   'CheckboxGroup renders a plain div with no role. Wrap it in a fieldset and legend, and link the hint and error text to the fieldset with aria-describedby.',
 ]
 </script>

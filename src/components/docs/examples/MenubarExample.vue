@@ -1,27 +1,40 @@
 <script setup lang="ts">
 import { shallowRef } from 'vue'
+import type { MenuItem } from 'primevue/menuitem'
+import ShoppingCart from '@primeicons/vue/shopping-cart'
+import Truck from '@primeicons/vue/truck'
+import Wallet from '@primeicons/vue/wallet'
+import Plus from '@primeicons/vue/plus'
+
 const result = shallowRef('No action selected.')
-const items = [
+
+function run(label: string) {
+  result.value = `${label} selected in this preview.`
+}
+
+const items: MenuItem[] = [
   {
-    label: 'Orders',
+    label: 'Procurement',
+    icon: ShoppingCart,
     items: [
-      {
-        label: 'View orders',
-        command: () => (result.value = 'View orders selected in this preview.'),
-      },
-      {
-        label: 'Create order',
-        command: () => (result.value = 'Create order selected in this preview.'),
-      },
+      { label: 'Purchase orders', command: () => run('Purchase orders') },
+      { label: 'Suppliers', command: () => run('Suppliers') },
     ],
   },
   {
-    label: 'Suppliers',
+    label: 'Logistics',
+    icon: Truck,
     items: [
-      {
-        label: 'View suppliers',
-        command: () => (result.value = 'View suppliers selected in this preview.'),
-      },
+      { label: 'Deliveries', command: () => run('Deliveries') },
+      { label: 'Warehouses', command: () => run('Warehouses') },
+    ],
+  },
+  {
+    label: 'Finance',
+    icon: Wallet,
+    items: [
+      { label: 'Invoices', command: () => run('Invoices') },
+      { label: 'Payments', command: () => run('Payments') },
     ],
   },
 ]
@@ -29,7 +42,14 @@ const items = [
 
 <template>
   <div class="flex flex-col gap-4">
-    <Menubar :model="items" />
-    <p role="status" class="text-muted">{{ result }}</p>
+    <Menubar :model="items" aria-label="Main">
+      <template #end>
+        <Button type="button" size="small" @click="run('New order')">
+          <Plus aria-hidden="true" focusable="false" />
+          New order
+        </Button>
+      </template>
+    </Menubar>
+    <p role="status" class="text-sm text-muted-color">{{ result }}</p>
   </div>
 </template>

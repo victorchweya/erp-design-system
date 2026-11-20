@@ -16,7 +16,7 @@ const examples = [
     id: 'input-otp-1',
     title: 'Invalid and disabled',
     description:
-      'Only mark a code invalid after a real validation response; this sample displays the styling.',
+      'Only mark a code invalid after a real validation response. The error and help text are linked to every character field.',
     component: InputOtpStatesExample,
     code: code1,
   },
@@ -66,7 +66,8 @@ const api = [
   },
 ]
 const accessibility = [
-  'Group the fields under a visible legend. Keep the component\u2019s native per-character labels and paste behavior.',
+  'Group the fields under a fieldset with a visible legend. InputOtp does not name its character fields, so give each one an aria-label and any help or error id through pt.pcInputText.root.',
+  'Arrow keys move between fields and Backspace clears the current field and moves back. Pasting a code fills all fields.',
   'Do not announce or log the entered code. Explain expiry and retry behavior in the surrounding application.',
 ]
 </script>

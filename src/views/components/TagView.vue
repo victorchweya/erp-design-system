@@ -9,7 +9,7 @@ const examples = [
     id: 'tag-0',
     title: 'Severities',
     description:
-      'Primary uses Kale and success uses emerald. Warn uses orange. Native Tag supports primary, secondary, success, info, warn, danger, and contrast; help is a Button severity.',
+      'Order statuses, from left: primary (the default), secondary, success, info, warn, danger, and contrast. Primary uses Kale and success uses emerald. Help is a Button-only severity.',
     component: TagSeverityExample,
     code: code0,
   },
@@ -27,19 +27,25 @@ const api = [
     name: 'value',
     type: 'any',
     default: '—',
-    description: 'Text label, or use the default slot.',
+    description: 'Text label. Use the default slot for richer content.',
   },
   {
     name: 'severity',
-    type: 'any',
+    type: "'secondary' | 'success' | 'info' | 'warn' | 'danger' | 'contrast'",
     default: '—',
-    description: 'Semantic colour variant.',
+    description: 'Semantic colour. Omit for primary.',
   },
   {
     name: 'rounded',
     type: 'boolean',
     default: 'false',
     description: 'Use a pill shape.',
+  },
+  {
+    name: 'icon',
+    type: 'string',
+    default: '—',
+    description: 'Icon class shown before the value. Use the icon slot for an icon component.',
   },
 ]
 const accessibility = [

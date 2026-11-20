@@ -15,7 +15,8 @@ const examples = [
   {
     id: 'input-number-1',
     title: 'Invalid and disabled',
-    description: 'Formatting does not replace validation of business rules.',
+    description:
+      'Formatting does not replace validation of business rules. The help and error text reach the inner input through pt.',
     component: InputNumberStatesExample,
     code: code1,
   },
@@ -85,6 +86,8 @@ const api = [
 const accessibility = [
   'Give every field a visible label. Match label for to id on native inputs or inputId on composite controls.',
   'Use help text for expected values and an associated error message for invalid fields. Keep the theme\u2019s visible focus and native keyboard behavior.',
+  'InputNumber puts extra attributes on its wrapper, so aria-describedby there is not announced. Pass it to the input with :pt="{ pcInputText: { root: { \'aria-describedby\': id } } }".',
+  'The input has the spinbutton role. Up and Down arrows change the value by step; Home and End jump to min and max when they are set.',
 ]
 </script>
 

@@ -21,7 +21,14 @@ const examples = [
     code: code1,
   },
 ]
-const api: never[] = []
+const api = [
+  {
+    name: 'FloatLabel variant',
+    type: "'over' | 'in' | 'on'",
+    default: "'over'",
+    description: 'Where the label sits once the field has focus or a value.',
+  },
+]
 const accessibility = [
   'Give every field a visible label. Match label for to id on native inputs or inputId on composite controls.',
   'Use help text for expected values and an associated error message for invalid fields. Keep the theme\u2019s visible focus and native keyboard behavior.',

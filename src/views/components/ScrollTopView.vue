@@ -6,37 +6,44 @@ import code from '@/components/docs/examples/ScrollTopExample.vue?raw'
 const examples = [
   {
     id: 'example',
-    title: 'Basic usage',
-    description: 'Return to the top of a local scroll region.',
+    title: 'Scrollable region',
+    description:
+      'Set target to parent inside a positioned scroll container. The example switches to an instant jump when reduced motion is requested.',
     component: Example,
     code: code,
   },
 ]
 const api = [
-  { name: 'target', type: 'any', default: 'window', description: 'Target of the ScrollTop.' },
+  {
+    name: 'target',
+    type: "'window' | 'parent'",
+    default: 'window',
+    description: 'Scrolls the window, or the parent element when placed inside a scroll container.',
+  },
   {
     name: 'threshold',
     type: 'number',
     default: '400',
-    description:
-      'Defines the threshold value of the vertical scroll position of the target to toggle the visibility.',
+    description: 'Scroll distance in pixels before the button appears.',
   },
   {
     name: 'behavior',
-    type: 'string',
+    type: "'smooth' | 'auto'",
     default: 'smooth',
     description:
-      "Defines the scrolling behaviour, 'smooth' adds an animation and 'auto' scrolls with a jump.",
+      'smooth animates the scroll; auto jumps. Use auto when reduced motion is requested; the CSS rule does not cover script scrolling.',
   },
   {
     name: 'buttonProps',
     type: 'object',
-    default: '-',
-    description: 'Used to pass all properties of the ButtonProps to the Button component.',
+    default: '{ rounded: true }',
+    description: 'Props for the Button, such as an aria-label that says which region it scrolls.',
   },
 ]
 const accessibility = [
-  'The scroll region must be keyboard accessible and the return control must have a meaningful name.',
+  'Make a scroll region focusable with tabindex="0", role="region", and an aria-label so keyboard users can scroll it.',
+  'The default button name is generic. Pass an aria-label through buttonProps that says where it goes.',
+  'The button hides once the region is back at the top, so focus can be lost. Keyboard users can also press Home in the focused region.',
 ]
 </script>
 
@@ -45,8 +52,8 @@ const accessibility = [
     title="ScrollTop"
     componentName="ScrollTop"
     category="Misc"
-    description="Return to the top of a local scroll region."
-    usage="uses the parent target to limit scrolling to its containing region."
+    description="Show a button that returns to the top of a long page or scroll region."
+    usage="appears after people scroll past threshold. Use target parent inside a relatively positioned scroll container, or omit it for the whole window. Use it only on long lists or pages."
     :examples="examples"
     :api="api"
     :accessibility="accessibility"

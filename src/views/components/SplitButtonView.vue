@@ -15,7 +15,8 @@ const examples = [
   {
     id: 'split-button-1',
     title: 'Variants and states',
-    description: 'Use native severity, size, outlined, and disabled props.',
+    description:
+      'Severity, size, outlined, and disabled apply to both buttons. Name each menu button after the actions it reveals.',
     component: SplitButtonVariantsExample,
     code: code1,
   },
@@ -25,42 +26,55 @@ const api = [
     name: 'label',
     type: 'string',
     default: '—',
-    description: 'Visible text label.',
+    description: 'Text of the main action. Also used as its accessible name.',
   },
   {
     name: 'model',
     type: 'MenuItem[]',
     default: '—',
-    description: 'Menu items with labels and commands.',
+    description: 'Menu items, each with a label and a command.',
+  },
+  {
+    name: 'severity',
+    type: "'secondary' | 'success' | 'info' | 'warn' | 'help' | 'danger' | 'contrast'",
+    default: '—',
+    description: 'Semantic colour of both buttons. Omit for primary.',
+  },
+  {
+    name: 'size',
+    type: "'small' | 'large'",
+    default: '—',
+    description: 'Control size. Omit for the compact default.',
+  },
+  {
+    name: 'outlined / text',
+    type: 'boolean',
+    default: 'false',
+    description: 'Lower-emphasis variants, matching Button.',
   },
   {
     name: 'disabled',
     type: 'boolean',
     default: 'false',
-    description: 'Prevent interaction.',
+    description: 'Disables the main action and the menu button.',
+  },
+  {
+    name: 'buttonProps',
+    type: 'ButtonHTMLAttributes',
+    default: '—',
+    description: 'Attributes for the main button, such as type.',
   },
   {
     name: 'menuButtonProps',
     type: 'ButtonHTMLAttributes',
     default: '—',
-    description: 'Properties for the menu button, including its accessible name.',
-  },
-  {
-    name: 'severity',
-    type: 'any',
-    default: '—',
-    description: 'Semantic colour variant.',
-  },
-  {
-    name: 'size',
-    type: 'any',
-    default: '—',
-    description: 'Control size; omit for the default.',
+    description: 'Attributes for the menu button. Set aria-label here; it has no name by default.',
   },
 ]
 const accessibility = [
-  'Give the menu button its own accessible label through menuButtonProps.',
-  'Enter or Space activates the main action. Arrow keys navigate the menu and Escape closes it.',
+  'The main button takes its name from label. The menu button is icon-only and has no name by default, so pass aria-label through menuButtonProps.',
+  'The menu button sets aria-haspopup and aria-expanded. Enter, Space, or Down Arrow opens the menu; arrow keys move between items and Escape closes it.',
+  'Keep the main action the most common, safe choice. Put destructive commands behind a confirmation rather than in the menu alone.',
 ]
 </script>
 
@@ -69,7 +83,7 @@ const accessibility = [
     title="SplitButton"
     category="Button"
     description="Pair a frequent action with a menu of related alternatives."
-    usage="Use label for the primary action and model for the menu items. Handle the main click separately from each menu command."
+    usage="Use label for the main action and model for the related commands. Handle the main click separately from each menu command, and use a plain Button when there are no alternatives."
     :examples="examples"
     :api="api"
     :accessibility="accessibility"

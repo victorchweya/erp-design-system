@@ -26,7 +26,7 @@ const examples = [
     id: 'inputs-2',
     title: 'Invalid and disabled',
     description:
-      'Inputs use invalid rather than severity. Use a text error message alongside the danger border.',
+      'Each field keeps its own label. Pair invalid with a message that says how to fix the value, and link it with aria-describedby. Explain why a field is disabled.',
     component: InputTextStatesExample,
     code: code2,
   },

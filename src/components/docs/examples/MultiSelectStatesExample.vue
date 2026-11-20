@@ -1,20 +1,22 @@
 <template>
   <div class="grid gap-6 sm:grid-cols-2">
     <div class="flex flex-col gap-2">
-      <span id="MultiSelect-invalid-label" class="font-medium">Invalid</span
+      <span id="MultiSelect-invalid-label" class="font-medium">Delivery days</span
       ><MultiSelect
-        :options="['Kale', 'Carrot']"
+        :options="['Monday', 'Wednesday', 'Friday']"
+        placeholder="Choose days"
         fluid
         invalid
         aria-labelledby="MultiSelect-invalid-label"
-        aria-describedby="MultiSelect-error"
+        :pt="{ hiddenInput: { 'aria-describedby': 'MultiSelect-error' } }"
       />
-      <p id="MultiSelect-error" class="text-danger">Choose a valid value to continue.</p>
+      <p id="MultiSelect-error" class="text-danger">Choose at least one delivery day.</p>
     </div>
     <div class="flex flex-col gap-2">
-      <span id="MultiSelect-disabled-label" class="font-medium">Disabled</span
+      <span id="MultiSelect-disabled-label" class="font-medium">Certifications</span
       ><MultiSelect
-        :options="['Kale', 'Carrot']"
+        :modelValue="['GlobalG.A.P.', 'KEBS']"
+        :options="['GlobalG.A.P.', 'KEBS', 'Organic']"
         fluid
         disabled
         aria-labelledby="MultiSelect-disabled-label"

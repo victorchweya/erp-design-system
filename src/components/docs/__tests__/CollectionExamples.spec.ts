@@ -40,7 +40,7 @@ it('names each transfer list and moves only the selected supplier', async () => 
   const source = wrapper.get('[role="listbox"][aria-label="Available suppliers"]')
   const target = wrapper.get('[role="listbox"][aria-label="Assigned suppliers"]')
   await source.findAll('[role="option"]')[0]!.trigger('click')
-  await wrapper.get('button[aria-label="Move to Target"]').trigger('click')
+  await wrapper.get('button[aria-label="Assign selected suppliers"]').trigger('click')
   expect(source.text()).not.toContain('Valley Growers')
   expect(source.text()).toContain('Green Acres')
   expect(target.text()).toContain('Valley Growers')
@@ -84,11 +84,13 @@ it('filters commands and runs the selected matching command', async () => {
 
 it('handles only its local terminal commands and still works after remounting', async () => {
   const first = mount(TerminalExample, options)
+  await first.get('button').trigger('click')
   await first.get('input').setValue('status')
   await first.get('input').trigger('keydown', { key: 'Enter' })
   expect(first.text()).toContain('All deliveries are ready')
   first.unmount()
   const second = mount(TerminalExample, options)
+  await second.get('button').trigger('click')
   await second.get('input').setValue('<script>status</script>')
   await second.get('input').trigger('keydown', { key: 'Enter' })
   expect(second.text()).toContain('Unknown command')

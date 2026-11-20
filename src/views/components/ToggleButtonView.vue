@@ -7,7 +7,7 @@ const examples = [
     id: 'toggle-button-0',
     title: 'Pressed and disabled states',
     description:
-      'The accessible name stays stable while the visual label changes with the pressed state.',
+      'Keep the same label in both states and let the pressed styling, an icon and aria-pressed show the state.',
     component: ToggleButtonExample,
     code: code0,
   },
@@ -20,10 +20,16 @@ const api = [
     description: 'Bound value. Use v-model.',
   },
   {
+    name: 'onLabel',
+    type: 'string',
+    default: 'yes',
+    description: 'Label shown when pressed.',
+  },
+  {
     name: 'offLabel',
     type: 'string',
     default: 'no',
-    description: 'Label shown when unselected.',
+    description: 'Label shown when not pressed.',
   },
   {
     name: 'invalid',
@@ -39,14 +45,14 @@ const api = [
   },
   {
     name: 'size',
-    type: 'any',
+    type: '"small" | "large"',
     default: '—',
     description: 'Control size; omit for the default.',
   },
 ]
 const accessibility = [
-  'Provide a stable aria-label or aria-labelledby so changing visual labels does not obscure the control\u2019s purpose.',
-  'The component announces aria-pressed. Tab focuses it and Space toggles it.',
+  'Set onLabel and offLabel to the same text. A label that changes with the state, such as Save and Saved, makes the pressed state ambiguous and breaks voice control.',
+  'The component sets aria-pressed. Tab focuses it, and Space or Enter toggles it. Mark decorative icons in the icon slot with aria-hidden.',
 ]
 </script>
 
@@ -55,7 +61,7 @@ const accessibility = [
     title="ToggleButton"
     category="Form"
     description="Represent a persistent on or off choice as a button."
-    usage="Bind a boolean value and provide labels for both states. Use a normal Button for one-time actions."
+    usage="Bind a boolean value. onLabel and offLabel default to yes and no, so always set both. Use the icon slot to show the state, and a normal Button for one-time actions."
     :examples="examples"
     :api="api"
     :accessibility="accessibility"

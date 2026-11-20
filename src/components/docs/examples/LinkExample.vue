@@ -43,7 +43,9 @@ import ExternalLink from '@primeicons/vue/external-link'
           target="_blank"
           rel="noopener"
           :class="slotProps.class"
-          >External anchor button</a
+          >External anchor button<ExternalLink aria-hidden="true" /><span class="sr-only"
+            >(opens in a new tab)</span
+          ></a
         >
       </Button>
       <Button type="button" variant="link">Quiet action</Button>

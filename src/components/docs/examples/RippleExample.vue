@@ -1,19 +1,22 @@
 <script setup lang="ts">
 import { shallowRef } from 'vue'
 import vRipple from 'primevue/ripple'
-const count = shallowRef(0)
+
+const status = shallowRef('Choose a quick action.')
 </script>
 
 <template>
   <div class="flex flex-col gap-4">
+    <!-- The host needs relative and overflow-hidden to contain the ripple. -->
     <button
       v-ripple
       type="button"
-      class="relative overflow-hidden self-start rounded-md border border-surface bg-surface px-6 py-4 font-medium text-color"
-      @click="count++"
+      class="relative flex max-w-xs flex-col gap-1 self-start overflow-hidden rounded-border border border-surface bg-surface p-4 text-left text-color hover:bg-emphasis"
+      @click="status = 'Record delivery selected.'"
     >
-      Try ripple
+      <span class="font-medium">Record delivery</span>
+      <span class="text-sm text-muted-color">Log weights for an arriving truck</span>
     </button>
-    <p role="status">Activated {{ count }} times.</p>
+    <p role="status" class="text-muted-color">{{ status }}</p>
   </div>
 </template>

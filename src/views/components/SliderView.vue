@@ -15,7 +15,8 @@ const examples = [
   {
     id: 'slider-1',
     title: 'Invalid and disabled',
-    description: 'Pair invalid styling with a message that explains the allowed range.',
+    description:
+      'Pair invalid styling with a message that explains the allowed range. Slider does not set aria-invalid, so pass it and aria-describedby to the range input with pt.input.',
     component: SliderStatesExample,
     code: code1,
   },
@@ -52,6 +53,12 @@ const api = [
     description: 'Select two bounds rather than one value.',
   },
   {
+    name: 'inputId',
+    type: 'string',
+    default: '—',
+    description: 'Id of the native range input; match it with the label for attribute.',
+  },
+  {
     name: 'invalid',
     type: 'boolean',
     default: 'false',
@@ -65,7 +72,7 @@ const api = [
   },
 ]
 const accessibility = [
-  'Name each slider and display its current value and units.',
+  'Each handle is a native range input. Name it with label for and inputId, or with aria-labelledby, and display the current value and units.',
   'Arrow keys adjust values; Home and End move to limits. Offer a typed alternative for precision.',
 ]
 </script>

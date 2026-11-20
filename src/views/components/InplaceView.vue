@@ -7,7 +7,7 @@ const examples = [
     id: 'inplace-0',
     title: 'Save and cancel',
     description:
-      'Save commits a non-empty name locally. Cancel leaves the displayed name unchanged.',
+      'Save commits a non-empty name locally. Cancel or Escape leaves the displayed name unchanged.',
     component: InplaceExample,
     code: code0,
   },
@@ -33,8 +33,9 @@ const api = [
   },
 ]
 const accessibility = [
-  'Give the display action an accessible name. Enter opens the editor; label the field and provide clear Save and Cancel actions.',
-  'Use closeCallback to return focus to the display action after closing.',
+  'The display element has the button role. Give it an accessible name with displayProps. Enter opens the editor.',
+  'Inplace does not move focus into the editor, and the autofocus attribute only works once per page. Focus the field from the open event, label it, and provide clear Save and Cancel actions.',
+  'closeCallback returns focus to the display element. Escape does not close the editor by default, so handle it yourself.',
 ]
 </script>
 
@@ -43,7 +44,7 @@ const accessibility = [
     title="Inplace"
     category="Form"
     description="Switch a small piece of displayed content into an editing field."
-    usage="Put the read view in display and the editor in content. Use the content slot\u2019s closeCallback to close the editor and restore focus. Keep a draft so Cancel discards edits."
+    usage="Put the read view in display and the editor in content. Use the content slot’s closeCallback to close the editor and restore focus. Keep a draft so Cancel discards edits."
     :examples="examples"
     :api="api"
     :accessibility="accessibility"

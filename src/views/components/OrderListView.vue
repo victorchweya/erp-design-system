@@ -13,48 +13,55 @@ const examples = [
   },
 ]
 const api = [
-  { name: 'modelValue', type: 'any[]', default: '-', description: 'Value of the component.' },
+  {
+    name: 'modelValue',
+    type: 'any[]',
+    default: '-',
+    description: 'Items in their current order. Use v-model to receive the reordered array.',
+  },
   {
     name: 'dataKey',
     type: 'string | Function',
     default: '-',
-    description: 'Property name or getter function that uniquely identifies a record in the data.',
+    description: 'Field that uniquely identifies each item.',
   },
-  { name: 'selection', type: 'any[]', default: '-', description: 'Selected items in the list.' },
+  {
+    name: 'selection',
+    type: 'any[]',
+    default: '-',
+    description: 'Selected items that the move buttons act on. Use with v-model:selection.',
+  },
   {
     name: 'metaKeySelection',
     type: 'boolean',
     default: 'false',
     description:
-      'Defines whether metaKey is required or not for the selection.\nWhen true metaKey needs to be pressed to select or unselect an item and\nwhen set to false selection of each item can be toggled individually. On touch enabled devices, metaKeySelection is turned off automatically.',
+      'When true, Ctrl or Cmd is needed to add to a selection. Keep the default so each click toggles one item.',
   },
   {
-    name: 'autoOptionFocus',
-    type: 'boolean',
-    default: 'true',
-    description: 'Whether to focus on the first visible or selected element.',
-  },
-  {
-    name: 'focusOnHover',
-    type: 'boolean',
-    default: 'true',
-    description: 'When enabled, the focus is placed on the hovered option.',
-  },
-  {
-    name: 'listStyle',
-    type: 'any',
+    name: 'ariaLabel',
+    type: 'string',
     default: '-',
-    description: 'Inline style of the the list element.',
+    description:
+      'Accessible name for the list. Use ariaLabelledby to point at a visible heading instead.',
   },
   {
-    name: 'responsive',
-    type: 'boolean',
-    default: 'true',
-    description: 'Whether the list optimizes layout based on screen size.',
+    name: 'breakpoint',
+    type: 'string',
+    default: '960px',
+    description: 'Width below which the move buttons stack above the list.',
+  },
+  {
+    name: 'scrollHeight',
+    type: 'string',
+    default: '14rem',
+    description: 'Height of the list before it scrolls.',
   },
 ]
 const accessibility = [
-  'Use arrow keys to navigate options and Space to select. Move controls also work without dragging.',
+  'Name the list with aria-label or aria-labelledby. The name goes on the listbox, not the wrapper.',
+  'Up and Down Arrow move focus, Space or Enter selects, and Shift with an arrow extends the selection. Tab then reaches the move buttons, which take their labels (Move Up, Move Top, Move Down, Move Bottom) from the PrimeVue locale.',
+  'Show the position in text, such as a number before each item, so the order is clear without seeing the layout.',
 ]
 </script>
 
@@ -63,8 +70,8 @@ const accessibility = [
     title="OrderList"
     componentName="OrderList"
     category="Data"
-    description="Select and reorder delivery priorities."
-    usage="binds the reordered array with v-model. Select items before using the move controls."
+    description="Let people put a short list of items in order, such as delivery stops or approval steps."
+    usage="binds the array with v-model and returns it in the new order. People select one or more items, then use the move buttons. Save the order explicitly; OrderList does not persist it."
     :examples="examples"
     :api="api"
     :accessibility="accessibility"

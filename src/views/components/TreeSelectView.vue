@@ -16,7 +16,8 @@ const examples = [
   {
     id: 'tree-select-1',
     title: 'Invalid and disabled',
-    description: 'Native tree semantics and focus management come from the component.',
+    description:
+      'Pass the error link and aria-invalid through inputProps; the invalid prop only changes the styling.',
     component: TreeSelectStatesExample,
     code: code1,
   },
@@ -42,8 +43,8 @@ const api = [
   },
   {
     name: 'selectionMode',
-    type: 'any',
-    default: '—',
+    type: '"single" | "multiple" | "checkbox"',
+    default: 'single',
     description: 'Single, multiple, or checkbox selection.',
   },
   {
@@ -72,8 +73,8 @@ const api = [
   },
 ]
 const accessibility = [
-  'Give every field a visible label. Match label for to id on native inputs or inputId on composite controls.',
-  'Use help text for expected values and an associated error message for invalid fields. Keep the theme\u2019s visible focus and native keyboard behavior.',
+  'TreeSelect focuses a hidden input with the combobox role. Name it with a label whose for matches inputId, or with aria-labelledby.',
+  'TreeSelect does not set aria-invalid. Pass aria-invalid and aria-describedby with inputProps so the error is announced.',
   'Arrow keys move between nodes and expand or collapse branches. Space selects and Escape closes the popup.',
 ]
 </script>

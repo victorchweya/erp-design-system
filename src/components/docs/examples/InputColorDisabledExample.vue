@@ -8,8 +8,12 @@ const value = colorValue('green.500').value
     <legend class="mb-3 font-medium">Unavailable colour control</legend>
     <InputColor :modelValue="value" format="hex" disabled
       ><InputColorArea><InputColorAreaBackground /><InputColorAreaHandle /></InputColorArea
-      ><label for="disabled-colour-hex">Hex value</label
-      ><InputColorInput id="disabled-colour-hex" channel="hex" fluid
+      ><label id="disabled-colour-hex-label" for="disabled-colour-hex">Hex value</label
+      ><InputColorInput
+        id="disabled-colour-hex"
+        channel="hex"
+        aria-labelledby="disabled-colour-hex-label"
+        fluid
     /></InputColor>
   </fieldset>
 </template>

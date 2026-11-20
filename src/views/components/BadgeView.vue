@@ -10,7 +10,8 @@ const examples = [
   {
     id: 'badge-0',
     title: 'Severities',
-    description: 'Badge supports the same seven native severities as Tag.',
+    description:
+      'Badge supports the same seven severities as Tag. Place each count next to the words it counts.',
     component: BadgeSeverityExample,
     code: code0,
   },
@@ -40,15 +41,22 @@ const api = [
   },
   {
     name: 'severity',
-    type: 'any',
+    type: "'secondary' | 'success' | 'info' | 'warn' | 'danger' | 'contrast'",
     default: '—',
-    description: 'Semantic colour variant.',
+    description: 'Semantic colour. Omit for primary.',
   },
   {
     name: 'size',
-    type: 'any',
+    type: "'small' | 'large' | 'xlarge'",
     default: '—',
-    description: 'Small, default, large, or xlarge.',
+    description: 'Badge size. Omit for the default.',
+  },
+  {
+    name: 'OverlayBadge',
+    type: 'component',
+    default: '—',
+    description:
+      'Wraps an element and pins a badge to its corner. Takes the same value, severity, and size props.',
   },
 ]
 const accessibility = [

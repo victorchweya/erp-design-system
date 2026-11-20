@@ -31,6 +31,12 @@ const api = [
     description: 'Display the value without allowing edits.',
   },
   {
+    name: 'allowHalf',
+    type: 'boolean',
+    default: 'false',
+    description: 'Allow half-star values such as 3.5.',
+  },
+  {
     name: 'stars',
     type: 'number',
     default: '5',

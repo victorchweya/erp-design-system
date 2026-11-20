@@ -8,7 +8,8 @@ const examples = [
   {
     id: 'avatar-0',
     title: 'Shape and size',
-    description: 'Default, large, and xlarge sizes use the shared theme.',
+    description:
+      'Square and circle shapes in normal, large, and xlarge sizes. Each avatar has role img and the full name.',
     component: AvatarExample,
     code: code0,
   },
@@ -25,29 +26,42 @@ const api = [
     name: 'label',
     type: 'string',
     default: '—',
-    description: 'Initials or short fallback text.',
+    description: 'Initials or other short text.',
   },
   {
     name: 'image',
     type: 'string',
     default: '—',
-    description: 'Image URL.',
+    description:
+      'Image URL. Shown only when label and icon are unset; handle the error event to switch to initials.',
+  },
+  {
+    name: 'icon',
+    type: 'string',
+    default: '—',
+    description: 'Icon class. Use the default slot for an icon component.',
   },
   {
     name: 'size',
-    type: 'any',
+    type: "'normal' | 'large' | 'xlarge'",
     default: 'normal',
-    description: 'Default, large, or xlarge.',
+    description: 'Avatar size.',
   },
   {
     name: 'shape',
-    type: 'any',
+    type: "'square' | 'circle'",
     default: 'square',
-    description: 'Square or circle.',
+    description: 'Avatar shape. Use one shape consistently within a view.',
+  },
+  {
+    name: 'ariaLabel',
+    type: 'string',
+    default: '—',
+    description: 'Accessible name. Pair it with role="img" so the name is announced.',
   },
 ]
 const accessibility = [
-  'Initials alone may not identify a person. Add a full accessible name when the avatar carries identity.',
+  'Avatar renders a plain element with no role. When it is the only identification, add role="img" and the full name with aria-label, because initials alone do not identify a person.',
   'If a visible name already gives the same information, use aria-hidden on the decorative avatar.',
 ]
 </script>

@@ -15,7 +15,8 @@ const examples = [
   {
     id: 'listbox-1',
     title: 'Invalid and disabled',
-    description: 'Selection states use the theme\u2019s highlight and form-field colours.',
+    description:
+      'Link the error to the list itself. A disabled list keeps the current value readable.',
     component: ListboxStatesExample,
     code: code1,
   },
@@ -52,6 +53,18 @@ const api = [
     description: 'Allow more than one selection.',
   },
   {
+    name: 'metaKeySelection',
+    type: 'boolean',
+    default: 'false',
+    description: 'Require Ctrl or Cmd to add to a multiple selection.',
+  },
+  {
+    name: 'optionLabel',
+    type: 'string | Function',
+    default: '—',
+    description: 'Field or function used for the visible option label.',
+  },
+  {
     name: 'filter',
     type: 'boolean',
     default: 'false',
@@ -60,7 +73,8 @@ const api = [
 ]
 const accessibility = [
   'Name each list with aria-labelledby or aria-label. Arrow keys move through options and Space selects.',
-  'For multiple selection, explain whether users need a modifier key.',
+  'Attributes such as aria-describedby set on Listbox go to the wrapper. Pass them to the list element with pt.list so the error message is announced.',
+  'For multiple selection, explain whether users need a modifier key, or set metaKeySelection to false so each click toggles an item.',
 ]
 </script>
 

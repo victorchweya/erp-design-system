@@ -15,8 +15,9 @@ const range = ref<(Date | null)[] | null>(null)
         showIcon
         showClear
         fluid
+        :pt="{ pcInputText: { root: { 'aria-describedby': 'delivery-date-help' } } }"
       />
-      <p class="text-muted-color">Day / month / year</p>
+      <p id="delivery-date-help" class="text-muted-color">Format: dd/mm/yyyy</p>
     </div>
     <div class="flex flex-col gap-1">
       <label for="delivery-range" class="font-medium">Delivery window</label

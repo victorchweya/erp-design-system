@@ -16,7 +16,7 @@ const examples = [
     id: 'editor-1',
     title: 'Read-only content',
     description:
-      'Use readonly to display content without editing. Sanitize untrusted rich text before storing or rendering it in an application.',
+      'Use readonly to display content without editing. The content area is still named and marked read-only. Sanitize untrusted rich text before storing or rendering it.',
     component: EditorReadOnlyExample,
     code: code1,
   },

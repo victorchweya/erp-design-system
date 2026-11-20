@@ -15,29 +15,24 @@ const examples = [
   {
     id: 'textarea-1',
     title: 'Invalid and disabled',
-    description: 'Keep an error message next to an invalid field.',
+    description:
+      'Link the error or the reason a field is locked to the textarea with aria-describedby.',
     component: TextareaStatesExample,
     code: code1,
   },
 ]
 const api = [
   {
-    name: 'disabled',
-    type: 'Booleanish',
+    name: 'modelValue',
+    type: 'any',
     default: '—',
-    description: 'Prevent interaction.',
+    description: 'Bound value. Use v-model.',
   },
   {
     name: 'rows',
     type: 'Numberish',
     default: '—',
-    description: '',
-  },
-  {
-    name: 'modelValue',
-    type: 'any',
-    default: '—',
-    description: 'Bound value. Use v-model.',
+    description: 'Native attribute. Starting height in lines of text.',
   },
   {
     name: 'autoResize',
@@ -56,6 +51,12 @@ const api = [
     type: 'boolean',
     default: 'false',
     description: 'Show the error state.',
+  },
+  {
+    name: 'disabled',
+    type: 'Booleanish',
+    default: '—',
+    description: 'Native attribute. Prevent interaction.',
   },
   {
     name: 'fluid',

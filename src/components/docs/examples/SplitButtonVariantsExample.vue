@@ -1,27 +1,31 @@
 <script setup lang="ts">
-const items = [{ label: 'Save draft' }, { label: 'Duplicate' }]
+const exportItems = [{ label: 'Export as PDF' }, { label: 'Export as Excel' }]
+const approveItems = [{ label: 'Approve and notify supplier' }, { label: 'Approve partially' }]
 </script>
 
 <template>
-  <div class="flex flex-wrap gap-4">
+  <div class="flex flex-wrap items-center gap-4">
     <SplitButton
-      label="Secondary"
-      :model="items"
+      label="Export CSV"
+      :model="exportItems"
       severity="secondary"
       outlined
-      :menuButtonProps="{ 'aria-label': 'More secondary actions' }"
+      :buttonProps="{ type: 'button' }"
+      :menuButtonProps="{ type: 'button', 'aria-label': 'More export formats' }"
     />
     <SplitButton
-      label="Small"
-      :model="items"
+      label="Approve"
+      :model="approveItems"
       size="small"
-      :menuButtonProps="{ 'aria-label': 'More small actions' }"
+      :buttonProps="{ type: 'button' }"
+      :menuButtonProps="{ type: 'button', 'aria-label': 'More approval options' }"
     />
     <SplitButton
-      label="Unavailable"
-      :model="items"
+      label="Post invoice"
+      :model="exportItems"
       disabled
-      :menuButtonProps="{ 'aria-label': 'Unavailable actions' }"
+      :buttonProps="{ type: 'button' }"
+      :menuButtonProps="{ type: 'button', 'aria-label': 'More invoice actions' }"
     />
   </div>
 </template>

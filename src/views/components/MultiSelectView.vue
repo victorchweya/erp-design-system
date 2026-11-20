@@ -15,7 +15,8 @@ const examples = [
   {
     id: 'multi-select-1',
     title: 'Invalid and disabled',
-    description: 'An invalid border should always be accompanied by a reason.',
+    description:
+      'An invalid border should always be accompanied by a reason that is linked to the field.',
     component: MultiSelectStatesExample,
     code: code1,
   },
@@ -38,6 +39,24 @@ const api = [
     type: 'string | Function',
     default: '—',
     description: 'Field or function used for the visible option label.',
+  },
+  {
+    name: 'optionValue',
+    type: 'string | Function',
+    default: '—',
+    description: 'Field or function used for the stored values.',
+  },
+  {
+    name: 'display',
+    type: '"comma" | "chip"',
+    default: 'comma',
+    description: 'Show selected items as text or as removable chips.',
+  },
+  {
+    name: 'maxSelectedLabels',
+    type: 'number',
+    default: '—',
+    description: 'Collapse the label to a count after this many selections.',
   },
   {
     name: 'invalid',
@@ -65,9 +84,9 @@ const api = [
   },
 ]
 const accessibility = [
-  'Give every field a visible label. Match label for to id on native inputs or inputId on composite controls.',
-  'Use help text for expected values and an associated error message for invalid fields. Keep the theme\u2019s visible focus and native keyboard behavior.',
-  'Keep the selected count available. Use the native keyboard selection and popup behavior.',
+  'MultiSelect focuses a hidden input with the combobox role. Name it with a label whose for matches inputId, or with aria-labelledby.',
+  'Attributes such as aria-describedby set on MultiSelect go to the wrapper. Pass them to the combobox with pt.hiddenInput so the error message is announced.',
+  'Enter or Down arrow opens the list. Space toggles the focused option, and Escape closes the list. Each chip has its own remove control.',
 ]
 </script>
 

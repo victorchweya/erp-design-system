@@ -86,7 +86,12 @@ const examples = [
   },
 ]
 const api = [
-  { name: 'severity', type: 'any', default: 'info', description: 'Severity level of the message.' },
+  {
+    name: 'severity',
+    type: "'success' | 'info' | 'warn' | 'error' | 'secondary' | 'contrast'",
+    default: 'info',
+    description: 'Severity level of the message.',
+  },
   {
     name: 'closable',
     type: 'boolean',
@@ -101,13 +106,13 @@ const api = [
   },
   {
     name: 'variant',
-    type: 'outlined | simple',
+    type: "'outlined' | 'simple'",
     default: '—',
     description: 'Changes the visual emphasis of the message.',
   },
   {
     name: 'size',
-    type: 'small | large',
+    type: "'small' | 'large'",
     default: '—',
     description: 'Changes message padding, text, and icon size.',
   },

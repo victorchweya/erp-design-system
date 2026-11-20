@@ -1,24 +1,28 @@
 <template>
   <div class="grid gap-6 sm:grid-cols-2">
     <div class="flex flex-col gap-2">
-      <span id="InputPassword-invalid-label" class="font-medium">Invalid</span
+      <label for="new-password-invalid" class="font-medium">New password</label
       ><InputPassword
+        id="new-password-invalid"
         fluid
         autocomplete="new-password"
         invalid
-        aria-labelledby="InputPassword-invalid-label"
-        aria-describedby="InputPassword-error"
+        aria-describedby="new-password-invalid-error"
       />
-      <p id="InputPassword-error" class="text-danger">Choose a valid value to continue.</p>
+      <p id="new-password-invalid-error" class="text-danger">Use at least 12 characters.</p>
     </div>
     <div class="flex flex-col gap-2">
-      <span id="InputPassword-disabled-label" class="font-medium">Disabled</span
+      <label for="password-disabled" class="font-medium">Password</label
       ><InputPassword
+        id="password-disabled"
         fluid
-        autocomplete="new-password"
+        autocomplete="current-password"
         disabled
-        aria-labelledby="InputPassword-disabled-label"
+        aria-describedby="password-disabled-help"
       />
+      <p id="password-disabled-help" class="text-muted-color">
+        Password sign-in is off for single sign-on accounts.
+      </p>
     </div>
   </div>
 </template>

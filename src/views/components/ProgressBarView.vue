@@ -7,22 +7,36 @@ const examples = [
   {
     id: 'example',
     title: 'Basic usage',
-    description: 'Show known progress and an indeterminate waiting state.',
+    description:
+      'A determinate bar for picking progress and an indeterminate bar while waiting. A status message announces completion.',
     component: Example,
     code: code,
   },
 ]
 const api = [
-  { name: 'value', type: 'number', default: '-', description: 'Current value of the progress.' },
+  {
+    name: 'value',
+    type: 'number',
+    default: '—',
+    description: 'Current progress from 0 to 100.',
+  },
   {
     name: 'mode',
-    type: '"indeterminate" | "determinate"',
+    type: "'determinate' | 'indeterminate'",
     default: 'determinate',
-    description: 'Defines the mode of the progress',
+    description: 'Use indeterminate when the remaining time is unknown.',
+  },
+  {
+    name: 'showValue',
+    type: 'boolean',
+    default: 'true',
+    description: 'Show the percentage inside the bar. Use the default slot for custom text.',
   },
 ]
 const accessibility = [
-  'Name each progress indicator and announce completion separately when the task finishes.',
+  'ProgressBar has a progressbar role with aria-valuemin 0, aria-valuemax 100, and aria-valuenow. Name it with aria-labelledby pointing to a visible label, or with aria-label.',
+  'Indeterminate mode leaves out aria-valuenow, so the label must say what is happening.',
+  'Value changes are not announced. Announce completion or failure once in a status message.',
 ]
 </script>
 
@@ -31,8 +45,8 @@ const accessibility = [
     title="ProgressBar"
     componentName="ProgressBar"
     category="Misc"
-    description="Show known progress and an indeterminate waiting state."
-    usage="uses value for a percentage or indeterminate mode when progress is unknown."
+    description="Show how far a task has progressed, or that it is still running."
+    usage="takes a value from 0 to 100. Use indeterminate mode when progress cannot be measured, and ProgressSpinner for small inline waits."
     :examples="examples"
     :api="api"
     :accessibility="accessibility"

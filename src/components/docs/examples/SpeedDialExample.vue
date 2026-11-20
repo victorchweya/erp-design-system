@@ -21,13 +21,10 @@ const items = [
       <SpeedDial
         :model="items"
         direction="up"
+        ariaLabel="Order actions"
         class="absolute bottom-0 left-0"
-        :buttonProps="{
-          type: 'button',
-          'aria-label': 'Order actions',
-          iconOnly: true,
-          rounded: true,
-        }"
+        :buttonProps="{ type: 'button', rounded: true }"
+        :tooltipOptions="{ position: 'right', event: 'hover' }"
       />
     </div>
     <p role="status" class="text-muted-color">{{ result }}</p>

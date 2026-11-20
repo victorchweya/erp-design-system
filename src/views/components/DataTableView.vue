@@ -121,13 +121,14 @@ const api = [
     name: 'value',
     type: 'null | readonly T[]',
     default: '-',
-    description: 'An array of objects to display.',
+    description: 'Records to display, one per row.',
   },
   {
     name: 'dataKey',
     type: 'keyof T | Function',
     default: '-',
-    description: 'Name of the field that uniquely identifies the a record in the data.',
+    description:
+      'Field that uniquely identifies each record. Needed so selection, expansion and editing follow the right row after sorting or paging.',
   },
   {
     name: 'rows',
@@ -139,43 +140,65 @@ const api = [
     name: 'paginator',
     type: 'boolean',
     default: 'false',
-    description: 'When specified as true, enables the pagination.',
+    description: 'Shows a paginator under the table.',
+  },
+  {
+    name: 'selectionMode',
+    type: "'single' | 'multiple'",
+    default: '-',
+    description:
+      'Makes rows selectable by click and keyboard. For checkbox selection, add a Column with selectionMode instead.',
+  },
+  {
+    name: 'selection',
+    type: 'T | T[]',
+    default: '-',
+    description: 'Selected row or rows. Use with v-model:selection.',
+  },
+  {
+    name: 'tableProps',
+    type: 'object',
+    default: '-',
+    description:
+      "Attributes for the table element. Use it to give the table an accessible name with 'aria-label'.",
   },
   {
     name: 'editMode',
     type: "'cell' | 'row'",
     default: '-',
-    description: 'Defines the incell editing mode.',
+    description:
+      'Edit one cell at a time (cell) or a whole row with save and cancel buttons (row).',
   },
   {
     name: 'editingRows',
     type: 'T[] | DataTableEditingRows',
     default: '-',
-    description: 'A collection of rows to represent the current editing data in row edit mode.',
+    description: 'Rows currently being edited in row mode. Use with v-model:editingRows.',
   },
   {
     name: 'filterDisplay',
     type: "'menu' | 'row'",
     default: '-',
-    description: 'Layout of the filter elements.',
+    description: 'Show column filters in a header menu (menu) or in a row under the headers (row).',
   },
   {
     name: 'expandedRows',
     type: 'T[] | DataTableExpandedRows | null',
     default: '-',
-    description: 'A collection of row data display as expanded.',
+    description: 'Rows currently expanded. Use with v-model:expandedRows.',
   },
   {
     name: 'rowGroupMode',
     type: "'subheader' | 'rowspan'",
     default: '-',
-    description: 'Defines the row group mode.',
+    description: 'Group rows under a subheader row (subheader) or merge repeated cells (rowspan).',
   },
   {
     name: 'groupRowsBy',
     type: 'keyof T | (keyof T)[] | Function',
     default: '-',
-    description: 'One or more field names to use in row grouping.',
+    description:
+      'Field or fields to group rows by. Sort by the same field so groups stay together.',
   },
   {
     name: 'lazy',
@@ -221,8 +244,11 @@ const api = [
   },
 ]
 const accessibility = [
-  'Give the table an accessible name and use meaningful column headers.',
-  'Use the native sorting and pagination controls with the keyboard.',
+  "Name every table with tableProps, for example { 'aria-label': 'Purchase orders' }, or with a visible caption linked by aria-labelledby. Keep column headers short and specific.",
+  'Sortable headers are focusable. Tab moves between them, Enter or Space sorts, and aria-sort reports the current direction.',
+  'With selectionMode, rows take focus: Up and Down Arrow move between rows, and Enter or Space selects. Checkbox and radio selection columns are labelled from the PrimeVue locale.',
+  'Expanders, filter menus and row editor buttons are labelled from the PrimeVue locale. Custom cell editors and action buttons need their own labels, such as Edit FTF-1042.',
+  'Do not rely on colour alone for status cells. Pair a Tag severity with a text value.',
 ]
 </script>
 
@@ -231,8 +257,8 @@ const accessibility = [
     title="DataTable"
     componentName="DataTable"
     category="Data"
-    description="Sort and page through a collection of produce."
-    usage="binds rows with value and defines cells with Column. Use small sizing and gridlines for reference tables."
+    description="Show records in rows and columns that people can sort, filter, page, select and edit."
+    usage="binds an array of records with value and defines each column with Column. Set dataKey to a unique field. Use size small and showGridlines for dense ERP lists, and lazy with totalRecords when the server does the paging, sorting and filtering."
     :examples="examples"
     :api="api"
     :accessibility="accessibility"

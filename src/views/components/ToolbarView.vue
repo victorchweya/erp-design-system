@@ -11,10 +11,36 @@ const examples = [
     code: code0,
   },
 ]
-const api: never[] = []
+const api = [
+  {
+    name: 'start slot',
+    type: 'VNode[]',
+    default: '—',
+    description: 'Content aligned to the start, usually the primary action.',
+  },
+  {
+    name: 'center slot',
+    type: 'VNode[]',
+    default: '—',
+    description: 'Content in the middle, such as a search field.',
+  },
+  {
+    name: 'end slot',
+    type: 'VNode[]',
+    default: '—',
+    description: 'Content aligned to the end, usually secondary actions.',
+  },
+  {
+    name: 'ariaLabelledby',
+    type: 'string',
+    default: '—',
+    description:
+      'Id of a visible heading that names the toolbar. Use aria-label when there is none.',
+  },
+]
 const accessibility = [
-  'Give the toolbar a name that identifies its purpose.',
-  'Controls follow the normal tab sequence. Retain clear labels and visible focus.',
+  'Toolbar renders role="toolbar". Name it with aria-label or ariaLabelledby so people know which content the actions affect.',
+  'Toolbar does not add arrow-key navigation. Each control stays in the normal Tab order, so keep labels clear and focus visible.',
 ]
 </script>
 
@@ -23,7 +49,7 @@ const accessibility = [
     title="Toolbar"
     category="Panel"
     description="Keep related actions together above the content they affect."
-    usage="Use the start, center, and end slots to arrange actions. Keep the number of actions small and allow space for narrower screens."
+    usage="arranges actions in start, center, and end slots. Keep the number of actions small and let groups wrap on narrow screens."
     :examples="examples"
     :api="api"
     :accessibility="accessibility"

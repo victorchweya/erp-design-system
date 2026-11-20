@@ -17,8 +17,8 @@ const examples: Array<{
     label: 'Success',
     severity: 'success',
     buttonSeverity: 'success',
-    summary: 'Prompts added',
-    detail: '24 prompts will run in the next cycle.',
+    summary: 'Purchase order sent',
+    detail: 'PO-2041 was sent to Kibwezi Farms.',
   },
   {
     label: 'Info',
@@ -32,7 +32,7 @@ const examples: Array<{
     severity: 'warn',
     buttonSeverity: 'warn',
     summary: 'Credit limit nearly reached',
-    detail: 'Review the balance before confirming.',
+    detail: 'Mama Oliech Restaurant has KES 4,500 of credit left.',
   },
   {
     label: 'Error',

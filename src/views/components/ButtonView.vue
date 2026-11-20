@@ -32,7 +32,7 @@ const examples = [
     component: ButtonSeverityExample,
     code: severityCode,
     description:
-      'Use primary for the main action. Success shares the primary green; warn uses orange. Choose severity for meaning rather than decoration.',
+      'Use primary for the main action. Success uses emerald so it stays distinct from the Kale primary; warn uses orange. Choose severity for meaning rather than decoration.',
   },
   {
     id: 'button-sizes',
@@ -40,7 +40,7 @@ const examples = [
     component: ButtonSizesExample,
     code: sizesCode,
     description:
-      'Small, default, and large buttons use 14, 16, and 18px text. Padding, icon-only width, and spacing come from the theme.',
+      'Small and default buttons use 14px text; small has tighter padding. Large uses 16px text. Padding, height, and icon-only width come from the shared control tokens.',
   },
   {
     id: 'button-icons',

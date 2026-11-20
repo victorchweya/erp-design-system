@@ -16,7 +16,8 @@ const examples = [
   {
     id: 'auto-complete-1',
     title: 'Invalid and disabled',
-    description: 'Use a visible error message for invalid selections.',
+    description:
+      'Use a visible error message for invalid selections. Pass aria-describedby through inputProps so it reaches the input.',
     component: AutoCompleteStatesExample,
     code: code1,
   },
@@ -39,6 +40,24 @@ const api = [
     type: 'string | Function',
     default: '—',
     description: 'Field or function used for the visible option label.',
+  },
+  {
+    name: 'forceSelection',
+    type: 'boolean',
+    default: 'false',
+    description: 'Clear typed text that does not match a suggestion.',
+  },
+  {
+    name: 'dropdown',
+    type: 'boolean',
+    default: 'false',
+    description: 'Show a button that opens the full list.',
+  },
+  {
+    name: 'inputProps',
+    type: 'InputHTMLAttributes',
+    default: '—',
+    description: 'Attributes for the input, such as aria-describedby.',
   },
   {
     name: 'invalid',

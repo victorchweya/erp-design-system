@@ -24,7 +24,7 @@ const examples = [
 const api = [
   {
     name: 'mode',
-    type: 'any',
+    type: '"advanced" | "basic"',
     default: 'advanced',
     description: 'Advanced drag-and-drop or basic browse button.',
   },
@@ -59,9 +59,21 @@ const api = [
     description: 'Maximum file size in bytes.',
   },
   {
+    name: 'fileLimit',
+    type: 'number',
+    default: '—',
+    description: 'Maximum number of files in one selection (advanced mode with multiple).',
+  },
+  {
+    name: 'chooseLabel',
+    type: 'string',
+    default: 'Choose',
+    description: 'Text of the choose button. Name the file type, such as Choose an invoice.',
+  },
+  {
     name: 'customUpload',
     type: 'boolean',
-    default: '—',
+    default: 'false',
     description: 'Handle files through the uploader event.',
   },
 ]
