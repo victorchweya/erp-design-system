@@ -9,7 +9,7 @@ npm install
 npm run dev
 ```
 
-Open `/` or `/components` to reach `/components/core-elements/button`. All 88 component pages are available from the sidebar. Pages include live examples, copyable Vue source, usage guidance, accessibility notes, and key props where applicable.
+Open `/` or `/components` to reach `/components/core-elements/button`. All 98 component pages are available from the sidebar. Pages include live examples, copyable Vue source, usage guidance, accessibility notes, and key props where applicable.
 
 - **Core elements:** Button, SplitButton, SpeedDial, Avatar, Badge, Card, Chip, Divider, Tag, Toolbar, and Skeleton.
 - **Forms:** text and numeric inputs, password and code entry, tags, autocomplete, selects and lists, checkboxes and radio buttons, toggles, dates, sliders, ratings, Knob, colour selection, FileUpload, Editor, Inplace, field layout, and validation.
@@ -37,11 +37,13 @@ Open `/foundations/spacing` for the spacing scale, padding and gap examples, Pri
 
 Open `/foundations/icons` for PrimeIcons imports, sizes, semantic colours, button examples, accessibility guidance, and the full searchable icon library. All examples use the installed `@primeicons/vue` package.
 
-General (`/general`) and the Motion foundation page are still placeholders.
+General (`/general`) covers setup: the PrimeVue configuration, services, Tailwind, token sources, and project checks.
+
+Further foundation pages: Motion (`/foundations/motion`, tokens in `motion.ts`), Elevation (`/foundations/elevation`, app-shell and overlay layers in `layers.ts`), Writing, Accessibility, and Data visualization. Formatting includes the PrimeVue locale: weeks start on Monday and typed dates use day/month/year (`src/utils/locale.ts`). PrimeVue receives the locale and overlay z-index bases in `src/main.ts`. A global reduced-motion rule in `main.css` shortens transitions and animations.
 
 ## UI blocks
 
-Open `/ui-blocks` for the pattern library. All ten categories are available from the sidebar, with 27 working examples adapted to the local ERP theme and installed PrimeVue version.
+Open `/ui-blocks` for the pattern library. Categories are available from the sidebar, with working examples adapted to the local ERP theme and installed PrimeVue version.
 
 | Category | Route | Patterns |
 | --- | --- | --- |
@@ -55,6 +57,23 @@ Open `/ui-blocks` for the pattern library. All ten categories are available from
 | Authentication | `/ui-blocks/authentication` | Sign in, sign up, forgot/reset password, email verification, two-factor authentication |
 | Modals | `/ui-blocks/modals` | ConfirmDialog, assignment Dialog |
 | Popups | `/ui-blocks/popups` | ConfirmPopup, customer Popover, actions Menu |
+
+The **ERP patterns** group adds larger page-level patterns:
+
+| Category | Route | Patterns |
+| --- | --- | --- |
+| Page templates | `/ui-blocks/page-templates` | List → detail → edit, dashboard, settings |
+| Documents | `/ui-blocks/documents` | Invoice, purchase order, delivery note, scoped print styles |
+| Workflow | `/ui-blocks/workflow` | Approval flow with history, Stepper wizard, activity feed and audit log |
+| Comments & attachments | `/ui-blocks/comments-attachments` | Comment thread, attachments, record side panel |
+| Import & export | `/ui-blocks/import-export` | CSV import with mapping and validation report, export dialog |
+| Users & permissions | `/ui-blocks/users-permissions` | User management, role permission matrix |
+| Notifications | `/ui-blocks/notifications` | Notification centre, inbox, preferences |
+| Scheduling | `/ui-blocks/scheduling` | Delivery calendar, status board |
+| Loading states | `/ui-blocks/loading-states` | Table, record and dashboard skeletons, partial loading |
+| Error pages | `/ui-blocks/error-pages` | 404, 403, 500, offline and maintenance |
+
+Unknown URLs render the 404 page (`src/views/NotFoundView.vue`) through the router's catch-all route. Documents print on their own: the Print button marks the document and `main.css` hides everything else for that print only.
 
 Each block has Preview and Code views with copyable source. Examples live in `src/components/blocks/`; the galleries import their source directly so the copied code matches the preview. Actions use local state and never send data to a backend. Connect them to application navigation and data when reusing the source. Section headers default to `h2` with 20px titles on small screens and 24px from `sm` upwards; the gallery passes `headingTag="h3"` to preserve its heading hierarchy.
 

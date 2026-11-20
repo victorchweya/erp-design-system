@@ -4,6 +4,8 @@ import RadioButtonExample from '@/components/docs/examples/RadioButtonExample.vu
 import code0 from '@/components/docs/examples/RadioButtonExample.vue?raw'
 import RadioButtonStatesExample from '@/components/docs/examples/RadioButtonStatesExample.vue'
 import code1 from '@/components/docs/examples/RadioButtonStatesExample.vue?raw'
+import RadioButtonGroupExample from '@/components/docs/examples/RadioButtonGroupExample.vue'
+import code2 from '@/components/docs/examples/RadioButtonGroupExample.vue?raw'
 const examples = [
   {
     id: 'radio-button-0',
@@ -18,6 +20,14 @@ const examples = [
     description: 'Use one error message for the group when a selection is required.',
     component: RadioButtonStatesExample,
     code: code1,
+  },
+  {
+    id: 'radio-button-2',
+    title: 'RadioButtonGroup',
+    description:
+      'RadioButtonGroup holds the model, shared name, and invalid state, so each RadioButton only needs a value and inputId.',
+    component: RadioButtonGroupExample,
+    code: code2,
   },
 ]
 const api = [
@@ -61,6 +71,7 @@ const api = [
 const accessibility = [
   'Link every radio button to its own visible label.',
   'Tab enters the group. Arrow keys move between options and Space selects.',
+  'RadioButtonGroup renders a plain div with no role. Wrap it in a fieldset and legend so the decision is announced with each option.',
 ]
 </script>
 
@@ -69,7 +80,7 @@ const accessibility = [
     title="RadioButton"
     category="Form"
     description="Choose exactly one option from a visible group."
-    usage="Give every option the same model and name, a distinct value, and a distinct inputId. Use a fieldset and legend to describe the decision."
+    usage="Give every option the same model and name, a distinct value, and a distinct inputId. Use a fieldset and legend to describe the decision. RadioButtonGroup can hold the model and name for all options."
     :examples="examples"
     :api="api"
     :accessibility="accessibility"

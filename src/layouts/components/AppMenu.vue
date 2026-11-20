@@ -35,9 +35,13 @@ const groups: MenuGroup[] = [
       { label: 'Color', to: '/foundations/color' },
       { label: 'Motion', to: '/foundations/motion' },
       { label: 'Spacing', to: '/foundations/spacing' },
+      { label: 'Elevation', to: '/foundations/elevation' },
       { label: 'Icons', to: '/foundations/icons' },
       { label: 'Typography', to: '/foundations/typography' },
       { label: 'Formatting', to: '/foundations/formatting' },
+      { label: 'Writing', to: '/foundations/writing' },
+      { label: 'Accessibility', to: '/foundations/accessibility' },
+      { label: 'Data visualization', to: '/foundations/data-visualization' },
     ],
   },
   ...componentGroupOrder.map((label, index) => ({
@@ -55,7 +59,7 @@ const groups: MenuGroup[] = [
     items: blockPages
       .filter((page) => !page.group)
       .map((page) => ({ label: page.label, to: page.path })),
-    groups: ['KPI / Metric Card', 'Charts'].map((label) => ({
+    groups: ['KPI / Metric Card', 'Charts', 'ERP patterns'].map((label) => ({
       label,
       items: blockPages
         .filter((page) => page.group === label)

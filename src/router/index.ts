@@ -75,10 +75,40 @@ const router = createRouter({
       component: () => import('../views/foundations/TypographyView.vue'),
     },
     {
+      path: '/foundations/elevation',
+      name: 'foundation-elevation',
+      meta: { breadcrumb: ['Foundations', 'Elevation'] },
+      component: () => import('../views/foundations/ElevationView.vue'),
+    },
+    {
+      path: '/foundations/writing',
+      name: 'foundation-writing',
+      meta: { breadcrumb: ['Foundations', 'Writing'] },
+      component: () => import('../views/foundations/WritingView.vue'),
+    },
+    {
+      path: '/foundations/accessibility',
+      name: 'foundation-accessibility',
+      meta: { breadcrumb: ['Foundations', 'Accessibility'] },
+      component: () => import('../views/foundations/AccessibilityView.vue'),
+    },
+    {
+      path: '/foundations/data-visualization',
+      name: 'foundation-data-visualization',
+      meta: { breadcrumb: ['Foundations', 'Data visualization'] },
+      component: () => import('../views/foundations/DataVisualizationView.vue'),
+    },
+    {
       path: '/foundations/formatting',
       name: 'foundation-formatting',
       meta: { breadcrumb: ['Foundations', 'Formatting'] },
       component: () => import('../views/foundations/FormattingView.vue'),
+    },
+    {
+      path: '/:pathMatch(.*)*',
+      name: 'not-found',
+      meta: { breadcrumb: ['Page not found'] },
+      component: () => import('../views/NotFoundView.vue'),
     },
   ],
 })

@@ -78,6 +78,42 @@ export const componentPages = [
     load: () => import('@/views/components/InputTextView.vue'),
   },
   {
+    label: 'InputMask',
+    group: 'Form',
+    path: '/components/forms/input-mask',
+    load: () => import('@/views/components/InputMaskView.vue'),
+  },
+  {
+    label: 'KeyFilter',
+    group: 'Form',
+    path: '/components/forms/key-filter',
+    load: () => import('@/views/components/KeyFilterView.vue'),
+  },
+  {
+    label: 'InputGroup',
+    group: 'Form',
+    path: '/components/forms/input-group',
+    load: () => import('@/views/components/InputGroupView.vue'),
+  },
+  {
+    label: 'IconField',
+    group: 'Form',
+    path: '/components/forms/icon-field',
+    load: () => import('@/views/components/IconFieldView.vue'),
+  },
+  {
+    label: 'FloatLabel & IftaLabel',
+    group: 'Form',
+    path: '/components/forms/float-label',
+    load: () => import('@/views/components/FloatLabelView.vue'),
+  },
+  {
+    label: 'Label',
+    group: 'Form',
+    path: '/components/forms/label',
+    load: () => import('@/views/components/LabelView.vue'),
+  },
+  {
     label: 'Textarea',
     group: 'Form',
     path: '/components/forms/textarea',
@@ -244,6 +280,12 @@ export const componentPages = [
     group: 'Data',
     path: '/components/data/data-view',
     load: () => import('@/views/components/DataViewView.vue'),
+  },
+  {
+    label: 'Chart',
+    group: 'Data',
+    path: '/components/data/chart',
+    load: () => import('@/views/components/ChartView.vue'),
   },
   {
     label: 'OrderList',
@@ -426,6 +468,12 @@ export const componentPages = [
     load: () => import('@/views/components/MenubarView.vue'),
   },
   {
+    label: 'PanelMenu',
+    group: 'Menu',
+    path: '/components/menus/panel-menu',
+    load: () => import('@/views/components/PanelMenuView.vue'),
+  },
+  {
     label: 'TieredMenu',
     group: 'Menu',
     path: '/components/menus/tiered-menu',
@@ -466,6 +514,12 @@ export const componentPages = [
     group: 'Media',
     path: '/components/media/gallery',
     load: () => import('@/views/components/GalleryView.vue'),
+  },
+  {
+    label: 'Image',
+    group: 'Media',
+    path: '/components/media/image',
+    load: () => import('@/views/components/ImageView.vue'),
   },
   {
     label: 'AnimateOnScroll',

@@ -4,6 +4,8 @@ import CheckboxExample from '@/components/docs/examples/CheckboxExample.vue'
 import code0 from '@/components/docs/examples/CheckboxExample.vue?raw'
 import CheckboxStatesExample from '@/components/docs/examples/CheckboxStatesExample.vue'
 import code1 from '@/components/docs/examples/CheckboxStatesExample.vue?raw'
+import CheckboxGroupExample from '@/components/docs/examples/CheckboxGroupExample.vue'
+import code2 from '@/components/docs/examples/CheckboxGroupExample.vue?raw'
 const examples = [
   {
     id: 'checkbox-0',
@@ -19,6 +21,14 @@ const examples = [
     description: 'Do not rely on the red border to explain a required choice.',
     component: CheckboxStatesExample,
     code: code1,
+  },
+  {
+    id: 'checkbox-2',
+    title: 'CheckboxGroup',
+    description:
+      'CheckboxGroup holds the array model, name, and invalid state for every Checkbox inside it, so each item only needs a value and inputId.',
+    component: CheckboxGroupExample,
+    code: code2,
   },
 ]
 const api = [
@@ -68,6 +78,7 @@ const api = [
 const accessibility = [
   'Connect every checkbox to a visible label and put related choices in a fieldset with a legend.',
   'Tab focuses the control and Space toggles it.',
+  'CheckboxGroup renders a plain div with no role. Wrap it in a fieldset and legend, and link the hint and error text to the fieldset with aria-describedby.',
 ]
 </script>
 
@@ -76,7 +87,7 @@ const accessibility = [
     title="Checkbox"
     category="Form"
     description="Select independent options or turn a boolean preference on or off."
-    usage="Use binary for a boolean model. For a list, bind the same array and give each Checkbox its own value and inputId."
+    usage="Use binary for a boolean model. For a list, bind the same array and give each Checkbox its own value and inputId, or wrap the items in CheckboxGroup and bind the array once."
     :examples="examples"
     :api="api"
     :accessibility="accessibility"

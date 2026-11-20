@@ -2,10 +2,12 @@ import { brandTokenReferences, primitives } from '../foundations/palette'
 import { fontFamily, fontTokens } from '../foundations/typography'
 import { borderRadii, spacing } from '../foundations/spacing'
 import { controlTokens } from '../foundations/controls'
+import { motionTokens } from '../foundations/motion'
 
 export const primitive = {
     font: fontTokens,
     control: controlTokens,
+    motion: motionTokens,
     spacing,
     // The namespace separates FTF tokens from inherited component palette names.
     ftf: {
@@ -44,7 +46,7 @@ export const semantic = {
         fontWeight: '{font.weight.normal}',
         lineHeight: '1.5'
     },
-    transitionDuration: '0.2s',
+    transitionDuration: '{motion.duration.base}',
     focusRing: {
         width: '1px',
         style: 'solid',
@@ -112,7 +114,7 @@ export const semantic = {
         borderRadius: '{border.radius.lg}'
     },
     mask: {
-        transitionDuration: '0.3s'
+        transitionDuration: '{motion.duration.slow}'
     },
     navigation: {
         list: {

@@ -12,6 +12,14 @@
     html {
       scroll-behavior: auto;
     }
+
+    *,
+    ::before,
+    ::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
   }
 
   body {
@@ -36,4 +44,67 @@
 @layer tailwind-utilities {
   @tailwind components;
   @tailwind utilities;
+}
+
+/*
+ * Document printing (UI blocks › Documents).
+ * DocumentShell's Print button adds `print-document` to <body> and `print-target` to one
+ * document, calls window.print(), and removes both on `afterprint`. Without that body class
+ * these rules do nothing, so printing any other page (or Ctrl+P) keeps the normal layout.
+ * Everything that is neither the target, inside it, nor one of its ancestors is hidden; the
+ * ancestors (app shell, BlockDoc and preview cards) are flattened so the document starts at
+ * the page margin.
+ */
+@media print {
+  @page {
+    size: A4;
+    margin: 15mm 12mm;
+  }
+
+  body.print-document {
+    min-width: 0;
+    color: #000;
+    background: #fff !important;
+  }
+
+  body.print-document :not(.print-target, .print-target *, :has(.print-target)) {
+    display: none !important;
+  }
+
+  body.print-document :has(.print-target) {
+    display: block !important;
+    position: static !important;
+    width: auto !important;
+    max-width: none !important;
+    min-height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: visible !important;
+    border: 0 !important;
+    background: none !important;
+    box-shadow: none !important;
+    transform: none !important;
+  }
+
+  body.print-document .print-target,
+  body.print-document .print-target * {
+    color: #000 !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    border-color: #9ca3af !important;
+  }
+
+  body.print-document .print-target {
+    width: auto;
+    max-width: none;
+    margin: 0;
+  }
+
+  body.print-document .print-target thead {
+    display: table-header-group;
+  }
+
+  body.print-document .print-target tr {
+    break-inside: avoid;
+  }
 }

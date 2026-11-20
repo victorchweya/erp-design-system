@@ -1,6 +1,8 @@
 <script setup lang="ts">
+import { shallowRef } from 'vue'
 import AnchorNav from '@/components/AnchorNav.vue'
 import { useActiveSection } from '@/composables/useActiveSection'
+import { primeVueLocale } from '@/utils/locale'
 import {
   formatApiDate,
   formatCurrency,
@@ -15,8 +17,22 @@ const sections = [
   { id: 'formatting-how-to-use', label: 'How to use' },
   { id: 'formatting-numbers', label: 'Currency & numbers' },
   { id: 'formatting-dates', label: 'Dates & time' },
+  { id: 'formatting-locale', label: 'Locale' },
   { id: 'formatting-rules', label: 'Rules' },
 ]
+const localeRows = [
+  {
+    setting: 'firstDayOfWeek',
+    value: String(primeVueLocale.firstDayOfWeek),
+    effect: 'Calendar weeks start on Monday.',
+  },
+  {
+    setting: 'dateFormat',
+    value: primeVueLocale.dateFormat,
+    effect: 'Typed and shown input dates use day/month/year, such as 18/11/2026.',
+  },
+]
+const localeDate = shallowRef<Date | null>(new Date(2026, 10, 18))
 const activeSection = useActiveSection(sections.map(({ id }) => id))
 const numberRows = [
   { purpose: 'Currency', input: '12500', output: formatCurrency(12500), utility: 'formatCurrency' },
@@ -160,6 +176,56 @@ const dateRows = [
               ></Column
             >
           </DataTable>
+        </section>
+
+        <section
+          id="formatting-locale"
+          class="flex scroll-mt-24 flex-col gap-4"
+          aria-labelledby="formatting-locale-title"
+        >
+          <h2 id="formatting-locale-title" class="text-2xl font-medium">Locale</h2>
+          <p class="leading-relaxed text-muted-color">
+            PrimeVue components use the FTF locale from
+            <Tag severity="secondary" class="align-baseline"><code>@/utils/locale</code></Tag
+            >, set once in <code>main.ts</code>. DatePicker weeks start on Monday and typed dates
+            use day/month/year.
+          </p>
+          <p class="leading-relaxed text-muted-color">
+            PrimeVue merges this partial locale with its English defaults, so day names, month
+            names, and built-in labels stay in English. The locale controls input only; display text
+            still comes from the utilities above, using en-KE and Africa/Nairobi.
+          </p>
+          <DataTable
+            :value="localeRows"
+            size="small"
+            showGridlines
+            aria-label="PrimeVue locale settings"
+          >
+            <Column field="setting" header="Setting"
+              ><template #body="{ data }"
+                ><code>{{ data.setting }}</code></template
+              ></Column
+            >
+            <Column field="value" header="Value"
+              ><template #body="{ data }"
+                ><code>{{ data.value }}</code></template
+              ></Column
+            >
+            <Column field="effect" header="Effect" />
+          </DataTable>
+          <div class="flex max-w-xs flex-col gap-2">
+            <label for="formatting-locale-date" class="font-medium">Delivery date</label>
+            <DatePicker
+              v-model="localeDate"
+              inputId="formatting-locale-date"
+              aria-describedby="formatting-locale-date-help"
+              showIcon
+              fluid
+            />
+            <small id="formatting-locale-date-help" class="text-muted-color"
+              >Uses the app locale: Monday first, day/month/year.</small
+            >
+          </div>
         </section>
 
         <section

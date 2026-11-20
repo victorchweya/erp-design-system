@@ -11,11 +11,15 @@ import ToastService from 'primevue/toastservice'
 import App from './App.vue'
 import router from './router'
 import ErpTheme from './theme/erp-theme'
+import { overlayZIndex } from './theme/erp-theme/foundations/layers'
+import { primeVueLocale } from './utils/locale'
 
 const app = createApp(App)
 
 app.use(PrimeVue, {
   ripple: true,
+  locale: primeVueLocale,
+  zIndex: overlayZIndex,
   theme: {
     preset: ErpTheme,
     options: {
