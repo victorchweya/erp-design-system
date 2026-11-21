@@ -50,6 +50,7 @@ import inputotp from './inputotp';
 import inputtext from './inputtext';
 import inputtags from './inputtags';
 import knob from './knob';
+import label from './label';
 import listbox from './listbox';
 import megamenu from './megamenu';
 import menu from './menu';
@@ -149,6 +150,7 @@ export default definePreset({
         inputtext,
         inputtags,
         knob,
+        label,
         listbox,
         megamenu,
         menu,

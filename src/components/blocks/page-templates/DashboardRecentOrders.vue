@@ -1,9 +1,17 @@
 <script setup lang="ts">
+import { shallowRef, watch } from 'vue'
 import { formatCurrency, formatDate } from '@/utils/format'
 import { orderSeverity, type OrderStatus, type RecentOrder } from './dashboard'
 
-defineProps<{ orders: RecentOrder[] }>()
+const props = defineProps<{ orders: RecentOrder[] }>()
 const emit = defineEmits<{ clear: [] }>()
+const first = shallowRef(0)
+
+// New filter results start on the first page.
+watch(
+  () => props.orders,
+  () => (first.value = 0),
+)
 </script>
 
 <template>
@@ -12,8 +20,11 @@ const emit = defineEmits<{ clear: [] }>()
     <template #subtitle>Latest customer orders for the selected filters</template>
     <template #content>
       <DataTable
+        v-model:first="first"
         :value="orders"
         dataKey="reference"
+        paginator
+        :rows="5"
         size="small"
         showGridlines
         scrollable

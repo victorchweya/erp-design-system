@@ -15,7 +15,7 @@ const examples = [
 </script>
 <template>
   <BlockDoc
-    title="Polar Area"
+    title="Polar area"
     description="Radial comparison for a compact set of similarly scaled measures."
     :usage="[
       'Use measures that share a comparable scale.',

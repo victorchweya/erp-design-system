@@ -14,7 +14,7 @@ import Sync from '@primeicons/vue/sync'
 import Trash from '@primeicons/vue/trash'
 import { formatCurrency, formatDate } from '@/utils/format'
 
-type OrderStatus = 'New Order' | 'Cancelled'
+type OrderStatus = 'New order' | 'Cancelled'
 
 const size = shallowRef<'small' | undefined | 'large'>('small')
 const sizeOptions = [
@@ -43,7 +43,7 @@ const orders = [
     orderType: 'regular',
     customer: 'Anouk FTF Boertien',
     source: 'Manual',
-    status: 'New Order' as OrderStatus,
+    status: 'New order' as OrderStatus,
     items: 1,
     totalUnits: '10 KG',
     amount: 200,
@@ -77,7 +77,7 @@ const orders = [
     orderType: 'regular',
     customer: 'Avic Design',
     source: 'Ask Sprout',
-    status: 'New Order' as OrderStatus,
+    status: 'New order' as OrderStatus,
     items: 2,
     totalUnits: '20 KG',
     amount: 1760,
@@ -94,7 +94,7 @@ const orders = [
     orderType: 'regular',
     customer: 'Felix Holdingg',
     source: 'E-commerce',
-    status: 'New Order' as OrderStatus,
+    status: 'New order' as OrderStatus,
     items: 5,
     totalUnits: '53 KG',
     amount: 5600,
@@ -111,7 +111,7 @@ const orders = [
     orderType: 'regular',
     customer: 'QA Branch B Karen',
     source: 'E-commerce',
-    status: 'New Order' as OrderStatus,
+    status: 'New order' as OrderStatus,
     items: 1,
     totalUnits: '60 KG',
     amount: 5100,
@@ -128,7 +128,7 @@ const orders = [
     orderType: 'chaser',
     customer: 'A and a',
     source: null,
-    status: 'New Order' as OrderStatus,
+    status: 'New order' as OrderStatus,
     items: 1,
     totalUnits: '10 KG',
     amount: 4600,
@@ -337,12 +337,12 @@ function resetFilters() {
         <Column
           field="orderDate"
           sortField="orderDateValue"
-          header="Order Date"
+          header="Order date"
           sortable
           style="min-width: 9rem"
         />
-        <Column field="orderNumber" header="Order Number" sortable style="min-width: 10rem" />
-        <Column field="orderType" header="Order Type" sortable style="min-width: 7rem" />
+        <Column field="orderNumber" header="Order number" sortable style="min-width: 10rem" />
+        <Column field="orderType" header="Order type" sortable style="min-width: 7rem" />
         <Column field="customer" header="Customer" sortable style="min-width: 12rem" />
         <Column field="source" header="Source" sortable style="min-width: 9rem">
           <template #body="{ data }">{{ data.source ?? '—' }}</template>
@@ -353,26 +353,26 @@ function resetFilters() {
           </template>
         </Column>
         <Column field="items" header="Items" sortable style="min-width: 6rem" />
-        <Column field="totalUnits" header="Total Items/Unit" style="min-width: 10rem" />
+        <Column field="totalUnits" header="Total items/unit" style="min-width: 10rem" />
         <Column field="amount" header="Amount" sortable style="min-width: 9rem">
           <template #body="{ data }"
             ><span class="tabular-nums">{{ formatCurrency(data.amount) }}</span></template
           >
         </Column>
-        <Column field="location" header="Delivery Location" sortable style="min-width: 13rem">
+        <Column field="location" header="Delivery location" sortable style="min-width: 13rem">
           <template #body="{ data }"
             ><span class="block whitespace-normal break-words">{{ data.location }}</span></template
           >
         </Column>
-        <Column field="deliveryType" header="Delivery Type" sortable style="min-width: 9rem" />
+        <Column field="deliveryType" header="Delivery type" sortable style="min-width: 9rem" />
         <Column
           field="deliveryDate"
           sortField="deliveryDateValue"
-          header="Delivery Date"
+          header="Delivery date"
           sortable
           style="min-width: 9rem"
         />
-        <Column field="deliverySlot" header="Delivery Slot" style="min-width: 9rem">
+        <Column field="deliverySlot" header="Delivery slot" style="min-width: 9rem">
           <template #body="{ data }">{{ data.deliverySlot ?? '—' }}</template>
         </Column>
         <Column frozen alignFrozen="right" style="width: 5rem">
@@ -404,7 +404,7 @@ function resetFilters() {
         <Select
           v-model="status"
           inputId="stress-status"
-          :options="['New Order', 'Cancelled']"
+          :options="['New order', 'Cancelled']"
           placeholder="All statuses"
           showClear
           fluid

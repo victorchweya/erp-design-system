@@ -15,7 +15,7 @@ const examples = [
 </script>
 <template>
   <BlockDoc
-    title="Line Chart"
+    title="Line chart"
     description="Time-series trends without an area fill."
     :usage="[
       'Use consistent intervals and avoid more series than the legend can explain quickly.',

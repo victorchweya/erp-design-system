@@ -20,7 +20,7 @@ const examples = [
     description="A compact summary of one operational value."
     :usage="[
       'Use a short label, a formatted value, and one line of context. Keep the unit with the value.',
-      'Use a Metric Card when change, status, or supporting explanation is part of the meaning.',
+      'Use a metric card when change, status, or supporting explanation is part of the meaning.',
     ]"
     :examples="examples"
   />

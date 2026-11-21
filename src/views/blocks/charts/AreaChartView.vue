@@ -15,7 +15,7 @@ const examples = [
 </script>
 <template>
   <BlockDoc
-    title="Area Chart"
+    title="Area chart"
     description="Filled trend charts that emphasise change over time."
     :usage="[
       'Use area charts for continuous time series where the magnitude matters.',

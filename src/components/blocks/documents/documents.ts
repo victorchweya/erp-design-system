@@ -4,8 +4,8 @@ export const money = formatCurrency
 export const date = formatDate
 export const amount = formatNumber
 
-/** Example only. Confirm each product's VAT treatment with finance before issuing invoices. */
-export const EXAMPLE_VAT_RATE = 0.16
+/** Kenya's standard VAT rate. */
+export const STANDARD_VAT_RATE = 0.16
 
 export interface DocumentMeta {
   label: string
@@ -29,8 +29,28 @@ export function subtotalOf(lines: Pick<DocumentLine, 'price' | 'quantity'>[]) {
   return lines.reduce((sum, line) => sum + lineTotal(line), 0)
 }
 
-export function vatOf(amount: number, rate = EXAMPLE_VAT_RATE) {
-  return Math.round(amount * rate * 100) / 100
+/**
+ * An invoice line with its VAT rate. The split here is an example: fresh produce as exempt (0)
+ * and delivery at the standard rate. Confirm each product's VAT treatment with finance.
+ */
+export interface InvoiceLine extends DocumentLine {
+  /** 0 for exempt lines, otherwise STANDARD_VAT_RATE. */
+  vatRate: number
+}
+
+export const isVatExempt = (line: Pick<InvoiceLine, 'vatRate'>) => line.vatRate === 0
+
+/** Lines charged at the standard rate. */
+export function taxableOf(lines: Pick<InvoiceLine, 'price' | 'quantity' | 'vatRate'>[]) {
+  return subtotalOf(lines.filter((line) => !isVatExempt(line)))
+}
+
+/** VAT per line, rounded to the cent, then summed. */
+export function vatOf(lines: Pick<InvoiceLine, 'price' | 'quantity' | 'vatRate'>[]) {
+  return lines.reduce(
+    (sum, line) => sum + Math.round(lineTotal(line) * line.vatRate * 100) / 100,
+    0,
+  )
 }
 
 /** Sample seller details. Replace with the registered company details before use. */
@@ -66,13 +86,28 @@ export const invoice = {
     kraPin: 'P000000001Y',
   },
   lines: [
-    { id: 'FTF-TOM', name: 'Tomatoes', pack: '10 kg crate', price: 1200, quantity: 12 },
-    { id: 'FTF-CAR', name: 'Carrots', pack: '10 kg bag', price: 950, quantity: 10 },
-    { id: 'FTF-POT', name: 'Potatoes', pack: '20 kg bag', price: 1500, quantity: 8 },
-    { id: 'FTF-AVO', name: 'Avocados', pack: '10 kg crate', price: 1800, quantity: 6 },
-    { id: 'FTF-KAL', name: 'Kale', pack: '5 kg bag', price: 900, quantity: 4 },
-    { id: 'FTF-DEL', name: 'Delivery · Westlands', pack: 'Per drop', price: 1500, quantity: 1 },
-  ] satisfies DocumentLine[],
+    { id: 'FTF-TOM', name: 'Tomatoes', pack: '10 kg crate', price: 1200, quantity: 12, vatRate: 0 },
+    { id: 'FTF-CAR', name: 'Carrots', pack: '10 kg bag', price: 950, quantity: 10, vatRate: 0 },
+    { id: 'FTF-POT', name: 'Potatoes', pack: '20 kg bag', price: 1500, quantity: 8, vatRate: 0 },
+    { id: 'FTF-AVO', name: 'Avocados', pack: '10 kg crate', price: 1800, quantity: 6, vatRate: 0 },
+    { id: 'FTF-KAL', name: 'Kale', pack: '5 kg bag', price: 900, quantity: 4, vatRate: 0 },
+    {
+      id: 'FTF-PKG',
+      name: 'Cold-chain packaging',
+      pack: 'Per crate',
+      price: 150,
+      quantity: 18,
+      vatRate: STANDARD_VAT_RATE,
+    },
+    {
+      id: 'FTF-DEL',
+      name: 'Delivery · Westlands',
+      pack: 'Per drop',
+      price: 1500,
+      quantity: 1,
+      vatRate: STANDARD_VAT_RATE,
+    },
+  ] satisfies InvoiceLine[],
   /** Fictional payment details for layout only. */
   payment: {
     paybill: '000000',

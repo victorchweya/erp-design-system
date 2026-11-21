@@ -15,7 +15,7 @@ const examples = [
 </script>
 <template>
   <BlockDoc
-    title="Doughnut & Pie"
+    title="Doughnut & pie"
     description="Part-to-whole comparisons for a small number of categories."
     :usage="[
       'Use no more than five slices and display the total or percentages nearby.',

@@ -14,7 +14,7 @@ const sections = [
   { id: 'general-tokens', label: 'Where tokens live' },
   { id: 'general-dark-mode', label: 'Dark mode' },
   { id: 'general-contributing', label: 'Contributing' },
-  { id: 'general-versioning', label: 'Versioning' },
+  { id: 'general-adopt', label: 'Use in another app' },
 ]
 const activeSection = useActiveSection(sections.map(({ id }) => id))
 const linkClass =
@@ -100,6 +100,60 @@ const tokenFiles = [
   { file: 'foundations/controls.ts', purpose: 'Small, default, and large control density' },
   { file: 'foundations/motion.ts', purpose: 'Transition durations and easing curves' },
   { file: 'foundations/layers.ts', purpose: 'App shell layers and PrimeVue overlay z-index bases' },
+  { file: 'foundations/chart-series.ts', purpose: 'Chart series colours for light and dark mode' },
+]
+
+// Files another application copies until the design system is published as a package.
+const adoptRows = [
+  {
+    file: 'src/theme/erp-theme/',
+    purpose: 'The preset and its tokens. Leave out the __tests__ folders.',
+    when: 'Always',
+  },
+  {
+    file: 'src/utils/locale.ts',
+    purpose: 'Monday week start and dd/mm/yy dates for PrimeVue.',
+    when: 'Always',
+  },
+  {
+    file: 'src/assets/styles/main.css',
+    purpose:
+      'Cascade layer order and the reduced-motion rule. The print rules are only needed to print documents.',
+    when: 'Always',
+  },
+  {
+    file: 'index.html (font links)',
+    purpose: 'Loads Rubik from Google Fonts; the preset’s font stack expects it.',
+    when: 'Always',
+  },
+  {
+    file: 'src/theme/color-mode.ts',
+    purpose:
+      'Sets .app-dark on <html> and remembers the choice. Any toggle that sets the class works.',
+    when: 'Dark mode',
+  },
+  {
+    file: 'tailwind.config.js',
+    purpose:
+      'Tailwind utilities built from the same tokens, such as bg-kale and text-muted-color. Needs tailwindcss-primeui.',
+    when: 'Tailwind, blocks, and copied examples',
+  },
+  {
+    file: 'src/utils/format.ts',
+    purpose: 'KES currency, number, and date formatting for en-KE.',
+    when: 'Blocks and copied examples',
+  },
+  {
+    file: 'src/composables/useChartTheme.ts',
+    purpose: 'Chart series and text colours that follow the colour mode. Needs color-mode.ts.',
+    when: 'Charts',
+  },
+]
+const adoptPackages = [
+  { name: 'primevue and @primeicons/vue', when: 'Always' },
+  { name: 'tailwindcss (v3) and tailwindcss-primeui', when: 'Tailwind utilities' },
+  { name: 'chart.js', when: 'Chart' },
+  { name: 'quill', when: 'Editor' },
 ]
 
 const checkRows = [
@@ -336,20 +390,59 @@ const checkRows = [
         </section>
 
         <section
-          id="general-versioning"
+          id="general-adopt"
           class="flex scroll-mt-24 flex-col gap-4"
-          aria-labelledby="general-versioning-title"
+          aria-labelledby="general-adopt-title"
         >
-          <h2 id="general-versioning-title" class="text-2xl font-medium">Versioning</h2>
+          <h2 id="general-adopt-title" class="text-2xl font-medium">Use in another app</h2>
           <Message severity="info"
-            >The package is private at version 0.0.0 and is not published.</Message
+            >The package is private at version 0.0.0 and is not published yet, so applications copy
+            the files below.</Message
           >
           <p class="leading-relaxed text-muted-color">
-            To use the preset in another application, copy
-            <code class="text-color">src/theme/erp-theme/</code> and apply the PrimeVue options
-            above. Copy <code class="text-color">src/utils/locale.ts</code>, the Tailwind config,
-            and the cascade layers if you need them too. The preset depends only on
-            <code class="text-color">@primeuix/styled</code>, which PrimeVue already installs.
+            Copy these files into your application, keeping the same paths or updating the imports.
+            Then apply the PrimeVue options and register the services described above.
+          </p>
+          <DataTable
+            :value="adoptRows"
+            size="small"
+            showGridlines
+            aria-label="Files to copy into another application"
+          >
+            <Column field="file" header="File"
+              ><template #body="{ data }"
+                ><code>{{ data.file }}</code></template
+              ></Column
+            >
+            <Column field="purpose" header="What it does" />
+            <Column field="when" header="Needed for" />
+          </DataTable>
+          <p class="leading-relaxed text-muted-color">
+            Install these packages too. The preset itself depends only on
+            <code class="text-color">@primeuix/styled</code>, which PrimeVue installs.
+          </p>
+          <DataTable
+            :value="adoptPackages"
+            size="small"
+            showGridlines
+            aria-label="Packages another application needs"
+          >
+            <Column field="name" header="Package"
+              ><template #body="{ data }"
+                ><code>{{ data.name }}</code></template
+              ></Column
+            >
+            <Column field="when" header="Needed for" />
+          </DataTable>
+          <p class="leading-relaxed text-muted-color">
+            To use a block or example, copy its source from the page with the copy button. Blocks
+            use Tailwind utilities, <code class="text-color">format.ts</code>, and, for charts,
+            <code class="text-color">useChartTheme</code>.
+          </p>
+          <p class="leading-relaxed text-muted-color">
+            Copied files don’t update themselves. When the design system changes, copy
+            <code class="text-color">src/theme/erp-theme/</code> again and check the changes before
+            releasing your application.
           </p>
         </section>
       </div>

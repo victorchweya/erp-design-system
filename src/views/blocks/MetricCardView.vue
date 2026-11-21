@@ -6,7 +6,7 @@ import code from '@/components/blocks/metrics/MetricCardBlock.vue?raw'
 const examples = [
   {
     id: 'metric-card',
-    title: 'Metric Card',
+    title: 'Metric card',
     description: 'Add trend and update context when the value needs interpretation.',
     component: MetricCardBlock,
     code,
@@ -16,7 +16,7 @@ const examples = [
 
 <template>
   <BlockDoc
-    title="Metric Card"
+    title="Metric card"
     description="A measured value with comparison, explanation, or freshness context."
     :usage="[
       'State what the comparison covers and pair direction with text or an icon, not colour alone.',

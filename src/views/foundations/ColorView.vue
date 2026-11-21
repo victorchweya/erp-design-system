@@ -15,7 +15,7 @@ const sections = [
   { id: 'color-brand', label: 'Brand' },
   { id: 'color-background', label: 'Background' },
   { id: 'color-text', label: 'Text' },
-  { id: 'color-inputs', label: 'Borders & Inputs' },
+  { id: 'color-inputs', label: 'Borders & inputs' },
   { id: 'color-status', label: 'Status' },
   { id: 'color-palette', label: 'Palette' },
   { id: 'color-shadows', label: 'Shadows' },
@@ -38,7 +38,7 @@ const roleSections = (
     },
     {
       id: 'inputs',
-      label: 'Borders & Inputs',
+      label: 'Borders & inputs',
       description:
         'Inputs use neutral borders, green for hover and focus, and red for invalid values. Disabled fields use neutral backgrounds and text. These colours come from PrimeVue’s shared form.field tokens.',
     },

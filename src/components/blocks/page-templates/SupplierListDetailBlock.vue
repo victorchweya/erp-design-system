@@ -1,31 +1,43 @@
 <script setup lang="ts">
-import { computed, ref, shallowRef } from 'vue'
+import { computed, ref, shallowRef, useTemplateRef, watch } from 'vue'
 import SupplierListPanel from './SupplierListPanel.vue'
 import SupplierDetailPanel from './SupplierDetailPanel.vue'
 import SupplierEditDrawer from './SupplierEditDrawer.vue'
 import { sampleSuppliers, supplierDetails, type Supplier, type SupplierDetails } from './suppliers'
+import { useSupplierRoute } from './useSupplierRoute'
 
 // Local copy so preview edits never change the shared sample data.
 const suppliers = ref<Supplier[]>(structuredClone(sampleSuppliers))
-const query = shallowRef('')
-const selectedId = shallowRef<string | null>(null)
+const supplierIds = sampleSuppliers.map(({ id }) => id)
+const drawer = useTemplateRef('drawer')
 const returnFocusId = shallowRef<string | null>(null)
-const editing = shallowRef(false)
 const feedback = shallowRef('')
 let editTrigger: HTMLElement | null = null
 
-const selected = computed(() => suppliers.value.find(({ id }) => id === selectedId.value) ?? null)
+// The selected supplier, edit view, and search live in the URL query.
+const { state, open, backToList, openEdit, closeEdit, setSearch } = useSupplierRoute(supplierIds, {
+  confirmLeaveEdit: () => drawer.value?.confirmDiscard() ?? true,
+})
+
+const selected = computed(
+  () => suppliers.value.find(({ id }) => id === state.value.supplierId) ?? null,
+)
 const selectedDetails = computed(() => (selected.value ? supplierDetails(selected.value) : null))
+const query = computed({ get: () => state.value.search, set: setSearch })
+const editing = computed({
+  get: () => state.value.editing,
+  set: (value) => (value ? openEdit() : closeEdit()),
+})
 
-function open(id: string) {
-  feedback.value = ''
-  selectedId.value = id
-}
-
-function back() {
-  returnFocusId.value = selectedId.value
-  selectedId.value = null
-}
+// Covers in-page actions and browser Back/Forward alike.
+watch(
+  () => state.value.supplierId,
+  (_, previous) => {
+    feedback.value = ''
+    // Return focus to the row the user opened before going back.
+    if (previous) returnFocusId.value = previous
+  },
+)
 
 function edit(event: Event) {
   editTrigger = event.currentTarget as HTMLElement
@@ -45,7 +57,7 @@ function save(details: SupplierDetails) {
       v-if="selected"
       :supplier="selected"
       :feedback="feedback"
-      @back="back"
+      @back="backToList"
       @edit="edit"
     />
     <SupplierListPanel
@@ -57,6 +69,7 @@ function save(details: SupplierDetails) {
     />
     <SupplierEditDrawer
       v-if="selectedDetails"
+      ref="drawer"
       v-model:visible="editing"
       :supplier="selectedDetails"
       @save="save"

@@ -15,7 +15,7 @@ const examples = [
 </script>
 <template>
   <BlockDoc
-    title="Bar Chart"
+    title="Bar chart"
     description="Category comparisons using proportional bar lengths."
     :usage="[
       'Start bar scales at zero and sort categories when rank matters.',

@@ -15,7 +15,7 @@ const examples = [
 </script>
 <template>
   <BlockDoc
-    title="Composed Chart"
+    title="Composed chart"
     description="Related measures combined in one coordinated chart."
     :usage="[
       'Limit composed charts to measures with a clear relationship.',

@@ -6,7 +6,7 @@ import code from '@/components/blocks/metrics/KpiGroupBlock.vue?raw'
 const examples = [
   {
     id: 'kpi-group',
-    title: 'KPI Group',
+    title: 'KPI group',
     description: 'A responsive set of related values for quick comparison.',
     component: KpiGroupBlock,
     code,
@@ -17,7 +17,7 @@ const examples = [
 
 <template>
   <BlockDoc
-    title="KPI Group"
+    title="KPI group"
     description="Related operational values arranged for scanning and comparison."
     :usage="[
       'Keep all values in a group within the same scope and time period.',

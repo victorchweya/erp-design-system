@@ -22,7 +22,7 @@ const deliverySlots = [
       <RadioButton v-model="deliverySlot" name="label-delivery-slot" :value="option.id" />
       <span class="flex flex-col gap-0.5">
         <span class="font-medium">{{ option.name }}</span>
-        <span class="text-muted-color">{{ option.detail }}</span>
+        <span class="font-normal text-muted-color">{{ option.detail }}</span>
       </span>
     </Label>
   </fieldset>

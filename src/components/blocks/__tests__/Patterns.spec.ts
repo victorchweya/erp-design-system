@@ -1,8 +1,9 @@
-import { afterEach, beforeEach, expect, it, vi } from 'vitest'
+import { afterEach, beforeEach, expect, it, onTestFinished, vi } from 'vitest'
 import { enableAutoUnmount, flushPromises, mount, type VueWrapper } from '@vue/test-utils'
 import PrimeVue from 'primevue/config'
 import ConfirmationService from 'primevue/confirmationservice'
-import { defineComponent } from 'vue'
+import { defineComponent, h } from 'vue'
+import { RouterView } from 'vue-router'
 import OrdersTableBlock from '../tables/OrdersTableBlock.vue'
 import BulkActionsTableBlock from '../tables/BulkActionsTableBlock.vue'
 import SupplierFormBlock from '../forms/SupplierFormBlock.vue'
@@ -20,6 +21,10 @@ import ConfirmPopupBlock from '../popups/ConfirmPopupBlock.vue'
 import RecordPopoverBlock from '../popups/RecordPopoverBlock.vue'
 import ActionsMenuBlock from '../popups/ActionsMenuBlock.vue'
 import OrderEntryBlock from '../order-entry/OrderEntryBlock.vue'
+import { STANDARD_VAT_RATE, taxableOf, vatOf } from '../documents/documents'
+import OperationsDashboardBlock from '../page-templates/OperationsDashboardBlock.vue'
+import SupplierListDetailBlock from '../page-templates/SupplierListDetailBlock.vue'
+import { createDocsRouter } from '@/layouts/__tests__/docs-router'
 
 enableAutoUnmount(afterEach)
 beforeEach(() => {
@@ -460,4 +465,156 @@ it('uses the selected credit resolution and blocks an empty or undeliverable ord
     /\b0$/,
   )
   expect(button(wrapper, /Confirm order/).attributes('disabled')).toBeDefined()
+})
+
+it('charges VAT only on standard-rated invoice lines', () => {
+  const lines = [
+    { price: 1200, quantity: 12, vatRate: 0 },
+    { price: 150, quantity: 18, vatRate: STANDARD_VAT_RATE },
+    { price: 1500, quantity: 1, vatRate: STANDARD_VAT_RATE },
+  ]
+  expect(taxableOf(lines)).toBe(4200)
+  expect(vatOf(lines)).toBe(672)
+  expect(vatOf([{ price: 1200, quantity: 12, vatRate: 0 }])).toBe(0)
+})
+
+it('applies dashboard filters to the KPIs, chart data, and recent orders together', async () => {
+  // jsdom has no canvas context; Chart.js skips drawing and the text alternatives still render.
+  const canvas = vi.spyOn(HTMLCanvasElement.prototype, 'getContext').mockReturnValue(null)
+  onTestFinished(() => canvas.mockRestore())
+  const wrapper = mount(OperationsDashboardBlock, options)
+  await flushPromises()
+  const kpi = (label: string) =>
+    wrapper.findAll('dt').find((term) => term.text() === label)!.element.nextElementSibling!
+      .textContent
+  const orderRows = () =>
+    wrapper.findAll('table[aria-label="Recent orders"] tbody tr').map((row) => row.text())
+  const regionChartRows = () =>
+    wrapper
+      .findAll('caption')
+      .find((caption) => /region and channel/.test(caption.text()))!
+      .element.closest('table')!
+      .querySelectorAll('tbody th[scope="row"]')
+
+  expect(kpi('Orders')).toBe('11')
+  expect(regionChartRows()).toHaveLength(4)
+
+  const regionLabel = wrapper.findAll('label').find((label) => label.text() === 'Region')!
+  await selectOption(document.getElementById(regionLabel.attributes('for')!)!, 'Mombasa')
+
+  expect(kpi('Orders')).toBe('2')
+  expect(kpi('Needs attention')).toBe('1')
+  expect(orderRows()).toHaveLength(2)
+  expect(orderRows().join()).toContain('FTF-1060')
+  expect(orderRows().join()).toContain('FTF-1053')
+  expect(Array.from(regionChartRows(), (row) => row.textContent)).toEqual(['Mombasa'])
+  expect(wrapper.get('[role="status"]').text()).toMatch(/^2 orders match/)
+})
+
+async function mountSuppliers(url: string) {
+  const router = createDocsRouter()
+  router.addRoute({
+    path: '/ui-blocks/page-templates',
+    name: 'blocks-page-templates',
+    component: SupplierListDetailBlock,
+  })
+  await router.push(url)
+  await router.isReady()
+  const wrapper = mount(defineComponent({ render: () => h(RouterView) }), {
+    ...options,
+    global: { ...options.global, plugins: [...options.global.plugins, router] },
+  })
+  await flushPromises()
+  return { router, wrapper }
+}
+const heading = (wrapper: VueWrapper) => wrapper.get('h3').text()
+const drawerOpen = () => !!document.querySelector('[role="dialog"] form')
+const confirmButton = (text: RegExp) =>
+  Array.from(document.querySelectorAll<HTMLButtonElement>('[role="alertdialog"] button')).find(
+    (button) => text.test(button.textContent?.trim() ?? ''),
+  )!
+const goBack = async (router: ReturnType<typeof createDocsRouter>) => {
+  router.back()
+  await flushPromises()
+}
+
+it('restores the supplier view from the query and falls back to the list for unknown values', async () => {
+  const { router, wrapper } = await mountSuppliers(
+    '/ui-blocks/page-templates?supplier=SUP-202&supplierView=edit&tab=code',
+  )
+  expect(heading(wrapper)).toBe('Kirinyaga Tomato Growers')
+  expect(drawerOpen()).toBe(true)
+  wrapper.unmount()
+
+  const unknown = await mountSuppliers(
+    '/ui-blocks/page-templates?supplier=SUP-999&supplierView=edit&supplierQ=onion&tab=code',
+  )
+  expect(heading(unknown.wrapper)).toBe('Suppliers')
+  expect(drawerOpen()).toBe(false)
+  expect(unknown.wrapper.get('tbody').text()).toContain('Nakuru Onion Collective')
+  expect(unknown.wrapper.get('tbody').text()).not.toContain('Limuru Greens Co-op')
+  // Invalid keys are dropped; keys owned by other parts of the page are kept.
+  expect(unknown.router.currentRoute.value.query).toEqual({ supplierQ: 'onion', tab: 'code' })
+  expect(router).not.toBe(unknown.router)
+})
+
+it('adds history entries for opening a supplier and its edit form so Back returns through them', async () => {
+  const { router, wrapper } = await mountSuppliers('/ui-blocks/page-templates')
+  await wrapper.get('input[aria-label="Search suppliers"]').setValue('kiri')
+  await flushPromises()
+  expect(router.currentRoute.value.query).toEqual({ supplierQ: 'kiri' })
+
+  await button(wrapper, /Kirinyaga/).trigger('click')
+  await flushPromises()
+  expect(router.currentRoute.value.query).toEqual({ supplier: 'SUP-202', supplierQ: 'kiri' })
+  await button(wrapper, /Edit supplier/).trigger('click')
+  await flushPromises()
+  expect(router.currentRoute.value.query.supplierView).toBe('edit')
+  expect(drawerOpen()).toBe(true)
+
+  await goBack(router)
+  expect(router.currentRoute.value.query).toEqual({ supplier: 'SUP-202', supplierQ: 'kiri' })
+  await expect.poll(drawerOpen).toBe(false)
+  expect(heading(wrapper)).toBe('Kirinyaga Tomato Growers')
+  await goBack(router)
+  expect(heading(wrapper)).toBe('Suppliers')
+  expect(wrapper.get<HTMLInputElement>('input[aria-label="Search suppliers"]').element.value).toBe(
+    'kiri',
+  )
+})
+
+it('asks before Back or leaving the page discards unsaved supplier edits', async () => {
+  const { router, wrapper } = await mountSuppliers('/ui-blocks/page-templates')
+  await button(wrapper, /Limuru/).trigger('click')
+  await flushPromises()
+  await button(wrapper, /Edit supplier/).trigger('click')
+  await flushPromises()
+  const name = () =>
+    document.getElementById(
+      Array.from(document.querySelectorAll('label'))
+        .find((label) => label.textContent?.trim() === 'Supplier name')!
+        .getAttribute('for')!,
+    ) as HTMLInputElement
+  name().value = 'Limuru Fresh'
+  name().dispatchEvent(new Event('input'))
+  await flushPromises()
+
+  await goBack(router)
+  expect(document.querySelector('[role="alertdialog"]')).not.toBeNull()
+  await click(confirmButton(/Keep editing/))
+  expect(router.currentRoute.value.query.supplierView).toBe('edit')
+  expect(name().value).toBe('Limuru Fresh')
+
+  // The leave guard waits for the confirmation, so answer it before the navigation settles.
+  const leaving = router.push('/ui-blocks/documents')
+  await flushPromises()
+  await click(confirmButton(/Keep editing/))
+  await leaving
+  expect(router.currentRoute.value.path).toBe('/ui-blocks/page-templates')
+
+  await goBack(router)
+  await click(confirmButton(/Discard changes/))
+  expect(router.currentRoute.value.query).toEqual({ supplier: 'SUP-201' })
+  await expect.poll(drawerOpen).toBe(false)
+  expect(heading(wrapper)).toBe('Limuru Greens Co-op')
 })

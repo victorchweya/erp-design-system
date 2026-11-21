@@ -27,11 +27,11 @@ const durationGuide: Record<DurationName, { tailwind: string; use: string }> = {
   },
   base: {
     tailwind: 'duration-200',
-    use: 'PrimeVue state changes, expanders, popovers, and the app shell sidebar',
+    use: 'PrimeVue state changes, expanders, and the app shell sidebar',
   },
   slow: {
     tailwind: 'duration-300',
-    use: 'Overlay masks and backdrops behind dialogs and drawers',
+    use: 'Dialog and Drawer panels and their masks. PrimeVue popovers, menus, and select panels also open in 300ms, with their own curve',
   },
 }
 const easingGuide: Record<EasingName, { tailwind: string; use: string }> = {
@@ -202,8 +202,9 @@ export const semantic = {
             The preset’s <code class="text-color">transitionDuration</code> uses
             <code class="text-color">base</code>, so PrimeVue colour, border, and focus changes run
             at {{ motionDurations.base }}. Overlay masks use <code class="text-color">slow</code>.
-            Some PrimeVue overlay animations, such as Dialog and Drawer, keep durations from
-            PrimeVue’s own component styles.
+            Dialog and Drawer also open and close at <code class="text-color">slow</code>, with the
+            <code class="text-color">enter</code> and <code class="text-color">exit</code> curves,
+            so the panel and its mask move together.
           </p>
         </section>
 

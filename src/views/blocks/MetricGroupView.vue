@@ -6,7 +6,7 @@ import code from '@/components/blocks/metrics/MetricGroupBlock.vue?raw'
 const examples = [
   {
     id: 'metric-group',
-    title: 'Metric Group',
+    title: 'Metric group',
     description: 'A titled section for metrics that share one subject and reporting period.',
     component: MetricGroupBlock,
     code,
@@ -17,7 +17,7 @@ const examples = [
 
 <template>
   <BlockDoc
-    title="Metric Group"
+    title="Metric group"
     description="A dashboard section that gives related metrics shared context."
     :usage="[
       'Name the subject once in the section header instead of repeating it in every card.',

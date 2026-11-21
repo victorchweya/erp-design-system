@@ -49,6 +49,7 @@ export const writingGuidelines: readonly WritingGuideline[] = [
     rules: [
       'Capitalise only the first word and proper nouns, such as Nairobi, Green Basket Kitchen, or DatePicker.',
       'Write acronyms in capitals: FTF, SKU, KES.',
+      'Keep the brand tagline as written: Shaping the Future of Food.',
       'Write order statuses as they appear in the product: Confirmed, Pending, Cancelled.',
     ],
     examples: [

@@ -15,7 +15,7 @@ const examples = [
 </script>
 <template>
   <BlockDoc
-    title="Radar Chart"
+    title="Radar chart"
     description="Multi-measure profiles for scorecards and target comparisons."
     :usage="[
       'Keep every axis on the same scale and limit the number of profiles.',

@@ -85,10 +85,12 @@ it('keeps the public PrimeVue typography scale aligned with default Tailwind uti
     'treeselect.font.size',
     'textarea.font.size',
     'togglebutton.font.size',
+    'label.font.size',
   ]) {
     expect($dt(token).value).toBe(fontSizes.sm[0])
   }
   expect($dt('typography.font.size').value).toBe(fontSizes.base[0])
+  expect($dt('label.font.weight').value).toBe(fontWeights.medium)
   expect($dt('typography.line.height').value).toBe('1.5')
   expect($dt('button.sm.font.size').value).toBe(fontSizes.sm[0])
   expect($dt('inputtext.lg.font.size').value).toBe(fontSizes.base[0])

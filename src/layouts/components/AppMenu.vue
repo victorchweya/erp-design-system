@@ -59,7 +59,7 @@ const groups: MenuGroup[] = [
     items: blockPages
       .filter((page) => !page.group)
       .map((page) => ({ label: page.label, to: page.path })),
-    groups: ['KPI / Metric Card', 'Charts', 'ERP patterns'].map((label) => ({
+    groups: ['KPI / metric card', 'Charts', 'ERP patterns'].map((label) => ({
       label,
       items: blockPages
         .filter((page) => page.group === label)

@@ -14,6 +14,9 @@ const draft = ref<SupplierDetails>({ ...props.supplier })
 const errors = ref<Partial<Record<'name' | 'phone', string>>>({})
 const submitted = shallowRef(false)
 const confirmOpen = shallowRef(false)
+// Set once the edit is saved or discarded, so closing does not ask again.
+let settled = false
+let pendingConfirm: Promise<boolean> | null = null
 
 // Start each edit from the saved record so cancelled changes never leak back in.
 watch(visible, (open) => {
@@ -21,6 +24,7 @@ watch(visible, (open) => {
   draft.value = { ...props.supplier }
   errors.value = {}
   submitted.value = false
+  settled = false
 })
 
 const dirty = computed(() =>
@@ -45,32 +49,46 @@ function save() {
     return
   }
   emit('save', { ...draft.value, name: draft.value.name.trim(), phone: draft.value.phone.trim() })
+  settled = true
   visible.value = false
 }
 
-// Every close path (Cancel, close icon, Escape) goes through the unsaved-changes guard.
-function requestClose() {
-  if (!dirty.value) {
-    visible.value = false
-    return
-  }
-  confirmOpen.value = true
-  confirm.require({
-    group: id,
-    header: 'Discard unsaved changes?',
-    message: 'Your edits to this supplier have not been saved. Discard them and close the form?',
-    icon: ExclamationTriangle,
-    defaultFocus: 'reject',
-    rejectProps: { label: 'Keep editing', severity: 'secondary', outlined: true },
-    acceptProps: { label: 'Discard changes', severity: 'danger' },
-    accept: () => {
+/**
+ * Resolves true when the form can close: nothing changed, or the user chose to discard.
+ * Exposed so the parent can run the same check before navigation, such as browser Back.
+ */
+function confirmDiscard(): Promise<boolean> {
+  if (settled || !dirty.value) return Promise.resolve(true)
+  pendingConfirm ??= new Promise<boolean>((resolve) => {
+    const finish = (discard: boolean) => {
       confirmOpen.value = false
-      visible.value = false
-    },
-    reject: () => (confirmOpen.value = false),
-    onHide: () => (confirmOpen.value = false),
+      pendingConfirm = null
+      if (discard) settled = true
+      resolve(discard)
+    }
+    confirmOpen.value = true
+    confirm.require({
+      group: id,
+      header: 'Discard unsaved changes?',
+      message: 'Your edits to this supplier have not been saved. Discard them and close the form?',
+      icon: ExclamationTriangle,
+      defaultFocus: 'reject',
+      rejectProps: { label: 'Keep editing', severity: 'secondary', outlined: true },
+      acceptProps: { label: 'Discard changes', severity: 'danger' },
+      accept: () => finish(true),
+      reject: () => finish(false),
+      onHide: () => finish(false),
+    })
   })
+  return pendingConfirm
 }
+
+// Every close path (Cancel, close icon, Escape) goes through the unsaved-changes guard.
+async function requestClose() {
+  if (await confirmDiscard()) visible.value = false
+}
+
+defineExpose({ confirmDiscard })
 
 function onVisibleUpdate(value: boolean) {
   if (!value && !confirmOpen.value) requestClose()

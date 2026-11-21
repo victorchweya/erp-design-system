@@ -53,7 +53,7 @@ it('renders the color documentation without internal audit notes', () => {
     'Brand',
     'Background',
     'Text',
-    'Borders & Inputs',
+    'Borders & inputs',
     'Status',
     'Palette',
     'Shadows',

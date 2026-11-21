@@ -9,6 +9,7 @@ import supplierListCode from '@/components/blocks/page-templates/SupplierListPan
 import supplierDetailCode from '@/components/blocks/page-templates/SupplierDetailPanel.vue?raw'
 import supplierEditCode from '@/components/blocks/page-templates/SupplierEditDrawer.vue?raw'
 import suppliersCode from '@/components/blocks/page-templates/suppliers.ts?raw'
+import supplierRouteCode from '@/components/blocks/page-templates/useSupplierRoute.ts?raw'
 import OperationsDashboardBlock from '@/components/blocks/page-templates/OperationsDashboardBlock.vue'
 import dashboardBlockCode from '@/components/blocks/page-templates/OperationsDashboardBlock.vue?raw'
 import recentOrdersCode from '@/components/blocks/page-templates/DashboardRecentOrders.vue?raw'
@@ -40,7 +41,7 @@ const examples: {
     id: 'list-detail-edit',
     title: 'List, detail, and edit',
     description:
-      'Search suppliers, open one to review its overview, orders, and activity, then edit it in a drawer. Changes apply only on save, and cancelling with unsaved edits asks for confirmation.',
+      'Search suppliers, open one to review its overview, orders, and activity, then edit it in a drawer. The search, selected supplier, and edit view are kept in the URL. Changes apply only on save, and leaving the form with unsaved edits, including with the browser’s back button, asks for confirmation.',
     component: SupplierListDetailBlock,
     files: [
       { name: 'SupplierListDetailBlock.vue', code: supplierBlockCode },
@@ -48,13 +49,14 @@ const examples: {
       { name: 'SupplierDetailPanel.vue', code: supplierDetailCode },
       { name: 'SupplierEditDrawer.vue', code: supplierEditCode },
       { name: 'suppliers.ts', code: suppliersCode },
+      { name: 'useSupplierRoute.ts', code: supplierRouteCode },
     ],
   },
   {
     id: 'dashboard',
     title: 'Dashboard',
     description:
-      'An operations overview with date range and filters, KPIs, two charts, recent orders, and alerts and tasks. Columns stack when the container is narrow.',
+      'An operations overview with date range and filters, KPIs, two charts, recent orders, and alerts and tasks. The filters update the KPIs, charts, and orders together. Columns stack when the container is narrow.',
     component: OperationsDashboardBlock,
     files: [
       { name: 'OperationsDashboardBlock.vue', code: dashboardBlockCode },
@@ -121,15 +123,18 @@ function sourceOf(example: (typeof examples)[number]) {
             chart blocks from their existing folders.
           </p>
           <p class="leading-relaxed text-muted">
-            Templates keep their state locally. The supplier template switches between list and
-            detail without changing the URL; use routes for these views in the ERP so they can be
-            bookmarked and opened with the browser’s back button. Focus moves to each new view’s
+            The supplier template keeps its search, selected supplier, and edit view in the page’s
+            query string (<code>supplierQ</code>, <code>supplier</code>, and
+            <code>supplierView=edit</code>), so refresh, shared links, and the browser’s back button
+            restore the same view. Opening a supplier or the edit form adds a history entry; typing
+            a search replaces it. Unknown values fall back to the list. In the ERP, give these views
+            their own routes if they need separate page titles. Focus moves to each new view’s
             heading and returns to the row or button that opened it.
           </p>
           <p class="leading-relaxed text-muted">
-            In the dashboard, filters apply to recent orders only; KPIs and charts show static
-            sample data. Connect suppliers, orders, metrics, settings, and save actions to your
-            services before use.
+            In the dashboard, the KPIs, both charts, and recent orders all derive from one filtered
+            sample dataset. Settings keep their state locally. Connect suppliers, orders, metrics,
+            settings, and save actions to your services before use.
           </p>
         </section>
         <section

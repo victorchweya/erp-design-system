@@ -15,7 +15,7 @@ const examples = [
 </script>
 <template>
   <BlockDoc
-    title="Stacked Chart"
+    title="Stacked chart"
     description="Composition and total change across categories or time."
     :usage="[
       'Keep stack order and colours consistent across every bar.',

@@ -2,14 +2,16 @@
 import { computed, shallowRef, useId } from 'vue'
 import DocumentShell from './DocumentShell.vue'
 import {
-  EXAMPLE_VAT_RATE,
+  STANDARD_VAT_RATE,
   date,
   invoice,
   invoiceSeverity,
   invoiceStatuses,
   lineTotal,
   money,
+  isVatExempt,
   subtotalOf,
+  taxableOf,
   vatOf,
   type InvoiceStatus,
 } from './documents'
@@ -17,9 +19,10 @@ import {
 const id = useId()
 const status = shallowRef<InvoiceStatus>('Issued')
 const subtotal = subtotalOf(invoice.lines)
-const vat = vatOf(subtotal)
+const taxable = taxableOf(invoice.lines)
+const vat = vatOf(invoice.lines)
 const total = subtotal + vat
-const vatLabel = `VAT ${EXAMPLE_VAT_RATE * 100}% (example rate)`
+const standardRate = `${STANDARD_VAT_RATE * 100}%`
 
 const meta = [
   { label: 'Invoice date', value: date(invoice.issued) },
@@ -80,7 +83,7 @@ const statusNote = computed(
     </div>
 
     <div class="overflow-x-auto print:overflow-visible">
-      <table class="w-full min-w-[32rem] border-collapse text-left print:min-w-0">
+      <table class="w-full min-w-[36rem] border-collapse text-left print:min-w-0">
         <caption class="sr-only">
           Invoice line items
         </caption>
@@ -89,6 +92,7 @@ const statusNote = computed(
             <th scope="col" class="py-2 pr-3 font-medium">Item</th>
             <th scope="col" class="px-3 py-2 text-right font-medium">Qty</th>
             <th scope="col" class="px-3 py-2 text-right font-medium">Unit price</th>
+            <th scope="col" class="px-3 py-2 text-right font-medium">VAT</th>
             <th scope="col" class="py-2 pl-3 text-right font-medium">Amount</th>
           </tr>
         </thead>
@@ -105,6 +109,9 @@ const statusNote = computed(
             <td class="px-3 py-3 text-right tabular-nums">{{ line.quantity }}</td>
             <td class="whitespace-nowrap px-3 py-3 text-right tabular-nums">
               {{ money(line.price) }}
+            </td>
+            <td class="whitespace-nowrap px-3 py-3 text-right">
+              {{ isVatExempt(line) ? 'Exempt' : standardRate }}
             </td>
             <td class="whitespace-nowrap py-3 pl-3 text-right tabular-nums">
               {{ money(lineTotal(line)) }}
@@ -123,7 +130,7 @@ const statusNote = computed(
         <dd class="tabular-nums">{{ money(subtotal) }}</dd>
       </div>
       <div class="flex justify-between gap-4">
-        <dt class="text-muted">{{ vatLabel }}</dt>
+        <dt class="text-muted">VAT {{ standardRate }} on {{ money(taxable) }}</dt>
         <dd class="tabular-nums">{{ money(vat) }}</dd>
       </div>
       <div class="flex justify-between gap-4 border-t border-surface pt-3">
@@ -152,8 +159,8 @@ const statusNote = computed(
       </dl>
       <p class="text-xs text-muted">
         Quote the invoice number with every payment. These payment details are placeholders; do not
-        send money to them. {{ vatLabel }} is shown for layout only; confirm each product’s VAT
-        treatment with finance.
+        send money to them. The VAT split is an example (fresh produce exempt, packaging and
+        delivery at {{ standardRate }}); confirm each product’s VAT treatment with finance.
       </p>
     </section>
   </DocumentShell>

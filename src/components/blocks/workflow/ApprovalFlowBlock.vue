@@ -5,7 +5,6 @@ import { useConfirm } from 'primevue/useconfirm'
 import Check from '@primeicons/vue/check'
 import Clock from '@primeicons/vue/clock'
 import Times from '@primeicons/vue/times'
-import Circle from '@primeicons/vue/circle'
 import CheckCircle from '@primeicons/vue/check-circle'
 import { formatCurrency } from '@/utils/format'
 import ApprovalHistory from './ApprovalHistory.vue'
@@ -61,7 +60,8 @@ const markerClass: Record<StepState, string> = {
   upcoming: 'border border-surface text-muted',
   rejected: 'bg-danger text-danger-contrast',
 }
-const markerIcon = { done: Check, current: Clock, upcoming: Circle, rejected: Times }
+// Upcoming steps show a small dot instead of an icon.
+const markerIcon = { done: Check, current: Clock, upcoming: null, rejected: Times }
 
 const steps = computed(() => {
   const s = stage.value
@@ -243,7 +243,11 @@ function reset() {
                 :class="markerClass[item.state as StepState]"
                 aria-hidden="true"
               >
-                <component :is="markerIcon[item.state as StepState]" />
+                <component
+                  :is="markerIcon[item.state as StepState]"
+                  v-if="markerIcon[item.state as StepState]"
+                />
+                <span v-else class="size-2 rounded-full bg-current" />
               </span>
             </template>
             <template #content="{ item }">

@@ -7,8 +7,25 @@ const theme = useChartTheme()
 type AreaVariant = 'Basic' | 'Gradient' | 'Step' | 'Smooth'
 const variants: AreaVariant[] = ['Basic', 'Gradient', 'Step', 'Smooth']
 const variant = shallowRef<AreaVariant>('Gradient')
-const labels = ['Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov']
-const values = [12.4, 14.8, 13.9, 17.2, 18.6, 21.4]
+const {
+  title = 'Revenue trend',
+  subtitle = 'Monthly revenue · June–November 2026',
+  labels = ['Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov'],
+  values = [12.4, 14.8, 13.9, 17.2, 18.6, 21.4],
+  unit = 'M',
+  summary = 'Monthly revenue increased from Ksh 12.4 million in June to Ksh 21.4 million in November.',
+  caption = 'Monthly revenue in millions of Kenyan shillings',
+} = defineProps<{
+  title?: string
+  subtitle?: string
+  labels?: string[]
+  /** Revenue in Kenyan shillings, scaled to `unit` (for example 12.4 with unit M). */
+  values?: number[]
+  unit?: string
+  /** Canvas label describing the trend. */
+  summary?: string
+  caption?: string
+}>()
 const background = (context: ScriptableContext<'line'>) => {
   if (variant.value !== 'Gradient' || !context.chart.chartArea) return `${theme.value.kale}20`
   const gradient = context.chart.ctx.createLinearGradient(
@@ -41,13 +58,13 @@ const options = computed(() => ({
   maintainAspectRatio: false,
   plugins: {
     legend: { display: false },
-    tooltip: { callbacks: { label: ({ raw }: { raw: unknown }) => `Ksh ${raw}M` } },
+    tooltip: { callbacks: { label: ({ raw }: { raw: unknown }) => `Ksh ${raw}${unit}` } },
   },
   scales: {
     x: { ticks: { color: theme.value.muted }, grid: { display: false } },
     y: {
       beginAtZero: true,
-      ticks: { color: theme.value.muted, callback: (value: string | number) => `${value}M` },
+      ticks: { color: theme.value.muted, callback: (value: string | number) => `${value}${unit}` },
       grid: { color: theme.value.border },
     },
   },
@@ -56,8 +73,10 @@ const options = computed(() => ({
 
 <template>
   <Card>
-    <template #title><h3 class="text-lg font-medium">Revenue trend</h3></template>
-    <template #subtitle>Monthly revenue · June–November 2026</template>
+    <template #title
+      ><h3 class="text-lg font-medium">{{ title }}</h3></template
+    >
+    <template #subtitle>{{ subtitle }}</template>
     <template #content>
       <SelectButton
         v-model="variant"
@@ -71,16 +90,14 @@ const options = computed(() => ({
         type="line"
         :data="data"
         :options="options"
-        :canvasProps="{
-          role: 'img',
-          'aria-label':
-            'Monthly revenue increased from Ksh 12.4 million in June to Ksh 21.4 million in November.',
-        }"
+        :canvasProps="{ role: 'img', 'aria-label': summary }"
         class="h-72"
       />
       <table class="sr-only">
         <caption>
-          Monthly revenue in millions of Kenyan shillings
+          {{
+            caption
+          }}
         </caption>
         <tbody>
           <tr v-for="(label, index) in labels" :key="label">
