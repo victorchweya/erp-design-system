@@ -1,5 +1,8 @@
 <script setup lang="ts">
 import AnchorNav from '@/components/AnchorNav.vue'
+import CodeExample from '@/components/CodeExample.vue'
+import ColorAccentExample from '@/components/foundations/color/ColorAccentExample.vue'
+import accentCode from '@/components/foundations/color/ColorAccentExample.vue?raw'
 import ColorBrand from '@/components/foundations/color/ColorBrand.vue'
 import ColorInputs from '@/components/foundations/color/ColorInputs.vue'
 import ColorPalette from '@/components/foundations/color/ColorPalette.vue'
@@ -17,11 +20,45 @@ const sections = [
   { id: 'color-text', label: 'Text' },
   { id: 'color-inputs', label: 'Borders & inputs' },
   { id: 'color-status', label: 'Status' },
+  { id: 'color-accent', label: 'Colour roles' },
   { id: 'color-palette', label: 'Palette' },
   { id: 'color-shadows', label: 'Shadows' },
   { id: 'color-token-table', label: 'Token table' },
 ]
 const activeSection = useActiveSection(sections.map((section) => section.id))
+// Decorative borders are listed in the token table; the swatches show the main roles.
+const accentRoles = colorRoles.filter((role) => role.group === 'accent' && !role.kind)
+const accentGuide = [
+  {
+    role: 'Primary action and done',
+    colour: 'Kale',
+    utilities: 'bg-primary text-primary-contrast',
+    use: 'The main button, completed steps, ticked items, and one solid status tag per page.',
+    avoid: 'Every tag in a list; keep list tags pale.',
+  },
+  {
+    role: 'Selected',
+    colour: 'Kale tint',
+    utilities: 'bg-highlight',
+    use: 'The current item in a sidebar, settings menu, or list.',
+    avoid: 'Grey selected states.',
+  },
+  {
+    role: 'Cream panel',
+    colour: 'Cream',
+    utilities: 'bg-note text-note border-note',
+    use: 'Panels and bars holding a decision or action, such as approvals and unsaved changes, and changed cells.',
+    avoid:
+      'A box around a sentence or a comment; that reads as a Message. Use Message for messages, and keep form fields and tables neutral.',
+  },
+  {
+    role: 'Live now',
+    colour: 'Carrot',
+    utilities: 'text-live, bg-live, border-live',
+    use: 'The current step, “now”, and values updating in real time.',
+    avoid: 'Errors or counts; those stay red.',
+  },
+]
 const roleSections = (
   [
     {
@@ -141,6 +178,39 @@ const roleSections = (
           <ColorInputs v-if="section.id === 'inputs'" />
           <ColorStatus v-else-if="section.id === 'status'" />
           <ColorRoleList v-else :roles="section.roles" />
+        </section>
+
+        <section
+          id="color-accent"
+          aria-labelledby="color-accent-title"
+          class="flex scroll-mt-24 flex-col gap-4"
+        >
+          <h2 id="color-accent-title" class="text-2xl font-medium">Colour roles</h2>
+          <p class="text-muted-color">
+            Give each brand colour one job so screens carry the FTF palette without becoming noisy.
+            Keep form fields, tables, and body text neutral; put colour around them. Every text
+            pairing below reaches 4.5:1 and every marker 3:1, in light and dark mode.
+          </p>
+          <DataTable
+            :value="accentGuide"
+            size="small"
+            showGridlines
+            aria-label="Colour roles and when to use them"
+          >
+            <Column field="role" header="Role" />
+            <Column field="colour" header="Colour" />
+            <Column field="utilities" header="Utilities"
+              ><template #body="{ data }"
+                ><code>{{ data.utilities }}</code></template
+              ></Column
+            >
+            <Column field="use" header="Use for" />
+            <Column field="avoid" header="Don’t use for" />
+          </DataTable>
+          <ColorRoleList :roles="accentRoles" />
+          <CodeExample title="Colour roles in context" :code="accentCode"
+            ><ColorAccentExample
+          /></CodeExample>
         </section>
 
         <section

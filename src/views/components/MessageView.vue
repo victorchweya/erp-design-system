@@ -37,7 +37,8 @@ const examples = [
   {
     id: 'icon',
     title: 'Icons',
-    description: 'Use the icon slot when the default severity icon does not describe the event.',
+    description:
+      'Messages have no icon by default. Add one with the icon slot when it helps people recognise the event.',
     component: MessageIconExample,
     code: iconCode,
   },

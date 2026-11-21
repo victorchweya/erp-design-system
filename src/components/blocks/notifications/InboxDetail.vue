@@ -19,7 +19,12 @@ defineExpose({ focus: () => heading.value?.focus() })
   >
     <template v-if="item">
       <div class="flex flex-col gap-2">
-        <Tag severity="secondary" class="self-start">{{ notificationTypes[item.type].label }}</Tag>
+        <Tag
+          :severity="item.type === 'approvals' ? undefined : 'secondary'"
+          class="self-start"
+          :class="{ 'bg-note text-note': item.type === 'approvals' }"
+          >{{ notificationTypes[item.type].label }}</Tag
+        >
         <h3 :id="`${id}-title`" ref="heading" tabindex="-1" class="text-lg font-medium">
           {{ item.title }}
         </h3>

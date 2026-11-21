@@ -34,11 +34,11 @@ const metrics = [
 <template>
   <section
     aria-labelledby="warehouse-summary-title"
-    class="rounded-lg bg-ftf-yellow-100 p-4 dark:bg-ftf-yellow-900/20 sm:p-6"
+    class="rounded-lg bg-note p-4 text-note sm:p-6"
   >
     <header class="mb-4">
       <h3 id="warehouse-summary-title" class="text-lg font-medium">Warehouse summary</h3>
-      <p class="mt-1 text-sm text-muted">Throughput and efficiency for the selected period.</p>
+      <p class="mt-1 text-sm">Throughput and efficiency for the selected period.</p>
     </header>
     <div class="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
       <Card v-for="metric in metrics" :key="metric.label">

@@ -55,6 +55,7 @@ it('renders the color documentation without internal audit notes', () => {
     'Text',
     'Borders & inputs',
     'Status',
+    'Colour roles',
     'Palette',
     'Shadows',
     'Token table',
@@ -85,14 +86,14 @@ it('renders the color documentation without internal audit notes', () => {
   expect(brand.text()).toContain('Cream#FFF5DF')
   expect(brand.text()).toContain('Peach#F1D3AF')
   expect(brand.text()).toContain('Ochre#E0AF62')
-  expect(wrapper.get('table').attributes('aria-label')).toBe('FTF color token reference')
+  expect(wrapper.get('#color-token-table table').attributes('aria-label')).toBe('FTF color token reference')
   expect(wrapper.text()).not.toContain('Proposal')
   expect(wrapper.text()).not.toContain('FTF v1 decision')
   expect(wrapper.text()).not.toContain('Verified in legacy FTF')
   expect(wrapper.text()).not.toContain('Foundation decisions')
   expect(wrapper.text()).not.toContain('ftf-presets.ts')
   expect(wrapper.findAll('th').map((heading) => heading.text())).not.toContain('Evidence')
-  const table = wrapper.get('table')
+  const table = wrapper.get('#color-token-table table')
   expect(table.findAll('th').map((heading) => heading.text())).toEqual([
     'Role',
     'Token',

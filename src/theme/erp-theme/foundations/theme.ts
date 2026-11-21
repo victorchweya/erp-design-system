@@ -27,7 +27,11 @@ function semanticScheme(mode: Mode) {
   const primary = role('primary.color')
   const highlight = role('highlight.background')
   const highlightFocus = role('highlight.focus.background')
+  const note = role('note.background')
   return {
+    // Accent roles: note (Cream) and live (Carrot). See color-tokens.ts.
+    note: { ...note, borderColor: role('note.border.color').color },
+    live: { color: role('live.color').color, markerColor: role('live.marker.color').color },
     chart: Object.fromEntries(chartSeries.map((series) => [series.key, `{ftf.${series[mode]}}`])),
     primary: {
       color: primary.background,

@@ -168,7 +168,7 @@ function discard() {
               :key="role"
               class="border-b border-l border-surface p-3 text-center"
               :class="{
-                'bg-highlight': role !== 'Admin' && changedKeys.has(key(role, permission)),
+                'bg-note': role !== 'Admin' && changedKeys.has(key(role, permission)),
               }"
             >
               <Checkbox

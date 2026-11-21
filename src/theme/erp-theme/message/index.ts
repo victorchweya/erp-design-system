@@ -316,6 +316,8 @@ export const colorScheme = {
     }
 };
 
+// FTF decision: message text uses the body text colour; the severity colour stays on the
+// background, border, and icon. Outlined and simple variants keep their severity text.
 export const css = /*css*/ `
     :is(
         .p-message-info,
@@ -325,55 +327,6 @@ export const css = /*css*/ `
         .p-message-secondary
     ):not(.p-message-outlined):not(.p-message-simple) .p-message-text {
         color: dt('content.color');
-    }
-
-    .p-message:not(.p-message-simple)
-        .p-message-content:not(:has(> :is(.p-message-icon, svg, i)))::before {
-        content: var(--p-message-symbol);
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        flex: 0 0 auto;
-        width: dt('message.icon.size');
-        height: dt('message.icon.size');
-        border: 1.5px solid currentColor;
-        border-radius: 50%;
-        font-size: 0.75em;
-        font-weight: dt('font.weight.medium');
-        line-height: 1;
-    }
-
-    .p-message-sm:not(.p-message-simple)
-        .p-message-content:not(:has(> :is(.p-message-icon, svg, i)))::before {
-        width: dt('message.icon.sm.size');
-        height: dt('message.icon.sm.size');
-    }
-
-    .p-message-lg:not(.p-message-simple)
-        .p-message-content:not(:has(> :is(.p-message-icon, svg, i)))::before {
-        width: dt('message.icon.lg.size');
-        height: dt('message.icon.lg.size');
-    }
-
-    .p-message-info,
-    .p-message-secondary {
-        --p-message-symbol: 'i';
-    }
-
-    .p-message-success {
-        --p-message-symbol: '✓';
-    }
-
-    .p-message-warn {
-        --p-message-symbol: '!';
-    }
-
-    .p-message-error {
-        --p-message-symbol: '×';
-    }
-
-    .p-message-contrast {
-        --p-message-symbol: '!';
     }
 `;
 

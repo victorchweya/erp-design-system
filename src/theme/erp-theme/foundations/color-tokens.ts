@@ -25,7 +25,7 @@ export interface ColorRole {
   backgroundToken: string
   scope?: 'component' | 'custom'
   purpose: string
-  group: 'brand' | 'surface' | 'text' | 'inputs' | 'status'
+  group: 'brand' | 'surface' | 'text' | 'inputs' | 'status' | 'accent'
   evidence: 'Verified' | 'FTF decision'
   source: string
   light: ColorPair
@@ -545,6 +545,61 @@ export const colorRoles: ColorRole[] = [
     source: 'ftf-presets.ts · semantic.highlight',
     light: pair('green.900', 'green.100'),
     dark: pair('neutral.0', 'green.700'),
+  },
+  // Accent roles give the brand colours a job beyond charts. See the Colour page.
+  {
+    name: 'note.background',
+    label: 'Note',
+    foregroundToken: 'note.color',
+    backgroundToken: 'note.background',
+    scope: 'custom',
+    purpose: 'Cream surface for panels and bars holding a decision or action, and changed cells.',
+    group: 'accent',
+    evidence: 'FTF decision',
+    source: 'FTF accent roles · Cream.',
+    light: pair('neutral.900', 'yellow.100'),
+    dark: pair('yellow.100', 'yellow.900'),
+  },
+  {
+    name: 'note.border.color',
+    label: 'Note border',
+    foregroundToken: 'note.border.color',
+    backgroundToken: 'note.background',
+    scope: 'custom',
+    purpose: 'Border and dividers on the note surface.',
+    group: 'accent',
+    evidence: 'FTF decision',
+    source: 'FTF accent roles · Cream border.',
+    light: pair('yellow.200', 'yellow.100'),
+    dark: pair('yellow.800', 'yellow.900'),
+    kind: 'decorative',
+  },
+  {
+    name: 'live.color',
+    label: 'Live now',
+    foregroundToken: 'live.color',
+    backgroundToken: 'content.background',
+    scope: 'custom',
+    purpose: 'Carrot text for the current step, “now”, and values updating in real time.',
+    group: 'accent',
+    evidence: 'FTF decision',
+    source: 'FTF accent roles · Carrot, darkened for text on white.',
+    light: pair('orange.800', 'neutral.0'),
+    dark: pair('orange.300', 'neutral.900'),
+  },
+  {
+    name: 'live.marker.color',
+    label: 'Live marker',
+    foregroundToken: 'live.marker.color',
+    backgroundToken: 'content.background',
+    scope: 'custom',
+    purpose: 'Carrot dot or ring marking the live item.',
+    group: 'accent',
+    evidence: 'FTF decision',
+    source: 'FTF accent roles · Carrot marker.',
+    light: pair('orange.600', 'neutral.0'),
+    dark: pair('orange.500', 'neutral.900'),
+    kind: 'icon',
   },
 ]
 

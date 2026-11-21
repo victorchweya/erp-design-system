@@ -54,9 +54,10 @@ const stateText: Record<StepState, string> = {
   upcoming: 'Not started',
   rejected: 'Rejected',
 }
+// Done steps use the Kale primary; the current step uses the Carrot live ring.
 const markerClass: Record<StepState, string> = {
-  done: 'bg-success text-success-contrast',
-  current: 'bg-warn text-warn-contrast',
+  done: 'bg-primary text-primary-contrast',
+  current: 'border-2 border-live text-live',
   upcoming: 'border border-surface text-muted',
   rejected: 'bg-danger text-danger-contrast',
 }
@@ -257,7 +258,9 @@ function reset() {
               >
                 <p class="font-medium">{{ item.label }}</p>
                 <p class="text-muted">{{ item.owner }}</p>
-                <p class="text-muted">{{ stateText[item.state as StepState] }}</p>
+                <p :class="item.state === 'current' ? 'text-live' : 'text-muted'">
+                  {{ stateText[item.state as StepState] }}
+                </p>
               </div>
             </template>
           </Timeline>
@@ -286,7 +289,12 @@ function reset() {
           blockedReason
         }}</Message>
 
-        <div v-if="isReviewStage" class="flex flex-wrap gap-2">
+        <!-- Cream surface only when the viewer is the one who must decide. -->
+        <div
+          v-if="isReviewStage"
+          class="flex flex-wrap gap-2 rounded-lg border p-4"
+          :class="canAct ? 'border-note bg-note text-note' : 'border-surface'"
+        >
           <Button
             type="button"
             :disabled="!canAct"
@@ -317,7 +325,11 @@ function reset() {
             >Reject</Button
           >
         </div>
-        <div v-else-if="stage === 'changes'" class="flex flex-wrap gap-2">
+        <div
+          v-else-if="stage === 'changes'"
+          class="flex flex-wrap gap-2 rounded-lg border p-4"
+          :class="canAct ? 'border-note bg-note text-note' : 'border-surface'"
+        >
           <Button
             type="button"
             :disabled="!canAct"

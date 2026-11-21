@@ -1,6 +1,12 @@
 <script setup lang="ts">
-import { computed, ref, useId } from 'vue'
+import { computed, ref, useId, type Component } from 'vue'
+import Box from '@primeicons/vue/box'
+import CreditCard from '@primeicons/vue/credit-card'
+import Truck from '@primeicons/vue/truck'
 import { alerts, initialTasks } from './dashboard'
+
+// Same pattern as the Message docs: default size with an icon that names the event.
+const alertIcons: Record<string, Component> = { credit: CreditCard, stock: Box, route: Truck }
 
 const id = useId()
 const tasks = ref(initialTasks.map((task) => ({ ...task })))
@@ -16,10 +22,8 @@ const remaining = computed(() => tasks.value.filter(({ done }) => !done).length)
         <section :aria-labelledby="`${id}-alerts`" class="flex flex-col gap-3">
           <h4 :id="`${id}-alerts`" class="text-sm font-medium">Alerts ({{ alerts.length }})</h4>
           <Message v-for="alert in alerts" :key="alert.id" :severity="alert.severity" size="small">
-            <span class="flex flex-col gap-1">
-              <strong class="font-medium">{{ alert.title }}</strong>
-              <span>{{ alert.detail }}</span>
-            </span>
+            <template #icon><component :is="alertIcons[alert.id]" aria-hidden="true" /></template>
+            {{ alert.title }}. {{ alert.detail }}
           </Message>
         </section>
         <section :aria-labelledby="`${id}-tasks`" class="flex flex-col gap-3">

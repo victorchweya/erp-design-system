@@ -23,7 +23,7 @@ const active = shallowRef('overview')
               </div>
               <div class="space-y-1">
                 <dt class="text-muted">Status</dt>
-                <dd><Tag severity="success">Confirmed</Tag></dd>
+                <dd><Tag class="bg-primary text-primary-contrast">Confirmed</Tag></dd>
               </div>
             </dl>
           </TabPanel>

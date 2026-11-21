@@ -143,7 +143,7 @@ function discard() {
             @click="discard"
             >Discard changes</Button
           >
-          <p role="status" class="text-muted">
+          <p role="status" :class="changed ? 'font-medium' : 'text-muted'">
             {{ changed ? 'You have unsaved changes.' : status }}
           </p>
         </div>

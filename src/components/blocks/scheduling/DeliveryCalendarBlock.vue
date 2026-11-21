@@ -229,14 +229,14 @@ function dayLabel(date: string) {
         v-for="day in week"
         :key="day.date"
         class="day flex min-w-0 flex-col gap-2 rounded-border border p-2"
-        :class="day.date === today ? 'border-primary' : 'border-surface'"
+        :class="day.date === today ? 'border-live' : 'border-surface'"
       >
         <h4 :id="`${id}-${day.date}`" class="flex items-baseline gap-2 font-medium">
           <span>{{ formatDay(day.date, { weekday: 'short' }) }}</span>
           <span class="text-muted">{{
             formatDay(day.date, { day: 'numeric', month: 'short' })
           }}</span>
-          <span v-if="day.date === today" class="text-xs text-primary">Today</span>
+          <span v-if="day.date === today" class="text-xs font-medium text-live">Today</span>
         </h4>
         <ul
           v-if="day.runs.length"
@@ -297,9 +297,10 @@ function dayLabel(date: string) {
                 v-if="cell.inMonth"
                 type="button"
                 text
-                :severity="cell.date === today ? undefined : 'secondary'"
+                severity="secondary"
                 fluid
                 :aria-current="cell.date === today ? 'date' : undefined"
+                :class="{ 'text-live': cell.date === today }"
                 :aria-label="`${dayLabel(cell.date)}, ${cell.count} ${cell.count === 1 ? 'run' : 'runs'}. Show week`"
                 class="flex-col items-start gap-1 p-1"
                 @click="showWeek(cell.date)"

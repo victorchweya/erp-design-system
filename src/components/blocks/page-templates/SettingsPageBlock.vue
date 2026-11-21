@@ -4,6 +4,7 @@ import { useToast } from 'primevue/usetoast'
 import Building from '@primeicons/vue/building'
 import Bell from '@primeicons/vue/bell'
 import ExclamationTriangle from '@primeicons/vue/exclamation-triangle'
+import InfoCircle from '@primeicons/vue/info-circle'
 import SettingsProfileForm from './SettingsProfileForm.vue'
 import SettingsNotifications from './SettingsNotifications.vue'
 import SettingsDangerZone from './SettingsDangerZone.vue'
@@ -97,16 +98,24 @@ function discard() {
       <nav aria-label="Settings sections">
         <ul class="flex gap-1 overflow-x-auto settings-nav">
           <li v-for="section in sections" :key="section.key" class="shrink-0">
+            <!-- The current section uses the Kale selected tint; Danger zone reads red. -->
             <Button
               type="button"
-              :variant="active === section.key ? undefined : 'text'"
+              variant="text"
               severity="secondary"
               :aria-current="active === section.key ? 'true' : undefined"
               class="w-full justify-start"
+              :class="{ 'bg-highlight': active === section.key }"
               @click="select(section.key)"
             >
-              <component :is="section.icon" aria-hidden="true" />
-              {{ section.label }}
+              <component
+                :is="section.icon"
+                aria-hidden="true"
+                :class="section.key === 'danger' ? 'text-danger' : undefined"
+              />
+              <span :class="section.key === 'danger' ? 'text-danger' : undefined">{{
+                section.label
+              }}</span>
             </Button>
           </li>
         </ul>
@@ -125,6 +134,11 @@ function discard() {
             </h4>
             <p class="text-sm text-muted">{{ current.description }}</p>
           </div>
+          <Message v-if="active === 'profile'" severity="info">
+            <template #icon><InfoCircle aria-hidden="true" /></template>
+            Changes apply to new invoices and delivery notes. Documents already issued keep the
+            details they were issued with.
+          </Message>
           <SettingsProfileForm
             v-if="active === 'profile'"
             ref="profileForm"
@@ -145,7 +159,7 @@ function discard() {
           v-if="dirty"
           role="region"
           aria-label="Unsaved changes"
-          class="sticky bottom-0 z-10 flex flex-wrap items-center justify-between gap-3 rounded-border border border-surface bg-surface-0 p-3 text-sm shadow-md dark:bg-surface-900"
+          class="sticky bottom-0 z-10 flex flex-wrap items-center justify-between gap-3 rounded-border border border-note bg-note p-3 text-sm text-note shadow-md"
         >
           <p class="font-medium">You have unsaved changes.</p>
           <div class="flex flex-wrap gap-2">

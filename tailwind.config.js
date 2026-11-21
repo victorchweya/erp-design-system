@@ -56,6 +56,8 @@ export default {
         primary: themeColor('primary-color'),
         'primary-contrast': themeColor('primary-contrast-color'),
         muted: themeColor('text-muted-color'),
+        note: themeColor('note-color'),
+        live: themeColor('live-color'),
         surface: themeColor('content-background'),
       },
       backgroundColor: {
@@ -64,6 +66,12 @@ export default {
         ),
         primary: themeColor('primary-color'),
         surface: themeColor('content-background'),
+        note: themeColor('note-background'),
+        live: themeColor('live-marker-color'),
+      },
+      borderColor: {
+        note: themeColor('note-border-color'),
+        live: themeColor('live-marker-color'),
       },
       fontFamily: {
         sans: [`var(--p-typography-font-family, ${fontFamily})`],

@@ -51,6 +51,8 @@ const workflow = [
   { label: 'Supplier assignment', complete: true },
   { label: 'Quality approval', complete: false },
 ]
+// The first incomplete step is the one in progress now.
+const currentStep = workflow.findIndex(({ complete }) => !complete)
 </script>
 
 <template>
@@ -76,7 +78,7 @@ const workflow = [
           <h1 id="product-title" class="text-xl font-medium tracking-tight sm:text-2xl">
             Fresh Hass avocado
           </h1>
-          <Tag severity="success">Active</Tag>
+          <Tag value="Active" class="bg-primary text-primary-contrast" />
         </div>
         <dl class="flex flex-wrap gap-x-6 gap-y-2 text-sm">
           <div class="flex flex-wrap gap-x-2">
@@ -449,22 +451,37 @@ const workflow = [
           <template #content>
             <ol class="flex flex-col gap-4">
               <li
-                v-for="step in workflow"
+                v-for="(step, index) in workflow"
                 :key="step.label"
                 class="flex items-center gap-3 text-sm"
+                :aria-current="index === currentStep ? 'step' : undefined"
               >
                 <span
                   :class="[
-                    'flex size-6 shrink-0 items-center justify-center rounded-full border',
+                    'flex size-6 shrink-0 items-center justify-center rounded-full',
                     step.complete
-                      ? 'border-primary bg-primary text-primary-contrast'
-                      : 'border-surface text-muted',
+                      ? 'border border-primary bg-primary text-primary-contrast'
+                      : index === currentStep
+                        ? 'border-2 border-live'
+                        : 'border border-surface text-muted',
                   ]"
                 >
                   <Check v-if="step.complete" :size="12" aria-hidden="true" />
+                  <span
+                    v-else-if="index === currentStep"
+                    class="size-2 rounded-full bg-live"
+                    aria-hidden="true"
+                  />
                   <span v-else class="size-1.5 rounded-full bg-current" aria-hidden="true" />
                 </span>
-                <span :class="step.complete ? 'font-medium' : 'text-muted'">{{ step.label }}</span>
+                <span
+                  :class="{
+                    'font-medium': step.complete || index === currentStep,
+                    'text-live': index === currentStep,
+                    'text-muted': !step.complete && index !== currentStep,
+                  }"
+                  >{{ step.label }}</span
+                >
               </li>
             </ol>
           </template>

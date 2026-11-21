@@ -63,11 +63,11 @@ const history: StatusEvent[] = [
   <Timeline :value="history" dataKey="status" aria-label="Purchase order PO-2318 status history">
     <template #marker="{ item }">
       <span
-        class="flex size-8 shrink-0 items-center justify-center rounded-full border"
+        class="flex size-8 shrink-0 items-center justify-center rounded-full"
         :class="
           item.done
-            ? 'border-primary bg-primary text-primary-contrast'
-            : 'border-dashed border-surface bg-emphasis text-muted-color'
+            ? 'border border-primary bg-primary text-primary-contrast'
+            : 'border-2 border-live text-live'
         "
       >
         <component :is="item.icon" aria-hidden="true" />
@@ -75,7 +75,7 @@ const history: StatusEvent[] = [
     </template>
     <template #content="{ item }">
       <div class="flex flex-col gap-1 pb-6">
-        <p class="font-medium">
+        <p class="font-medium" :class="{ 'text-live': !item.done }">
           {{ item.status }}
           <Tag v-if="!item.done" value="Pending" severity="secondary" class="ml-2" />
         </p>
