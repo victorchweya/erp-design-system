@@ -141,10 +141,15 @@ it('keeps focus boundaries and icons accessible and records the softer default b
     contrastRatio(divider.light.foreground.value, divider.light.background.value),
   ).toBeLessThan(3)
   const inputBorder = roleByName('form.field.border.color')
+  // Light mode keeps the soft neutral 200 line. Dark mode uses its own faint lines: a bright
+  // #E6E6E6 outline on black is harsh, so dividers and cards use neutral 800 and inputs neutral 700.
   for (const role of [divider, inputBorder]) {
-    for (const pair of [role.light, role.dark]) {
-      expect(pair.foreground.value).toBe('#E6E6E6')
-    }
+    expect(role.light.foreground.value).toBe('#E6E6E6')
+  }
+  expect(divider.dark.foreground.value).toBe('#1A1A1A')
+  expect(inputBorder.dark.foreground.value).toBe('#333333')
+  for (const role of [divider, inputBorder]) {
+    expect(contrastRatio(role.dark.foreground.value, role.dark.background.value)).toBeLessThan(3)
   }
   expect(
     contrastRatio(inputBorder.light.foreground.value, inputBorder.light.background.value),

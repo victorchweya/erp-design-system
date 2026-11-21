@@ -238,7 +238,7 @@ function resetFilters() {
       <p class="mt-1 text-sm text-muted">Search, filter, sort, and change the table display.</p>
     </div>
 
-    <div class="flex flex-wrap items-center gap-x-5 gap-y-3 rounded-lg bg-surface-50 p-3">
+    <div class="flex flex-wrap items-center gap-x-5 gap-y-3 rounded-lg bg-surface-50 p-3 dark:bg-surface-800">
       <div class="flex items-center gap-2">
         <span class="text-sm text-muted">Table size</span>
         <Select

@@ -37,7 +37,6 @@ export const navigation = {
     borderWidth: '1px',
     borderColor: '{content.border.color}',
     borderRadius: '{border.radius.md}',
-    disabledOpacity: '{disabled.opacity}',
     icon: {
         size: '1rem'
     },
@@ -105,13 +104,6 @@ export const css = /*css*/ `
         outline: dt('carousel.navigation.focus.ring.width') dt('carousel.navigation.focus.ring.style')
             dt('carousel.navigation.focus.ring.color');
         outline-offset: dt('carousel.navigation.focus.ring.offset');
-    }
-
-    .p-carousel-prev:is(:disabled, .p-disabled),
-    .p-carousel-next:is(:disabled, .p-disabled) {
-        opacity: dt('carousel.navigation.disabled.opacity');
-        cursor: default;
-        pointer-events: none;
     }
 `;
 

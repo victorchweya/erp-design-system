@@ -1,21 +1,30 @@
 import { controlSizes } from '../foundations/controls'
 
-// PrimeVue 5.0.5 omits size variants for these widths and nested chip inputs.
+// PrimeVue 5.0.5 omits size variants for these widths and nested chip inputs. The default (md)
+// size already gets its dropdown widths, addon sizes and paddings from component tokens that point
+// at control.md.*, so for md only the values that have no token are set here.
 const controlCss = [...controlSizes]
   .sort((a, b) => Number(b.key === 'md') - Number(a.key === 'md'))
   .map(({ key, size }) => {
     const suffix = key === 'md' ? '' : `-${key}`
+    const sized = key !== 'md'
     return `
-        ${['select', 'multiselect', 'cascadeselect', 'treeselect']
-          .map(
-            (component) => `
+        ${
+          sized
+            ? ['select', 'multiselect', 'cascadeselect', 'treeselect']
+                .map(
+                  (component) => `
             .p-${component}${suffix} {
                 --p-${component}-dropdown-width: var(--p-control-${key}-height);
             }
         `,
-          )
-          .join('')}
-        .p-inputnumber:has(.p-inputtext${suffix}) {
+                )
+                .join('')
+            : ''
+        }
+        ${
+          sized
+            ? `.p-inputnumber:has(.p-inputtext${suffix}) {
             --p-inputnumber-button-width: var(--p-control-${key}-height);
             --p-inputnumber-button-vertical-padding: var(--p-control-${key}-padding-y);
         }
@@ -23,6 +32,8 @@ const controlCss = [...controlSizes]
             --p-inputgroup-addon-font-size: var(--p-control-${key}-font-size);
             --p-inputgroup-addon-padding: var(--p-control-${key}-padding-y);
             --p-inputgroup-addon-min-width: var(--p-control-${key}-height);
+        }`
+            : ''
         }
         .p-autocomplete${size ? `:has(> .p-inputtext-${key}, > .p-autocomplete-input-multiple[data-p~="${size}"])` : ''} {
             font-size: var(--p-control-${key}-font-size);
@@ -30,15 +41,16 @@ const controlCss = [...controlSizes]
             --p-autocomplete-padding-y: var(--p-control-${key}-padding-y);
         }
         .p-multiselect${suffix} {
-            min-height: var(--p-control-${key}-height);
-            --p-multiselect-padding-y: var(--p-control-${key}-padding-y);
+            min-height: var(--p-control-${key}-height);${sized ? `\n            --p-multiselect-padding-y: var(--p-control-${key}-padding-y);` : ''}
         }
         .p-multiselect${suffix} .p-multiselect-label:has(.p-chip) {
             padding: calc(var(--p-control-${key}-padding-y) / 2) var(--p-control-${key}-padding-x);
         }
-        .p-inputtags${size ? `[data-p~="${size}"]` : ''} {
-            --p-inputtags-padding-x: var(--p-control-${key}-padding-x);
-            --p-inputtags-padding-y: var(--p-control-${key}-padding-y);
+        .p-inputtags${size ? `[data-p~="${size}"]` : ''} {${
+          sized
+            ? `\n            --p-inputtags-padding-x: var(--p-control-${key}-padding-x);\n            --p-inputtags-padding-y: var(--p-control-${key}-padding-y);`
+            : ''
+        }
             --p-chip-padding-y: calc(var(--p-control-${key}-padding-y) / 2);
             font-size: var(--p-control-${key}-font-size);
         }
@@ -97,15 +109,10 @@ const css = /*css*/ `
     .p-toast-message-content > div:has(> .p-toast-close-button) {
         flex: 0 0 auto;
     }
-    .p-toast-message-text {
-        margin-top: 0.25rem;
-    }
     .p-toast {
         width: min(var(--p-toast-width), calc(100vw - 2rem)) !important;
     }
     .p-confirmdialog {
-        --p-dialog-title-font-size: var(--p-font-size-lg);
-        --p-dialog-title-font-weight: var(--p-font-weight-medium);
         --p-dialog-header-padding: var(--p-spacing-5) var(--p-spacing-5) var(--p-spacing-3);
         --p-dialog-content-padding: 0 var(--p-spacing-5) var(--p-spacing-5);
         --p-dialog-footer-padding: 0 var(--p-spacing-5) var(--p-spacing-5);
@@ -123,16 +130,6 @@ const css = /*css*/ `
     }
     .p-drawer > .p-drawer-footer {
         border-block-start: 1px solid var(--p-content-border-color);
-    }
-    .p-dialog .p-dialog-close-button.p-button:focus-visible {
-        border-color: transparent;
-        outline: var(--p-focus-ring-width) var(--p-focus-ring-style) var(--p-focus-ring-color);
-        outline-offset: var(--p-focus-ring-offset);
-        box-shadow: var(--p-focus-ring-shadow);
-        background: var(--p-content-hover-background);
-    }
-    .p-tooltip-text {
-        line-height: 1.25;
     }
 
     li.p-autocomplete-option,

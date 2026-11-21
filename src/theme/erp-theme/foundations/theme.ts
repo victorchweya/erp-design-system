@@ -196,7 +196,11 @@ const buttonRoot = Object.fromEntries(
       color: `{severity.${name}.contrast.color}`,
       hoverColor: `{severity.${name}.contrast.color}`,
       activeColor: `{severity.${name}.contrast.color}`,
-      focusRing: { color: `{severity.${name}.color}`, shadow: 'none' },
+      // Secondary is grey, so its ring uses the shared focus colour like the rest of the theme.
+      focusRing: {
+        color: name === 'secondary' ? '{focus.ring.color}' : `{severity.${name}.color}`,
+        shadow: 'none',
+      },
     },
   ]),
 )

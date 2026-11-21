@@ -52,7 +52,7 @@ onBeforeUnmount(() => desktopQuery.removeEventListener('change', updateViewport)
       <main
         id="main-content"
         tabindex="-1"
-        class="min-h-dvh bg-surface-0 pt-14 dark:bg-surface-900"
+        class="min-h-dvh bg-surface-0 pt-14 dark:bg-surface-950"
       >
         <slot />
       </main>

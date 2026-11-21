@@ -61,7 +61,7 @@ const api = [
 ]
 const accessibility = [
   'The root has role region. Name it with aria-label and add aria-roledescription="carousel". Slides are groups with no name of their own, so give each one aria-roledescription="slide" and an aria-label such as 1 of 3.',
-  'CarouselPrev and CarouselNext are buttons labelled Previous Page and Next Page by default. Give them labels that fit the content, and add a visible focus style, since these parts have no theme styling.',
+  'CarouselPrev and CarouselNext are buttons labelled Previous Page and Next Page by default. Give them labels that fit the content. The theme gives them a visible focus ring and a disabled state.',
   'Indicators are buttons labelled Page 1, Page 2 and so on, and the current one has aria-current="page". Each one is a separate Tab stop.',
   'Do not autoplay content people need to read. Moving content must have a pause control, and important information should not live only in a carousel.',
 ]
