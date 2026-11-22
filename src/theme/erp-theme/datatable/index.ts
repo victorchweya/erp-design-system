@@ -248,6 +248,12 @@ export const css = /*css*/ `
         z-index: 2;
     }
 
+    /* The expanded area is a note panel (Cream); a nested table inside it keeps its own surface. */
+    .p-datatable .p-datatable-tbody > tr.p-datatable-row-expansion,
+    .p-datatable.p-datatable-hoverable .p-datatable-tbody > tr.p-datatable-row-expansion:hover {
+        background: dt('note.background');
+    }
+
     .p-datatable-mask.p-overlay-mask {
         --px-mask-background: light-dark(rgba(255,255,255,0.5),rgba(0,0,0,0.3));
     }
