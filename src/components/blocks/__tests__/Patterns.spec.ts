@@ -22,6 +22,7 @@ import ConfirmPopupBlock from '../popups/ConfirmPopupBlock.vue'
 import RecordPopoverBlock from '../popups/RecordPopoverBlock.vue'
 import ActionsMenuBlock from '../popups/ActionsMenuBlock.vue'
 import OrderEntryBlock from '../order-entry/OrderEntryBlock.vue'
+import OrderDetailBlock from '../backoffice/order-detail/OrderDetailBlock.vue'
 import { STANDARD_VAT_RATE, taxableOf, vatOf } from '../documents/documents'
 import OperationsDashboardBlock from '../page-templates/OperationsDashboardBlock.vue'
 import SupplierListDetailBlock from '../page-templates/SupplierListDetailBlock.vue'
@@ -69,6 +70,16 @@ async function selectOption(element: HTMLElement, text: string) {
   )
 }
 
+it('opens focused delivery details from the order summary', async () => {
+  const wrapper = mount(OrderDetailBlock, options)
+  await button(wrapper, /^Delivery details$/).trigger('click')
+  await flushPromises()
+
+  expect(dialog().textContent).toContain('Map preview placeholder')
+  expect(dialog().textContent).toContain('Call the contact on arrival.')
+  expect(dialog().textContent).not.toContain('KRA PIN')
+})
+
 it('keeps the order identifier visible, restores columns, and exports filtered rows', async () => {
   const wrapper = mount(DataStressTableBlock, options)
   await wrapper.get('[aria-label="Columns"]').trigger('click')
@@ -84,7 +95,7 @@ it('keeps the order identifier visible, restores columns, and exports filtered r
   vi.stubGlobal('URL', { createObjectURL, revokeObjectURL: vi.fn() })
   const download = vi.spyOn(HTMLAnchorElement.prototype, 'click').mockImplementation(() => {})
   onTestFinished(() => download.mockRestore())
-  await button(wrapper, /Export CSV/).trigger('click')
+  await button(wrapper, /^Export$/).trigger('click')
   const csv = await new Promise<string>((resolve) => {
     const reader = new FileReader()
     reader.onload = () => resolve(String(reader.result))

@@ -9,7 +9,7 @@ export const header = {
     borderWidth: '0 0 1px 0',
     padding: '{spacing.3} {spacing.4}',
     sm: {
-        padding: '{spacing.1.5} {spacing.2}'
+        padding: '{spacing.3}'
     },
     lg: {
         padding: '{spacing.4} {spacing.5}'

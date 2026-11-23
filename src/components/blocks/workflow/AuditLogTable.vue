@@ -34,9 +34,10 @@ function exportLog() {
     <template #header>
       <div class="flex flex-wrap items-center justify-between gap-3">
         <p class="text-sm text-muted">{{ entries.length }} entries, newest first.</p>
-        <Button type="button" severity="primary" outlined size="small" @click="exportLog"
-          ><Download aria-hidden="true" />Export CSV</Button
-        >
+        <Button type="button" severity="primary" outlined size="small" @click="exportLog">
+          <Download aria-hidden="true" />
+          Export
+        </Button>
       </div>
       <p role="status" class="pt-2 text-sm text-muted" :class="{ 'sr-only': !exportMessage }">
         {{ exportMessage }}

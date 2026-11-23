@@ -1,20 +1,39 @@
 <script setup lang="ts">
-import { shallowRef, useId, useTemplateRef } from 'vue'
+import { shallowRef, useId, useTemplateRef, type Component } from 'vue'
+import type DataTable from 'primevue/datatable'
 import type Menu from 'primevue/menu'
+import Building from '@primeicons/vue/building'
+import Calendar from '@primeicons/vue/calendar'
+import Clock from '@primeicons/vue/clock'
+import Comment from '@primeicons/vue/comment'
 import EllipsisV from '@primeicons/vue/ellipsis-v'
+import Eye from '@primeicons/vue/eye'
 import History from '@primeicons/vue/history'
+import MapMarker from '@primeicons/vue/map-marker'
 import Pencil from '@primeicons/vue/pencil'
+import Phone from '@primeicons/vue/phone'
 import Sync from '@primeicons/vue/sync'
 import TimesCircle from '@primeicons/vue/times-circle'
+import Truck from '@primeicons/vue/truck'
 import Undo from '@primeicons/vue/undo'
+import User from '@primeicons/vue/user'
 import StatusTagBlock from '@/components/blocks/backoffice/status-tag/StatusTagBlock.vue'
 import RecordDetailHeaderBlock from '@/components/blocks/headers/RecordDetailHeaderBlock.vue'
+import TableHeaderActionsBlock, {
+  type TableColumnOption,
+} from '@/components/blocks/tables/TableHeaderActionsBlock.vue'
 import { DISPLAY_PLACEHOLDER, formatCurrency, formatDateTime, formatNumber } from '@/utils/format'
 
 const menu = useTemplateRef<InstanceType<typeof Menu>>('menu')
 const menuId = useId()
 const menuOpen = shallowRef(false)
 const feedback = shallowRef('')
+const detailsVisible = shallowRef(false)
+const detailView = shallowRef<'all' | 'delivery'>('all')
+let detailsTrigger: HTMLElement | null = null
+let menuTrigger: HTMLElement | null = null
+const orderItemsTable = useTemplateRef<InstanceType<typeof DataTable>>('orderItemsTable')
+const deliveredItemsTable = useTemplateRef<InstanceType<typeof DataTable>>('deliveredItemsTable')
 
 const orderItems = [
   {
@@ -274,29 +293,56 @@ const deliveredItems = orderItems.map(({ product, sku, unit, quantity }) => ({
   rejectionReason: null,
 }))
 
-const etimsRecords = [
+const etimsDetails = [
+  { label: 'SCU ID', value: null },
+  { label: 'Receipt number', value: null },
+  { label: 'Receipt signature', value: null },
+  { label: 'Invoice', value: null },
+  { label: 'Sent at', value: null },
+]
+
+const orderColumns = [
+  { key: 'product', label: 'Product', required: true },
+  { key: 'unit', label: 'Unit' },
+  { key: 'specification', label: 'Specifications' },
+  { key: 'kgPerUnit', label: 'KG / unit' },
+  { key: 'quantity', label: 'Order quantity' },
+  { key: 'buyingPrice', label: 'Set buying price' },
+  { key: 'sellingPrice', label: 'Selling price' },
+  { key: 'flashSalePrice', label: 'Flash sale price' },
+  { key: 'total', label: 'Total' },
+] satisfies readonly TableColumnOption[]
+const deliveredColumns = [
+  { key: 'product', label: 'Product', required: true },
+  { key: 'unit', label: 'Unit' },
+  { key: 'ordered', label: 'Ordered' },
+  { key: 'dispatched', label: 'Dispatched' },
+  { key: 'received', label: 'Received' },
+  { key: 'inventory', label: 'Inventory' },
+  { key: 'rejected', label: 'Rejected' },
+  { key: 'rejectionReason', label: 'Rejection reason' },
+] satisfies readonly TableColumnOption[]
+const visibleOrderColumns = shallowRef(orderColumns.map(({ key }) => key))
+const visibleDeliveredColumns = shallowRef(deliveredColumns.map(({ key }) => key))
+
+const deliveryDetails: { label: string; value: string; icon: Component; href?: string }[] = [
+  { label: 'Location', value: 'Total Uthiru', icon: MapMarker },
+  { label: 'Address', value: 'Uthiru', icon: Building },
+  { label: 'Contact', value: 'Felix Mutinda', icon: User },
+  { label: 'Phone', value: '0734 943 613', icon: Phone, href: 'tel:+254734943613' },
   {
-    scuId: null,
-    receiptNumber: null,
-    receiptSignature: null,
-    invoice: null,
-    sentAt: null,
+    label: 'Delivery date',
+    value: formatDateTime('2026-11-21T03:00:00+03:00'),
+    icon: Calendar,
   },
+  { label: 'Delivery window', value: '06:00–08:00', icon: Clock },
+  { label: 'Delivery type', value: 'Delivery', icon: Truck },
 ]
+const deliveryInstructions = 'Call the contact on arrival.'
 
-const deliveryDetails: { label: string; value: string; href?: string }[] = [
-  { label: 'Location', value: 'Total Uthiru' },
-  { label: 'Address', value: 'Uthiru' },
-  { label: 'Contact', value: 'Felix Mutinda' },
-  { label: 'Phone', value: '0734 943 613', href: 'tel:+254734943613' },
-  { label: 'Delivery date', value: formatDateTime('2026-11-21T03:00:00+03:00') },
-  { label: 'Delivery window', value: '06:00–08:00' },
-  { label: 'Delivery type', value: 'Delivery' },
-  { label: 'Instructions', value: 'Call the contact on arrival.' },
-]
-
+const customerHref = '/customers/odida-enterprises'
 const customerDetails: { label: string; value: string; href?: string }[] = [
-  { label: 'Name', value: 'Odida Enterprises' },
+  { label: 'Name', value: 'Odida Enterprises', href: customerHref },
   { label: 'Category', value: 'Hotel / Restaurant' },
   { label: 'Contact person', value: 'John Odida' },
   { label: 'Phone', value: '0723 000 111', href: 'tel:+254723000111' },
@@ -305,6 +351,11 @@ const customerDetails: { label: string; value: string; href?: string }[] = [
 ]
 
 const actions = [
+  {
+    label: 'View order details',
+    icon: Eye,
+    command: openDetails,
+  },
   {
     label: 'Sync to eTIMS',
     icon: Sync,
@@ -331,92 +382,278 @@ const actions = [
 function selectAction(message: string) {
   feedback.value = message
 }
+
+function openDetails() {
+  detailsTrigger = menuTrigger
+  detailView.value = 'all'
+  detailsVisible.value = true
+}
+
+function openDeliveryDetails(event: Event) {
+  detailsTrigger = event.currentTarget as HTMLElement
+  detailView.value = 'delivery'
+  detailsVisible.value = true
+}
+
+function toggleMenu(event: Event) {
+  menuTrigger = event.currentTarget as HTMLElement
+  menu.value?.toggle(event)
+}
+
+function exportOrderItems() {
+  orderItemsTable.value?.exportCSV()
+  feedback.value = `Exported ${orderItems.length} order items to CSV.`
+}
+
+function exportDeliveredItems() {
+  deliveredItemsTable.value?.exportCSV()
+  feedback.value = `Exported ${deliveredItems.length} delivered items to CSV.`
+}
 </script>
 
 <template>
   <section
-    class="order-detail flex min-w-0 flex-col gap-4 text-color"
+    class="order-detail flex min-w-0 flex-col gap-6 text-color"
     aria-labelledby="order-title"
   >
-    <RecordDetailHeaderBlock
-      title="Order #RJ-CO-2026-07-010"
-      title-id="order-title"
-      heading-tag="h1"
-      back-label="Back to orders"
-      @back="selectAction('Back to orders selected in this preview.')"
-    >
-      <template #status><StatusTagBlock domain="order" status="dispatched" /></template>
-      <template #metadata>
-        <dl class="flex flex-wrap gap-x-4 gap-y-0.5 text-sm">
-          <div class="flex gap-2">
-            <dt class="text-muted">Customer:</dt>
-            <dd class="font-medium">Odida Enterprises</dd>
-          </div>
-          <div class="flex gap-2">
-            <dt class="text-muted">Order date:</dt>
-            <dd class="font-medium"><time datetime="2026-11-20">20 Nov 2026</time></dd>
-          </div>
-          <div class="flex gap-2">
-            <dt class="text-muted">Source:</dt>
-            <dd class="font-medium">Chaser</dd>
-          </div>
-          <div class="flex gap-2">
-            <dt class="text-muted">Created by:</dt>
-            <dd class="font-medium">Tech FTF</dd>
-          </div>
-          <div class="flex gap-2">
-            <dt class="text-muted">Updated:</dt>
-            <dd class="font-medium">
-              <time datetime="2026-11-20T13:17:00+03:00">20 Nov 2026, 1:17 PM</time> by Amina Hassan
-            </dd>
-          </div>
-        </dl>
-      </template>
-      <template #actions>
-        <Button
-          type="button"
-          size="small"
-          @click="selectAction('Edit order selected in this preview.')"
-        >
-          <Pencil aria-hidden="true" />Edit order
-        </Button>
-        <Button
-          type="button"
-          severity="primary"
-          outlined
-          size="small"
-          iconOnly
-          aria-label="More order actions"
-          aria-haspopup="menu"
-          :aria-controls="menuId"
-          :aria-expanded="menuOpen"
-          @click="menu?.toggle($event)"
-        >
-          <EllipsisV aria-hidden="true" />
-        </Button>
-        <Menu
-          :id="menuId"
-          ref="menu"
-          :model="actions"
-          popup
-          aria-label="Order actions"
-          @show="menuOpen = true"
-          @hide="menuOpen = false"
-        />
-      </template>
-    </RecordDetailHeaderBlock>
-
     <p role="status" class="text-sm text-muted" :class="{ 'sr-only': !feedback }">
       {{ feedback }}
     </p>
 
+    <div class="flex flex-col gap-4">
+      <RecordDetailHeaderBlock
+        title="Order #RJ-CO-2026-07-010"
+        title-id="order-title"
+        heading-tag="h1"
+        back-label="Back to orders"
+        @back="selectAction('Back to orders selected in this preview.')"
+      >
+        <template #status><StatusTagBlock domain="order" status="dispatched" /></template>
+        <template #actions>
+          <Button
+            type="button"
+            severity="primary"
+            outlined
+            size="small"
+            iconOnly
+            aria-label="More order actions"
+            aria-haspopup="menu"
+            :aria-controls="menuId"
+            :aria-expanded="menuOpen"
+            @click="toggleMenu"
+          >
+            <EllipsisV aria-hidden="true" />
+          </Button>
+          <Button
+            type="button"
+            size="small"
+            @click="selectAction('Edit order selected in this preview.')"
+          >
+            <Pencil aria-hidden="true" />Edit order
+          </Button>
+          <Menu
+            :id="menuId"
+            ref="menu"
+            :model="actions"
+            popup
+            aria-label="Order actions"
+            @show="menuOpen = true"
+            @hide="menuOpen = false"
+          />
+        </template>
+      </RecordDetailHeaderBlock>
+    </div>
+
     <div class="order-detail-layout grid min-w-0 items-start gap-4">
+      <aside class="min-w-0" aria-label="Order information">
+        <Card>
+          <template #content>
+            <div class="flex flex-col gap-6">
+              <section class="flex flex-col gap-4" aria-labelledby="sidebar-customer-title">
+                <h2 id="sidebar-customer-title" class="text-base font-medium">
+                  <a :href="customerHref" class="text-primary hover:underline">Odida Enterprises</a>
+                </h2>
+                <dl class="flex flex-col gap-3 text-sm">
+                  <div class="flex items-start justify-between gap-4">
+                    <dt class="text-muted">Order date</dt>
+                    <dd class="text-right font-medium">
+                      <time datetime="2026-11-20">20 Nov 2026</time>
+                    </dd>
+                  </div>
+                  <div class="flex items-start justify-between gap-4">
+                    <dt class="text-muted">Source</dt>
+                    <dd class="text-right font-medium">Chaser</dd>
+                  </div>
+                  <div class="flex items-start justify-between gap-4">
+                    <dt class="text-muted">Created by</dt>
+                    <dd class="text-right font-medium">Tech FTF</dd>
+                  </div>
+                  <div class="flex items-start justify-between gap-4">
+                    <dt class="text-muted">Updated</dt>
+                    <dd class="text-right font-medium">
+                      <time datetime="2026-11-20T13:17:00+03:00">20 Nov 2026, 1:17 PM</time>
+                    </dd>
+                  </div>
+                  <div class="flex items-start justify-between gap-4">
+                    <dt class="text-muted">Updated by</dt>
+                    <dd class="text-right font-medium">Amina Hassan</dd>
+                  </div>
+                </dl>
+              </section>
+
+              <section
+                class="flex flex-col gap-4 border-t border-surface pt-6"
+                aria-labelledby="sidebar-summary-title"
+              >
+                <h2 id="sidebar-summary-title" class="text-base font-medium">Order summary</h2>
+                <dl class="flex flex-col gap-3 text-sm">
+                  <div class="flex items-center justify-between gap-4">
+                    <dt class="text-muted">Subtotal</dt>
+                    <dd class="font-medium tabular-nums">{{ formatCurrency(orderTotal) }}</dd>
+                  </div>
+                  <div class="flex items-center justify-between gap-4">
+                    <dt class="text-muted">Tax</dt>
+                    <dd class="font-medium tabular-nums">{{ formatCurrency(includedTax) }}</dd>
+                  </div>
+                  <div class="flex items-center justify-between gap-4">
+                    <dt class="text-muted">Delivery fee</dt>
+                    <dd class="font-medium tabular-nums">{{ formatCurrency(0) }}</dd>
+                  </div>
+                  <div class="flex items-center justify-between gap-4 border-t border-surface pt-3">
+                    <dt class="font-medium">Total</dt>
+                    <dd class="text-lg font-medium tabular-nums">
+                      {{ formatCurrency(orderTotal) }}
+                    </dd>
+                  </div>
+                </dl>
+                <p class="border-t border-surface pt-3 text-xs leading-relaxed text-muted">
+                  VAT is included in the selling price and delivery fee where applicable.
+                </p>
+              </section>
+
+              <section
+                class="flex flex-col gap-4 border-t border-surface pt-6"
+                aria-labelledby="sidebar-payments-title"
+              >
+                <div class="flex items-center justify-between gap-3">
+                  <h2 id="sidebar-payments-title" class="text-base font-medium">Payments</h2>
+                  <StatusTagBlock domain="payment" status="pending" />
+                </div>
+                <dl class="flex flex-col gap-3 text-sm">
+                  <div class="flex items-center justify-between gap-4">
+                    <dt class="text-muted">Amount paid</dt>
+                    <dd class="text-muted">{{ DISPLAY_PLACEHOLDER }}</dd>
+                  </div>
+                  <div class="flex items-center justify-between gap-4">
+                    <dt class="text-muted">Balance due</dt>
+                    <dd class="font-medium tabular-nums">{{ formatCurrency(orderTotal) }}</dd>
+                  </div>
+                  <div class="flex items-center justify-between gap-4">
+                    <dt class="text-muted">Payment reference</dt>
+                    <dd class="text-muted">{{ DISPLAY_PLACEHOLDER }}</dd>
+                  </div>
+                </dl>
+              </section>
+
+              <section
+                class="flex flex-col gap-4 border-t border-surface pt-6"
+                aria-labelledby="sidebar-etims-title"
+              >
+                <div class="flex flex-wrap items-center justify-between gap-3">
+                  <h2 id="sidebar-etims-title" class="text-base font-medium">eTIMS information</h2>
+                  <Button
+                    v-tooltip.bottom="'Sync to eTIMS'"
+                    type="button"
+                    severity="primary"
+                    text
+                    size="small"
+                    @click="selectAction('eTIMS sync selected in this preview.')"
+                  >
+                    <Sync aria-hidden="true" />eTIMS
+                  </Button>
+                </div>
+                <dl class="flex flex-col gap-3 text-sm">
+                  <div
+                    v-for="detail in etimsDetails"
+                    :key="detail.label"
+                    class="flex items-start justify-between gap-4"
+                  >
+                    <dt class="text-muted">{{ detail.label }}</dt>
+                    <dd class="max-w-48 break-words text-right font-medium">
+                      {{ detail.value ?? DISPLAY_PLACEHOLDER }}
+                    </dd>
+                  </div>
+                </dl>
+              </section>
+
+              <section
+                class="flex flex-col gap-4 border-t border-surface pt-6"
+                aria-labelledby="sidebar-delivery-title"
+              >
+                <h2 id="sidebar-delivery-title">
+                  <button
+                    type="button"
+                    class="rounded-sm text-left text-base font-medium text-primary underline underline-offset-4 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+                    aria-haspopup="dialog"
+                    :aria-expanded="detailsVisible && detailView === 'delivery'"
+                    @click="openDeliveryDetails"
+                  >
+                    Delivery details
+                  </button>
+                </h2>
+                <dl class="flex flex-col gap-3 text-sm">
+                  <div class="flex items-start justify-between gap-4">
+                    <dt class="text-muted">Date</dt>
+                    <dd class="text-right font-medium">
+                      <time datetime="2026-11-21T03:00:00+03:00">21 Nov 2026, 3:00 AM</time>
+                    </dd>
+                  </div>
+                  <div class="flex items-start justify-between gap-4">
+                    <dt class="text-muted">Window</dt>
+                    <dd class="text-right font-medium">06:00–08:00</dd>
+                  </div>
+                  <div class="flex items-start justify-between gap-4">
+                    <dt class="text-muted">Location</dt>
+                    <dd class="text-right font-medium">Total Uthiru</dd>
+                  </div>
+                  <div class="flex items-start justify-between gap-4">
+                    <dt class="text-muted">Contact</dt>
+                    <dd class="text-right font-medium">Felix Mutinda</dd>
+                  </div>
+                </dl>
+              </section>
+
+              <section
+                class="flex flex-col gap-4 border-t border-surface pt-6"
+                aria-labelledby="sidebar-feedback-title"
+              >
+                <h2 id="sidebar-feedback-title" class="text-base font-medium">Delivery feedback</h2>
+                <dl class="flex flex-col gap-3 text-sm">
+                  <div class="flex items-center justify-between gap-4">
+                    <dt class="text-muted">Rating</dt>
+                    <dd class="font-medium">{{ DISPLAY_PLACEHOLDER }}</dd>
+                  </div>
+                  <div class="flex items-start justify-between gap-4">
+                    <dt class="text-muted">Comment</dt>
+                    <dd class="max-w-48 break-words text-right font-medium">
+                      {{ DISPLAY_PLACEHOLDER }}
+                    </dd>
+                  </div>
+                </dl>
+              </section>
+            </div>
+          </template>
+        </Card>
+      </aside>
+
       <main class="flex min-w-0 flex-col gap-4">
         <section class="min-w-0" aria-labelledby="order-items-title">
           <div class="min-w-0 max-w-full overflow-x-auto">
             <DataTable
+              ref="orderItemsTable"
               :value="orderItems"
               dataKey="sku"
+              exportFilename="order-RJ-CO-2026-07-010-items"
               size="small"
               showGridlines
               scrollable
@@ -425,9 +662,21 @@ function selectAction(message: string) {
               :tableProps="{ 'aria-label': 'Order items' }"
             >
               <template #header>
-                <h2 id="order-items-title" class="text-sm font-medium">Order items</h2>
+                <div class="flex flex-wrap items-center justify-between gap-3">
+                  <h2 id="order-items-title" class="text-lg font-medium">Order items</h2>
+                  <TableHeaderActionsBlock
+                    v-model:visible-columns="visibleOrderColumns"
+                    :columns="orderColumns"
+                    @export="exportOrderItems"
+                  />
+                </div>
               </template>
-              <Column field="product" header="Product" frozen>
+              <Column
+                v-if="visibleOrderColumns.includes('product')"
+                field="product"
+                header="Product"
+                frozen
+              >
                 <template #body="{ data }">
                   <div class="flex min-w-44 flex-col gap-1">
                     <span class="font-medium">{{ data.product }}</span>
@@ -435,24 +684,48 @@ function selectAction(message: string) {
                   </div>
                 </template>
               </Column>
-              <Column field="unit" header="Unit" />
-              <Column field="specification" header="Specifications" />
-              <Column field="kgPerUnit" header="KG / unit">
+              <Column v-if="visibleOrderColumns.includes('unit')" field="unit" header="Unit" />
+              <Column
+                v-if="visibleOrderColumns.includes('specification')"
+                field="specification"
+                header="Specifications"
+              />
+              <Column
+                v-if="visibleOrderColumns.includes('kgPerUnit')"
+                field="kgPerUnit"
+                header="KG / unit"
+              >
                 <template #body="{ data }">{{ formatNumber(data.kgPerUnit) }}</template>
               </Column>
-              <Column field="quantity" header="Order quantity">
+              <Column
+                v-if="visibleOrderColumns.includes('quantity')"
+                field="quantity"
+                header="Order quantity"
+              >
                 <template #body="{ data }">{{ formatNumber(data.quantity) }}</template>
               </Column>
-              <Column field="buyingPrice" header="Set buying price">
+              <Column
+                v-if="visibleOrderColumns.includes('buyingPrice')"
+                field="buyingPrice"
+                header="Set buying price"
+              >
                 <template #body="{ data }">{{ formatCurrency(data.buyingPrice) }}</template>
               </Column>
-              <Column field="sellingPrice" header="Selling price">
+              <Column
+                v-if="visibleOrderColumns.includes('sellingPrice')"
+                field="sellingPrice"
+                header="Selling price"
+              >
                 <template #body="{ data }">{{ formatCurrency(data.sellingPrice) }}</template>
               </Column>
-              <Column field="flashSalePrice" header="Flash sale price">
+              <Column
+                v-if="visibleOrderColumns.includes('flashSalePrice')"
+                field="flashSalePrice"
+                header="Flash sale price"
+              >
                 <template #body="{ data }">{{ formatCurrency(data.flashSalePrice) }}</template>
               </Column>
-              <Column field="total" header="Total">
+              <Column v-if="visibleOrderColumns.includes('total')" field="total" header="Total">
                 <template #body="{ data }">
                   <span class="font-medium tabular-nums">{{ formatCurrency(data.total) }}</span>
                 </template>
@@ -464,8 +737,10 @@ function selectAction(message: string) {
         <section class="min-w-0" aria-labelledby="delivered-items-title">
           <div class="min-w-0 max-w-full overflow-x-auto">
             <DataTable
+              ref="deliveredItemsTable"
               :value="deliveredItems"
               dataKey="sku"
+              exportFilename="order-RJ-CO-2026-07-010-delivered-items"
               size="small"
               showGridlines
               scrollable
@@ -474,9 +749,21 @@ function selectAction(message: string) {
               :tableProps="{ 'aria-label': 'Delivered items' }"
             >
               <template #header>
-                <h2 id="delivered-items-title" class="text-sm font-medium">Delivered items</h2>
+                <div class="flex flex-wrap items-center justify-between gap-3">
+                  <h2 id="delivered-items-title" class="text-base font-medium">Delivered items</h2>
+                  <TableHeaderActionsBlock
+                    v-model:visible-columns="visibleDeliveredColumns"
+                    :columns="deliveredColumns"
+                    @export="exportDeliveredItems"
+                  />
+                </div>
               </template>
-              <Column field="product" header="Product" frozen>
+              <Column
+                v-if="visibleDeliveredColumns.includes('product')"
+                field="product"
+                header="Product"
+                frozen
+              >
                 <template #body="{ data }">
                   <div class="flex min-w-44 flex-col gap-1">
                     <span class="font-medium">{{ data.product }}</span>
@@ -484,23 +771,47 @@ function selectAction(message: string) {
                   </div>
                 </template>
               </Column>
-              <Column field="unit" header="Unit" />
-              <Column field="ordered" header="Ordered">
+              <Column v-if="visibleDeliveredColumns.includes('unit')" field="unit" header="Unit" />
+              <Column
+                v-if="visibleDeliveredColumns.includes('ordered')"
+                field="ordered"
+                header="Ordered"
+              >
                 <template #body="{ data }">{{ formatNumber(data.ordered) }}</template>
               </Column>
-              <Column field="dispatched" header="Dispatched">
+              <Column
+                v-if="visibleDeliveredColumns.includes('dispatched')"
+                field="dispatched"
+                header="Dispatched"
+              >
                 <template #body="{ data }">{{ formatNumber(data.dispatched) }}</template>
               </Column>
-              <Column field="received" header="Received">
+              <Column
+                v-if="visibleDeliveredColumns.includes('received')"
+                field="received"
+                header="Received"
+              >
                 <template #body="{ data }">{{ formatNumber(data.received) }}</template>
               </Column>
-              <Column field="inventory" header="Inventory">
+              <Column
+                v-if="visibleDeliveredColumns.includes('inventory')"
+                field="inventory"
+                header="Inventory"
+              >
                 <template #body="{ data }">{{ formatNumber(data.inventory) }}</template>
               </Column>
-              <Column field="rejected" header="Rejected">
+              <Column
+                v-if="visibleDeliveredColumns.includes('rejected')"
+                field="rejected"
+                header="Rejected"
+              >
                 <template #body="{ data }">{{ formatNumber(data.rejected) }}</template>
               </Column>
-              <Column field="rejectionReason" header="Rejection reason">
+              <Column
+                v-if="visibleDeliveredColumns.includes('rejectionReason')"
+                field="rejectionReason"
+                header="Rejection reason"
+              >
                 <template #body="{ data }">{{
                   data.rejectionReason ?? DISPLAY_PLACEHOLDER
                 }}</template>
@@ -508,131 +819,130 @@ function selectAction(message: string) {
             </DataTable>
           </div>
         </section>
+      </main>
+    </div>
 
-        <section class="min-w-0" aria-labelledby="etims-title">
-          <div class="min-w-0 max-w-full overflow-x-auto">
-            <DataTable
-              :value="etimsRecords"
-              size="small"
-              showGridlines
-              scrollable
-              tableClass="text-sm"
-              :tableStyle="{ minWidth: '48rem' }"
-              :tableProps="{ 'aria-label': 'eTIMS information' }"
+    <Drawer
+      v-model:visible="detailsVisible"
+      :header="detailView === 'delivery' ? 'Delivery details' : 'Order #RJ-CO-2026-07-010'"
+      :aria-label="detailView === 'delivery' ? 'Delivery details' : 'Order details'"
+      position="right"
+      blockScroll
+      class="w-full sm:w-[28rem]"
+      @after-hide="detailsTrigger?.focus()"
+    >
+      <div class="flex flex-col gap-6 text-sm">
+        <section
+          v-if="detailView === 'all'"
+          class="flex flex-col gap-3"
+          aria-labelledby="drawer-summary-title"
+        >
+          <h3 id="drawer-summary-title" class="text-base font-medium">Payment summary</h3>
+          <dl class="flex flex-col gap-3">
+            <div class="flex items-center justify-between gap-4">
+              <dt class="text-muted">Payment</dt>
+              <dd><StatusTagBlock domain="payment" status="pending" /></dd>
+            </div>
+            <div class="flex items-center justify-between gap-4">
+              <dt class="text-muted">Subtotal</dt>
+              <dd class="font-medium tabular-nums">{{ formatCurrency(orderTotal) }}</dd>
+            </div>
+            <div class="flex items-center justify-between gap-4">
+              <dt class="text-muted">Tax included</dt>
+              <dd class="font-medium tabular-nums">{{ formatCurrency(includedTax) }}</dd>
+            </div>
+            <div class="flex items-center justify-between gap-4">
+              <dt class="text-muted">Delivery fee</dt>
+              <dd class="font-medium tabular-nums">{{ formatCurrency(0) }}</dd>
+            </div>
+            <div class="flex items-center justify-between gap-4 border-t border-surface pt-3">
+              <dt class="font-medium">Total</dt>
+              <dd class="font-medium tabular-nums">{{ formatCurrency(orderTotal) }}</dd>
+            </div>
+          </dl>
+          <p class="text-xs leading-relaxed text-muted">
+            VAT is included in the selling price and delivery fee where applicable.
+          </p>
+        </section>
+
+        <section
+          v-if="detailView === 'all'"
+          class="flex flex-col gap-3 border-t border-surface pt-5"
+          aria-labelledby="drawer-customer-title"
+        >
+          <h3 id="drawer-customer-title" class="text-base font-medium">Customer details</h3>
+          <dl class="grid grid-cols-1 gap-3 sm:grid-cols-2">
+            <div v-for="detail in customerDetails" :key="detail.label" class="flex flex-col gap-1">
+              <dt class="text-muted">{{ detail.label }}</dt>
+              <dd class="break-words font-medium">
+                <a v-if="detail.href" :href="detail.href" class="text-primary hover:underline">{{
+                  detail.value
+                }}</a>
+                <template v-else>{{ detail.value }}</template>
+              </dd>
+            </div>
+          </dl>
+        </section>
+
+        <section
+          class="flex flex-col gap-3"
+          :class="{ 'border-t border-surface pt-5': detailView === 'all' }"
+          aria-labelledby="drawer-delivery-title"
+        >
+          <h3
+            id="drawer-delivery-title"
+            class="text-base font-medium"
+            :class="{ 'sr-only': detailView === 'delivery' }"
+          >
+            Delivery details
+          </h3>
+          <div
+            v-if="detailView === 'delivery'"
+            class="mb-2 flex min-h-48 items-center justify-center rounded-lg border border-surface bg-surface-50 p-6 text-center dark:bg-surface-800"
+            role="img"
+            aria-label="Map placeholder showing Total Uthiru"
+          >
+            <div class="flex flex-col items-center gap-2">
+              <MapMarker :size="28" aria-hidden="true" class="text-primary" />
+              <p class="font-medium">Total Uthiru</p>
+              <p class="text-xs text-muted">Map preview placeholder</p>
+            </div>
+          </div>
+          <dl class="grid grid-cols-1 gap-3">
+            <div
+              v-for="detail in deliveryDetails"
+              :key="detail.label"
+              class="flex items-start justify-between gap-4"
             >
-              <template #header>
-                <div class="flex flex-wrap items-center justify-between gap-3">
-                  <h2 id="etims-title" class="text-sm font-medium">eTIMS information</h2>
-                  <Button
-                    type="button"
-                    severity="primary"
-                    outlined
-                    size="small"
-                    @click="selectAction('eTIMS sync selected in this preview.')"
-                  >
-                    <Sync aria-hidden="true" />Sync to eTIMS
-                  </Button>
-                </div>
-              </template>
-              <Column field="scuId" header="SCU ID">
-                <template #body="{ data }">{{ data.scuId ?? DISPLAY_PLACEHOLDER }}</template>
-              </Column>
-              <Column field="receiptNumber" header="Receipt number">
-                <template #body="{ data }">{{
-                  data.receiptNumber ?? DISPLAY_PLACEHOLDER
-                }}</template>
-              </Column>
-              <Column field="receiptSignature" header="Receipt signature">
-                <template #body="{ data }">{{
-                  data.receiptSignature ?? DISPLAY_PLACEHOLDER
-                }}</template>
-              </Column>
-              <Column field="invoice" header="Invoice">
-                <template #body="{ data }">{{ data.invoice ?? DISPLAY_PLACEHOLDER }}</template>
-              </Column>
-              <Column field="sentAt" header="Sent at">
-                <template #body="{ data }">{{ formatDateTime(data.sentAt) }}</template>
-              </Column>
-            </DataTable>
+              <dt class="flex items-center gap-2 text-muted">
+                <component :is="detail.icon" :size="14" aria-hidden="true" class="shrink-0" />
+                {{ detail.label }}
+              </dt>
+              <dd class="break-words text-right font-medium">
+                <a v-if="detail.href" :href="detail.href" class="text-primary hover:underline">{{
+                  detail.value
+                }}</a>
+                <template v-else>{{ detail.value }}</template>
+              </dd>
+            </div>
+          </dl>
+          <div class="flex flex-col gap-1 border-t border-surface pt-3">
+            <p class="flex items-center gap-2 text-muted">
+              <Comment :size="14" aria-hidden="true" class="shrink-0" />
+              Instructions
+            </p>
+            <p class="break-words font-medium leading-relaxed">{{ deliveryInstructions }}</p>
           </div>
         </section>
-      </main>
-
-      <aside class="flex min-w-0 flex-col gap-4" aria-label="Order information">
-        <Card>
-          <template #title><h2 class="text-lg font-medium">Order summary</h2></template>
-          <template #content>
-            <dl class="flex flex-col gap-3 text-sm">
-              <div class="flex items-center justify-between gap-4">
-                <dt class="text-muted">Payment</dt>
-                <dd><StatusTagBlock domain="payment" status="pending" /></dd>
-              </div>
-              <div class="flex items-center justify-between gap-4">
-                <dt class="text-muted">Subtotal</dt>
-                <dd class="font-medium tabular-nums">{{ formatCurrency(orderTotal) }}</dd>
-              </div>
-              <div class="flex items-center justify-between gap-4">
-                <dt class="text-muted">Tax included</dt>
-                <dd class="font-medium tabular-nums">{{ formatCurrency(includedTax) }}</dd>
-              </div>
-              <div class="flex items-center justify-between gap-4">
-                <dt class="text-muted">Delivery fee</dt>
-                <dd class="font-medium tabular-nums">{{ formatCurrency(0) }}</dd>
-              </div>
-              <div class="flex items-center justify-between gap-4 border-t border-surface pt-3">
-                <dt class="font-medium">Total</dt>
-                <dd class="text-lg font-medium tabular-nums">{{ formatCurrency(orderTotal) }}</dd>
-              </div>
-            </dl>
-            <p class="mt-4 border-t border-surface pt-4 text-xs leading-relaxed text-muted">
-              VAT is included in the selling price and delivery fee where applicable.
-            </p>
-          </template>
-        </Card>
-
-        <Card>
-          <template #title><h2 class="text-lg font-medium">Delivery details</h2></template>
-          <template #content>
-            <dl class="flex flex-col gap-3 text-sm">
-              <div
-                v-for="detail in deliveryDetails"
-                :key="detail.label"
-                class="flex items-start justify-between gap-4"
-              >
-                <dt class="text-muted">{{ detail.label }}</dt>
-                <dd class="max-w-48 text-right font-medium">
-                  <a v-if="detail.href" :href="detail.href" class="text-primary hover:underline">{{
-                    detail.value
-                  }}</a>
-                  <template v-else>{{ detail.value }}</template>
-                </dd>
-              </div>
-            </dl>
-          </template>
-        </Card>
-
-        <Card>
-          <template #title><h2 class="text-lg font-medium">Customer details</h2></template>
-          <template #content>
-            <dl class="flex flex-col gap-3 text-sm">
-              <div
-                v-for="detail in customerDetails"
-                :key="detail.label"
-                class="flex items-start justify-between gap-4"
-              >
-                <dt class="text-muted">{{ detail.label }}</dt>
-                <dd class="max-w-48 break-words text-right font-medium">
-                  <a v-if="detail.href" :href="detail.href" class="text-primary hover:underline">{{
-                    detail.value
-                  }}</a>
-                  <template v-else>{{ detail.value }}</template>
-                </dd>
-              </div>
-            </dl>
-          </template>
-        </Card>
-      </aside>
-    </div>
+      </div>
+      <template #footer>
+        <div class="flex justify-end">
+          <Button type="button" severity="primary" outlined @click="detailsVisible = false">
+            Close details
+          </Button>
+        </div>
+      </template>
+    </Drawer>
   </section>
 </template>
 
@@ -641,9 +951,9 @@ function selectAction(message: string) {
   container-type: inline-size;
 }
 
-@container (min-width: 64rem) {
+@container (min-width: 56rem) {
   .order-detail-layout {
-    grid-template-columns: minmax(0, 2.25fr) minmax(18rem, 0.75fr);
+    grid-template-columns: minmax(16rem, 0.7fr) minmax(0, 2.3fr);
   }
 }
 </style>

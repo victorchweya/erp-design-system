@@ -6,7 +6,7 @@ const approveItems = [{ label: 'Approve and notify supplier' }, { label: 'Approv
 <template>
   <div class="flex flex-wrap items-center gap-4">
     <SplitButton
-      label="Export CSV"
+      label="Export"
       :model="exportItems"
       severity="primary"
       outlined

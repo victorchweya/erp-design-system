@@ -43,7 +43,9 @@ onBeforeUnmount(() => {
 <template>
   <Toast :group="group" />
   <div class="flex flex-wrap gap-2">
-    <Button type="button" :disabled="exporting" @click="exportInvoices"><Download aria-hidden="true" />Export invoices</Button>
+    <Button type="button" :disabled="exporting" @click="exportInvoices"
+      ><Download aria-hidden="true" />Export</Button
+    >
     <Button type="button" severity="secondary" outlined @click="toast.removeGroup(group)">
       Dismiss all
     </Button>

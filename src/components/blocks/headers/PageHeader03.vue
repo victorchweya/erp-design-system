@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { shallowRef, useId, useTemplateRef } from 'vue'
 import type Menu from 'primevue/menu'
+import ArrowLeft from '@primeicons/vue/arrow-left'
 import EllipsisV from '@primeicons/vue/ellipsis-v'
 import Pencil from '@primeicons/vue/pencil'
 import RecordDetailHeaderBlock from './RecordDetailHeaderBlock.vue'
@@ -28,7 +29,7 @@ const items = [
       title="Order FTF-1042"
       :heading-tag="headingTag"
       back-label="Back to orders"
-      @back="feedback = 'Back to orders selected in this preview.'"
+      :show-back="false"
     >
       <template #status><Tag severity="success">Confirmed</Tag></template>
       <template #metadata>
@@ -68,6 +69,17 @@ const items = [
           @click="menu?.toggle($event)"
         >
           <EllipsisV aria-hidden="true" />
+        </Button>
+        <Button
+          v-tooltip.bottom="'Back to orders'"
+          type="button"
+          severity="primary"
+          outlined
+          iconOnly
+          aria-label="Back to orders"
+          @click="feedback = 'Back to orders selected in this preview.'"
+        >
+          <ArrowLeft aria-hidden="true" />
         </Button>
         <Menu
           :id="menuId"

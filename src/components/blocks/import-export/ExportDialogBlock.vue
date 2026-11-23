@@ -152,7 +152,7 @@ function exportCsv() {
       @click="open"
     >
       <Download aria-hidden="true" />
-      Export orders
+      Export
     </Button>
   </div>
   <Dialog

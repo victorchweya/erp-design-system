@@ -1,8 +1,6 @@
 <script setup lang="ts">
-import { computed, shallowRef, useId, useTemplateRef, watch } from 'vue'
+import { computed, shallowRef, useTemplateRef, watch } from 'vue'
 import type DataTable from 'primevue/datatable'
-import Download from '@primeicons/vue/download'
-import Table from '@primeicons/vue/table'
 import type Menu from 'primevue/menu'
 import type Popover from 'primevue/popover'
 import EllipsisV from '@primeicons/vue/ellipsis-v'
@@ -16,13 +14,12 @@ import Search from '@primeicons/vue/search'
 import SlidersH from '@primeicons/vue/sliders-h'
 import Sync from '@primeicons/vue/sync'
 import Trash from '@primeicons/vue/trash'
+import TableHeaderActionsBlock from './TableHeaderActionsBlock.vue'
 import { formatCurrency, formatDate } from '@/utils/format'
 
 type OrderStatus = 'New order' | 'Cancelled'
 
-const id = useId()
 const table = useTemplateRef<InstanceType<typeof DataTable>>('table')
-const columnsPopover = useTemplateRef<InstanceType<typeof Popover>>('columnsPopover')
 const size = shallowRef<'small' | undefined | 'large'>('small')
 const sizeOptions = [
   { label: 'Small', value: 'small' },
@@ -149,7 +146,7 @@ const orders = [
 
 const columns = [
   { key: 'orderDate', label: 'Order date' },
-  { key: 'orderNumber', label: 'Order number' },
+  { key: 'orderNumber', label: 'Order number', required: true },
   { key: 'orderType', label: 'Order type' },
   { key: 'customer', label: 'Customer' },
   { key: 'source', label: 'Source' },
@@ -163,13 +160,6 @@ const columns = [
   { key: 'deliverySlot', label: 'Delivery slot' },
 ]
 const visibleColumns = shallowRef(columns.map(({ key }) => key))
-const allColumnsVisible = computed(() => visibleColumns.value.length === columns.length)
-function setColumn(key: string, visible: boolean) {
-  if (key === 'orderNumber') return
-  visibleColumns.value = visible
-    ? [...visibleColumns.value, key]
-    : visibleColumns.value.filter((value) => value !== key)
-}
 const loadedOrders = shallowRef([...orders])
 function refreshOrders() {
   loadedOrders.value = [...orders]
@@ -361,23 +351,11 @@ function resetFilters() {
                   <SlidersH :class="iconClass" aria-hidden="true" />
                 </template>
               </Button>
-              <Button
-                type="button"
-                iconOnly
-                severity="primary"
-                outlined
-                aria-label="Columns"
-                v-tooltip.top="'Columns'"
-                aria-haspopup="dialog"
-                :aria-controls="`${id}-columns`"
-                @click="columnsPopover?.toggle($event)"
-              >
-                <Table aria-hidden="true" />
-              </Button>
-              <Button type="button" severity="primary" outlined @click="exportOrders">
-                <Download aria-hidden="true" />
-                Export CSV
-              </Button>
+              <TableHeaderActionsBlock
+                v-model:visible-columns="visibleColumns"
+                :columns="columns"
+                @export="exportOrders"
+              />
               <Button
                 type="button"
                 iconOnly
@@ -536,11 +514,15 @@ function resetFilters() {
           </template>
         </Column>
         <template #empty>
-          <div class="sticky left-0 flex min-h-56 w-[100cqw] flex-col items-center justify-center gap-4 py-6 text-center">
+          <div
+            class="sticky left-0 flex min-h-56 w-[100cqw] flex-col items-center justify-center gap-4 py-6 text-center"
+          >
             <Inbox :size="32" aria-hidden="true" class="text-muted" />
             <div class="space-y-2">
               <h3 class="text-lg font-medium">No matching orders</h3>
-              <p class="max-w-md text-sm text-muted">Try changing or clearing your search and filters.</p>
+              <p class="max-w-md text-sm text-muted">
+                Try changing or clearing your search and filters.
+              </p>
             </div>
             <Button type="button" severity="primary" outlined size="small" @click="resetFilters"
               >Reset filters</Button
@@ -551,38 +533,6 @@ function resetFilters() {
       <p role="status" class="sr-only">{{ feedback }}</p>
     </div>
   </div>
-
-  <Popover :id="`${id}-columns`" ref="columnsPopover" aria-label="Choose columns">
-    <div class="flex w-60 max-w-full flex-col gap-2">
-      <div class="flex items-center justify-between gap-3">
-        <span class="text-sm font-medium">Columns</span>
-        <Button
-          type="button"
-          size="small"
-          severity="primary"
-          text
-          :disabled="allColumnsVisible"
-          @click="visibleColumns = columns.map(({ key }) => key)"
-          >Show all</Button
-        >
-      </div>
-      <ul class="flex max-h-72 flex-col gap-1.5 overflow-y-auto">
-        <li v-for="column in columns" :key="column.key" class="flex items-center gap-2">
-          <Checkbox
-            :modelValue="visibleColumns.includes(column.key)"
-            binary
-            :inputId="`${id}-column-${column.key}`"
-            :disabled="column.key === 'orderNumber'"
-            @update:modelValue="setColumn(column.key, $event)"
-          />
-          <label :for="`${id}-column-${column.key}`" class="text-sm">
-            {{ column.label
-            }}<span v-if="column.key === 'orderNumber'" class="text-muted"> (always shown)</span>
-          </label>
-        </li>
-      </ul>
-    </div>
-  </Popover>
 
   <Popover ref="moreFilters" aria-label="Additional order filters">
     <div class="flex w-64 flex-col gap-4">

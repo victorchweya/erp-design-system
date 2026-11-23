@@ -7,10 +7,12 @@ withDefaults(
     titleId?: string
     headingTag?: 'h1' | 'h2' | 'h3'
     backLabel?: string
+    showBack?: boolean
   }>(),
   {
     headingTag: 'h2',
     backLabel: 'Back',
+    showBack: true,
   },
 )
 
@@ -26,10 +28,11 @@ defineSlots<{
   <header class="flex flex-wrap items-start justify-between gap-4">
     <div class="flex min-w-0 flex-1 basis-64 items-start gap-2">
       <Button
+        v-if="showBack"
         v-tooltip.bottom="backLabel"
         type="button"
-        severity="secondary"
-        text
+        severity="primary"
+        outlined
         size="small"
         iconOnly
         :aria-label="backLabel"
