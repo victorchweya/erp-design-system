@@ -24,7 +24,7 @@ const feedback = shallowRef('')
       <div class="flex flex-wrap gap-2">
         <Button
           type="button"
-          severity="secondary"
+          severity="primary"
           outlined
           @click="feedback = 'Export selected in this preview.'"
         >

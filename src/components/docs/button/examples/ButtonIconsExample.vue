@@ -11,7 +11,7 @@ import Heart from '@primeicons/vue/heart'
       <Plus class="shrink-0" aria-hidden="true" focusable="false" />
       Add produce
     </Button>
-    <Button type="button" severity="secondary" outlined>
+    <Button type="button" severity="primary">
       Continue
       <ArrowRight class="shrink-0" aria-hidden="true" focusable="false" />
     </Button>

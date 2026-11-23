@@ -126,7 +126,7 @@ function openActions(event: Event, row: ServerOrder) {
         :sortOrder="sortOrder"
         :loading="loading"
         scrollable
-        class="whitespace-nowrap"
+        class="erp-table-pagination whitespace-nowrap"
         tableStyle="min-width: 44rem"
         :tableProps="{ 'aria-label': sentenceNoun }"
         @page="onPage"
@@ -167,7 +167,7 @@ function openActions(event: Event, row: ServerOrder) {
           <template #body="{ data }">
             <Button
               type="button"
-              severity="secondary"
+              severity="primary"
               text
               rounded
               size="small"
@@ -194,7 +194,7 @@ function openActions(event: Event, row: ServerOrder) {
               <Button
                 type="button"
                 size="small"
-                severity="secondary"
+                severity="primary"
                 outlined
                 @click="emit('clearFilters')"
                 >Clear filters</Button
@@ -208,17 +208,3 @@ function openActions(event: Event, row: ServerOrder) {
     <Menu ref="menu" :model="menuItems" popup aria-label="Row actions" />
   </div>
 </template>
-
-<style scoped>
-:deep(.p-paginator) {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  align-items: center;
-}
-
-:deep(.p-paginator-content-start) {
-  display: flex;
-  width: 100%;
-  min-width: 0;
-}
-</style>

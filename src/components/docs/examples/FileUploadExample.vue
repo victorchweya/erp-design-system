@@ -18,6 +18,9 @@ function preview(event: FileUploadUploaderEvent) {
       :maxFileSize="1000000"
       customUpload
       uploadLabel="Preview selection"
+      :chooseButtonProps="{ severity: 'primary', outlined: true }"
+      :uploadButtonProps="{ severity: 'primary' }"
+      :cancelButtonProps="{ severity: 'secondary', outlined: true }"
       @uploader="preview"
       @clear="result = 'Selection cleared. Nothing was uploaded.'"
       @remove="result = 'Selection changed. Preview the remaining files.'"

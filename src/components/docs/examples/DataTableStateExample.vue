@@ -164,7 +164,7 @@ function resetView() {
           />
           <Button
             type="button"
-            severity="secondary"
+            severity="primary"
             outlined
             size="small"
             class="sm:ml-auto"

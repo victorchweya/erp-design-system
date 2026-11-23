@@ -96,7 +96,7 @@ function clearFilters() {
           </div>
           <Button
             type="button"
-            severity="secondary"
+            severity="primary"
             outlined
             :disabled="!hasFilters"
             @click="clearFilters"
@@ -110,7 +110,7 @@ function clearFilters() {
           <ActivityFeedList v-if="groups.length" :groups="groups" :now="now" :idPrefix="id" />
           <div v-else class="flex flex-col items-start gap-3 py-4">
             <p>No activity matches these filters.</p>
-            <Button type="button" severity="secondary" outlined size="small" @click="clearFilters"
+            <Button type="button" severity="primary" outlined size="small" @click="clearFilters"
               >Clear filters</Button
             >
           </div>
@@ -118,7 +118,7 @@ function clearFilters() {
             <Button
               v-if="remaining > 0"
               type="button"
-              severity="secondary"
+              severity="primary"
               outlined
               @click="loadMore"
               >Load {{ Math.min(remaining, PAGE_SIZE) }} more</Button

@@ -71,7 +71,7 @@ const items = [
           </Button>
           <Button
             type="button"
-            severity="secondary"
+            severity="primary"
             outlined
             iconOnly
             aria-label="More order actions"

@@ -59,7 +59,7 @@ function goToPage() {
             :inputStyle="{ width: '5rem' }"
           />
         </div>
-        <Button type="submit" label="Go" severity="secondary" outlined size="small" />
+        <Button type="submit" label="Go" severity="primary" outlined size="small" />
       </form>
     </div>
     <p id="invoice-page-jump-help" class="text-center text-muted-color">

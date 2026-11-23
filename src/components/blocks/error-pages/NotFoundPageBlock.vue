@@ -27,12 +27,12 @@ withDefaults(
       Address: <code class="break-all text-color">{{ path }}</code>
     </p>
     <template #actions>
-      <Button asChild v-slot="slotProps">
+      <Button size="small" asChild v-slot="slotProps">
         <RouterLink :to="homeTo" :class="slotProps.class">
           <Home aria-hidden="true" />Go to home
         </RouterLink>
       </Button>
-      <Button v-if="supportHref" as="a" :href="supportHref" severity="secondary" outlined>
+      <Button size="small" v-if="supportHref" as="a" :href="supportHref" severity="primary" outlined>
         <Envelope aria-hidden="true" />Contact support
       </Button>
     </template>

@@ -36,7 +36,7 @@ const state = shallowRef<'error' | 'loaded' | 'dismissed'>('error')
       </template>
       <div v-if="state === 'error'" class="flex min-w-0 flex-col items-start gap-2">
         <span>Order history could not be loaded. Your order is safe.</span>
-        <Button type="button" severity="danger" outlined size="small" @click="state = 'loaded'"
+        <Button type="button" severity="primary" outlined size="small" @click="state = 'loaded'"
           >Try again</Button
         >
       </div>

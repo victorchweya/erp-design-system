@@ -12,7 +12,7 @@ const expanded = shallowRef(false)
     <Button
       v-styleclass="{ selector: '@next', toggleClass: 'hidden' }"
       type="button"
-      severity="secondary"
+      severity="primary"
       outlined
       :aria-expanded="expanded"
       :aria-controls="id"

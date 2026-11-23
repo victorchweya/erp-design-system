@@ -8,7 +8,7 @@ const approveItems = [{ label: 'Approve and notify supplier' }, { label: 'Approv
     <SplitButton
       label="Export CSV"
       :model="exportItems"
-      severity="secondary"
+      severity="primary"
       outlined
       :buttonProps="{ type: 'button' }"
       :menuButtonProps="{ type: 'button', 'aria-label': 'More export formats' }"

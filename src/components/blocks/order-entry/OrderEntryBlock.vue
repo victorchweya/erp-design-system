@@ -68,7 +68,7 @@ function submit() {
       </div>
       <Button
         type="button"
-        severity="secondary"
+        severity="primary"
         outlined
         @click="
           feedback = 'Draft preview prepared. Changes are not saved when you leave this page.'

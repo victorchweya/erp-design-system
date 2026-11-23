@@ -34,7 +34,7 @@ const items = [
     <Button
       :id="`${id}-trigger`"
       type="button"
-      severity="secondary"
+      severity="primary"
       outlined
       aria-haspopup="menu"
       :aria-controls="`${id}-menu`"

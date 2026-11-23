@@ -72,7 +72,7 @@ function onActions(event: MouseEvent, order: Order) {
         </div>
         <Button
           type="button"
-          severity="secondary"
+          severity="primary"
           text
           iconOnly
           :aria-label="`Actions for ${order.id}`"

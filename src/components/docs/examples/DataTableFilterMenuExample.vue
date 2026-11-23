@@ -110,7 +110,7 @@ function clearFilters() {
   >
     <template #header>
       <div class="flex flex-wrap items-center justify-between gap-3">
-        <Button type="button" severity="secondary" outlined size="small" @click="clearFilters">
+        <Button type="button" severity="primary" outlined size="small" @click="clearFilters">
           <FilterSlash aria-hidden="true" />
           Clear all filters
         </Button>
@@ -128,7 +128,7 @@ function clearFilters() {
     <template #empty>
       <div class="flex flex-col items-start gap-3 py-4">
         <p>No orders match these filters.</p>
-        <Button type="button" severity="secondary" outlined size="small" @click="clearFilters">
+        <Button type="button" severity="primary" outlined size="small" @click="clearFilters">
           Clear all filters
         </Button>
       </div>

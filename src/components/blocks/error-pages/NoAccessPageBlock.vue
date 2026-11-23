@@ -40,15 +40,15 @@ function requestAccess() {
       {{ requested ? `Request sent to ${approver}. You’ll get an email when it’s approved.` : '' }}
     </p>
     <template #actions>
-      <Button type="button" :disabled="requested" @click="requestAccess">
+      <Button size="small" type="button" :disabled="requested" @click="requestAccess">
         {{ requested ? 'Access requested' : 'Request access' }}
       </Button>
-      <Button asChild severity="secondary" outlined v-slot="slotProps">
+      <Button size="small" asChild severity="secondary" outlined v-slot="slotProps">
         <RouterLink :to="homeTo" :class="slotProps.class">
           <Home aria-hidden="true" />Go to home
         </RouterLink>
       </Button>
-      <Button v-if="supportHref" as="a" :href="supportHref" severity="secondary" text>
+      <Button size="small" v-if="supportHref" as="a" :href="supportHref" severity="primary" text>
         <Envelope aria-hidden="true" />Contact support
       </Button>
     </template>

@@ -23,7 +23,7 @@ function open(size: (typeof sizes)[number]) {
       v-for="size in sizes"
       :key="size.label"
       type="button"
-      severity="secondary"
+      severity="primary"
       outlined
       aria-haspopup="dialog"
       :aria-controls="id"
@@ -51,7 +51,7 @@ function open(size: (typeof sizes)[number]) {
       </p>
     </div>
     <template #footer>
-      <Button type="button" autofocus @click="visible = false">Done</Button>
+      <Button severity="secondary" outlined type="button" autofocus @click="visible = false">Done</Button>
     </template>
   </Dialog>
 </template>

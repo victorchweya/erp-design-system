@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { useId } from 'vue'
-import symbol from '@/assets/brand/symbol.svg'
 
 withDefaults(
   defineProps<{
@@ -16,18 +15,17 @@ const headingId = useId()
 <template>
   <section
     :aria-labelledby="headingId"
-    class="flex min-h-96 flex-col items-center justify-center gap-6 px-4 py-12 text-center text-color"
+    class="flex min-h-56 flex-col items-center justify-center gap-4 text-center"
   >
-    <img :src="symbol" alt="" class="size-10" />
-    <div class="flex flex-col items-center gap-3">
-      <slot name="icon" />
-      <component :is="headingTag" :id="headingId" class="text-2xl font-medium tracking-tight">
+    <slot name="icon" />
+    <div class="flex flex-col items-center gap-2">
+      <component :is="headingTag" :id="headingId" class="text-lg font-medium">
         {{ heading }}
       </component>
-      <p class="max-w-md text-sm leading-relaxed text-muted">{{ description }}</p>
+      <p class="max-w-md text-sm text-muted">{{ description }}</p>
     </div>
     <slot />
-    <div class="flex flex-wrap items-center justify-center gap-3">
+    <div v-if="$slots.actions" class="flex flex-wrap items-center justify-center gap-3">
       <slot name="actions" />
     </div>
   </section>

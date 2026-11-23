@@ -21,7 +21,7 @@ const sections = computed(() => summarise(props.draft))
         <h4 class="text-base font-medium">{{ section.title }}</h4>
         <Button
           type="button"
-          severity="secondary"
+          severity="primary"
           text
           size="small"
           :aria-label="`Edit ${section.title.toLowerCase()}`"

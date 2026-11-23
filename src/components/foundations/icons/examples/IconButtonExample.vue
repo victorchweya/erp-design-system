@@ -9,7 +9,7 @@ import Search from '@primeicons/vue/search'
       <Plus class="shrink-0" aria-hidden="true" focusable="false" />
       Add produce
     </Button>
-    <Button type="button" iconOnly severity="secondary" outlined aria-label="Search produce">
+    <Button type="button" iconOnly severity="primary" outlined aria-label="Search produce">
       <Search aria-hidden="true" focusable="false" />
     </Button>
   </div>

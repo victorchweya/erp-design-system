@@ -52,7 +52,7 @@ useEventListener(window, 'keydown', (event: KeyboardEvent) => {
   <div class="flex flex-col items-start gap-3">
     <Button
       type="button"
-      severity="secondary"
+      severity="primary"
       outlined
       aria-haspopup="dialog"
       :aria-controls="id"

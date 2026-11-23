@@ -281,7 +281,7 @@ function clearFilters() {
       <template #empty>
         <div class="flex flex-wrap items-center gap-3 text-sm">
           <span>No users match these filters.</span>
-          <Button type="button" size="small" severity="secondary" outlined @click="clearFilters"
+          <Button type="button" size="small" severity="primary" outlined @click="clearFilters"
             >Clear filters</Button
           >
         </div>
@@ -313,7 +313,7 @@ function clearFilters() {
         <template #body="{ data }">
           <Button
             type="button"
-            severity="secondary"
+            severity="primary"
             text
             rounded
             size="small"

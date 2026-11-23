@@ -141,7 +141,7 @@ function search({ query }: AutoCompleteCompleteEvent) {
             :size="size"
             iconOnly
             text
-            severity="secondary"
+            severity="primary"
             aria-label="Check amount"
             ><Check aria-hidden="true" /></Button></InputGroupAddon
       ></InputGroup>

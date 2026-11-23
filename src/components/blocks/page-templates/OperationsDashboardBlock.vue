@@ -144,7 +144,7 @@ function clearFilters() {
             fluid
           />
         </div>
-        <Button type="button" severity="secondary" outlined @click="clearFilters"
+        <Button type="button" severity="primary" outlined @click="clearFilters"
           >Reset filters</Button
         >
       </div>

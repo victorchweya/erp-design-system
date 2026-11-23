@@ -72,7 +72,7 @@ async function copyLink() {
         <Button
           type="button"
           size="small"
-          severity="secondary"
+          severity="primary"
           outlined
           :aria-label="`View order ${item.id}`"
           @click="openFrom(item.id, $event)"
@@ -100,7 +100,7 @@ async function copyLink() {
           type="button"
           iconOnly
           size="small"
-          severity="secondary"
+          severity="primary"
           text
           aria-label="Copy link"
           title="Copy link"

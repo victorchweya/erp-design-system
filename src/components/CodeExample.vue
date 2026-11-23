@@ -62,7 +62,7 @@ async function copyCode() {
             type="button"
             iconOnly
             size="small"
-            :severity="mobile ? 'primary' : 'secondary'"
+            severity="primary"
             :outlined="!mobile"
             :aria-pressed="mobile"
             aria-label="Toggle mobile preview"
@@ -75,7 +75,7 @@ async function copyCode() {
             type="button"
             iconOnly
             size="small"
-            severity="secondary"
+            severity="primary"
             outlined
             class="shrink-0"
             :aria-label="`Copy ${title} code`"

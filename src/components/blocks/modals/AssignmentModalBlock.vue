@@ -28,7 +28,7 @@ function save() {
     </p>
     <Button
       type="button"
-      severity="secondary"
+      severity="primary"
       outlined
       aria-haspopup="dialog"
       :aria-controls="id"

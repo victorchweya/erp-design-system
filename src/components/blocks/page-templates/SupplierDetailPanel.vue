@@ -54,7 +54,7 @@ onMounted(() => heading.value?.focus())
       <div class="flex flex-wrap gap-2">
         <Button
           type="button"
-          severity="secondary"
+          severity="primary"
           outlined
           @click="actionFeedback = 'Create purchase order selected in this preview.'"
         >

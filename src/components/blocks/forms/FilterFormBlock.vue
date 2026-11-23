@@ -39,7 +39,7 @@ function clear() {
             />
           </div>
           <div class="flex flex-wrap gap-2">
-            <Button type="reset" severity="secondary" outlined>Clear</Button
+            <Button type="reset" severity="primary" outlined>Clear</Button
             ><Button type="submit">Apply filters</Button>
           </div>
         </div>

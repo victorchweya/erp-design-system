@@ -153,7 +153,8 @@ const currentStep = workflow.findIndex(({ complete }) => !complete)
               <div class="absolute right-2 top-2 z-10">
                 <Button
                   type="button"
-                  severity="secondary"
+                  severity="primary"
+                  outlined
                   iconOnly
                   aria-label="Add product to favourites"
                   @click="feedback = 'Product added to favourites in this preview.'"
@@ -215,8 +216,8 @@ const currentStep = workflow.findIndex(({ complete }) => !complete)
           </template>
           <template #footer>
             <div class="grid grid-cols-2 gap-2">
-              <Button type="button" label="Edit details" severity="secondary" outlined />
-              <Button type="button" label="Export" severity="secondary" outlined />
+              <Button type="button" label="Edit details" severity="primary" outlined />
+              <Button type="button" label="Export" severity="primary" outlined />
             </div>
           </template>
         </Card>
@@ -296,7 +297,7 @@ const currentStep = workflow.findIndex(({ complete }) => !complete)
                             fluid
                           />
                         </IconField>
-                        <Button type="button" label="Refine" severity="secondary" outlined>
+                        <Button type="button" label="Refine" severity="primary" outlined>
                           <template #icon="{ class: iconClass }">
                             <SlidersH :class="iconClass" aria-hidden="true" />
                           </template>

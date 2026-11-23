@@ -304,7 +304,7 @@ function reset() {
           >
           <Button
             type="button"
-            severity="secondary"
+            severity="primary"
             outlined
             :disabled="!canAct"
             aria-haspopup="dialog"

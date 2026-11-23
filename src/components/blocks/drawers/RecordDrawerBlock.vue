@@ -12,7 +12,7 @@ function open(event: Event) {
 <template>
   <Button
     type="button"
-    severity="secondary"
+    severity="primary"
     outlined
     aria-haspopup="dialog"
     :aria-controls="id"

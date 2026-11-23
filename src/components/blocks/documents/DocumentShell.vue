@@ -39,7 +39,7 @@ onBeforeUnmount(() => {
   <div class="flex min-w-0 flex-col gap-4">
     <div class="flex flex-wrap items-center justify-between gap-3 print:hidden">
       <div class="flex min-w-0 flex-wrap items-center gap-3"><slot name="actions" /></div>
-      <Button type="button" size="small" severity="secondary" outlined @click="printDocument">
+      <Button type="button" size="small" severity="primary" outlined @click="printDocument">
         <Print aria-hidden="true" /> Print {{ title.toLowerCase() }}
       </Button>
     </div>

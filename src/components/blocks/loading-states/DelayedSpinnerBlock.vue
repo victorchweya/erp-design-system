@@ -33,7 +33,7 @@ onBeforeUnmount(() => {
     <div class="flex flex-wrap gap-2">
       <Button
         type="button"
-        severity="secondary"
+        severity="primary"
         outlined
         :aria-disabled="loading"
         @click="load(150)"
@@ -41,7 +41,7 @@ onBeforeUnmount(() => {
       >
       <Button
         type="button"
-        severity="secondary"
+        severity="primary"
         outlined
         :aria-disabled="loading"
         @click="load(2000)"

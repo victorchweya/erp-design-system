@@ -7,7 +7,7 @@
     </template>
     <template #footer>
       <div class="flex flex-wrap gap-2">
-        <Button type="button" size="small" severity="secondary" outlined>Edit order</Button>
+        <Button type="button" size="small" severity="primary" outlined>Edit order</Button>
         <Button type="button" size="small">Approve order</Button>
       </div>
     </template>

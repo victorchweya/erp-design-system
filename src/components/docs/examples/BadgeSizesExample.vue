@@ -12,7 +12,7 @@ import Bell from '@primeicons/vue/bell'
     </div>
     <Button
       type="button"
-      severity="secondary"
+      severity="primary"
       outlined
       class="self-start"
       aria-label="Notifications, 3 unread"

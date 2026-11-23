@@ -27,7 +27,7 @@ const result = ref('')
         <div class="flex flex-wrap gap-2">
           <Button
             type="button"
-            severity="secondary"
+            severity="primary"
             size="small"
             outlined
             @click="result = 'Customer search opened in this preview.'"
@@ -36,7 +36,7 @@ const result = ref('')
           </Button>
           <Button
             type="button"
-            severity="secondary"
+            severity="primary"
             size="small"
             outlined
             @click="result = 'Add customer opened in this preview.'"
@@ -62,7 +62,7 @@ const result = ref('')
         </p>
         <Button
           type="button"
-          severity="danger"
+          severity="primary"
           size="small"
           outlined
           @click="result = 'Order history retry started in this preview.'"

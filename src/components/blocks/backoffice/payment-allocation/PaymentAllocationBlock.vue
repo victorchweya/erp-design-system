@@ -94,7 +94,8 @@ function save() {
         <Button
           type="button"
           size="small"
-          severity="secondary"
+          severity="primary"
+          outlined
           label="Auto-allocate"
           :disabled="leaveUnapplied || busy || paymentAmount <= 0"
           @click="runAutoAllocate"
@@ -102,7 +103,8 @@ function save() {
         <Button
           type="button"
           size="small"
-          severity="secondary"
+          severity="primary"
+          outlined
           label="Clear"
           :disabled="leaveUnapplied || busy || !Object.keys(allocations).length"
           @click="clear"

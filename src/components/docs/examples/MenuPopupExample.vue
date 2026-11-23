@@ -30,7 +30,7 @@ const items: MenuItem[] = [
   <div class="flex flex-col items-start gap-4">
     <Button
       type="button"
-      severity="secondary"
+      severity="primary"
       outlined
       aria-haspopup="menu"
       :aria-controls="id"

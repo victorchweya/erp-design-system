@@ -22,7 +22,7 @@ const expanded = shallowRef(false)
         leaveToClass: 'hidden',
       }"
       type="button"
-      severity="secondary"
+      severity="primary"
       outlined
       :aria-expanded="expanded"
       :aria-controls="id"

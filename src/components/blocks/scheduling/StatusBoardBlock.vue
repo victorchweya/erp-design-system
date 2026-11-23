@@ -198,7 +198,7 @@ function onDragEnd() {
               :id="`${id}-${order.reference}-move`"
               type="button"
               size="small"
-              severity="secondary"
+              severity="primary"
               text
               class="self-start"
               aria-haspopup="menu"

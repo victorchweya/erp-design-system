@@ -27,6 +27,7 @@ function confirmSelected() {
 <template>
   <div class="flex flex-col gap-4">
     <DataTable
+      class="erp-table-pagination"
       v-model:selection="selected"
       v-model:first="first"
       v-model:rows="rows"
@@ -70,17 +71,3 @@ function confirmSelected() {
     <p role="status" class="text-sm text-muted" :class="{ 'sr-only': !feedback }">{{ feedback }}</p>
   </div>
 </template>
-
-<style scoped>
-:deep(.p-paginator) {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  align-items: center;
-}
-
-:deep(.p-paginator-content-start) {
-  display: flex;
-  width: 100%;
-  min-width: 0;
-}
-</style>

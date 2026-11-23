@@ -82,7 +82,7 @@ function toggleAll() {
       <div class="flex justify-end">
         <Button
           type="button"
-          severity="secondary"
+          severity="primary"
           outlined
           size="small"
           :label="allExpanded ? 'Collapse all' : 'Expand all'"
@@ -96,7 +96,7 @@ function toggleAll() {
         <Button
           type="button"
           variant="text"
-          severity="secondary"
+          severity="primary"
           rounded
           size="small"
           iconOnly

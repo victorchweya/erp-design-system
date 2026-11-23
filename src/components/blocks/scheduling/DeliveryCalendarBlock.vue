@@ -184,17 +184,17 @@ function dayLabel(date: string) {
         <div class="flex items-center gap-1">
           <Button
             type="button"
-            severity="secondary"
+            severity="primary"
             outlined
             iconOnly
             :aria-label="`Previous ${unit}`"
             @click="move(-1)"
             ><ChevronLeft aria-hidden="true"
           /></Button>
-          <Button type="button" severity="secondary" outlined @click="anchor = today">Today</Button>
+          <Button type="button" severity="primary" outlined @click="anchor = today">Today</Button>
           <Button
             type="button"
-            severity="secondary"
+            severity="primary"
             outlined
             iconOnly
             :aria-label="`Next ${unit}`"

@@ -62,7 +62,7 @@ async function copyReference() {
           type="button"
           iconOnly
           size="small"
-          severity="secondary"
+          severity="primary"
           text
           aria-label="Copy reference"
           title="Copy reference"
@@ -84,15 +84,15 @@ async function copyReference() {
       </p>
     </div>
     <template #actions>
-      <Button type="button" :loading="retrying" @click="retry">
+      <Button size="small" type="button" :loading="retrying" @click="retry">
         <Replay aria-hidden="true" />Try again
       </Button>
-      <Button asChild severity="secondary" outlined v-slot="slotProps">
+      <Button size="small" asChild severity="secondary" outlined v-slot="slotProps">
         <RouterLink :to="homeTo" :class="slotProps.class">
           <Home aria-hidden="true" />Go to home
         </RouterLink>
       </Button>
-      <Button v-if="supportHref" as="a" :href="supportHref" severity="secondary" text>
+      <Button size="small" v-if="supportHref" as="a" :href="supportHref" severity="primary" text>
         <Envelope aria-hidden="true" />Contact support
       </Button>
     </template>

@@ -8,7 +8,7 @@ const examples = [
   {
     id: 'chip-0',
     title: 'Labels and icons',
-    description: 'Use a Chip for a selected entity rather than a status.',
+    description: 'Use a Chip for a selected entity rather than a status. Chips use olive-100 backgrounds with olive-900 text and icons in both themes.',
     component: ChipExample,
     code: code0,
   },

@@ -40,10 +40,10 @@ defineExpose({ focus: () => heading.value?.focus() })
         >{{ item.linkLabel }}</a
       >
       <div class="mt-auto flex flex-wrap gap-2">
-        <Button type="button" size="small" severity="secondary" outlined @click="emit('markUnread')"
+        <Button type="button" size="small" severity="primary" outlined @click="emit('markUnread')"
           ><Envelope aria-hidden="true" />Mark as unread</Button
         >
-        <Button type="button" size="small" severity="secondary" outlined @click="emit('archive')"
+        <Button type="button" size="small" severity="primary" outlined @click="emit('archive')"
           ><Inbox aria-hidden="true" />Archive</Button
         >
       </div>

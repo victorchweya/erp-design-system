@@ -98,7 +98,7 @@ function onKeydown(event: KeyboardEvent) {
           type="button"
           size="small"
           variant="text"
-          severity="secondary"
+          severity="primary"
           :aria-describedby="`${id}-author`"
           @click="startEdit"
           ><Pencil aria-hidden="true" />Edit</Button

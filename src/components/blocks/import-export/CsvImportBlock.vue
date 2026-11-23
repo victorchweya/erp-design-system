@@ -121,7 +121,7 @@ function reset() {
                 />
                 <Button
                   type="button"
-                  severity="secondary"
+                  severity="primary"
                   outlined
                   @click="load(sampleCsvName, sampleCsv)"
                   >Use sample file</Button
@@ -217,7 +217,7 @@ function reset() {
                   <Button
                     v-if="invalidRows.length"
                     type="button"
-                    severity="secondary"
+                    severity="primary"
                     outlined
                     @click="downloadErrorReport"
                   >

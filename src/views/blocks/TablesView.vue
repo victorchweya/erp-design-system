@@ -46,7 +46,7 @@ const examples = [
 ]
 const usage = [
   'Use the native DataTable, Column, sorting, selection, and paginator. These examples use small sizing and showGridlines with the theme’s default rounded border.',
-  'Keep the row count or selection summary on the left of the pagination footer. On the right, place the visible Rows per page label immediately before its dropdown, followed by Previous, numbered pages, and Next. Use the RowsPerPageDropdown PrevPageLink PageLinks NextPageLink paginator template and paginatorstart slot, as shown in the examples.',
+  'Keep the row count or selection summary on the left of the pagination footer. On the right, place the visible Rows per page label immediately before its dropdown, followed by Previous, numbered pages, and Next. Add erp-table-pagination to the DataTable to use the shared theme layout, with the RowsPerPageDropdown PrevPageLink PageLinks NextPageLink paginator template and paginatorstart slot. Keep this layout in the theme rather than adding scoped paginator overrides.',
   'Search and status filters combine, and changing a filter returns to the first page. Bulk actions update only selected records and clear the selection afterwards.',
   'In Filters and sorting, Columns lets you hide fields while keeping Order number visible. Show all restores every column. Export CSV downloads all filtered rows in the current sort order using the visible columns. Refresh reloads the local sample rows and keeps filters, sorting, pagination, and column choices.',
   'The first three examples use local arrays. Connect filtering, loading, errors, and mutations to your data source when adapting them.',

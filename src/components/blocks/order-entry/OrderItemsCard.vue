@@ -32,7 +32,7 @@ function add() {
           <h3 class="text-lg font-medium">Items</h3>
           <Tag severity="secondary">{{ items.length }} products · {{ packs }} packs</Tag>
         </div>
-        <Button type="button" size="small" severity="secondary" text @click="emit('reorder')">
+        <Button type="button" size="small" severity="primary" text @click="emit('reorder')">
           <Replay aria-hidden="true" /> Reorder last order
         </Button>
       </div>
@@ -84,7 +84,7 @@ function add() {
             <Button
               type="button"
               size="small"
-              severity="secondary"
+              severity="danger"
               text
               iconOnly
               :aria-label="`Remove ${data.name}`"
@@ -111,7 +111,7 @@ function add() {
             :placeholder="available.length ? 'Find produce' : 'All produce added'"
             class="min-w-0 flex-1"
           />
-          <Button type="button" severity="secondary" outlined :disabled="!selected" @click="add"
+          <Button type="button" severity="primary" outlined :disabled="!selected" @click="add"
             >Add</Button
           >
         </div>

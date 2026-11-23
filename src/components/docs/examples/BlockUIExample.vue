@@ -9,7 +9,7 @@ const blocked = shallowRef(false)
       <Button type="button" :disabled="blocked" @click="blocked = true">Simulate saving</Button
       ><Button
         type="button"
-        severity="secondary"
+        severity="primary"
         outlined
         :disabled="!blocked"
         @click="blocked = false"
@@ -22,7 +22,7 @@ const blocked = shallowRef(false)
         class="flex flex-col gap-3 rounded-lg border border-surface p-4"
       >
         <legend>Delivery DLV-5104</legend>
-        <Button type="button" severity="secondary" outlined class="self-start"
+        <Button type="button" severity="primary" outlined class="self-start"
           >Confirm received weight</Button
         >
       </fieldset></BlockUI

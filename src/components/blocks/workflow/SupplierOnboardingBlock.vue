@@ -99,7 +99,7 @@ function restart() {
           {{ draft.details.farmName }} is waiting for verification under reference {{ reference }}.
           We’ll send an SMS to {{ draft.details.phone }} when it is approved.
         </p>
-        <Button type="button" severity="secondary" outlined @click="restart"
+        <Button type="button" severity="primary" outlined @click="restart"
           >Onboard another supplier</Button
         >
       </div>

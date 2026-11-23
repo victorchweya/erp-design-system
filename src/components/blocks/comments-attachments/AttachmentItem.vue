@@ -40,7 +40,7 @@ const canPreview = computed(() => !!props.attachment.url && props.attachment.kin
         asChild
         size="small"
         variant="text"
-        severity="secondary"
+        severity="primary"
       >
         <a
           :href="attachment.url!"
@@ -57,7 +57,7 @@ const canPreview = computed(() => !!props.attachment.url && props.attachment.kin
         asChild
         size="small"
         variant="text"
-        severity="secondary"
+        severity="primary"
       >
         <a
           :href="attachment.url"

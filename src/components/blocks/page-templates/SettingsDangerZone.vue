@@ -45,7 +45,7 @@ function requestDeactivate() {
         @click="requestDeactivate"
         >Deactivate account</Button
       >
-      <Button v-else type="button" severity="secondary" outlined @click="deactivated = false"
+      <Button v-else type="button" severity="primary" outlined @click="deactivated = false"
         >Reactivate account</Button
       >
     </div>

@@ -327,7 +327,7 @@ function resetFilters() {
         scrollable
         :tableStyle="{ minWidth: `${visibleColumns.length * 9 + 5}rem` }"
         :tableProps="{ 'aria-label': 'Sales orders with filters and sorting' }"
-        class="stress-table"
+        class="stress-table erp-table-pagination"
       >
         <template #paginatorstart>
           <div class="flex w-full items-center text-sm text-muted">
@@ -350,7 +350,7 @@ function resetFilters() {
               <Button
                 type="button"
                 label="Filter"
-                severity="secondary"
+                severity="primary"
                 outlined
                 :badge="activeFilters.length ? String(activeFilters.length) : undefined"
                 badgeSeverity="primary"
@@ -363,7 +363,7 @@ function resetFilters() {
               <Button
                 type="button"
                 iconOnly
-                severity="secondary"
+                severity="primary"
                 outlined
                 aria-label="Columns"
                 v-tooltip.top="'Columns'"
@@ -373,14 +373,14 @@ function resetFilters() {
               >
                 <Table aria-hidden="true" />
               </Button>
-              <Button type="button" severity="secondary" outlined @click="exportOrders">
+              <Button type="button" severity="primary" outlined @click="exportOrders">
                 <Download aria-hidden="true" />
                 Export CSV
               </Button>
               <Button
                 type="button"
                 iconOnly
-                severity="secondary"
+                severity="primary"
                 outlined
                 aria-label="Refresh"
                 v-tooltip.top="'Refresh'"
@@ -401,7 +401,7 @@ function resetFilters() {
                 type="button"
                 aria-label="Reset filters"
                 title="Reset filters"
-                severity="secondary"
+                severity="primary"
                 outlined
                 size="small"
                 @click="resetFilters"
@@ -524,7 +524,7 @@ function resetFilters() {
           <template #body="{ data }">
             <Button
               type="button"
-              severity="secondary"
+              severity="primary"
               text
               rounded
               :aria-label="`Actions for ${data.orderNumber}`"
@@ -549,7 +549,7 @@ function resetFilters() {
         <Button
           type="button"
           size="small"
-          severity="secondary"
+          severity="primary"
           text
           :disabled="allColumnsVisible"
           @click="visibleColumns = columns.map(({ key }) => key)"
@@ -626,17 +626,3 @@ function resetFilters() {
 
   <Menu ref="menu" :model="actionItems" popup aria-label="Order actions" />
 </template>
-
-<style scoped>
-:deep(.p-paginator) {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  align-items: center;
-}
-
-:deep(.p-paginator-content-start) {
-  display: flex;
-  width: 100%;
-  min-width: 0;
-}
-</style>

@@ -47,7 +47,7 @@ onBeforeUnmount(() => clearTimeout(timer))
       <p class="text-muted">Updated {{ formatTime(updatedAt) }}</p>
       <Button
         type="button"
-        severity="secondary"
+        severity="primary"
         outlined
         size="small"
         :aria-disabled="refreshing"

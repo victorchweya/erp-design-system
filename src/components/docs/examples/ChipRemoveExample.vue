@@ -19,7 +19,7 @@ const filters = ref(['Vegetables', 'In season', 'Local'])
     <Button
       type="button"
       size="small"
-      severity="secondary"
+      severity="primary"
       outlined
       class="self-start"
       @click="filters = ['Vegetables', 'In season', 'Local']"

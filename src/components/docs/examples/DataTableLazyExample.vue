@@ -148,7 +148,7 @@ onBeforeUnmount(() => controller?.abort())
         <span>{{ error }} Retry to load the requested page.</span>
         <Button
           type="button"
-          severity="secondary"
+          severity="primary"
           outlined
           size="small"
           :loading="loading"

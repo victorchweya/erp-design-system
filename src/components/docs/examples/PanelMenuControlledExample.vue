@@ -72,14 +72,16 @@ function collapseAll() {
       <Button
         type="button"
         label="Expand all"
-        severity="secondary"
+        severity="primary"
+        outlined
         size="small"
         @click="expandAll"
       />
       <Button
         type="button"
         label="Collapse all"
-        severity="secondary"
+        severity="primary"
+        outlined
         size="small"
         @click="collapseAll"
       />

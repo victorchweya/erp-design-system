@@ -82,7 +82,7 @@ const credit: RecordCreditSummary = { limit: 500000, used: 312500 }
       <Tag severity="secondary">High priority</Tag>
     </template>
     <template #actions>
-      <Button type="button" size="small" severity="secondary" outlined>Edit customer</Button>
+      <Button type="button" size="small" severity="primary" outlined>Edit customer</Button>
     </template>
   </RecordDetailsBlock>
 </template>

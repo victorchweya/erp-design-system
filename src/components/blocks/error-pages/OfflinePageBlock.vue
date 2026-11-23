@@ -51,10 +51,10 @@ function retry() {
       <component :is="content.icon" :size="32" aria-hidden="true" class="text-warn" />
     </template>
     <template #actions>
-      <Button type="button" :loading="retrying" @click="retry">
+      <Button size="small" type="button" :loading="retrying" @click="retry">
         <Replay aria-hidden="true" />Try again
       </Button>
-      <Button v-if="supportHref" as="a" :href="supportHref" severity="secondary" outlined>
+      <Button size="small" v-if="supportHref" as="a" :href="supportHref" severity="primary" outlined>
         <Envelope aria-hidden="true" />Contact support
       </Button>
     </template>

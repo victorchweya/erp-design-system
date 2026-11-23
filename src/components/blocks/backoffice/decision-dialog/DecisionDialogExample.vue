@@ -2,7 +2,7 @@
 import { nextTick, shallowRef, useId, useTemplateRef } from 'vue'
 import DecisionDialogBlock from './DecisionDialogBlock.vue'
 import DecisionStamp from './DecisionStamp.vue'
-import { decisionTitle, type DecisionKind, type DecisionRecord } from './decision-dialog'
+import { decisionKinds, decisionTitle, type DecisionKind, type DecisionRecord } from './decision-dialog'
 
 defineProps<{
   kind: DecisionKind
@@ -56,7 +56,7 @@ function undo() {
       ref="trigger"
       type="button"
       size="small"
-      :severity="kind === 'approve' ? undefined : 'secondary'"
+      :severity="decisionKinds[kind].destructive ? 'danger' : 'primary'"
       :outlined="kind !== 'approve'"
       aria-haspopup="dialog"
       :aria-controls="id"

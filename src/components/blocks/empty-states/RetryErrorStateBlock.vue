@@ -19,7 +19,7 @@ const retrying = ref(false)
         </div>
         <Button
           type="button"
-          severity="danger"
+          severity="primary"
           size="small"
           outlined
           :loading="retrying"

@@ -29,6 +29,8 @@ Examples do not send form values, passwords, codes, or files to a backend. FileU
 
 Tag and Badge support seven native severities: primary, secondary, success, info, warn, danger, and contrast. `help` is supported by Button, not Tag or Badge. Inputs use `invalid` for error styling rather than severity.
 
+Button severity communicates meaning; variant controls emphasis. Use primary filled for main actions, primary outlined for toolbar/supporting actions (Filter, Columns, Export, Refresh), and primary text for quiet inline actions. Secondary outlined/text is for cancellation, dismissal, neutral navigation, and embedded field controls. Destructive actions use danger, filled on the final confirmation. Reserve success/warn/info for semantic actions. Icon-only actions follow their group. Explicit severity demonstrations and preview resets are exceptions. See [Button usage guidance](src/views/components/ButtonView.vue).
+
 Open `/foundations/color` for the colour foundations, including brand colours, semantic roles, light/dark comparisons, palette ramps, default Tailwind shadows, and the token table.
 
 Open `/foundations/typography` for Rubik specimens, recommended heading and body combinations, weights, and Tailwind classes.

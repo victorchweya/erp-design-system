@@ -48,7 +48,7 @@ watch(
         <template #empty>
           <div class="flex flex-col items-start gap-3 py-4">
             <p>No orders match these filters.</p>
-            <Button type="button" severity="secondary" outlined size="small" @click="emit('clear')"
+            <Button type="button" severity="primary" outlined size="small" @click="emit('clear')"
               >Clear filters</Button
             >
           </div>

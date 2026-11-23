@@ -23,7 +23,7 @@ const behavior = computed(() => (motion.value === 'reduce' ? 'auto' : 'smooth'))
       target="parent"
       :threshold="100"
       :behavior="behavior"
-      :buttonProps="{ 'aria-label': 'Back to top of delivery history' }"
+      :buttonProps="{ severity: 'secondary', outlined: true, 'aria-label': 'Back to top of delivery history' }"
     />
   </div>
 </template>

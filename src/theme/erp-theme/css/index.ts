@@ -60,6 +60,17 @@ const controlCss = [...controlSizes]
 
 const css = /*css*/ `
     ${controlCss}
+    /* Opt-in table footer: summary on the left, page-size label and controls on the right. */
+    .erp-table-pagination > nav > .p-paginator {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        align-items: center;
+    }
+    .erp-table-pagination > nav > .p-paginator > .p-paginator-content-start {
+        display: flex;
+        width: 100%;
+        min-width: 0;
+    }
     :is(
         .p-button.p-button-sm,
         .p-component.p-inputfield-sm,

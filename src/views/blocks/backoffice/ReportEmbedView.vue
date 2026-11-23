@@ -15,7 +15,7 @@ const examples = [
   {
     id: 'loading-and-failed',
     title: 'Loading and failed states',
-    description: 'Switch the preview state to see the loading skeleton and the retry message.',
+    description: 'Switch the preview state to see the loading skeleton and the centred error state with a retry action.',
     component: ReportEmbedExample,
     code,
     props: { stateSwitcher: true },

@@ -2,6 +2,8 @@
 // GOAL: Pick a report and read it in place, with clear loading and failed states.
 import { computed, shallowRef, useId, useTemplateRef, watch } from 'vue'
 import Refresh from '@primeicons/vue/refresh'
+import ExclamationTriangle from '@primeicons/vue/exclamation-triangle'
+import Inbox from '@primeicons/vue/inbox'
 import type { ReportDefinition, ReportState } from './reports'
 
 const props = withDefaults(
@@ -86,7 +88,7 @@ function ask(event: 'retry' | 'refresh') {
         type="button"
         label="Refresh"
         size="small"
-        severity="secondary"
+        severity="primary"
         outlined
         class="ml-auto"
         :disabled="state !== 'ready'"
@@ -103,21 +105,30 @@ function ask(event: 'retry' | 'refresh') {
       role="region"
       :aria-label="current ? `${current.name} report` : 'Report'"
       :aria-busy="busy"
-      :class="[
-        'relative flex flex-1 flex-col gap-2',
-        { 'min-h-96': current && state !== 'failed' },
-      ]"
+      class="relative flex min-h-96 flex-1 flex-col gap-2"
     >
       <p role="status" class="sr-only">{{ statusText }}</p>
-      <p v-if="!current" class="text-muted">Choose a report to read it here.</p>
-      <Message v-else-if="state === 'failed'" severity="error">
-        <div class="flex flex-wrap items-center gap-x-3 gap-y-1.5">
-          <span>Could not load {{ current.name }}. {{ errorMessage }}</span>
-          <Button type="button" size="small" severity="danger" outlined @click="ask('retry')"
-            >Retry</Button
-          >
+      <div v-if="!current" class="flex flex-1 flex-col items-center justify-center gap-4 text-center">
+        <Inbox :size="32" aria-hidden="true" class="text-muted" />
+        <div class="flex flex-col items-center gap-2">
+          <h3 class="text-lg font-medium">Choose a report</h3>
+          <p class="max-w-md text-sm text-muted">Select a report above to read it here.</p>
         </div>
-      </Message>
+      </div>
+      <div
+        v-else-if="state === 'failed'"
+        role="alert"
+        class="flex flex-1 flex-col items-center justify-center gap-4 text-center"
+      >
+        <ExclamationTriangle :size="32" aria-hidden="true" class="text-error" />
+        <div class="flex flex-col items-center gap-2">
+          <h3 class="text-lg font-medium">Could not load {{ current.name }}</h3>
+          <p class="max-w-md text-sm text-muted">{{ errorMessage }}</p>
+        </div>
+        <Button type="button" size="small" severity="primary" outlined @click="ask('retry')">
+          <Refresh aria-hidden="true" />Retry
+        </Button>
+      </div>
       <template v-else>
         <iframe
           v-if="state === 'ready'"

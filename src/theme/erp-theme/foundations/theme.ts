@@ -177,7 +177,13 @@ function componentScheme(mode: Mode) {
       },
     ]),
   )
-  return { message, tag, badge: tag, toast }
+  const chipColors = pairTokens('chip.background', mode)
+  const chip = {
+    root: { ...chipColors, focusBackground: chipColors.background },
+    icon: { color: chipColors.color },
+    removeIcon: { color: chipColors.color },
+  }
+  return { message, tag, badge: tag, toast, chip }
 }
 
 const light = componentScheme('light')
@@ -228,6 +234,7 @@ const buttonColors = { root: buttonRoot, text: buttonText, outlined: buttonOutli
 export default {
   semantic: { colorScheme: Object.fromEntries(modes.map((mode) => [mode, semanticScheme(mode)])) },
   components: {
+    chip: { colorScheme: { light: light.chip, dark: dark.chip } },
     button: { colorScheme: { light: buttonColors, dark: buttonColors } },
     tag: { colorScheme: { light: light.tag, dark: dark.tag } },
     badge: { colorScheme: { light: light.badge, dark: dark.badge } },

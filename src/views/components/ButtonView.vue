@@ -32,7 +32,7 @@ const examples = [
     component: ButtonSeverityExample,
     code: severityCode,
     description:
-      'Use primary for the main action. Success uses emerald so it stays distinct from the Kale primary; warn uses orange. Choose severity for meaning rather than decoration.',
+      'Severity communicates meaning; variant controls emphasis. Primary covers ordinary actions, including supporting actions. Reserve success, warn, and info for actions with those meanings. This gallery demonstrates every supported severity.',
   },
   {
     id: 'button-sizes',
@@ -109,6 +109,22 @@ const activeSection = useActiveSection(sections.map(({ id }) => id))
             for supported variations.
           </p>
           <CodeExample title="Basic button" :code="basicCode"><ButtonBasicExample /></CodeExample>
+          <p class="leading-relaxed text-muted-color">
+            A supporting action does not need secondary severity. Use primary colour at different
+            emphasis levels, and keep icon-only buttons consistent with their action group.
+          </p>
+          <ul class="list-disc space-y-2 pl-5 text-muted-color">
+            <li>Primary filled: the main action, such as Save, Create, or Continue.</li>
+            <li>Primary outlined: supporting actions and toolbar tools, such as Filter, Columns, Export, and Refresh.</li>
+            <li>Primary text: quiet inline actions, such as Edit or Show all.</li>
+            <li>Secondary outlined or text: Cancel, Close, Back, and neutral navigation or embedded field controls.</li>
+            <li>Danger outlined or text: destructive actions. Use danger filled for the final destructive confirmation.</li>
+            <li>Success, warn, and info: only when the action itself carries that meaning. Retry is an ordinary primary action.</li>
+          </ul>
+          <p class="leading-relaxed text-muted-color">
+            Preview resets and explicit severity demonstrations may remain neutral or use the
+            colour being demonstrated. Clearing active table filters is a supporting toolbar action.
+          </p>
         </section>
         <section
           v-for="example in examples"

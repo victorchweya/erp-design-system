@@ -31,7 +31,7 @@ const sections: RecordDetailSection[] = [
   <Button
     type="button"
     size="small"
-    severity="secondary"
+    severity="primary"
     outlined
     aria-haspopup="dialog"
     :aria-controls="id"

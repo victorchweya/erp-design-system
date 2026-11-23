@@ -34,7 +34,7 @@ function exportLog() {
     <template #header>
       <div class="flex flex-wrap items-center justify-between gap-3">
         <p class="text-sm text-muted">{{ entries.length }} entries, newest first.</p>
-        <Button type="button" severity="secondary" outlined size="small" @click="exportLog"
+        <Button type="button" severity="primary" outlined size="small" @click="exportLog"
           ><Download aria-hidden="true" />Export CSV</Button
         >
       </div>

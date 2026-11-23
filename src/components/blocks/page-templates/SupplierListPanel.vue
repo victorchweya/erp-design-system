@@ -77,7 +77,7 @@ onMounted(async () => {
       <template #empty>
         <div class="flex flex-col items-start gap-3 py-4">
           <p>No suppliers match “{{ query }}”.</p>
-          <Button type="button" severity="secondary" outlined size="small" @click="query = ''"
+          <Button type="button" severity="primary" outlined size="small" @click="query = ''"
             >Clear search</Button
           >
         </div>

@@ -9,7 +9,7 @@ import Trash from '@primeicons/vue/trash'
     <div class="flex gap-2">
       <Button
         type="button"
-        severity="secondary"
+        severity="primary"
         variant="outlined"
         iconOnly
         aria-label="Edit Sukuma wiki line"

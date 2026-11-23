@@ -42,7 +42,7 @@ function open(event: Event, position: (typeof positions)[number]) {
       v-for="position in positions"
       :key="position.value"
       type="button"
-      severity="secondary"
+      severity="primary"
       outlined
       aria-haspopup="dialog"
       :aria-controls="id"

@@ -71,7 +71,7 @@ function reset() {
       <Button
         type="button"
         iconOnly
-        severity="secondary"
+        severity="primary"
         outlined
         :aria-label="triggerLabel"
         aria-haspopup="dialog"

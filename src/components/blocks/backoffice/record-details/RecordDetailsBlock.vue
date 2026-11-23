@@ -330,7 +330,7 @@ async function copy(row: (typeof rows.value)[number]['items'][number]) {
               type="button"
               iconOnly
               size="small"
-              severity="secondary"
+              severity="primary"
               text
               :aria-label="`Copy ${row.copyTarget}`"
               :title="`Copy ${row.copyTarget}`"

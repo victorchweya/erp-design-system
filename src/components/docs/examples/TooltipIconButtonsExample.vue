@@ -8,9 +8,9 @@ import Trash from '@primeicons/vue/trash'
 
 const result = shallowRef('No action selected.')
 const actions = [
-  { label: 'Edit order', icon: Pencil, severity: 'secondary' },
-  { label: 'Duplicate order', icon: Copy, severity: 'secondary' },
-  { label: 'Print delivery note', icon: Print, severity: 'secondary' },
+  { label: 'Edit order', icon: Pencil, severity: 'primary' },
+  { label: 'Duplicate order', icon: Copy, severity: 'primary' },
+  { label: 'Print delivery note', icon: Print, severity: 'primary' },
   { label: 'Cancel order', icon: Trash, severity: 'danger' },
 ] as const
 </script>

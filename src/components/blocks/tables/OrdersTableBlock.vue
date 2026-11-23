@@ -42,7 +42,7 @@ function clear() {
     :rowsPerPageOptions="[5, 10, 20]"
     paginatorTemplate="RowsPerPageDropdown PrevPageLink PageLinks NextPageLink"
     :tableProps="{ 'aria-label': 'Customer orders' }"
-    class="orders-table"
+    class="orders-table erp-table-pagination"
   >
     <template #paginatorstart>
       <div class="flex w-full items-center text-sm text-muted">
@@ -78,7 +78,7 @@ function clear() {
               fluid
             />
           </div>
-          <Button type="button" severity="secondary" outlined @click="clear">Clear filters</Button>
+          <Button type="button" severity="primary" outlined @click="clear">Clear filters</Button>
         </div>
       </div>
     </template>
@@ -95,24 +95,10 @@ function clear() {
     <template #empty
       ><div class="flex flex-col items-start gap-3 py-4">
         <p>No orders match these filters.</p>
-        <Button type="button" severity="secondary" outlined size="small" @click="clear"
+        <Button type="button" severity="primary" outlined size="small" @click="clear"
           >Reset search</Button
         >
       </div></template
     >
   </DataTable>
 </template>
-
-<style scoped>
-:deep(.p-paginator) {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  align-items: center;
-}
-
-:deep(.p-paginator-content-start) {
-  display: flex;
-  width: 100%;
-  min-width: 0;
-}
-</style>

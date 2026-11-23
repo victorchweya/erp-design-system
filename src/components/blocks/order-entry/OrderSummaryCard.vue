@@ -130,7 +130,7 @@ const action = computed(() => {
       <Button type="button" :disabled="!valid" fluid @click="emit('submit')">{{ action }}</Button>
       <Button
         type="button"
-        severity="secondary"
+        severity="primary"
         outlined
         :disabled="!valid"
         fluid

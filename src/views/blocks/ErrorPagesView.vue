@@ -65,7 +65,7 @@ const examples = [
     id: 'layout',
     title: 'Shared layout',
     description:
-      'Every error page uses this layout. Copy it with the page you need, or compose a new case from its icon, details, and actions slots.',
+      'Every error page uses the same heading and spacing as empty states, without a card wrapper or brand symbol. Copy it with the page you need, or compose a new case from its icon, details, and actions slots.',
     component: ErrorPage,
     props: {
       headingTag: 'h3',

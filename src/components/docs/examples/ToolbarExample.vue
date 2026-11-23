@@ -16,14 +16,14 @@ const action = shallowRef('Choose an order action.')
           <Button
             type="button"
             size="small"
-            severity="secondary"
+            severity="primary"
             outlined
             @click="action = 'Export selected.'"
             >Export</Button
           ><Button
             type="button"
             size="small"
-            severity="secondary"
+            severity="primary"
             outlined
             @click="action = 'Filters selected.'"
             >Filters</Button

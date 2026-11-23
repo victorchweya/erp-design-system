@@ -33,7 +33,7 @@ const validCount = computed(() => props.rows.length - invalidRows.value.length)
           <p class="text-sm text-muted">Rows with errors are skipped. Fix them and re-import.</p>
           <Button
             type="button"
-            severity="secondary"
+            severity="primary"
             outlined
             size="small"
             @click="emit('download')"

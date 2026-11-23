@@ -46,7 +46,7 @@ const filters = [
         <Button
           type="button"
           size="small"
-          severity="secondary"
+          severity="primary"
           outlined
           :disabled="!selectedCount"
           @click="emit('markRead')"
@@ -55,7 +55,7 @@ const filters = [
         <Button
           type="button"
           size="small"
-          severity="secondary"
+          severity="primary"
           outlined
           :disabled="!selectedCount"
           @click="emit('archive')"

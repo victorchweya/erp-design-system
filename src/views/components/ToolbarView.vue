@@ -28,7 +28,7 @@ const api = [
     name: 'end slot',
     type: 'VNode[]',
     default: '—',
-    description: 'Content aligned to the end, usually secondary actions.',
+    description: 'Content aligned to the end, usually supporting actions with primary outlined buttons.',
   },
   {
     name: 'ariaLabelledby',

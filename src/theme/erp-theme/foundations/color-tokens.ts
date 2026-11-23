@@ -74,6 +74,19 @@ export const secondaryColors = [
 
 export const colorRoles: ColorRole[] = [
   {
+    name: 'chip.background',
+    label: 'Chip',
+    foregroundToken: 'chip.color',
+    backgroundToken: 'chip.background',
+    scope: 'component',
+    purpose: 'Soft olive background for selected entities and removable filter chips.',
+    group: 'accent',
+    evidence: 'FTF decision',
+    source: 'FTF decision · Default chips use olive 100 with olive 900 text.',
+    light: pair('olive.900', 'olive.100'),
+    dark: pair('olive.900', 'olive.100'),
+  },
+  {
     name: 'primary.color',
     label: 'Primary action',
     foregroundToken: 'primary.contrast.color',

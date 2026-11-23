@@ -20,7 +20,7 @@ const hiddenBadge = { pcBadge: { root: { 'aria-hidden': 'true' } } }
         <Button
           type="button"
           iconOnly
-          severity="secondary"
+          severity="primary"
           outlined
           :aria-label="notificationsLabel"
         >
@@ -31,7 +31,7 @@ const hiddenBadge = { pcBadge: { root: { 'aria-hidden': 'true' } } }
         v-else
         type="button"
         iconOnly
-        severity="secondary"
+        severity="primary"
         outlined
         :aria-label="notificationsLabel"
       >
@@ -41,7 +41,7 @@ const hiddenBadge = { pcBadge: { root: { 'aria-hidden': 'true' } } }
         <Button
           type="button"
           iconOnly
-          severity="secondary"
+          severity="primary"
           outlined
           :aria-label="`Purchase orders awaiting approval, ${pendingApprovals}`"
         >
@@ -52,7 +52,7 @@ const hiddenBadge = { pcBadge: { root: { 'aria-hidden': 'true' } } }
         <Button
           type="button"
           iconOnly
-          severity="secondary"
+          severity="primary"
           outlined
           aria-label="Supplier messages, new messages"
         >
@@ -63,7 +63,8 @@ const hiddenBadge = { pcBadge: { root: { 'aria-hidden': 'true' } } }
     <div class="flex flex-wrap items-center gap-4">
       <Button
         type="button"
-        severity="secondary"
+        severity="primary"
+        outlined
         size="small"
         :disabled="unread === 0"
         label="Mark notifications read"

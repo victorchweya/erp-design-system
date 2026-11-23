@@ -129,7 +129,7 @@ function exportRows(selectionOnly: boolean) {
         <div class="flex flex-wrap gap-2 sm:ml-auto">
           <Button
             type="button"
-            severity="secondary"
+            severity="primary"
             outlined
             size="small"
             :disabled="!selected.length"
@@ -139,6 +139,7 @@ function exportRows(selectionOnly: boolean) {
             Export selected ({{ selected.length }})
           </Button>
           <Button
+            outlined
             type="button"
             size="small"
             :disabled="!filtered.length"
@@ -170,7 +171,7 @@ function exportRows(selectionOnly: boolean) {
       <template #body="{ data }">
         <Button
           type="button"
-          severity="secondary"
+          severity="primary"
           variant="text"
           size="small"
           :aria-label="`View ${data.reference}`"

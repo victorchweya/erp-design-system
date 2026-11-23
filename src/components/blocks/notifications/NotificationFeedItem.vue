@@ -32,7 +32,7 @@ const type = computed(() => notificationTypes[props.item.type])
         iconOnly
         size="small"
         variant="text"
-        severity="secondary"
+        severity="primary"
         :aria-label="`Mark as read: ${item.title}`"
         @click="emit('markRead')"
         ><Check aria-hidden="true"

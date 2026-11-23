@@ -125,7 +125,7 @@ function resetLayout() {
       </div>
       <Button
         type="button"
-        severity="secondary"
+        severity="primary"
         outlined
         size="small"
         :disabled="position <= 0"
@@ -136,7 +136,7 @@ function resetLayout() {
       </Button>
       <Button
         type="button"
-        severity="secondary"
+        severity="primary"
         outlined
         size="small"
         :disabled="position >= order.length - 1"
@@ -145,7 +145,7 @@ function resetLayout() {
         <ArrowRight aria-hidden="true" />
         Move right
       </Button>
-      <Button type="button" severity="secondary" variant="text" size="small" @click="resetLayout">
+      <Button type="button" severity="primary" variant="text" size="small" @click="resetLayout">
         <Refresh aria-hidden="true" />
         Reset layout
       </Button>
