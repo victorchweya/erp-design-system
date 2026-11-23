@@ -7,6 +7,8 @@ import { useActiveSection } from '@/composables/useActiveSection'
 const props = defineProps<{
   title: string
   description: string
+  /** Small label above the title; defaults to the UI blocks section. */
+  eyebrow?: string
   usage: string[]
   examples: {
     id: string
@@ -29,7 +31,7 @@ const activeSection = useActiveSection(() => sections.value.map(({ id }) => id))
   <div class="mx-auto flex w-full max-w-screen-xl gap-10 px-4 py-10 text-sm">
     <div class="min-w-0 flex-1">
       <header class="mb-8 flex flex-col gap-3">
-        <p class="font-medium uppercase tracking-wide text-primary">UI blocks</p>
+        <p class="font-medium uppercase tracking-wide text-primary">{{ eyebrow ?? 'UI blocks' }}</p>
         <h1 class="text-3xl font-medium tracking-tight sm:text-4xl">{{ title }}</h1>
         <p class="text-base leading-relaxed text-muted">
           {{ description }}

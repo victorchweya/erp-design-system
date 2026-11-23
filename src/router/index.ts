@@ -34,7 +34,7 @@ const router = createRouter({
       path: page.path,
       name: `blocks-${page.path.split('/').pop()}`,
       meta: {
-        breadcrumb: ['UI blocks', ...(page.group ? [page.group] : []), page.label],
+        breadcrumb: [page.section ?? 'UI blocks', ...(page.group ? [page.group] : []), page.label],
       },
       component: page.load,
     })),

@@ -47,11 +47,7 @@ onMounted(() => heading.value?.focus())
           >
             {{ supplier.name }}
           </h3>
-          <Tag
-            :severity="statusSeverity[supplier.status]"
-            :class="{ 'bg-primary text-primary-contrast': supplier.status === 'Active' }"
-            >{{ supplier.status }}</Tag
-          >
+          <Tag :severity="statusSeverity[supplier.status]">{{ supplier.status }}</Tag>
         </div>
         <p class="text-sm text-muted">{{ supplier.id }} · {{ supplier.county }} County</p>
       </div>

@@ -8,7 +8,7 @@ import Times from '@primeicons/vue/times'
 import CheckCircle from '@primeicons/vue/check-circle'
 import { formatCurrency } from '@/utils/format'
 import ApprovalHistory from './ApprovalHistory.vue'
-import ApprovalReasonDialog from './ApprovalReasonDialog.vue'
+import DecisionDialogBlock from '../backoffice/decision-dialog/DecisionDialogBlock.vue'
 import {
   initialHistory,
   people,
@@ -19,7 +19,6 @@ import {
   type ApprovalRole,
   type ApprovalStage,
   type HistoryEntry,
-  type ReasonMode,
   type StepState,
 } from './approval-flow'
 
@@ -33,7 +32,7 @@ const stage = shallowRef<ApprovalStage>('manager')
 const rejectedAt = shallowRef<'manager' | 'finance'>('manager')
 const history = ref<HistoryEntry[]>(initialHistory())
 const announcement = shallowRef('')
-const reasonMode = shallowRef<ReasonMode>('reject')
+const reasonKind = shallowRef<'reject' | 'changes'>('reject')
 const reasonVisible = shallowRef(false)
 let focusAfterDialog = false
 
@@ -149,14 +148,15 @@ function approve() {
   })
 }
 
-function openReason(mode: ReasonMode) {
-  reasonMode.value = mode
+function openReason(kind: 'reject' | 'changes') {
+  reasonKind.value = kind
   reasonVisible.value = true
 }
 
 function submitReason(reason: string) {
   focusAfterDialog = true
-  if (reasonMode.value === 'reject') {
+  reasonVisible.value = false
+  if (reasonKind.value === 'reject') {
     rejectedAt.value = stage.value === 'finance' ? 'finance' : 'manager'
     record('Rejected', 'danger', 'rejected', reason)
   } else {
@@ -350,11 +350,12 @@ function reset() {
       </div>
     </template>
   </Card>
-  <ApprovalReasonDialog
+  <DecisionDialogBlock
+    :id="`${id}-reason`"
     v-model:visible="reasonVisible"
-    :dialogId="`${id}-reason`"
-    :mode="reasonMode"
-    @submit="submitReason"
+    :kind="reasonKind"
+    :record="{ reference: request.reference, summary: request.customer }"
+    @confirm="submitReason"
     @after-hide="onReasonHidden"
   />
   <ConfirmDialog :group="id" class="w-[calc(100vw-2rem)] max-w-lg" />

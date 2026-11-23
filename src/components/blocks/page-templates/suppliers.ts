@@ -38,8 +38,9 @@ export const supplierStatuses: SupplierStatus[] = ['Active', 'On hold', 'Onboard
 export const counties = ['Kiambu', 'Kirinyaga', 'Meru', 'Murang’a', 'Nakuru', 'Nyandarua']
 export const paymentTerms = ['On delivery', '7 days', '14 days', '30 days']
 
-export const statusSeverity: Record<SupplierStatus, 'success' | 'warn' | 'info'> = {
-  Active: 'success',
+// Active uses the Tag default (primary, Kale), so it has no severity.
+export const statusSeverity: Record<SupplierStatus, 'warn' | 'info' | undefined> = {
+  Active: undefined,
   'On hold': 'warn',
   Onboarding: 'info',
 }

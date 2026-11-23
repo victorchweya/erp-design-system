@@ -57,7 +57,7 @@ const groups: MenuGroup[] = [
     id: 'ui-blocks',
     label: 'UI blocks',
     items: blockPages
-      .filter((page) => !page.group)
+      .filter((page) => !page.group && !page.section)
       .map((page) => ({ label: page.label, to: page.path })),
     groups: ['KPI / metric card', 'Charts', 'ERP patterns'].map((label) => ({
       label,
@@ -65,6 +65,13 @@ const groups: MenuGroup[] = [
         .filter((page) => page.group === label)
         .map((page) => ({ label: page.label, to: page.path })),
     })),
+  },
+  {
+    id: 'backoffice-blocks',
+    label: 'Backoffice blocks',
+    items: blockPages
+      .filter((page) => page.section === 'Backoffice blocks')
+      .map((page) => ({ label: page.label, to: page.path })),
   },
 ]
 const menuGroups = computed(() =>

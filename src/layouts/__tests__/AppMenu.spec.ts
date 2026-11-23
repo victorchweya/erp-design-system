@@ -106,7 +106,7 @@ it('opens every block category with the correct active link and breadcrumb', asy
     expect(current.attributes('href')).toBe(page.path)
     expect(current.element.closest('details')?.open).toBe(true)
     expect(router.currentRoute.value.meta.breadcrumb).toEqual([
-      'UI blocks',
+      page.section ?? 'UI blocks',
       ...(page.group ? [page.group] : []),
       page.label,
     ])

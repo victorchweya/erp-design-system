@@ -1,7 +1,6 @@
 export type ApprovalRole = 'requester' | 'manager' | 'finance'
 export type ApprovalStage = 'manager' | 'finance' | 'changes' | 'approved' | 'rejected'
 export type StepState = 'done' | 'current' | 'upcoming' | 'rejected'
-export type ReasonMode = 'reject' | 'changes'
 
 export interface Person {
   name: string
@@ -55,26 +54,6 @@ export const stageApprover: Record<ApprovalStage, ApprovalRole | null> = {
   changes: 'requester',
   approved: null,
   rejected: null,
-}
-
-export const reasonCopy: Record<
-  ReasonMode,
-  { header: string; label: string; help: string; submit: string; error: string }
-> = {
-  reject: {
-    header: 'Reject request',
-    label: 'Reason for rejection',
-    help: 'Required. The requester sees this reason in the history.',
-    submit: 'Reject request',
-    error: 'Enter a reason of at least 10 characters.',
-  },
-  changes: {
-    header: 'Request changes',
-    label: 'What needs to change?',
-    help: 'Required. Tell the requester what to update before resubmitting.',
-    submit: 'Send back for changes',
-    error: 'Describe the changes needed in at least 10 characters.',
-  },
 }
 
 export function initialHistory(): HistoryEntry[] {

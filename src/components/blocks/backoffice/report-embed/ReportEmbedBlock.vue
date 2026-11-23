@@ -1,0 +1,140 @@
+<script setup lang="ts">
+// GOAL: Pick a report and read it in place, with clear loading and failed states.
+import { computed, shallowRef, useId, useTemplateRef, watch } from 'vue'
+import Refresh from '@primeicons/vue/refresh'
+import type { ReportDefinition, ReportState } from './reports'
+
+const props = withDefaults(
+  defineProps<{
+    reports: ReportDefinition[]
+    /** Set by the parent: loading while a signed address is fetched, failed when that fails. */
+    state?: ReportState
+    /** Why the report failed, in plain words. */
+    errorMessage?: string
+    /** What the report frame may do. The default suits a hosted report that needs its scripts. */
+    sandbox?: string
+  }>(),
+  {
+    state: 'ready',
+    errorMessage: 'The report server did not respond.',
+    sandbox: 'allow-scripts allow-same-origin allow-forms allow-popups allow-downloads',
+  },
+)
+const emit = defineEmits<{
+  /** Try the same report again after it failed. */
+  retry: []
+  /** Ask for a new signed address, because the current one may have expired. */
+  refresh: []
+}>()
+/** Id of the report being read. The parent decides what to load when it changes. */
+const selected = defineModel<string | null>('selected', { default: null })
+
+const id = useId()
+const area = useTemplateRef<HTMLElement>('area')
+const frameLoaded = shallowRef(false)
+
+const current = computed(() => props.reports.find((report) => report.id === selected.value))
+const groups = computed(() => {
+  const byCategory = new Map<string, ReportDefinition[]>()
+  for (const report of props.reports) {
+    byCategory.set(report.category, [...(byCategory.get(report.category) ?? []), report])
+  }
+  return Array.from(byCategory, ([label, items]) => ({ label, items }))
+})
+// The frame can still be fetching its page after the address is ready.
+const busy = computed(
+  () =>
+    !!current.value &&
+    (props.state === 'loading' || (props.state === 'ready' && !frameLoaded.value)),
+)
+const statusText = computed(() => (busy.value ? `Loading ${current.value?.name}` : ''))
+
+watch([() => current.value?.url, () => props.state], () => (frameLoaded.value = false))
+
+// The button that was pressed disappears or is disabled while loading, so keep focus in the report area.
+function ask(event: 'retry' | 'refresh') {
+  area.value?.focus()
+  if (event === 'retry') emit('retry')
+  else emit('refresh')
+}
+</script>
+
+<template>
+  <section class="flex h-full min-h-0 flex-col gap-2 text-sm" aria-label="Report viewer">
+    <div class="flex flex-wrap items-center gap-x-3 gap-y-2">
+      <div class="w-full sm:w-64">
+        <label :for="`${id}-report`" class="sr-only">Report</label>
+        <Select
+          v-model="selected"
+          :inputId="`${id}-report`"
+          :options="groups"
+          optionLabel="name"
+          optionValue="id"
+          optionGroupLabel="label"
+          optionGroupChildren="items"
+          placeholder="Choose a report"
+          size="small"
+          :disabled="!reports.length"
+          fluid
+        />
+      </div>
+      <p v-if="current?.description" class="min-w-0 flex-1 basis-48 truncate text-muted">
+        {{ current.description }}
+      </p>
+      <Button
+        v-if="current"
+        type="button"
+        label="Refresh"
+        size="small"
+        severity="secondary"
+        outlined
+        class="ml-auto"
+        :disabled="state !== 'ready'"
+        @click="ask('refresh')"
+      >
+        <template #icon="{ class: iconClass }">
+          <Refresh :class="iconClass" aria-hidden="true" />
+        </template>
+      </Button>
+    </div>
+    <div
+      ref="area"
+      tabindex="-1"
+      role="region"
+      :aria-label="current ? `${current.name} report` : 'Report'"
+      :aria-busy="busy"
+      :class="[
+        'relative flex flex-1 flex-col gap-2',
+        { 'min-h-96': current && state !== 'failed' },
+      ]"
+    >
+      <p role="status" class="sr-only">{{ statusText }}</p>
+      <p v-if="!current" class="text-muted">Choose a report to read it here.</p>
+      <Message v-else-if="state === 'failed'" severity="error">
+        <div class="flex flex-wrap items-center gap-x-3 gap-y-1.5">
+          <span>Could not load {{ current.name }}. {{ errorMessage }}</span>
+          <Button type="button" size="small" severity="danger" outlined @click="ask('retry')"
+            >Retry</Button
+          >
+        </div>
+      </Message>
+      <template v-else>
+        <iframe
+          v-if="state === 'ready'"
+          :key="current.url"
+          :src="current.url"
+          :title="current.name"
+          :sandbox="sandbox"
+          loading="lazy"
+          class="min-h-0 w-full flex-1 border border-surface"
+          @load="frameLoaded = true"
+        />
+        <div v-if="busy" class="absolute inset-0 flex flex-col gap-2 bg-surface" aria-hidden="true">
+          <p class="text-muted">Loading {{ current.name }}…</p>
+          <Skeleton width="40%" />
+          <Skeleton height="auto" class="flex-1" />
+        </div>
+      </template>
+    </div>
+  </section>
+</template>

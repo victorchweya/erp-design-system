@@ -3,6 +3,8 @@ import type { Component } from 'vue'
 type BlockPage = {
   label: string
   group?: string
+  /** Top-level menu section. Defaults to "UI blocks". */
+  section?: 'Backoffice blocks'
   path: string
   load: () => Promise<{ default: Component }>
 }
@@ -201,5 +203,41 @@ export const blockPages: BlockPage[] = [
     group: 'ERP patterns',
     path: '/ui-blocks/error-pages',
     load: () => import('@/views/blocks/ErrorPagesView.vue'),
+  },
+  {
+    label: 'List toolbar',
+    section: 'Backoffice blocks',
+    path: '/backoffice-blocks/list-toolbar',
+    load: () => import('@/views/blocks/backoffice/ListToolbarView.vue'),
+  },
+  {
+    label: 'Status tag',
+    section: 'Backoffice blocks',
+    path: '/backoffice-blocks/status-tag',
+    load: () => import('@/views/blocks/backoffice/StatusTagView.vue'),
+  },
+  {
+    label: 'Decision dialog',
+    section: 'Backoffice blocks',
+    path: '/backoffice-blocks/decision-dialog',
+    load: () => import('@/views/blocks/backoffice/DecisionDialogView.vue'),
+  },
+  {
+    label: 'Record details',
+    section: 'Backoffice blocks',
+    path: '/backoffice-blocks/record-details',
+    load: () => import('@/views/blocks/backoffice/RecordDetailsView.vue'),
+  },
+  {
+    label: 'Report embed',
+    section: 'Backoffice blocks',
+    path: '/backoffice-blocks/report-embed',
+    load: () => import('@/views/blocks/backoffice/ReportEmbedView.vue'),
+  },
+  {
+    label: 'Payment allocation',
+    section: 'Backoffice blocks',
+    path: '/backoffice-blocks/payment-allocation',
+    load: () => import('@/views/blocks/backoffice/PaymentAllocationView.vue'),
   },
 ]

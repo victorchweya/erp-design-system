@@ -29,7 +29,7 @@ function attach(files: File[]) {
         <dl class="grid gap-4 sm:grid-cols-2">
           <div class="space-y-1">
             <dt class="text-muted">Status</dt>
-            <dd><Tag class="bg-primary text-primary-contrast">Confirmed</Tag></dd>
+            <dd><Tag>Confirmed</Tag></dd>
           </div>
           <div class="space-y-1">
             <dt class="text-muted">Delivery</dt>

@@ -78,7 +78,7 @@ const currentStep = workflow.findIndex(({ complete }) => !complete)
           <h1 id="product-title" class="text-xl font-medium tracking-tight sm:text-2xl">
             Fresh Hass avocado
           </h1>
-          <Tag value="Active" class="bg-primary text-primary-contrast" />
+          <Tag value="Active" />
         </div>
         <dl class="flex flex-wrap gap-x-6 gap-y-2 text-sm">
           <div class="flex flex-wrap gap-x-2">

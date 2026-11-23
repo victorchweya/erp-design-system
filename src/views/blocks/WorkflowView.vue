@@ -5,7 +5,8 @@ import WorkflowExample from '@/components/blocks/workflow/WorkflowExample.vue'
 import ApprovalFlowBlock from '@/components/blocks/workflow/ApprovalFlowBlock.vue'
 import approvalBlockCode from '@/components/blocks/workflow/ApprovalFlowBlock.vue?raw'
 import approvalHistoryCode from '@/components/blocks/workflow/ApprovalHistory.vue?raw'
-import approvalDialogCode from '@/components/blocks/workflow/ApprovalReasonDialog.vue?raw'
+import decisionDialogCode from '@/components/blocks/backoffice/decision-dialog/DecisionDialogBlock.vue?raw'
+import decisionDialogDataCode from '@/components/blocks/backoffice/decision-dialog/decision-dialog.ts?raw'
 import approvalDataCode from '@/components/blocks/workflow/approval-flow.ts?raw'
 import SupplierOnboardingBlock from '@/components/blocks/workflow/SupplierOnboardingBlock.vue'
 import onboardingBlockCode from '@/components/blocks/workflow/SupplierOnboardingBlock.vue?raw'
@@ -30,7 +31,8 @@ const examples = [
     files: [
       { name: 'ApprovalFlowBlock.vue', code: approvalBlockCode },
       { name: 'ApprovalHistory.vue', code: approvalHistoryCode },
-      { name: 'ApprovalReasonDialog.vue', code: approvalDialogCode },
+      { name: 'DecisionDialogBlock.vue', code: decisionDialogCode },
+      { name: 'decision-dialog.ts', code: decisionDialogDataCode },
       { name: 'approval-flow.ts', code: approvalDataCode },
     ],
   },
@@ -93,8 +95,9 @@ const activeSection = useActiveSection(sections.map(({ id }) => id))
             <Tag severity="secondary">Source file</Tag> to copy every file into the same folder.
           </p>
           <p class="leading-relaxed text-muted">
-            Show actions the viewer cannot take as disabled, with the reason beside them. Require a
-            reason before rejecting or sending work back, and record every decision in the history.
+            Show actions the viewer cannot take as disabled, with the reason beside them. Ask for
+            the reason in the Decision dialog, the same one used across Backoffice blocks, before
+            rejecting or sending work back, and record every decision in the history.
           </p>
           <p class="leading-relaxed text-muted">
             Validate each wizard step before moving on, keep entered values when going back, and
