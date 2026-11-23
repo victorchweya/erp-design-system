@@ -9,6 +9,7 @@ import EllipsisV from '@primeicons/vue/ellipsis-v'
 import Eye from '@primeicons/vue/eye'
 import FilterSlash from '@primeicons/vue/filter-slash'
 import History from '@primeicons/vue/history'
+import Inbox from '@primeicons/vue/inbox'
 import Pencil from '@primeicons/vue/pencil'
 import Refresh from '@primeicons/vue/refresh'
 import Search from '@primeicons/vue/search'
@@ -309,7 +310,7 @@ function resetFilters() {
       </div>
     </div>
 
-    <div class="w-full max-w-full">
+    <div class="w-full max-w-full [container-type:inline-size]">
       <DataTable
         ref="table"
         exportFilename="sales-orders"
@@ -535,7 +536,16 @@ function resetFilters() {
           </template>
         </Column>
         <template #empty>
-          <div class="py-4 text-sm text-muted">No orders match these filters.</div>
+          <div class="sticky left-0 flex min-h-56 w-[100cqw] flex-col items-center justify-center gap-4 py-6 text-center">
+            <Inbox :size="32" aria-hidden="true" class="text-muted" />
+            <div class="space-y-2">
+              <h3 class="text-lg font-medium">No matching orders</h3>
+              <p class="max-w-md text-sm text-muted">Try changing or clearing your search and filters.</p>
+            </div>
+            <Button type="button" severity="primary" outlined size="small" @click="resetFilters"
+              >Reset filters</Button
+            >
+          </div>
         </template>
       </DataTable>
       <p role="status" class="sr-only">{{ feedback }}</p>

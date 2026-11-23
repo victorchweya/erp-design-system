@@ -12,6 +12,8 @@ import RetryErrorStateBlock from '@/components/blocks/empty-states/RetryErrorSta
 import retryCode from '@/components/blocks/empty-states/RetryErrorStateBlock.vue?raw'
 import UnavailableStateBlock from '@/components/blocks/empty-states/UnavailableStateBlock.vue'
 import unavailableCode from '@/components/blocks/empty-states/UnavailableStateBlock.vue?raw'
+import TableEmptyStateBlock from '@/components/blocks/empty-states/TableEmptyStateBlock.vue'
+import tableEmptyCode from '@/components/blocks/empty-states/TableEmptyStateBlock.vue?raw'
 
 const examples = [
   {
@@ -43,6 +45,13 @@ const examples = [
     code: sizesCode,
   },
   {
+    id: 'table-empty',
+    title: 'Empty table',
+    description: 'Keep the column headers visible and place the empty state in the table body.',
+    component: TableEmptyStateBlock,
+    code: tableEmptyCode,
+  },
+  {
     id: 'error-with-retry',
     title: 'Error with retry',
     description: 'Use when loading failed and the user can safely repeat the request.',
@@ -61,6 +70,7 @@ const examples = [
 const usage = [
   'Use an empty state when a successful request returns no records. Use an error state when a request fails or required information is unavailable.',
   'Keep the title and explanation specific to the current container. Offer one action only when it is the clearest next step.',
+  'For tables, use the DataTable empty slot. Keep the icon, title, explanation, and optional action together in the empty row without nesting another card.',
 ]
 </script>
 

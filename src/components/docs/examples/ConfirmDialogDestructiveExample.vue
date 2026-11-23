@@ -46,7 +46,7 @@ function requestDelete() {
       :aria-controls="`${id}-confirm`"
       :aria-expanded="visible"
       @click="requestDelete"
-      >Delete supplier</Button
+      ><Trash aria-hidden="true" />Delete supplier</Button
     >
     <Button
       v-else

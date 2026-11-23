@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed, shallowRef, watch } from 'vue'
 import Search from '@primeicons/vue/search'
+import Inbox from '@primeicons/vue/inbox'
 const query = shallowRef('')
 const status = shallowRef<string | null>(null)
 const first = shallowRef(0)
@@ -92,13 +93,17 @@ function clear() {
         }}</Tag></template
       ></Column
     >
-    <template #empty
-      ><div class="flex flex-col items-start gap-3 py-4">
-        <p>No orders match these filters.</p>
+    <template #empty>
+      <div class="flex min-h-56 flex-col items-center justify-center gap-4 py-6 text-center">
+        <Inbox :size="32" aria-hidden="true" class="text-muted" />
+        <div class="space-y-2">
+          <h3 class="text-lg font-medium">No matching orders</h3>
+          <p class="max-w-md text-sm text-muted">Try changing or clearing your search and filters.</p>
+        </div>
         <Button type="button" severity="primary" outlined size="small" @click="clear"
           >Reset search</Button
         >
-      </div></template
-    >
+      </div>
+    </template>
   </DataTable>
 </template>

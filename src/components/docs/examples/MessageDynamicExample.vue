@@ -3,6 +3,7 @@ import { shallowRef } from 'vue'
 import CheckCircle from '@primeicons/vue/check-circle'
 import InfoCircle from '@primeicons/vue/info-circle'
 import ExclamationTriangle from '@primeicons/vue/exclamation-triangle'
+import Plus from '@primeicons/vue/plus'
 
 const icons = { success: CheckCircle, info: InfoCircle, warn: ExclamationTriangle }
 
@@ -27,7 +28,7 @@ function clearMessages() {
 <template>
   <div class="flex flex-col gap-4">
     <div class="flex flex-wrap gap-2">
-      <Button type="button" @click="addMessages">Add messages</Button>
+      <Button type="button" @click="addMessages"><Plus aria-hidden="true" />Add messages</Button>
       <Button type="button" severity="secondary" outlined @click="clearMessages"
         >Clear messages</Button
       >

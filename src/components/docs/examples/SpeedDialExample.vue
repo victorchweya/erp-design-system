@@ -23,7 +23,6 @@ const items = [
         direction="up"
         ariaLabel="Order actions"
         class="absolute bottom-0 left-0"
-        :buttonProps="{ type: 'button', rounded: true }"
         :tooltipOptions="{ position: 'right', event: 'hover' }"
       />
     </div>

@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { nextTick, shallowRef, useId, useTemplateRef } from 'vue'
 import vFocustrap from 'primevue/focustrap'
+import Pencil from '@primeicons/vue/pencil'
 
 const id = useId()
 const active = shallowRef(false)
@@ -27,7 +28,7 @@ async function close() {
       :aria-expanded="active"
       :aria-controls="id"
       @click="open"
-      >Edit collection note</Button
+      ><Pencil aria-hidden="true" />Edit collection note</Button
     >
     <!-- The trap is set up when the element mounts, so render it only while it is active. -->
     <div

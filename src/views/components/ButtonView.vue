@@ -48,7 +48,7 @@ const examples = [
     component: ButtonIconsExample,
     code: iconsCode,
     description:
-      'Place PrimeIcons in the default slot. Slot order sets the position. Use iconOnly for a square footprint and give the button an accessible action label.',
+      'Use leading icons for recognisable actions and trailing arrows for forward steps. Use iconOnly only for familiar compact utilities, with an accessible label and tooltip. Form submissions and cancellation are text-only by default.',
   },
   {
     id: 'button-states',
@@ -115,15 +115,27 @@ const activeSection = useActiveSection(sections.map(({ id }) => id))
           </p>
           <ul class="list-disc space-y-2 pl-5 text-muted-color">
             <li>Primary filled: the main action, such as Save, Create, or Continue.</li>
-            <li>Primary outlined: supporting actions and toolbar tools, such as Filter, Columns, Export, and Refresh.</li>
+            <li>
+              Primary outlined: supporting actions and toolbar tools, such as Filter, Columns,
+              Export, and Refresh.
+            </li>
             <li>Primary text: quiet inline actions, such as Edit or Show all.</li>
-            <li>Secondary outlined or text: Cancel, Close, Back, and neutral navigation or embedded field controls.</li>
-            <li>Danger outlined or text: destructive actions. Use danger filled for the final destructive confirmation.</li>
-            <li>Success, warn, and info: only when the action itself carries that meaning. Retry is an ordinary primary action.</li>
+            <li>
+              Secondary outlined or text: Cancel, Close, Back, and neutral navigation or embedded
+              field controls.
+            </li>
+            <li>
+              Danger outlined or text: destructive actions. Use danger filled for the final
+              destructive confirmation.
+            </li>
+            <li>
+              Success, warn, and info: only when the action itself carries that meaning. Retry is an
+              ordinary primary action.
+            </li>
           </ul>
           <p class="leading-relaxed text-muted-color">
-            Preview resets and explicit severity demonstrations may remain neutral or use the
-            colour being demonstrated. Clearing active table filters is a supporting toolbar action.
+            Preview resets and explicit severity demonstrations may remain neutral or use the colour
+            being demonstrated. Clearing active table filters is a supporting toolbar action.
           </p>
         </section>
         <section
@@ -135,6 +147,39 @@ const activeSection = useActiveSection(sections.map(({ id }) => id))
         >
           <h2 :id="`${example.id}-title`" class="text-2xl font-medium">{{ example.title }}</h2>
           <p class="text-muted-color">{{ example.description }}</p>
+          <ul
+            v-if="example.id === 'button-icons'"
+            class="list-disc space-y-2 pl-5 text-muted-color"
+          >
+            <li>
+              Toolbars: pair an icon with the label. Use SlidersH for Filter, Download for Export,
+              Refresh for Refresh, and Print for Print.
+            </li>
+            <li>
+              Use FilterSlash for clearing filters, Replay for retrying, Pencil for editing, and
+              Plus for creating or adding records.
+            </li>
+            <li>
+              Save, Submit, Confirm, Cancel, and Close are text-only by default. Use ArrowLeft for
+              Back and a trailing ArrowRight for Next or Continue in step-by-step flows.
+            </li>
+            <li>
+              Delete and Remove use Trash with a label. Other destructive actions use their matching
+              icon. Keep final confirmation labels explicit.
+            </li>
+            <li>
+              Copy, columns, and row menus may be icon-only. Provide aria-label and a tooltip;
+              retain labels for unfamiliar or consequential actions.
+            </li>
+            <li>
+              Use one action icon per button. Follow PrimeVue’s documented defaults for icon
+              placement and loading; these conventions do not require custom sizing or behavior.
+            </li>
+            <li>
+              Hide decorative icons from screen readers with aria-hidden. Keep the same action’s
+              icon treatment consistent within the same context.
+            </li>
+          </ul>
           <CodeExample :title="example.title" :code="example.code">
             <component :is="example.component" />
           </CodeExample>

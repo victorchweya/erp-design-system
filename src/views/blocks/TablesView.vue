@@ -50,6 +50,7 @@ const usage = [
   'Search and status filters combine, and changing a filter returns to the first page. Bulk actions update only selected records and clear the selection afterwards.',
   'In Filters and sorting, Columns lets you hide fields while keeping Order number visible. Show all restores every column. Export CSV downloads all filtered rows in the current sort order using the visible columns. Refresh reloads the local sample rows and keeps filters, sorting, pagination, and column choices.',
   'The first three examples use local arrays. Connect filtering, loading, errors, and mutations to your data source when adapting them.',
+  'Use the DataTable empty slot for no results and failed loads. Keep the table headers visible and show the same centered icon, title, explanation, and optional action used by the empty and error blocks.',
   'For server paging, copy ServerTableBlock.vue. It holds no data: pass the page of rows, the total, and the first, page size and sort it should show, and it emits load, retry, clear-filters and action. Keep the query in your page so Retry repeats it unchanged. The code tab shows the block; the preview wires it to a fake API.',
 ]
 </script>

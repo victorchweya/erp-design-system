@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { shallowRef, useId } from 'vue'
+import Pencil from '@primeicons/vue/pencil'
 const id = useId()
 const visible = shallowRef(false)
 const saved = shallowRef('14 Market Road, Nairobi')
@@ -34,7 +35,7 @@ function save() {
       :aria-controls="id"
       :aria-expanded="visible"
       @click="open"
-      >Edit delivery address</Button
+      ><Pencil aria-hidden="true" />Edit delivery address</Button
     >
     <p role="status" class="text-sm text-muted" :class="{ 'sr-only': !feedback }">{{ feedback }}</p>
   </div>

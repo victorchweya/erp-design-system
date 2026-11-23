@@ -103,6 +103,14 @@ it('keeps the order identifier visible, restores columns, and exports filtered r
   expect(wrapper.findAll('th').some((cell) => cell.text() === 'Customer')).toBe(true)
 })
 
+it('recovers from an empty sales-orders table by clearing its search', async () => {
+  const wrapper = mount(DataStressTableBlock, options)
+  await wrapper.get('[aria-label="Search order or customer"]').setValue('no matching order')
+  expect(wrapper.findAll('tbody tr')).toHaveLength(1)
+  await button(wrapper, /Reset filters/).trigger('click')
+  expect(wrapper.findAll('tbody tr')).toHaveLength(3)
+})
+
 it('combines table filters and returns to the first page after a search', async () => {
   const wrapper = mount(OrdersTableBlock, options)
   await flushPromises()

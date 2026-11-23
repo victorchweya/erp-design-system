@@ -1,5 +1,7 @@
 <script setup lang="ts">
 import { shallowRef } from 'vue'
+import Download from '@primeicons/vue/download'
+import SlidersH from '@primeicons/vue/sliders-h'
 const action = shallowRef('Choose an order action.')
 </script>
 
@@ -19,14 +21,14 @@ const action = shallowRef('Choose an order action.')
             severity="primary"
             outlined
             @click="action = 'Export selected.'"
-            >Export</Button
+            ><Download aria-hidden="true" />Export</Button
           ><Button
             type="button"
             size="small"
             severity="primary"
             outlined
             @click="action = 'Filters selected.'"
-            >Filters</Button
+            ><SlidersH aria-hidden="true" />Filters</Button
           >
         </div></template
       >

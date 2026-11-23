@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { shallowRef, useId } from 'vue'
+import Plus from '@primeicons/vue/plus'
 
 const id = useId()
 const visible = shallowRef(false)
@@ -30,7 +31,7 @@ function save() {
       :aria-controls="id"
       :aria-expanded="visible"
       @click="open"
-      >Add delivery note</Button
+      ><Plus aria-hidden="true" />Add delivery note</Button
     >
   </div>
   <Dialog

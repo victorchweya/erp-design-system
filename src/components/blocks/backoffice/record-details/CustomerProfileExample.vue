@@ -3,6 +3,7 @@ import RecordDetailsBlock, {
   type RecordCreditSummary,
   type RecordDetailSection,
 } from './RecordDetailsBlock.vue'
+import Pencil from '@primeicons/vue/pencil'
 
 withDefaults(defineProps<{ headingTag?: 'h1' | 'h2' | 'h3' }>(), { headingTag: 'h3' })
 
@@ -82,7 +83,7 @@ const credit: RecordCreditSummary = { limit: 500000, used: 312500 }
       <Tag severity="secondary">High priority</Tag>
     </template>
     <template #actions>
-      <Button type="button" size="small" severity="primary" outlined>Edit customer</Button>
+      <Button type="button" size="small" severity="primary" outlined><Pencil aria-hidden="true" />Edit customer</Button>
     </template>
   </RecordDetailsBlock>
 </template>

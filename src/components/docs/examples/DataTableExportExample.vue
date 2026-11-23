@@ -2,7 +2,6 @@
 import { computed, ref, shallowRef, useTemplateRef, watch } from 'vue'
 import DataTable, { type DataTableExportFunctionOptions } from 'primevue/datatable'
 import Download from '@primeicons/vue/download'
-import FileExport from '@primeicons/vue/file-export'
 import { formatApiDate, formatCurrency, formatDate } from '@/utils/format'
 
 type InvoiceStatus = 'Paid' | 'Due' | 'Overdue'
@@ -145,7 +144,7 @@ function exportRows(selectionOnly: boolean) {
             :disabled="!filtered.length"
             @click="exportRows(false)"
           >
-            <FileExport aria-hidden="true" />
+            <Download aria-hidden="true" />
             Export {{ filtered.length }} rows
           </Button>
         </div>

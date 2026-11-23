@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import TimesCircle from '@primeicons/vue/times-circle'
 import { ref } from 'vue'
+import Plus from '@primeicons/vue/plus'
+import Replay from '@primeicons/vue/replay'
 
 const customerNoticeVisible = ref(true)
 const retryNoticeVisible = ref(true)
@@ -41,7 +43,7 @@ const result = ref('')
             outlined
             @click="result = 'Add customer opened in this preview.'"
           >
-            Add customer
+            <Plus aria-hidden="true" />Add customer
           </Button>
         </div>
       </div>
@@ -69,7 +71,7 @@ const result = ref('')
           outlined
           @click="result = 'Order history retry started in this preview.'"
         >
-          Try again
+          <Replay aria-hidden="true" />Try again
         </Button>
       </div>
     </Message>

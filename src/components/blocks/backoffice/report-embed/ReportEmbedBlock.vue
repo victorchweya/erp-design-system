@@ -2,6 +2,7 @@
 // GOAL: Pick a report and read it in place, with clear loading and failed states.
 import { computed, shallowRef, useId, useTemplateRef, watch } from 'vue'
 import Refresh from '@primeicons/vue/refresh'
+import Replay from '@primeicons/vue/replay'
 import ExclamationTriangle from '@primeicons/vue/exclamation-triangle'
 import Inbox from '@primeicons/vue/inbox'
 import type { ReportDefinition, ReportState } from './reports'
@@ -126,7 +127,7 @@ function ask(event: 'retry' | 'refresh') {
           <p class="max-w-md text-sm text-muted">{{ errorMessage }}</p>
         </div>
         <Button type="button" size="small" severity="primary" outlined @click="ask('retry')">
-          <Refresh aria-hidden="true" />Retry
+          <Replay aria-hidden="true" />Retry
         </Button>
       </div>
       <template v-else>

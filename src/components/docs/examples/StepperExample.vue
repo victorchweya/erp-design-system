@@ -1,5 +1,7 @@
 <script setup lang="ts">
 import { nextTick, shallowRef, useId } from 'vue'
+import ArrowRight from '@primeicons/vue/arrow-right'
+import ArrowLeft from '@primeicons/vue/arrow-left'
 
 const id = useId()
 const supplier = shallowRef<string | null>(null)
@@ -39,7 +41,7 @@ async function goTo(activate: (value: string) => void, value: string) {
             class="self-start"
             :disabled="!supplier"
             @click="goTo(activateCallback, '2')"
-            >Next</Button
+            >Next<ArrowRight aria-hidden="true" /></Button
           >
         </div>
       </StepPanel>
@@ -49,9 +51,9 @@ async function goTo(activate: (value: string) => void, value: string) {
           <p>Sukuma wiki 120 kg, tomatoes 80 kg.</p>
           <div class="flex flex-wrap gap-2">
             <Button type="button" severity="secondary" outlined @click="goTo(activateCallback, '1')"
-              >Back</Button
+              ><ArrowLeft aria-hidden="true" />Back</Button
             >
-            <Button type="button" @click="goTo(activateCallback, '3')">Next</Button>
+            <Button type="button" @click="goTo(activateCallback, '3')">Next<ArrowRight aria-hidden="true" /></Button>
           </div>
         </div>
       </StepPanel>
@@ -61,7 +63,7 @@ async function goTo(activate: (value: string) => void, value: string) {
           <p>Purchase order for {{ supplier }}. Total KES 18,400.</p>
           <div class="flex flex-wrap gap-2">
             <Button type="button" severity="secondary" outlined @click="goTo(activateCallback, '2')"
-              >Back</Button
+              ><ArrowLeft aria-hidden="true" />Back</Button
             >
             <Button type="button">Submit order</Button>
           </div>

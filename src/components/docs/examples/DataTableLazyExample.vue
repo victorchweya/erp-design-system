@@ -2,7 +2,7 @@
 import TimesCircle from '@primeicons/vue/times-circle'
 import { computed, onBeforeUnmount, onMounted, ref, shallowRef, useId } from 'vue'
 import type { DataTableFilterMeta, DataTableSortEvent } from 'primevue/datatable'
-import Refresh from '@primeicons/vue/refresh'
+import Replay from '@primeicons/vue/replay'
 import { formatCurrency, formatDate } from '@/utils/format'
 
 type OrderStatus = 'Pending' | 'Packed' | 'Delivered'
@@ -158,7 +158,7 @@ onBeforeUnmount(() => controller?.abort())
           :loading="loading"
           @click="load(lastQuery)"
         >
-          <Refresh aria-hidden="true" />
+          <Replay aria-hidden="true" />
           Retry
         </Button>
       </div>

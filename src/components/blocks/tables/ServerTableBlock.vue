@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import TimesCircle from '@primeicons/vue/times-circle'
+import ExclamationTriangle from '@primeicons/vue/exclamation-triangle'
+import Inbox from '@primeicons/vue/inbox'
 // GOAL: A table whose rows, sorting and paging come from the API, with honest loading, empty and failed states.
 import { computed, shallowRef, useTemplateRef } from 'vue'
 import type { DataTablePageEvent, DataTableSortEvent } from 'primevue/datatable'
@@ -111,7 +112,7 @@ function openActions(event: Event, row: ServerOrder) {
 <template>
   <div class="flex flex-col gap-1">
     <p role="status" class="sr-only">{{ announcement }}</p>
-    <div :aria-busy="loading">
+    <div :aria-busy="loading" class="[container-type:inline-size]">
       <DataTable
         :value="shownRows"
         dataKey="id"
@@ -180,21 +181,26 @@ function openActions(event: Event, row: ServerOrder) {
           </template>
         </Column>
         <template #empty>
-          <div class="flex flex-wrap items-center gap-x-3 gap-y-1.5">
+          <div class="sticky left-0 flex min-h-56 w-[100cqw] flex-col items-center justify-center gap-4 py-6 text-center whitespace-normal">
             <template v-if="failed">
-              <Message severity="error" size="small">
-                <template #icon="{ class: iconClass }">
-                  <TimesCircle :class="iconClass" aria-hidden="true" />
-                </template>
-                {{ sentenceNoun }} could not be loaded. Your page and sorting are kept.
-              </Message>
+              <div role="alert" class="flex flex-col items-center gap-4">
+                <ExclamationTriangle :size="32" aria-hidden="true" class="text-error" />
+                <div class="space-y-2">
+                  <h3 class="text-lg font-medium">{{ sentenceNoun }} could not be loaded</h3>
+                  <p class="max-w-md text-sm text-muted">Your page and sorting are kept. Try again.</p>
+                </div>
+              </div>
               <Button type="button" size="small" :loading="loading" @click="emit('retry')"
                 >Retry</Button
               >
             </template>
-            <p v-else-if="loading">Loading {{ noun }}…</p>
+            <p v-else-if="loading" class="text-sm text-muted">Loading {{ noun }}…</p>
             <template v-else-if="filtered">
-              <p>No {{ noun }} match these filters.</p>
+              <Inbox :size="32" aria-hidden="true" class="text-muted" />
+              <div class="space-y-2">
+                <h3 class="text-lg font-medium">No matching {{ noun }}</h3>
+                <p class="max-w-md text-sm text-muted">Try changing or clearing your filters.</p>
+              </div>
               <Button
                 type="button"
                 size="small"
@@ -204,7 +210,13 @@ function openActions(event: Event, row: ServerOrder) {
                 >Clear filters</Button
               >
             </template>
-            <p v-else>No {{ noun }} yet.</p>
+            <template v-else>
+              <Inbox :size="32" aria-hidden="true" class="text-muted" />
+              <div class="space-y-2">
+                <h3 class="text-lg font-medium">No {{ noun }} yet</h3>
+                <p class="max-w-md text-sm text-muted">They will appear here when they are created.</p>
+              </div>
+            </template>
           </div>
         </template>
       </DataTable>

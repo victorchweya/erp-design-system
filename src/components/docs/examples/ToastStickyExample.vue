@@ -2,6 +2,7 @@
 import { onBeforeUnmount, shallowRef, useId } from 'vue'
 import { useToast } from 'primevue/usetoast'
 import type { ToastMessageOptions } from 'primevue/toast'
+import Download from '@primeicons/vue/download'
 
 const group = useId()
 const toast = useToast()
@@ -42,7 +43,7 @@ onBeforeUnmount(() => {
 <template>
   <Toast :group="group" />
   <div class="flex flex-wrap gap-2">
-    <Button type="button" :disabled="exporting" @click="exportInvoices">Export invoices</Button>
+    <Button type="button" :disabled="exporting" @click="exportInvoices"><Download aria-hidden="true" />Export invoices</Button>
     <Button type="button" severity="secondary" outlined @click="toast.removeGroup(group)">
       Dismiss all
     </Button>

@@ -3,6 +3,7 @@ import { computed, shallowRef, useId } from 'vue'
 import Trash from '@primeicons/vue/trash'
 import Replay from '@primeicons/vue/replay'
 import { money, produce, type OrderLine } from './order-entry'
+import Plus from '@primeicons/vue/plus'
 
 const props = defineProps<{ items: OrderLine[] }>()
 const emit = defineEmits<{
@@ -112,7 +113,7 @@ function add() {
             class="min-w-0 flex-1"
           />
           <Button type="button" severity="primary" outlined :disabled="!selected" @click="add"
-            >Add</Button
+            ><Plus aria-hidden="true" />Add</Button
           >
         </div>
       </div>

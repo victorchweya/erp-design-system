@@ -2,6 +2,7 @@
 import { shallowRef } from 'vue'
 import CheckCircle from '@primeicons/vue/check-circle'
 import TimesCircle from '@primeicons/vue/times-circle'
+import Replay from '@primeicons/vue/replay'
 
 const state = shallowRef<'error' | 'loaded' | 'dismissed'>('error')
 </script>
@@ -35,7 +36,7 @@ const state = shallowRef<'error' | 'loaded' | 'dismissed'>('error')
       <div v-if="state === 'error'" class="flex min-w-0 flex-col items-start gap-2">
         <span>Order history could not be loaded. Your order is safe.</span>
         <Button type="button" severity="primary" outlined size="small" @click="state = 'loaded'"
-          >Try again</Button
+          ><Replay aria-hidden="true" />Try again</Button
         >
       </div>
       <span v-else>Order history loaded.</span>

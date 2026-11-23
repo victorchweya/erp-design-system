@@ -1,3 +1,7 @@
+<script setup lang="ts">
+import Pencil from '@primeicons/vue/pencil'
+</script>
+
 <template>
   <Card class="max-w-lg">
     <template #title><h3>Purchase order PO-2318</h3></template>
@@ -7,7 +11,7 @@
     </template>
     <template #footer>
       <div class="flex flex-wrap gap-2">
-        <Button type="button" size="small" severity="primary" outlined>Edit order</Button>
+        <Button type="button" size="small" severity="primary" outlined><Pencil aria-hidden="true" />Edit order</Button>
         <Button type="button" size="small">Approve order</Button>
       </div>
     </template>
