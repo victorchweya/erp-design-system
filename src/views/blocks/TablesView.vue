@@ -46,6 +46,7 @@ const examples = [
 ]
 const usage = [
   'Use the native DataTable, Column, sorting, selection, and paginator. These examples use small sizing and showGridlines with the theme’s default rounded border.',
+  'Keep the row count or selection summary on the left of the pagination footer. On the right, place the visible Rows per page label immediately before its dropdown, followed by Previous, numbered pages, and Next. Use the RowsPerPageDropdown PrevPageLink PageLinks NextPageLink paginator template and paginatorstart slot, as shown in the examples.',
   'Search and status filters combine, and changing a filter returns to the first page. Bulk actions update only selected records and clear the selection afterwards.',
   'The first three examples use local arrays. Connect filtering, loading, errors, and mutations to your data source when adapting them.',
   'For server paging, copy ServerTableBlock.vue. It holds no data: pass the page of rows, the total, and the first, page size and sort it should show, and it emits load, retry, clear-filters and action. Keep the query in your page so Retry repeats it unchanged. The code tab shows the block; the preview wires it to a fake API.',

@@ -79,15 +79,15 @@ function save() {
       <p class="flex min-w-0 flex-wrap gap-x-4 gap-y-1 tabular-nums">
         <span>
           <span class="text-muted">Payment</span>
-          <span class="ml-1.5 font-semibold">{{ formatCurrency(paymentAmount) }}</span>
+          <span class="ml-1.5 font-medium">{{ formatCurrency(paymentAmount) }}</span>
         </span>
         <span>
           <span class="text-muted">Allocated</span>
-          <span class="ml-1.5 font-semibold">{{ formatCurrency(check.allocated) }}</span>
+          <span class="ml-1.5 font-medium">{{ formatCurrency(check.allocated) }}</span>
         </span>
         <span>
           <span class="text-muted">{{ stillLabel }}</span>
-          <span class="ml-1.5 font-semibold">{{ formatCurrency(stillAmount) }}</span>
+          <span class="ml-1.5 font-medium">{{ formatCurrency(stillAmount) }}</span>
         </span>
       </p>
       <div class="flex shrink-0 gap-2">

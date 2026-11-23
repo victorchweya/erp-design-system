@@ -62,16 +62,16 @@ it('removes only the chosen filter chip and clears every filter and the popover 
   expect(chips(wrapper)).toEqual(['Search: Kijani'])
   expect(rowCount(wrapper)).toBe(2)
 
-  await click(button(wrapper, /^More filters$/).element)
+  await click(button(wrapper, /^Filter$/).element)
   await pickOption(comboboxFor('segment'), 'Farmer')
-  expect(button(wrapper, /More filters/).text()).toBe('More filters (1)')
+  expect(button(wrapper, /^Filter/).text()).toBe('Filter1')
   expect(chips(wrapper)).toHaveLength(2)
 
   await click(button(wrapper, /Clear filters/).element)
   expect(chips(wrapper)).toHaveLength(0)
   expect(rowCount(wrapper)).toBe(12)
   expect(wrapper.get<HTMLInputElement>('input[type="search"]').element.value).toBe('')
-  expect(button(wrapper, /More filters/).text()).toBe('More filters')
+  expect(button(wrapper, /^Filter/).text()).toBe('Filter')
   // Nothing is applied, so there is nothing left to clear.
   expect(button(wrapper, /Clear filters/)).toBeUndefined()
   expect(document.activeElement).toBe(wrapper.get('input[type="search"]').element)

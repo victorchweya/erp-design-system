@@ -121,8 +121,7 @@ function openActions(event: Event, row: ServerOrder) {
         :first="first"
         :rows="rowsPerPage"
         :rowsPerPageOptions="rowsPerPageOptions"
-        paginatorTemplate="FirstPageLink PrevPageLink CurrentPageReport NextPageLink LastPageLink RowsPerPageDropdown"
-        currentPageReportTemplate="{first} to {last} of {totalRecords}"
+        paginatorTemplate="RowsPerPageDropdown PrevPageLink PageLinks NextPageLink"
         :sortField="sortField"
         :sortOrder="sortOrder"
         :loading="loading"
@@ -133,6 +132,12 @@ function openActions(event: Event, row: ServerOrder) {
         @page="onPage"
         @sort="onSort"
       >
+        <template #paginatorstart>
+          <div class="flex w-full items-center text-sm text-muted">
+            <span>{{ formatNumber(totalRecords) }} rows</span>
+            <span class="ml-auto mr-2">Rows per page</span>
+          </div>
+        </template>
         <Column field="customer" header="Customer" sortable>
           <template #body="{ data }">
             <div class="flex flex-col">
@@ -203,3 +208,17 @@ function openActions(event: Event, row: ServerOrder) {
     <Menu ref="menu" :model="menuItems" popup aria-label="Row actions" />
   </div>
 </template>
+
+<style scoped>
+:deep(.p-paginator) {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+}
+
+:deep(.p-paginator-content-start) {
+  display: flex;
+  width: 100%;
+  min-width: 0;
+}
+</style>

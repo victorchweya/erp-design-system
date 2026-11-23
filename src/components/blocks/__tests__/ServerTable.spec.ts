@@ -51,7 +51,7 @@ const row: ServerOrder = {
   totalKes: 12000,
   status: 'Pending',
 }
-const pageReport = () => document.querySelector('.p-paginator-current')?.textContent?.trim()
+const currentPage = () => document.querySelector('[aria-current="page"]')?.textContent?.trim()
 const firstRow = () => document.querySelector('tbody tr td')?.textContent?.trim()
 
 it('asks for the right page, size and sort, and returns to page 1 when sorting', async () => {
@@ -111,7 +111,7 @@ it('keeps the requested page and sort when a failed load is retried', async () =
   await settle()
   const secondPageRow = firstRow()
   expect(secondPageRow).not.toBe(firstPageRow)
-  expect(pageReport()).toBe('6 to 10 of 36')
+  expect(currentPage()).toBe('2')
 
   await click(wrapper.find('input[role="switch"]').element)
   await click(document.querySelector('[aria-label="Next Page"]'))
@@ -124,7 +124,7 @@ it('keeps the requested page and sort when a failed load is retried', async () =
   await settle()
   expect(document.querySelector('[role="alert"]')).toBeNull()
   // The page the person asked for, not a reset to page 1.
-  expect(pageReport()).toBe('11 to 15 of 36')
+  expect(currentPage()).toBe('3')
   expect(firstRow()).not.toBe(secondPageRow)
   expect(firstRow()).not.toBe(firstPageRow)
 })

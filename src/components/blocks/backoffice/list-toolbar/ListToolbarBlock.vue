@@ -13,7 +13,7 @@ export interface ListToolbarAppliedFilter {
   label: string
   /** Readable value, for example "Received, Completed". */
   value: string
-  /** Set when the filter lives in the "More filters" popover, so it counts towards its badge. */
+  /** Set when the filter lives in the Filter popover, so it counts towards its badge. */
   more?: boolean
 }
 </script>
@@ -79,7 +79,7 @@ defineSlots<{
    * Pass the slot prop size to the controls so they stay comfortable on phones.
    */
   filters?: (props: { size: ControlSize }) => unknown
-  /** Content of the "More filters" popover. The button only shows when this is provided. */
+  /** Content of the Filter popover. The button only shows when this is provided. */
   'more-filters'?: () => unknown
 }>()
 
@@ -186,7 +186,6 @@ defineExpose({ focusSearch })
       <template v-if="$slots['more-filters']">
         <Button
           type="button"
-          :label="moreCount ? `More filters (${moreCount})` : 'More filters'"
           severity="secondary"
           outlined
           :size="size"
@@ -194,11 +193,11 @@ defineExpose({ focusSearch })
           :aria-controls="`${id}-more-filters`"
           @click="filtersPopover?.toggle($event)"
         >
-          <template #icon="{ class: iconClass }">
-            <SlidersH :class="iconClass" aria-hidden="true" />
-          </template>
+          <SlidersH aria-hidden="true" />
+          <span>Filter</span>
+          <Badge v-if="moreCount" :value="moreCount" severity="primary" />
         </Button>
-        <Popover :id="`${id}-more-filters`" ref="filtersPopover" aria-label="More filters">
+        <Popover :id="`${id}-more-filters`" ref="filtersPopover" aria-label="Filters">
           <div class="flex w-72 max-w-full flex-col gap-3">
             <slot name="more-filters" />
           </div>

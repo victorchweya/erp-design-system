@@ -168,7 +168,8 @@ const weights = [
         >
           <h2 id="typography-weights-title" class="text-2xl font-medium">Weights</h2>
           <p class="text-muted-color">
-            Use regular for reading, medium for labels, and semibold or bold for emphasis.
+            Use regular for body text and card labels. Use medium for headings, form labels, and
+            card values. Keep badges at their theme-defined weight.
           </p>
           <div class="grid gap-4 sm:grid-cols-2">
             <Card v-for="weight in weights" :key="weight.value" class="min-w-0">
