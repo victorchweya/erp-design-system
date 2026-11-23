@@ -23,6 +23,7 @@ import RecordPopoverBlock from '../popups/RecordPopoverBlock.vue'
 import ActionsMenuBlock from '../popups/ActionsMenuBlock.vue'
 import OrderEntryBlock from '../order-entry/OrderEntryBlock.vue'
 import OrderDetailBlock from '../backoffice/order-detail/OrderDetailBlock.vue'
+import CustomerOrdersTable from '../backoffice/customer-detail/CustomerOrdersTable.vue'
 import { STANDARD_VAT_RATE, taxableOf, vatOf } from '../documents/documents'
 import OperationsDashboardBlock from '../page-templates/OperationsDashboardBlock.vue'
 import SupplierListDetailBlock from '../page-templates/SupplierListDetailBlock.vue'
@@ -78,6 +79,24 @@ it('opens focused delivery details from the order summary', async () => {
   expect(dialog().textContent).toContain('Map preview placeholder')
   expect(dialog().textContent).toContain('Call the contact on arrival.')
   expect(dialog().textContent).not.toContain('KRA PIN')
+})
+
+it('filters customer orders by search and status', async () => {
+  const wrapper = mount(CustomerOrdersTable, options)
+  await wrapper.get('[aria-label="Search customer orders"]').setValue('Village')
+
+  expect(wrapper.text()).toContain('CO-2025-08-528')
+  expect(wrapper.text()).not.toContain('CO-2026-07-014')
+
+  await wrapper.get('[aria-label="Search customer orders"]').setValue('')
+  await button(wrapper, /^Filter$/).trigger('click')
+  await flushPromises()
+  await selectOption(
+    document.querySelector<HTMLElement>('[aria-label="Filter orders by status"]')!,
+    'New',
+  )
+  expect(wrapper.text()).toContain('CO-2026-07-014')
+  expect(wrapper.text()).not.toContain('CO-2025-08-528')
 })
 
 it('keeps the order identifier visible, restores columns, and exports filtered rows', async () => {

@@ -220,22 +220,27 @@ const buttonText = Object.fromEntries(
     },
   ]),
 )
-const buttonOutlined = Object.fromEntries(
+const buttonOutlined = (mode: Mode) => Object.fromEntries(
   Object.entries(buttonText).map(([name, tokens]) => [
     name,
     {
       ...tokens,
-      borderColor: tokens.color,
+      borderColor:
+        name !== 'secondary'
+          ? tokens.color
+          : mode === 'light'
+            ? '{ftf.neutral.300}'
+            : '{form.field.border.color}',
     },
   ]),
 )
-const buttonColors = { root: buttonRoot, text: buttonText, outlined: buttonOutlined }
+const buttonColors = (mode: Mode) => ({ root: buttonRoot, text: buttonText, outlined: buttonOutlined(mode) })
 
 export default {
   semantic: { colorScheme: Object.fromEntries(modes.map((mode) => [mode, semanticScheme(mode)])) },
   components: {
     chip: { colorScheme: { light: light.chip, dark: dark.chip } },
-    button: { colorScheme: { light: buttonColors, dark: buttonColors } },
+    button: { colorScheme: { light: buttonColors('light'), dark: buttonColors('dark') } },
     tag: { colorScheme: { light: light.tag, dark: dark.tag } },
     badge: { colorScheme: { light: light.badge, dark: dark.badge } },
     message: { colorScheme: { light: light.message, dark: dark.message } },
