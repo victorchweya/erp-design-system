@@ -22,8 +22,12 @@ const examples = [
   },
 ]
 const usage = [
-  'Use the native Card and form controls. The supplier form uses the installed @primevue/forms resolver for required fields and email validation.',
-  'Keep each label connected to its control and each error connected with aria-describedby. These examples use per-instance IDs so multiple copies can share a page.',
+  'Use native form controls. Use Card only when the form is a self-contained unit; keep a page’s primary form open in the main content flow. The supplier example uses the installed @primevue/forms resolver for required fields and email validation.',
+  'Give every control one visible label. Put helper text and validation in the same place below the control, connect them with aria-describedby, and keep entered values when validation fails.',
+  'Show validation after submit or after a field has been visited, not while the user is first typing. Move focus to the first invalid field after an unsuccessful submit.',
+  'When most fields are required, mark the exceptions as optional. When most are optional, mark the required fields instead; do not mix both conventions in one form.',
+  'Use one column in narrow containers and no more than two for ordinary forms. Keep DOM order equal to reading order, let long fields span both columns, and place form actions after the fields with the primary action last.',
+  'These examples use per-instance IDs so multiple copies can share a page.',
   'The filter form applies only on submit and clears both draft controls and applied feedback on reset. Save actions stay local to the preview.',
 ]
 </script>

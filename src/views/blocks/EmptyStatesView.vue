@@ -14,6 +14,8 @@ import UnavailableStateBlock from '@/components/blocks/empty-states/UnavailableS
 import unavailableCode from '@/components/blocks/empty-states/UnavailableStateBlock.vue?raw'
 import TableEmptyStateBlock from '@/components/blocks/empty-states/TableEmptyStateBlock.vue'
 import tableEmptyCode from '@/components/blocks/empty-states/TableEmptyStateBlock.vue?raw'
+import TableErrorStateBlock from '@/components/blocks/empty-states/TableErrorStateBlock.vue'
+import tableErrorCode from '@/components/blocks/empty-states/TableErrorStateBlock.vue?raw'
 
 const examples = [
   {
@@ -52,6 +54,14 @@ const examples = [
     code: tableEmptyCode,
   },
   {
+    id: 'table-error',
+    title: 'Failed table',
+    description:
+      'Keep the column headers visible, preserve the table query, and replace only the unavailable rows with a retry state.',
+    component: TableErrorStateBlock,
+    code: tableErrorCode,
+  },
+  {
     id: 'error-with-retry',
     title: 'Error with retry',
     description: 'Use when loading failed and the user can safely repeat the request.',
@@ -70,7 +80,8 @@ const examples = [
 const usage = [
   'Use an empty state when a successful request returns no records. Use an error state when a request fails or required information is unavailable.',
   'Keep the title and explanation specific to the current container. Offer one action only when it is the clearest next step.',
-  'For tables, use the DataTable empty slot. Keep the icon, title, explanation, and optional action together in the empty row without nesting another card.',
+  'For tables, use the DataTable empty slot for both empty and failed results. Keep the headers and current page, sorting, and filters visible; put the icon, explanation, and optional action together in the table body without nesting another card.',
+  'Use an error page only when the whole route is unavailable. A failed table, card, or section keeps the surrounding page usable and replaces only its own content.',
 ]
 </script>
 

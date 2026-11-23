@@ -74,9 +74,12 @@ const examples = [
   },
 ]
 const usage = [
+  'Match the indicator to the work: use a skeleton for a known first-load layout, a delayed spinner for a small region with an unknown shape, a determinate progress bar when progress can be measured, and the button loading state for a submitted action.',
   'Use the native Skeleton, ProgressSpinner, and ProgressBar. Skeletons are hidden from screen readers, so mark the loading region with aria-busy and announce the start and end in a status message.',
   'Skeletons switch their wave animation off when the user prefers reduced motion. Spinners and progress bars follow the global reduced-motion rule, and each is paired with visible text.',
-  'Keep loaded data on screen during a refresh, and keep a pressed button focusable while it works. Replace the timers in these examples with your requests and handle failures with a retry.',
+  'Keep loaded data on screen during a refresh, and keep a pressed button focusable while it works. Do not stack a skeleton, spinner, and progress bar for the same request.',
+  'When a request fails, stop the loading indicator and replace only the affected region with its error state. Preserve entered values, filters, sorting, and pagination so Retry repeats the same request.',
+  'Replace the timers in these examples with your requests.',
 ]
 </script>
 

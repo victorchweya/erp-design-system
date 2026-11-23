@@ -154,6 +154,12 @@ const containers = [
     <p class="text-sm text-muted-color">
       One column on mobile, two from md, and three from xl, with a 16px gap at every size.
     </p>
+    <p class="text-sm text-muted-color">
+      Start with one readable column, then add columns only when their content fits. Stack side
+      panels after the main content, wrap action groups, and let wide data tables scroll
+      horizontally. Do not shrink controls, hide required actions, or remove information just to
+      avoid wrapping.
+    </p>
     <CodeExample title="Responsive grid" :code="gridCode">
       <SpacingGridExample />
     </CodeExample>
