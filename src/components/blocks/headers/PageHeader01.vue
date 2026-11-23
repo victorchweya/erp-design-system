@@ -10,7 +10,7 @@ const feedback = shallowRef('')
   <div class="flex flex-col gap-4 text-color">
     <header class="flex flex-wrap items-start justify-between gap-4">
       <div class="min-w-0 flex-1 basis-64 space-y-2">
-        <component :is="headingTag" class="text-xl font-medium tracking-tight sm:text-2xl">
+        <component :is="headingTag" class="text-xl font-medium tracking-tight">
           Orders
         </component>
         <p class="text-sm leading-relaxed text-muted">

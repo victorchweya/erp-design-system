@@ -236,6 +236,12 @@ export const blockPages: BlockPage[] = [
     load: () => import('@/views/blocks/backoffice/RecordDetailsView.vue'),
   },
   {
+    label: 'Order detail',
+    section: 'Backoffice blocks',
+    path: '/backoffice-blocks/order-detail',
+    load: () => import('@/views/blocks/backoffice/OrderDetailView.vue'),
+  },
+  {
     label: 'Report embed',
     section: 'Backoffice blocks',
     path: '/backoffice-blocks/report-embed',

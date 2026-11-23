@@ -21,6 +21,8 @@ This repository builds a PrimeVue design system with Vue 3, TypeScript, and Vite
 
 - Use Composition API with `<script setup lang="ts">` for new Vue components.
 - Reuse existing components, composables, and installed dependencies before adding code.
+- Before implementing a new design, search `src/components/blocks/` and the block catalog for an existing pattern. Import the existing block when it fits; do not recreate its markup inside a page.
+- Documentation examples and composed pages must render the same shared block. If an example has hard-coded preview data, extract the reusable shell with props, slots, and events, then keep sample data and preview feedback in the caller.
 - Prefer PrimeVue components and shared design tokens. Add wrappers only when they provide needed behavior or a reusable project contract.
 - Use the default PrimeVue component when one fits, including in foundation examples. Create a custom component only when PrimeVue has no suitable component.
 - PrimeVue components are auto-imported in templates by Vite. Keep service and composable imports explicit; `src/components.d.ts` is generated.
