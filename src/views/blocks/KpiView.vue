@@ -16,6 +16,7 @@ const examples = [
 
 <template>
   <BlockDoc
+    eyebrow="Components"
     title="KPI"
     description="A compact summary of one operational value."
     :usage="[

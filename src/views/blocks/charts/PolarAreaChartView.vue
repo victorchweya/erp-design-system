@@ -15,6 +15,7 @@ const examples = [
 </script>
 <template>
   <BlockDoc
+    eyebrow="Components"
     title="Polar area"
     description="Radial comparison for a compact set of similarly scaled measures."
     :usage="[

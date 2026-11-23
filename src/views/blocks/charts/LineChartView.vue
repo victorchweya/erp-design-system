@@ -15,6 +15,7 @@ const examples = [
 </script>
 <template>
   <BlockDoc
+    eyebrow="Components"
     title="Line chart"
     description="Time-series trends without an area fill."
     :usage="[

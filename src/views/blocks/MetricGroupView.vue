@@ -17,6 +17,7 @@ const examples = [
 
 <template>
   <BlockDoc
+    eyebrow="Components"
     title="Metric group"
     description="A dashboard section that gives related metrics shared context."
     :usage="[

@@ -15,6 +15,7 @@ const examples = [
 </script>
 <template>
   <BlockDoc
+    eyebrow="Components"
     title="Stacked chart"
     description="Composition and total change across categories or time."
     :usage="[

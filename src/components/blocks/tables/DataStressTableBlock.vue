@@ -1,5 +1,8 @@
 <script setup lang="ts">
-import { computed, shallowRef, useTemplateRef, watch } from 'vue'
+import { computed, shallowRef, useId, useTemplateRef, watch } from 'vue'
+import type DataTable from 'primevue/datatable'
+import Download from '@primeicons/vue/download'
+import Table from '@primeicons/vue/table'
 import type Menu from 'primevue/menu'
 import type Popover from 'primevue/popover'
 import EllipsisV from '@primeicons/vue/ellipsis-v'
@@ -16,6 +19,9 @@ import { formatCurrency, formatDate } from '@/utils/format'
 
 type OrderStatus = 'New order' | 'Cancelled'
 
+const id = useId()
+const table = useTemplateRef<InstanceType<typeof DataTable>>('table')
+const columnsPopover = useTemplateRef<InstanceType<typeof Popover>>('columnsPopover')
 const size = shallowRef<'small' | undefined | 'large'>('small')
 const sizeOptions = [
   { label: 'Small', value: 'small' },
@@ -140,6 +146,39 @@ const orders = [
   },
 ]
 
+const columns = [
+  { key: 'orderDate', label: 'Order date' },
+  { key: 'orderNumber', label: 'Order number' },
+  { key: 'orderType', label: 'Order type' },
+  { key: 'customer', label: 'Customer' },
+  { key: 'source', label: 'Source' },
+  { key: 'status', label: 'Status' },
+  { key: 'items', label: 'Items' },
+  { key: 'totalUnits', label: 'Total items/unit' },
+  { key: 'amount', label: 'Amount' },
+  { key: 'location', label: 'Delivery location' },
+  { key: 'deliveryType', label: 'Delivery type' },
+  { key: 'deliveryDate', label: 'Delivery date' },
+  { key: 'deliverySlot', label: 'Delivery slot' },
+]
+const visibleColumns = shallowRef(columns.map(({ key }) => key))
+const allColumnsVisible = computed(() => visibleColumns.value.length === columns.length)
+function setColumn(key: string, visible: boolean) {
+  if (key === 'orderNumber') return
+  visibleColumns.value = visible
+    ? [...visibleColumns.value, key]
+    : visibleColumns.value.filter((value) => value !== key)
+}
+const loadedOrders = shallowRef([...orders])
+function refreshOrders() {
+  loadedOrders.value = [...orders]
+  feedback.value = 'Sample orders refreshed. Your filters, sorting, and columns are kept.'
+}
+function exportOrders() {
+  table.value?.exportCSV()
+  feedback.value = `Exported ${filteredOrders.value.length} orders to CSV.`
+}
+
 const dateValues: Record<string, Date> = {
   '20 Nov 2026': new Date(2026, 10, 20),
   '18 Nov 2026': new Date(2026, 10, 18),
@@ -152,7 +191,7 @@ const dateValues: Record<string, Date> = {
 const filteredOrders = computed(() => {
   const search = query.value.trim().toLowerCase()
   const [start, end] = deliveryDates.value ?? []
-  return orders.filter((order) => {
+  return loadedOrders.value.filter((order) => {
     const deliveryDate = dateValues[order.deliveryDate]!
     return (
       (!search || `${order.orderNumber} ${order.customer}`.toLowerCase().includes(search)) &&
@@ -168,7 +207,11 @@ const filteredOrders = computed(() => {
 const activeFilters = computed(() => {
   const filters: { key: string; label: string; clear: () => void }[] = []
   if (status.value) {
-    filters.push({ key: 'status', label: `Status: ${status.value}`, clear: () => (status.value = null) })
+    filters.push({
+      key: 'status',
+      label: `Status: ${status.value}`,
+      clear: () => (status.value = null),
+    })
   }
   if (deliveryDates.value?.some(Boolean)) {
     const [start, end] = deliveryDates.value
@@ -179,7 +222,11 @@ const activeFilters = computed(() => {
     })
   }
   if (source.value) {
-    filters.push({ key: 'source', label: `Source: ${source.value}`, clear: () => (source.value = null) })
+    filters.push({
+      key: 'source',
+      label: `Source: ${source.value}`,
+      clear: () => (source.value = null),
+    })
   }
   if (deliveryType.value) {
     filters.push({
@@ -238,7 +285,9 @@ function resetFilters() {
       <p class="mt-1 text-sm text-muted">Search, filter, sort, and change the table display.</p>
     </div>
 
-    <div class="flex flex-wrap items-center gap-x-5 gap-y-3 rounded-lg bg-surface-50 p-3 dark:bg-surface-800">
+    <div
+      class="flex flex-wrap items-center gap-x-5 gap-y-3 rounded-lg bg-surface-50 p-3 dark:bg-surface-800"
+    >
       <div class="flex items-center gap-2">
         <span class="text-sm text-muted">Table size</span>
         <Select
@@ -262,6 +311,8 @@ function resetFilters() {
 
     <div class="w-full max-w-full">
       <DataTable
+        ref="table"
+        exportFilename="sales-orders"
         v-model:first="first"
         v-model:rows="rows"
         :value="filteredOrders"
@@ -274,7 +325,7 @@ function resetFilters() {
         :rowsPerPageOptions="[3, 6]"
         paginatorTemplate="RowsPerPageDropdown PrevPageLink PageLinks NextPageLink"
         scrollable
-        tableStyle="min-width: 110rem"
+        :tableStyle="{ minWidth: `${visibleColumns.length * 9 + 5}rem` }"
         :tableProps="{ 'aria-label': 'Sales orders with filters and sorting' }"
         class="stress-table"
       >
@@ -309,6 +360,34 @@ function resetFilters() {
                   <SlidersH :class="iconClass" aria-hidden="true" />
                 </template>
               </Button>
+              <Button
+                type="button"
+                iconOnly
+                severity="secondary"
+                outlined
+                aria-label="Columns"
+                v-tooltip.top="'Columns'"
+                aria-haspopup="dialog"
+                :aria-controls="`${id}-columns`"
+                @click="columnsPopover?.toggle($event)"
+              >
+                <Table aria-hidden="true" />
+              </Button>
+              <Button type="button" severity="secondary" outlined @click="exportOrders">
+                <Download aria-hidden="true" />
+                Export CSV
+              </Button>
+              <Button
+                type="button"
+                iconOnly
+                severity="secondary"
+                outlined
+                aria-label="Refresh"
+                v-tooltip.top="'Refresh'"
+                @click="refreshOrders"
+              >
+                <Refresh aria-hidden="true" />
+              </Button>
             </div>
             <div v-if="activeFilters.length" class="flex flex-wrap items-center gap-2">
               <Chip
@@ -335,47 +414,113 @@ function resetFilters() {
           </div>
         </template>
         <Column
+          v-if="visibleColumns.includes('orderDate')"
           field="orderDate"
           sortField="orderDateValue"
           header="Order date"
           sortable
           style="min-width: 9rem"
         />
-        <Column field="orderNumber" header="Order number" sortable style="min-width: 10rem" />
-        <Column field="orderType" header="Order type" sortable style="min-width: 7rem" />
-        <Column field="customer" header="Customer" sortable style="min-width: 12rem" />
-        <Column field="source" header="Source" sortable style="min-width: 9rem">
+        <Column
+          v-if="visibleColumns.includes('orderNumber')"
+          field="orderNumber"
+          header="Order number"
+          sortable
+          style="min-width: 10rem"
+        />
+        <Column
+          v-if="visibleColumns.includes('orderType')"
+          field="orderType"
+          header="Order type"
+          sortable
+          style="min-width: 7rem"
+        />
+        <Column
+          v-if="visibleColumns.includes('customer')"
+          field="customer"
+          header="Customer"
+          sortable
+          style="min-width: 12rem"
+        />
+        <Column
+          v-if="visibleColumns.includes('source')"
+          field="source"
+          header="Source"
+          sortable
+          style="min-width: 9rem"
+        >
           <template #body="{ data }">{{ data.source ?? '—' }}</template>
         </Column>
-        <Column field="status" header="Status" sortable style="min-width: 8rem">
+        <Column
+          v-if="visibleColumns.includes('status')"
+          field="status"
+          header="Status"
+          sortable
+          style="min-width: 8rem"
+        >
           <template #body="{ data }">
             <Tag :severity="data.status === 'Cancelled' ? 'danger' : 'info'">{{ data.status }}</Tag>
           </template>
         </Column>
-        <Column field="items" header="Items" sortable style="min-width: 6rem" />
-        <Column field="totalUnits" header="Total items/unit" style="min-width: 10rem" />
-        <Column field="amount" header="Amount" sortable style="min-width: 9rem">
+        <Column
+          v-if="visibleColumns.includes('items')"
+          field="items"
+          header="Items"
+          sortable
+          style="min-width: 6rem"
+        />
+        <Column
+          v-if="visibleColumns.includes('totalUnits')"
+          field="totalUnits"
+          header="Total items/unit"
+          style="min-width: 10rem"
+        />
+        <Column
+          v-if="visibleColumns.includes('amount')"
+          field="amount"
+          header="Amount"
+          sortable
+          style="min-width: 9rem"
+        >
           <template #body="{ data }"
             ><span class="tabular-nums">{{ formatCurrency(data.amount) }}</span></template
           >
         </Column>
-        <Column field="location" header="Delivery location" sortable style="min-width: 13rem">
+        <Column
+          v-if="visibleColumns.includes('location')"
+          field="location"
+          header="Delivery location"
+          sortable
+          style="min-width: 13rem"
+        >
           <template #body="{ data }"
             ><span class="block whitespace-normal break-words">{{ data.location }}</span></template
           >
         </Column>
-        <Column field="deliveryType" header="Delivery type" sortable style="min-width: 9rem" />
         <Column
+          v-if="visibleColumns.includes('deliveryType')"
+          field="deliveryType"
+          header="Delivery type"
+          sortable
+          style="min-width: 9rem"
+        />
+        <Column
+          v-if="visibleColumns.includes('deliveryDate')"
           field="deliveryDate"
           sortField="deliveryDateValue"
           header="Delivery date"
           sortable
           style="min-width: 9rem"
         />
-        <Column field="deliverySlot" header="Delivery slot" style="min-width: 9rem">
+        <Column
+          v-if="visibleColumns.includes('deliverySlot')"
+          field="deliverySlot"
+          header="Delivery slot"
+          style="min-width: 9rem"
+        >
           <template #body="{ data }">{{ data.deliverySlot ?? '—' }}</template>
         </Column>
-        <Column frozen alignFrozen="right" style="width: 5rem">
+        <Column :exportable="false" frozen alignFrozen="right" style="width: 5rem">
           <template #body="{ data }">
             <Button
               type="button"
@@ -396,6 +541,38 @@ function resetFilters() {
       <p role="status" class="sr-only">{{ feedback }}</p>
     </div>
   </div>
+
+  <Popover :id="`${id}-columns`" ref="columnsPopover" aria-label="Choose columns">
+    <div class="flex w-60 max-w-full flex-col gap-2">
+      <div class="flex items-center justify-between gap-3">
+        <span class="text-sm font-medium">Columns</span>
+        <Button
+          type="button"
+          size="small"
+          severity="secondary"
+          text
+          :disabled="allColumnsVisible"
+          @click="visibleColumns = columns.map(({ key }) => key)"
+          >Show all</Button
+        >
+      </div>
+      <ul class="flex max-h-72 flex-col gap-1.5 overflow-y-auto">
+        <li v-for="column in columns" :key="column.key" class="flex items-center gap-2">
+          <Checkbox
+            :modelValue="visibleColumns.includes(column.key)"
+            binary
+            :inputId="`${id}-column-${column.key}`"
+            :disabled="column.key === 'orderNumber'"
+            @update:modelValue="setColumn(column.key, $event)"
+          />
+          <label :for="`${id}-column-${column.key}`" class="text-sm">
+            {{ column.label
+            }}<span v-if="column.key === 'orderNumber'" class="text-muted"> (always shown)</span>
+          </label>
+        </li>
+      </ul>
+    </div>
+  </Popover>
 
   <Popover ref="moreFilters" aria-label="Additional order filters">
     <div class="flex w-64 flex-col gap-4">
@@ -462,5 +639,4 @@ function resetFilters() {
   width: 100%;
   min-width: 0;
 }
-
 </style>

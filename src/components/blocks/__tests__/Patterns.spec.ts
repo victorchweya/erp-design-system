@@ -5,6 +5,7 @@ import ConfirmationService from 'primevue/confirmationservice'
 import { defineComponent, h } from 'vue'
 import { RouterView } from 'vue-router'
 import OrdersTableBlock from '../tables/OrdersTableBlock.vue'
+import DataStressTableBlock from '../tables/DataStressTableBlock.vue'
 import BulkActionsTableBlock from '../tables/BulkActionsTableBlock.vue'
 import SupplierFormBlock from '../forms/SupplierFormBlock.vue'
 import FilterFormBlock from '../forms/FilterFormBlock.vue'
@@ -67,6 +68,40 @@ async function selectOption(element: HTMLElement, text: string) {
     )!,
   )
 }
+
+it('keeps the order identifier visible, restores columns, and exports filtered rows', async () => {
+  const wrapper = mount(DataStressTableBlock, options)
+  await wrapper.get('[aria-label="Columns"]').trigger('click')
+  await flushPromises()
+  const checkbox = (key: string) =>
+    document.querySelector<HTMLInputElement>(`input[id$="-column-${key}"]`)!
+  expect(checkbox('orderNumber').disabled).toBe(true)
+  expect(checkbox('orderNumber').checked).toBe(true)
+  await click(checkbox('customer'))
+  expect(wrapper.findAll('th').some((cell) => cell.text() === 'Customer')).toBe(false)
+  await wrapper.get('[aria-label="Search order or customer"]').setValue('Aero')
+  const createObjectURL = vi.fn((_blob: Blob) => 'blob:orders')
+  vi.stubGlobal('URL', { createObjectURL, revokeObjectURL: vi.fn() })
+  const download = vi.spyOn(HTMLAnchorElement.prototype, 'click').mockImplementation(() => {})
+  onTestFinished(() => download.mockRestore())
+  await button(wrapper, /Export CSV/).trigger('click')
+  const csv = await new Promise<string>((resolve) => {
+    const reader = new FileReader()
+    reader.onload = () => resolve(String(reader.result))
+    reader.readAsText(createObjectURL.mock.calls[0]![0] as unknown as Blob)
+  })
+  expect(csv).toContain('CO-2026-11-003')
+  expect(csv).not.toContain('CO-2026-11-004')
+  expect(csv).not.toContain('"Customer"')
+  await wrapper.get('[aria-label="Refresh"]').trigger('click')
+  expect(wrapper.findAll('tbody tr')).toHaveLength(1)
+  expect(wrapper.findAll('th').some((cell) => cell.text() === 'Customer')).toBe(false)
+  const showAll = Array.from(document.querySelectorAll<HTMLButtonElement>('button')).find(
+    (b) => b.textContent === 'Show all',
+  )!
+  await click(showAll)
+  expect(wrapper.findAll('th').some((cell) => cell.text() === 'Customer')).toBe(true)
+})
 
 it('combines table filters and returns to the first page after a search', async () => {
   const wrapper = mount(OrdersTableBlock, options)

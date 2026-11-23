@@ -57,6 +57,7 @@ const examples = [
 
 <template>
   <BlockDoc
+    eyebrow="Components"
     title="KPI group"
     description="Related operational values arranged for scanning and comparison."
     :usage="[

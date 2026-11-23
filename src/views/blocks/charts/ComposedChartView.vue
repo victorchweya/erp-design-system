@@ -15,6 +15,7 @@ const examples = [
 </script>
 <template>
   <BlockDoc
+    eyebrow="Components"
     title="Composed chart"
     description="Related measures combined in one coordinated chart."
     :usage="[

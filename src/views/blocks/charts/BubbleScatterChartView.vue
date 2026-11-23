@@ -16,6 +16,7 @@ const examples = [
 </script>
 <template>
   <BlockDoc
+    eyebrow="Components"
     title="Bubble & scatter"
     description="Relationships, clusters, and outliers across quantitative measures."
     :usage="[

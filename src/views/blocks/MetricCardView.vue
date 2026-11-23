@@ -16,6 +16,7 @@ const examples = [
 
 <template>
   <BlockDoc
+    eyebrow="Components"
     title="Metric card"
     description="A measured value with comparison, explanation, or freshness context."
     :usage="[

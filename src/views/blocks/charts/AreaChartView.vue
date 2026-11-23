@@ -15,6 +15,7 @@ const examples = [
 </script>
 <template>
   <BlockDoc
+    eyebrow="Components"
     title="Area chart"
     description="Filled trend charts that emphasise change over time."
     :usage="[

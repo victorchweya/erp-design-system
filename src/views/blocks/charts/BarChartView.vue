@@ -15,6 +15,7 @@ const examples = [
 </script>
 <template>
   <BlockDoc
+    eyebrow="Components"
     title="Bar chart"
     description="Category comparisons using proportional bar lengths."
     :usage="[

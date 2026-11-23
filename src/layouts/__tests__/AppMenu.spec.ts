@@ -11,6 +11,25 @@ import { createDocsRouter } from './docs-router'
 
 enableAutoUnmount(afterEach)
 
+it('places charts and metrics in Components and opens their group for direct links', async () => {
+  const router = createDocsRouter()
+  await router.push('/ui-blocks/charts/area')
+  await router.isReady()
+  const wrapper = mount(AppMenu, { global: { plugins: [router] } })
+  for (const path of ['/ui-blocks/charts/area', '/ui-blocks/kpi']) {
+    await router.push(path)
+    await flushPromises()
+    const link = wrapper.get(`a[href="${path}"]`)
+    const group = link.element.closest('details')!
+    expect(group.open).toBe(true)
+    expect(group.parentElement?.tagName).toBe('NAV')
+    expect(router.currentRoute.value.meta.breadcrumb?.[0]).toBe('Components')
+  }
+  const blocks = wrapper.findAll('details').find((group) => group.get('summary').text() === 'UI blocks')!
+  expect(blocks.find('a[href="/ui-blocks/kpi"]').exists()).toBe(false)
+  expect(blocks.find('a[href="/ui-blocks/charts/area"]').exists()).toBe(false)
+})
+
 async function clickAndNavigate(router: Router, link: Pick<DOMWrapper<Element>, 'trigger'>) {
   const navigated = new Promise<void>((done) => {
     const stop = router.afterEach(() => {

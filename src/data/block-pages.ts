@@ -4,7 +4,7 @@ type BlockPage = {
   label: string
   group?: string
   /** Top-level menu section. Defaults to "UI blocks". */
-  section?: 'Backoffice blocks'
+  section?: 'Backoffice blocks' | 'Components'
   path: string
   load: () => Promise<{ default: Component }>
 }
@@ -13,24 +13,28 @@ export const blockPages: BlockPage[] = [
   {
     label: 'KPI',
     group: 'KPI / metric card',
+    section: 'Components',
     path: '/ui-blocks/kpi',
     load: () => import('@/views/blocks/KpiView.vue'),
   },
   {
     label: 'KPI group',
     group: 'KPI / metric card',
+    section: 'Components',
     path: '/ui-blocks/kpi-group',
     load: () => import('@/views/blocks/KpiGroupView.vue'),
   },
   {
     label: 'Metric card',
     group: 'KPI / metric card',
+    section: 'Components',
     path: '/ui-blocks/metric-card',
     load: () => import('@/views/blocks/MetricCardView.vue'),
   },
   {
     label: 'Metric group',
     group: 'KPI / metric card',
+    section: 'Components',
     path: '/ui-blocks/metric-group',
     load: () => import('@/views/blocks/MetricGroupView.vue'),
   },
@@ -67,54 +71,63 @@ export const blockPages: BlockPage[] = [
   {
     label: 'Area chart',
     group: 'Charts',
+    section: 'Components',
     path: '/ui-blocks/charts/area',
     load: () => import('@/views/blocks/charts/AreaChartView.vue'),
   },
   {
     label: 'Bar chart',
     group: 'Charts',
+    section: 'Components',
     path: '/ui-blocks/charts/bar',
     load: () => import('@/views/blocks/charts/BarChartView.vue'),
   },
   {
     label: 'Bubble & scatter',
     group: 'Charts',
+    section: 'Components',
     path: '/ui-blocks/charts/bubble-scatter',
     load: () => import('@/views/blocks/charts/BubbleScatterChartView.vue'),
   },
   {
     label: 'Composed chart',
     group: 'Charts',
+    section: 'Components',
     path: '/ui-blocks/charts/composed',
     load: () => import('@/views/blocks/charts/ComposedChartView.vue'),
   },
   {
     label: 'Doughnut & pie',
     group: 'Charts',
+    section: 'Components',
     path: '/ui-blocks/charts/doughnut-pie',
     load: () => import('@/views/blocks/charts/DoughnutPieChartView.vue'),
   },
   {
     label: 'Line chart',
     group: 'Charts',
+    section: 'Components',
     path: '/ui-blocks/charts/line',
     load: () => import('@/views/blocks/charts/LineChartView.vue'),
   },
   {
     label: 'Polar area',
     group: 'Charts',
+    section: 'Components',
     path: '/ui-blocks/charts/polar-area',
     load: () => import('@/views/blocks/charts/PolarAreaChartView.vue'),
   },
   {
     label: 'Radar chart',
     group: 'Charts',
+    section: 'Components',
     path: '/ui-blocks/charts/radar',
     load: () => import('@/views/blocks/charts/RadarChartView.vue'),
   },
   {
     label: 'Stacked chart',
     group: 'Charts',
+    section: 'Components',
     path: '/ui-blocks/charts/stacked',
     load: () => import('@/views/blocks/charts/StackedChartView.vue'),
   },
@@ -203,12 +216,6 @@ export const blockPages: BlockPage[] = [
     group: 'ERP patterns',
     path: '/ui-blocks/error-pages',
     load: () => import('@/views/blocks/ErrorPagesView.vue'),
-  },
-  {
-    label: 'List toolbar',
-    section: 'Backoffice blocks',
-    path: '/backoffice-blocks/list-toolbar',
-    load: () => import('@/views/blocks/backoffice/ListToolbarView.vue'),
   },
   {
     label: 'Status tag',

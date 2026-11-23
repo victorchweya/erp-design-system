@@ -41,6 +41,8 @@ General (`/general`) covers setup: the PrimeVue configuration, services, Tailwin
 
 Further foundation pages: Motion (`/foundations/motion`, tokens in `motion.ts`), Elevation (`/foundations/elevation`, app-shell and overlay layers in `layers.ts`), Writing, Accessibility, and Data visualization. Formatting includes the PrimeVue locale: weeks start on Monday and typed dates use day/month/year (`src/utils/locale.ts`). PrimeVue receives the locale and overlay z-index bases in `src/main.ts`. A global reduced-motion rule in `main.css` shortens transitions and animations.
 
+Charts and KPI / metric card examples are grouped under **Components** in the sidebar. Their existing `/ui-blocks/charts/*`, `/ui-blocks/kpi`, `/ui-blocks/kpi-group`, `/ui-blocks/metric-card`, and `/ui-blocks/metric-group` URLs remain available.
+
 ## UI blocks
 
 Open `/ui-blocks` for the pattern library. Categories are available from the sidebar, with working examples adapted to the local ERP theme and installed PrimeVue version.

@@ -15,6 +15,7 @@ const examples = [
 </script>
 <template>
   <BlockDoc
+    eyebrow="Components"
     title="Doughnut & pie"
     description="Part-to-whole comparisons for a small number of categories."
     :usage="[

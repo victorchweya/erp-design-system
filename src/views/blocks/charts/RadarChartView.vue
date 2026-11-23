@@ -15,6 +15,7 @@ const examples = [
 </script>
 <template>
   <BlockDoc
+    eyebrow="Components"
     title="Radar chart"
     description="Multi-measure profiles for scorecards and target comparisons."
     :usage="[

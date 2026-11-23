@@ -53,13 +53,20 @@ const groups: MenuGroup[] = [
       .sort((a, b) => (label === 'Misc' ? a.label.localeCompare(b.label) : 0))
       .map((page) => ({ label: page.label, to: page.path })),
   })),
+  ...['KPI / metric card', 'Charts'].map((label) => ({
+    id: label === 'Charts' ? 'charts' : 'kpi-metrics',
+    label,
+    items: blockPages
+      .filter((page) => page.section === 'Components' && page.group === label)
+      .map((page) => ({ label: page.label, to: page.path })),
+  })),
   {
     id: 'ui-blocks',
     label: 'UI blocks',
     items: blockPages
       .filter((page) => !page.group && !page.section)
       .map((page) => ({ label: page.label, to: page.path })),
-    groups: ['KPI / metric card', 'Charts', 'ERP patterns'].map((label) => ({
+    groups: ['ERP patterns'].map((label) => ({
       label,
       items: blockPages
         .filter((page) => page.group === label)
