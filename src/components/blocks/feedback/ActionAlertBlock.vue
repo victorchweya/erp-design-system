@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import TimesCircle from '@primeicons/vue/times-circle'
 import { ref } from 'vue'
 
 const customerNoticeVisible = ref(true)
@@ -15,8 +16,7 @@ const result = ref('')
       :closeButtonProps="{ 'aria-label': 'Dismiss customer notice' }"
       :pt="{ text: { class: 'min-w-0 flex-1' } }"
       class="w-full"
-      @close="customerNoticeVisible = false"
-    >
+      @close="customerNoticeVisible = false">
       <div class="flex min-w-0 flex-1 flex-wrap items-center gap-x-4 gap-y-3">
         <div class="min-w-56 flex-1">
           <p class="font-medium text-color">Customer was not found in FTF records</p>
@@ -54,8 +54,10 @@ const result = ref('')
       :closeButtonProps="{ 'aria-label': 'Dismiss order error' }"
       :pt="{ text: { class: 'min-w-0 flex-1' } }"
       class="w-full"
-      @close="retryNoticeVisible = false"
-    >
+      @close="retryNoticeVisible = false">
+      <template #icon="{ class: iconClass }">
+        <TimesCircle :class="iconClass" aria-hidden="true" />
+      </template>
       <div class="flex min-w-0 flex-1 flex-wrap items-center gap-x-4 gap-y-3">
         <p class="min-w-56 flex-1 font-medium">
           Order history could not be loaded. Your saved changes are safe.

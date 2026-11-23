@@ -77,14 +77,10 @@ const action = computed(() => {
             :pt="{
               content: { class: 'items-start' },
               text: { class: 'min-w-0 flex-1' },
-            }"
-          >
-            <template #icon
-              ><ExclamationTriangle
-                size="var(--p-message-icon-size)"
-                class="mt-0.5 shrink-0"
-                aria-hidden="true"
-            /></template>
+            }">
+            <template #icon="{ class: iconClass }">
+              <ExclamationTriangle :class="iconClass" aria-hidden="true" />
+            </template>
             <span class="text-sm font-normal"
               >{{ money(shortfall) }} over available credit. Resolve this before dispatch.</span
             >

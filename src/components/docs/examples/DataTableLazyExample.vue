@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import TimesCircle from '@primeicons/vue/times-circle'
 import { computed, onBeforeUnmount, onMounted, ref, shallowRef, useId } from 'vue'
 import type { DataTableFilterMeta, DataTableSortEvent } from 'primevue/datatable'
 import Refresh from '@primeicons/vue/refresh'
@@ -144,6 +145,9 @@ onBeforeUnmount(() => controller?.abort())
     </div>
 
     <Message v-if="error" severity="error">
+      <template #icon="{ class: iconClass }">
+        <TimesCircle :class="iconClass" aria-hidden="true" />
+      </template>
       <div class="flex flex-wrap items-center gap-3">
         <span>{{ error }} Retry to load the requested page.</span>
         <Button

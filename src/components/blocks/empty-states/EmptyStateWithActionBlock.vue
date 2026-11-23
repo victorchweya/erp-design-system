@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import CheckCircle from '@primeicons/vue/check-circle'
 import { shallowRef } from 'vue'
 import Inbox from '@primeicons/vue/inbox'
 import Plus from '@primeicons/vue/plus'
@@ -24,7 +25,12 @@ const created = shallowRef(false)
         >
       </div>
       <div v-else class="flex flex-col items-start gap-4">
-        <Message severity="success">A draft order was created in this preview.</Message>
+        <Message severity="success">
+          <template #icon="{ class: iconClass }">
+            <CheckCircle :class="iconClass" aria-hidden="true" />
+          </template>
+          A draft order was created in this preview.
+        </Message>
         <Button
           type="button"
           severity="secondary"

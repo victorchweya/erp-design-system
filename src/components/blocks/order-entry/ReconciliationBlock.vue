@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import ExclamationTriangle from '@primeicons/vue/exclamation-triangle'
 // GOAL: Check what arrived against what was ordered, line by line, and say why anything was rejected.
 import { computed, reactive, useId } from 'vue'
 import { formatNumber } from '@/utils/format'
@@ -177,6 +178,9 @@ function save() {
     </div>
 
     <Message v-if="problems.length" severity="warn" size="small">
+      <template #icon="{ class: iconClass }">
+        <ExclamationTriangle :class="iconClass" aria-hidden="true" />
+      </template>
       <div class="font-medium">Fix these before saving</div>
       <ul class="mt-1 list-disc pl-4">
         <li v-for="issue in problems" :key="`${issue.lineId}-${issue.field}`">

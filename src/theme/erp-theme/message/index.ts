@@ -319,6 +319,10 @@ export const colorScheme = {
 // FTF decision: message text uses the body text colour; the severity colour stays on the
 // background, border, and icon. Outlined and simple variants keep their severity text.
 export const css = /*css*/ `
+    .p-message-content {
+        align-items: flex-start;
+    }
+
     :is(
         .p-message-info,
         .p-message-success,

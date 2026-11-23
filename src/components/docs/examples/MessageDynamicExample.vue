@@ -1,5 +1,10 @@
 <script setup lang="ts">
 import { shallowRef } from 'vue'
+import CheckCircle from '@primeicons/vue/check-circle'
+import InfoCircle from '@primeicons/vue/info-circle'
+import ExclamationTriangle from '@primeicons/vue/exclamation-triangle'
+
+const icons = { success: CheckCircle, info: InfoCircle, warn: ExclamationTriangle }
 
 type Severity = 'success' | 'info' | 'warn'
 type PreviewMessage = { id: number; severity: Severity; text: string }
@@ -29,6 +34,9 @@ function clearMessages() {
     </div>
     <div class="flex flex-col gap-3" aria-live="polite">
       <Message v-for="message in messages" :key="message.id" :severity="message.severity">
+        <template #icon="{ class: iconClass }">
+          <component :is="icons[message.severity]" :class="iconClass" aria-hidden="true" />
+        </template>
         {{ message.text }}
       </Message>
     </div>

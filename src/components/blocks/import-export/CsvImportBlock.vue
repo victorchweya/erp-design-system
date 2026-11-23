@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import CheckCircle from '@primeicons/vue/check-circle'
+import TimesCircle from '@primeicons/vue/times-circle'
 import { computed, ref, shallowRef, useId } from 'vue'
 import type { FileUploadUploaderEvent } from 'primevue/fileupload'
 import ArrowLeft from '@primeicons/vue/arrow-left'
@@ -127,7 +129,12 @@ function reset() {
                   >Use sample file</Button
                 >
               </div>
-              <Message v-if="uploadError" severity="error" role="alert">{{ uploadError }}</Message>
+              <Message v-if="uploadError" severity="error" role="alert">
+                <template #icon="{ class: iconClass }">
+                  <TimesCircle :class="iconClass" aria-hidden="true" />
+                </template>
+                {{ uploadError }}
+              </Message>
               <p v-else role="status" class="flex items-center gap-2 text-muted">
                 <template v-if="table">
                   <FileIcon aria-hidden="true" />
@@ -210,6 +217,9 @@ function reset() {
               </template>
               <template v-else>
                 <Message severity="success" role="status">
+                  <template #icon="{ class: iconClass }">
+                    <CheckCircle :class="iconClass" aria-hidden="true" />
+                  </template>
                   Imported {{ imported }} order lines for {{ customerCount }} customers in this
                   preview. {{ invalidRows.length }} rows were skipped.
                 </Message>

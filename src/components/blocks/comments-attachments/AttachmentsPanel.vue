@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import TimesCircle from '@primeicons/vue/times-circle'
 import { nextTick, shallowRef, useId, useTemplateRef } from 'vue'
 import { useConfirm } from 'primevue/useconfirm'
 import type FileUpload from 'primevue/fileupload'
@@ -79,6 +80,9 @@ function remove(attachment: Attachment, event: Event) {
       </FileUpload>
     </div>
     <Message v-if="errors.length" severity="error" closable @close="errors = []">
+      <template #icon="{ class: iconClass }">
+        <TimesCircle :class="iconClass" aria-hidden="true" />
+      </template>
       <ul class="flex flex-col gap-1">
         <li v-for="error in errors" :key="error">{{ error }}</li>
       </ul>

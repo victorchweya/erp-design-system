@@ -50,9 +50,12 @@ function requestDeactivate() {
       >
     </div>
     <div role="status">
-      <Message v-if="deactivated" severity="warn" size="small"
-        >Account deactivated in this preview.</Message
-      >
+      <Message v-if="deactivated" severity="warn" size="small">
+        <template #icon="{ class: iconClass }">
+          <ExclamationTriangle :class="iconClass" aria-hidden="true" />
+        </template>
+        Account deactivated in this preview.
+      </Message>
     </div>
   </div>
   <ConfirmDialog :group="id" class="w-[calc(100vw-2rem)] max-w-lg" />

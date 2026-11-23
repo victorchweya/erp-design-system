@@ -135,7 +135,9 @@ function discard() {
             <p class="text-sm text-muted">{{ current.description }}</p>
           </div>
           <Message v-if="active === 'profile'" severity="info">
-            <template #icon><InfoCircle aria-hidden="true" /></template>
+            <template #icon="{ class: iconClass }">
+              <InfoCircle :class="iconClass" aria-hidden="true" />
+            </template>
             Changes apply to new invoices and delivery notes. Documents already issued keep the
             details they were issued with.
           </Message>

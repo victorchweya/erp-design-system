@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import CheckCircle from '@primeicons/vue/check-circle'
 import { onScopeDispose, shallowRef } from 'vue'
 
 const visible = shallowRef(false)
@@ -19,6 +20,9 @@ onScopeDispose(() => clearTimeout(timer))
   <div class="flex flex-col items-start gap-4">
     <Button type="button" :disabled="visible" @click="showMessage">Show message</Button>
     <Message v-if="visible" severity="success" :life="3000">
+      <template #icon="{ class: iconClass }">
+        <CheckCircle :class="iconClass" aria-hidden="true" />
+      </template>
       The stock adjustment was saved.
     </Message>
   </div>

@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import ExclamationTriangle from '@primeicons/vue/exclamation-triangle'
 import { computed, ref, shallowRef, useId, useTemplateRef } from 'vue'
 import type Menu from 'primevue/menu'
 import type { MenuItem } from 'primevue/menuitem'
@@ -327,9 +328,12 @@ function clearFilters() {
         </template>
       </Column>
     </DataTable>
-    <Message v-if="notice" severity="warn" role="alert" closable @close="notice = ''">{{
-      notice
-    }}</Message>
+    <Message v-if="notice" severity="warn" role="alert" closable @close="notice = ''">
+      <template #icon="{ class: iconClass }">
+        <ExclamationTriangle :class="iconClass" aria-hidden="true" />
+      </template>
+      {{ notice }}
+    </Message>
     <p role="status" class="text-sm text-muted" :class="{ 'sr-only': !feedback }">
       {{ feedback }}
     </p>

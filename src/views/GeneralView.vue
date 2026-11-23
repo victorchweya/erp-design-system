@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import InfoCircle from '@primeicons/vue/info-circle'
 // A single-file documentation page: each section is static copy, so splitting adds no behaviour.
 import AnchorNav from '@/components/AnchorNav.vue'
 import CodeExample from '@/components/CodeExample.vue'
@@ -395,10 +396,13 @@ const checkRows = [
           aria-labelledby="general-adopt-title"
         >
           <h2 id="general-adopt-title" class="text-2xl font-medium">Use in another app</h2>
-          <Message severity="info"
-            >The package is private at version 0.0.0 and is not published yet, so applications copy
-            the files below.</Message
-          >
+          <Message severity="info">
+            <template #icon="{ class: iconClass }">
+              <InfoCircle :class="iconClass" aria-hidden="true" />
+            </template>
+            The package is private at version 0.0.0 and is not published yet, so applications copy
+            the files below.
+          </Message>
           <p class="leading-relaxed text-muted-color">
             Copy these files into your application, keeping the same paths or updating the imports.
             Then apply the PrimeVue options and register the services described above.

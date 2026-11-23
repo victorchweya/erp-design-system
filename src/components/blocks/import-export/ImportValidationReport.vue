@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import CheckCircle from '@primeicons/vue/check-circle'
 import { computed } from 'vue'
 import Download from '@primeicons/vue/download'
 import type { ImportRow } from './csv'
@@ -64,6 +65,11 @@ const validCount = computed(() => props.rows.length - invalidRows.value.length)
         </template>
       </Column>
     </DataTable>
-    <Message v-else severity="success">Every row passed validation.</Message>
+    <Message v-else severity="success">
+      <template #icon="{ class: iconClass }">
+        <CheckCircle :class="iconClass" aria-hidden="true" />
+      </template>
+      Every row passed validation.
+    </Message>
   </div>
 </template>

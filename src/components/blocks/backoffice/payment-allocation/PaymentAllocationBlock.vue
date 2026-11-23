@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import TimesCircle from '@primeicons/vue/times-circle'
 // GOAL: Allocate one payment across open invoices and see what is still unallocated before saving.
 import { computed, shallowRef, useId, watch } from 'vue'
 import { formatCurrency, formatDate } from '@/utils/format'
@@ -112,9 +113,12 @@ function save() {
       </div>
     </div>
 
-    <Message v-for="problem in check.problems" :key="problem" severity="error">{{
-      problem
-    }}</Message>
+    <Message v-for="problem in check.problems" :key="problem" severity="error">
+      <template #icon="{ class: iconClass }">
+        <TimesCircle :class="iconClass" aria-hidden="true" />
+      </template>
+      {{ problem }}
+    </Message>
 
     <DataTable :value="invoices" dataKey="id" size="small" scrollable>
       <Column field="number" header="Invoice" />

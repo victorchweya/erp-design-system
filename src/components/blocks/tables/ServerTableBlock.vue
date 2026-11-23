@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import TimesCircle from '@primeicons/vue/times-circle'
 // GOAL: A table whose rows, sorting and paging come from the API, with honest loading, empty and failed states.
 import { computed, shallowRef, useTemplateRef } from 'vue'
 import type { DataTablePageEvent, DataTableSortEvent } from 'primevue/datatable'
@@ -181,9 +182,12 @@ function openActions(event: Event, row: ServerOrder) {
         <template #empty>
           <div class="flex flex-wrap items-center gap-x-3 gap-y-1.5">
             <template v-if="failed">
-              <Message severity="error" size="small"
-                >{{ sentenceNoun }} could not be loaded. Your page and sorting are kept.</Message
-              >
+              <Message severity="error" size="small">
+                <template #icon="{ class: iconClass }">
+                  <TimesCircle :class="iconClass" aria-hidden="true" />
+                </template>
+                {{ sentenceNoun }} could not be loaded. Your page and sorting are kept.
+              </Message>
               <Button type="button" size="small" :loading="loading" @click="emit('retry')"
                 >Retry</Button
               >

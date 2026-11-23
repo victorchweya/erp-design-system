@@ -38,7 +38,7 @@ const examples = [
     id: 'icon',
     title: 'Icons',
     description:
-      'Messages have no icon by default. Add one with the icon slot when it helps people recognise the event.',
+      'Status banners always include one matching icon: CheckCircle for success, InfoCircle for info, ExclamationTriangle for warn, and TimesCircle for error. PrimeVue does not add these automatically; use its icon slot and bind the provided class for consistent sizing.',
     component: MessageIconExample,
     code: iconCode,
   },
@@ -46,7 +46,7 @@ const examples = [
     id: 'variant',
     title: 'Variants',
     description:
-      'Use outlined for lower-emphasis notices and simple for validation or supporting feedback.',
+      'Use outlined for lower-emphasis banners with status icons. Use simple without icons for field validation or quiet supporting text.',
     component: MessageVariantExample,
     code: variantCode,
   },
@@ -126,6 +126,7 @@ const api = [
 ]
 const accessibility = [
   'Use text to explain the outcome and next action. Do not rely on colour alone.',
+  'Hide decorative status icons from screen readers with aria-hidden. Align one icon with the first line; keep validation beneath inputs and neutral helper text icon-free. Empty and error states use one status icon above their heading.',
   'Message has an alert role and is announced immediately by screen readers.',
   'The close control works with Enter and Space. Use closeButtonProps when it needs a more specific accessible label.',
   'Do not let essential instructions disappear automatically. Keep timed messages for non-critical confirmation.',

@@ -24,13 +24,11 @@ const state = shallowRef<'error' | 'loaded' | 'dismissed'>('error')
           : undefined
       "
       class="w-full"
-      @close="state = 'dismissed'"
-    >
-      <template #icon>
+      @close="state = 'dismissed'">
+      <template #icon="{ class: iconClass }">
         <component
           :is="state === 'error' ? TimesCircle : CheckCircle"
-          size="var(--p-message-icon-size)"
-          :class="['shrink-0', { 'mt-0.5': state === 'error' }]"
+          :class="iconClass"
           aria-hidden="true"
         />
       </template>

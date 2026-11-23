@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import TimesCircle from '@primeicons/vue/times-circle'
 import { ref, shallowRef } from 'vue'
 import type { DataTableRowEditSaveEvent } from 'primevue/datatable'
 import { formatCurrency, formatNumber } from '@/utils/format'
@@ -55,7 +56,12 @@ function onRowEditSave(event: DataTableRowEditSaveEvent<OrderLine>) {
 
 <template>
   <div class="flex flex-col gap-3">
-    <Message v-if="error" severity="error" size="small">{{ error }}</Message>
+    <Message v-if="error" severity="error" size="small">
+      <template #icon="{ class: iconClass }">
+        <TimesCircle :class="iconClass" aria-hidden="true" />
+      </template>
+      {{ error }}
+    </Message>
     <DataTable
       v-model:editingRows="editingRows"
       :value="lines"

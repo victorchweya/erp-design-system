@@ -30,6 +30,7 @@ This repository builds a PrimeVue design system with Vue 3, TypeScript, and Vite
 - Prefer theme tokens over repeated hard-coded styles or CSS overrides of PrimeVue internals.
 - Check the PrimeVue MCP documentation version against the installed version before applying its guidance; verify any version differences with official documentation.
 - Preserve accessibility, including labels, keyboard operation, and focus behavior.
+- Message banners use one status icon in the icon slot: CheckCircle (success), InfoCircle (info), ExclamationTriangle (warn), TimesCircle (error). Bind the slot class for theme sizing and set aria-hidden. Field validation and neutral helper text stay icon-free; empty/error states use one icon above the heading.
 - Button severity communicates meaning; variant controls emphasis. Use primary filled for main actions, primary outlined for supporting/toolbar actions, and primary text for quiet inline actions. Reserve secondary outlined/text for cancellation, dismissal, neutral navigation, and embedded field controls; use danger for destructive actions (filled for final confirmation). Use success/warn/info only for semantic actions. Keep icon-only actions consistent with their group; explicit severity demos and preview resets are exceptions. See the Button documentation for examples.
 - Keep changes focused on the requested outcome; avoid unrelated refactors and new dependencies.
 
