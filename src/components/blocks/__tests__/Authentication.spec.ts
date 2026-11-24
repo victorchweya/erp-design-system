@@ -31,6 +31,7 @@ it('validates sign-in fields without imposing the new-password policy or changin
   expect(password.attributes('type')).toBe('text')
   expect(password.element.value).toBe(' old ')
   expect(wrapper.get('button[aria-controls]').attributes('aria-pressed')).toBe('true')
+  expect(wrapper.get('button[aria-controls]').attributes('aria-label')).toBe('Hide password')
   await submit(wrapper)
   expect(wrapper.find('[role="alert"]').exists()).toBe(false)
   expect(wrapper.get('[role="status"]').text()).not.toBe('')

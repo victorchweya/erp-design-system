@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { shallowRef, useId } from 'vue'
 import { Form, type FormResolverOptions, type FormSubmitEvent } from '@primevue/forms'
+import symbol from '@/assets/brand/symbol.svg'
+import { authCardDt } from '@/theme/erp-theme/card/auth'
 
 const id = useId()
 const result = shallowRef('')
@@ -26,15 +28,16 @@ function submit(event: FormSubmitEvent) {
     novalidate
     :validateOnValueUpdate="false"
     validateOnBlur
-    class="mx-auto w-full max-w-md"
+    class="mx-auto flex w-full max-w-md flex-col items-center gap-8"
     @submit="submit"
     @input="result = ''"
   >
-    <Card>
+    <img :src="symbol" alt="Farm to Feed" class="size-24" width="96" height="96" />
+    <Card class="w-full" :dt="authCardDt">
       <template #title><h4 class="text-xl font-medium">Set a new password</h4></template>
       <template #subtitle>Choose a password you have not used for this account.</template>
       <template #content
-        ><div class="flex flex-col gap-4 text-sm">
+        ><div class="flex flex-col gap-5 text-sm">
           <div class="flex flex-col gap-1">
             <label :for="`${id}-password`" class="font-medium">New password</label>
             <InputPassword
@@ -79,7 +82,7 @@ function submit(event: FormSubmitEvent) {
         </div></template
       >
       <template #footer
-        ><div class="flex flex-col gap-4 text-sm">
+        ><div class="flex flex-col gap-5 text-sm">
           <Button type="submit" fluid>Reset password</Button>
           <a
             href="#sign-in"

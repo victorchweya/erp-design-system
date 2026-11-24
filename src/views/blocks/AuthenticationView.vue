@@ -58,7 +58,7 @@ const examples = [
   },
 ]
 const usage = [
-  'Copy the Card and Form into your auth page. Links jump between examples here; replace them with your application routes.',
+  'Use the full auth block, including the brand symbol and card spacing. Links jump between examples here; replace them with your application routes.',
   'These previews only validate input locally. Connect sign-in, account creation, reset links, email verification, and code verification to your authentication service. Keep secrets out of URLs, logs, and browser storage.',
   'New passwords use a 12-character minimum in these examples. Match your service’s policy and enforce it on the server. Sign in accepts existing passwords without applying the new-password policy.',
   'Keep reset and resend responses generic. Your service must validate expiring, single-use tokens, manage sessions, and limit repeated attempts and email requests.',
