@@ -16,12 +16,14 @@ export const item = {
     focusBackground: '{navigation.item.focus.background}',
     color: '{navigation.item.color}',
     focusColor: '{navigation.item.focus.color}',
-    padding: '{navigation.item.padding}',
+    padding: '{list.option.padding}',
     borderRadius: '{navigation.item.border.radius}',
     gap: '{navigation.item.gap}',
+    label: { fontSize: '{form.field.font.size}' },
     icon: {
         color: '{navigation.item.icon.color}',
-        focusColor: '{navigation.item.icon.focus.color}'
+        focusColor: '{navigation.item.icon.focus.color}',
+        size: '{form.field.font.size}'
     }
 };
 

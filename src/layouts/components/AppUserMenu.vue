@@ -51,7 +51,7 @@ const items = [
     <template #start>
       <div class="border-b border-surface px-3 py-3">
         <p class="font-medium text-color">Amina Hassan</p>
-        <p class="mt-1 truncate text-sm text-muted">amina@farmtofeed.com</p>
+        <p class="truncate text-sm text-muted">amina@farmtofeed.com</p>
       </div>
     </template>
   </Menu>

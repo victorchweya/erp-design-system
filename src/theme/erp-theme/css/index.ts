@@ -43,9 +43,6 @@ const controlCss = [...controlSizes]
         .p-multiselect${suffix} {
             min-height: var(--p-control-${key}-height);${sized ? `\n            --p-multiselect-padding-y: var(--p-control-${key}-padding-y);` : ''}
         }
-        .p-multiselect${suffix} .p-multiselect-label:has(.p-chip) {
-            padding: calc(var(--p-control-${key}-padding-y) / 2) var(--p-control-${key}-padding-x);
-        }
         .p-inputtags${size ? `[data-p~="${size}"]` : ''} {${
           sized
             ? `\n            --p-inputtags-padding-x: var(--p-control-${key}-padding-x);\n            --p-inputtags-padding-y: var(--p-control-${key}-padding-y);`
@@ -60,6 +57,12 @@ const controlCss = [...controlSizes]
 
 const css = /*css*/ `
     ${controlCss}
+    .p-multiselect .p-multiselect-label:has(.p-chip) {
+        padding: calc(var(--p-multiselect-padding-y) / 2);
+    }
+    .p-inputtags:has(> .p-inputtags-item) {
+        padding-inline: calc(var(--p-inputtags-padding-y) / 2);
+    }
     /* Opt-in table footer: summary on the left, page-size label and controls on the right. */
     .erp-table-pagination > nav > .p-paginator {
         display: grid;
@@ -110,6 +113,9 @@ const css = /*css*/ `
         min-width: 0;
         border: 0;
         border-radius: 0;
+    }
+    .p-inputgroupaddon > .p-button:not(:disabled):is(:hover, :active) {
+        border: 0;
     }
     .p-inputtags .p-inputtags-item .p-chip-label {
         line-height: inherit;

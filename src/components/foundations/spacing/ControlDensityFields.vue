@@ -130,7 +130,7 @@ function search({ query }: AutoCompleteCompleteEvent) {
     <div class="flex flex-col gap-1">
       <label :for="`${id}-group`" class="font-medium">Input group</label>
       <InputGroup
-        ><InputGroupAddon>KES</InputGroupAddon
+        ><InputGroupAddon>Ksh</InputGroupAddon
         ><InputNumber
           :inputId="`${id}-group`"
           :size="size"
