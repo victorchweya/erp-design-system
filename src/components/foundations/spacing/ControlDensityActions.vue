@@ -35,13 +35,11 @@ const view = shallowRef('List')
         />Saving</Button
       >
     </div>
-    <Button type="button" :size="size" severity="primary" outlined class="whitespace-normal"
-      >Review quantities before confirming your order</Button
-    >
     <SplitButton
       outlined
       label="Export"
       :size="size"
+      class="self-start"
       :model="[{ label: 'Download CSV' }, { label: 'Download PDF' }]"
       :menuButtonProps="{ 'aria-label': 'Export options' }"
     />
