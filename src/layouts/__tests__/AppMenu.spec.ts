@@ -30,6 +30,25 @@ it('places charts and metrics in Components and opens their group for direct lin
   expect(blocks.find('a[href="/ui-blocks/charts/area"]').exists()).toBe(false)
 })
 
+it('places all blocks in UI blocks under the Blocks heading', async () => {
+  const router = createDocsRouter()
+  await router.push('/backoffice-blocks/order-detail')
+  await router.isReady()
+  const wrapper = mount(AppMenu, { global: { plugins: [router] } })
+
+  expect(wrapper.findAll('h2').map((heading) => heading.text())).toContain('Blocks')
+  expect(wrapper.findAll('summary').some((summary) => summary.text() === 'ERP blocks')).toBe(false)
+  const uiGroup = wrapper
+    .findAll('details')
+    .find((group) => group.get('summary').text() === 'UI blocks')!
+  for (const page of blockPages.filter((item) => !item.section)) {
+    expect(uiGroup.find(`a[href="${page.path}"]`).exists(), page.label).toBe(true)
+  }
+  expect((uiGroup.element as HTMLDetailsElement).open).toBe(true)
+  expect(uiGroup.element.parentElement?.tagName).toBe('NAV')
+  expect(router.currentRoute.value.meta.breadcrumb).toEqual(['Blocks', 'UI blocks', 'Order detail'])
+})
+
 async function clickAndNavigate(router: Router, link: Pick<DOMWrapper<Element>, 'trigger'>) {
   const navigated = new Promise<void>((done) => {
     const stop = router.afterEach(() => {
@@ -124,11 +143,11 @@ it('opens every block category with the correct active link and breadcrumb', asy
     const current = wrapper.get('a[aria-current="page"]')
     expect(current.attributes('href')).toBe(page.path)
     expect(current.element.closest('details')?.open).toBe(true)
-    expect(router.currentRoute.value.meta.breadcrumb).toEqual([
-      page.section ?? 'UI blocks',
-      ...(page.group ? [page.group] : []),
-      page.label,
-    ])
+    expect(router.currentRoute.value.meta.breadcrumb).toEqual(
+      page.section
+        ? ['Components', page.group, page.label]
+        : ['Blocks', page.group ?? 'UI blocks', page.label],
+    )
   }
   expect(wrapper.emitted('navigate')).toHaveLength(blockPages.length)
 })

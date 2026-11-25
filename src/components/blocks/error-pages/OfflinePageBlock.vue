@@ -11,7 +11,7 @@ const props = withDefaults(
   defineProps<{
     headingTag?: 'h1' | 'h2' | 'h3'
     variant?: 'offline' | 'maintenance'
-    /** Expected end of maintenance, shown in Nairobi time. */
+    /** Absolute expected end of maintenance, shown in the viewer's local time. */
     backBy?: string
     supportHref?: string
   }>(),

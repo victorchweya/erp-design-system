@@ -3,8 +3,8 @@ import type { Component } from 'vue'
 type BlockPage = {
   label: string
   group?: string
-  /** Top-level menu section. Defaults to "UI blocks". */
-  section?: 'Backoffice blocks' | 'Components'
+  /** Component-category pages also appear under Components. */
+  section?: 'Components'
   path: string
   load: () => Promise<{ default: Component }>
 }
@@ -159,103 +159,86 @@ export const blockPages: BlockPage[] = [
   },
   {
     label: 'Page templates',
-    group: 'ERP patterns',
     path: '/ui-blocks/page-templates',
     load: () => import('@/views/blocks/PageTemplatesView.vue'),
   },
   {
     label: 'Documents',
-    group: 'ERP patterns',
     path: '/ui-blocks/documents',
     load: () => import('@/views/blocks/DocumentsView.vue'),
   },
   {
     label: 'Workflow',
-    group: 'ERP patterns',
     path: '/ui-blocks/workflow',
     load: () => import('@/views/blocks/WorkflowView.vue'),
   },
   {
     label: 'Comments & attachments',
-    group: 'ERP patterns',
     path: '/ui-blocks/comments-attachments',
     load: () => import('@/views/blocks/CommentsAttachmentsView.vue'),
   },
   {
     label: 'Import & export',
-    group: 'ERP patterns',
     path: '/ui-blocks/import-export',
     load: () => import('@/views/blocks/ImportExportView.vue'),
   },
   {
     label: 'Users & permissions',
-    group: 'ERP patterns',
     path: '/ui-blocks/users-permissions',
     load: () => import('@/views/blocks/UsersPermissionsView.vue'),
   },
   {
     label: 'Notifications',
-    group: 'ERP patterns',
     path: '/ui-blocks/notifications',
     load: () => import('@/views/blocks/NotificationsView.vue'),
   },
   {
     label: 'Scheduling',
-    group: 'ERP patterns',
     path: '/ui-blocks/scheduling',
     load: () => import('@/views/blocks/SchedulingView.vue'),
   },
   {
     label: 'Loading states',
-    group: 'ERP patterns',
     path: '/ui-blocks/loading-states',
     load: () => import('@/views/blocks/LoadingStatesView.vue'),
   },
   {
     label: 'Error pages',
-    group: 'ERP patterns',
     path: '/ui-blocks/error-pages',
     load: () => import('@/views/blocks/ErrorPagesView.vue'),
   },
   {
     label: 'Status tag',
-    section: 'Backoffice blocks',
     path: '/backoffice-blocks/status-tag',
     load: () => import('@/views/blocks/backoffice/StatusTagView.vue'),
   },
   {
     label: 'Decision dialog',
-    section: 'Backoffice blocks',
     path: '/backoffice-blocks/decision-dialog',
     load: () => import('@/views/blocks/backoffice/DecisionDialogView.vue'),
   },
   {
     label: 'Record details',
-    section: 'Backoffice blocks',
     path: '/backoffice-blocks/record-details',
     load: () => import('@/views/blocks/backoffice/RecordDetailsView.vue'),
   },
   {
     label: 'Order detail',
-    section: 'Backoffice blocks',
     path: '/backoffice-blocks/order-detail',
     load: () => import('@/views/blocks/backoffice/OrderDetailView.vue'),
   },
   {
     label: 'Customer detail',
-    section: 'Backoffice blocks',
     path: '/backoffice-blocks/customer-detail',
     load: () => import('@/views/blocks/backoffice/CustomerDetailView.vue'),
   },
   {
     label: 'Report embed',
-    section: 'Backoffice blocks',
     path: '/backoffice-blocks/report-embed',
     load: () => import('@/views/blocks/backoffice/ReportEmbedView.vue'),
   },
   {
     label: 'Payment allocation',
-    section: 'Backoffice blocks',
     path: '/backoffice-blocks/payment-allocation',
     load: () => import('@/views/blocks/backoffice/PaymentAllocationView.vue'),
   },

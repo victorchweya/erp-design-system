@@ -26,7 +26,7 @@ const examples = [
   },
 ]
 const usage = [
-  'Weeks start on Monday and dates use Nairobi time. The week view becomes a day-by-day agenda when its container is narrow, and the month view counts runs per day; choose a day to open its week.',
+  'Weeks start on Monday; delivery dates and run times use Kenya time. The week view becomes a day-by-day agenda when its container is narrow, and the month view counts runs per day; choose a day to open its week.',
   'The calendar uses headings, lists, and a native table rather than an ARIA grid. Each run and each day is a button in normal tab order, so screen readers get row and column headers without a custom arrow-key model to learn or maintain.',
   'Dragging is a shortcut, not the only way to move a card. Move to opens a menu with the other columns, focus returns to the moved card, and a status message announces the change and the new column count.',
   'These examples use local sample data. Connect runs, order stages, and permission checks to your planning and fulfilment services, and confirm moves the server rejects.',

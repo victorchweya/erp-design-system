@@ -1,6 +1,9 @@
-import { describe, expect, it } from 'vitest'
+import { describe, expect, it, vi } from 'vitest'
 import {
   formatApiDate,
+  formatBusinessDate,
+  formatBusinessDateTime,
+  formatBusinessTime,
   formatCurrency,
   formatDate,
   formatDateTime,
@@ -17,12 +20,27 @@ describe('ERP formatters', () => {
     expect(formatNumber('invalid')).toBe('—')
   })
 
-  it('preserves date-only values and displays timestamps in Nairobi time', () => {
-    expect(formatDate('2026-11-18')).toBe('18 Nov 2026')
-    expect(formatDate('2026-11-18T22:30:00Z')).toBe('19 Nov 2026')
-    expect(formatDateTime('2026-11-18T22:30:00Z')).toBe('19 Nov 2026, 1:30 am')
-    expect(formatTime('2026-11-18T22:30:00Z')).toBe('1:30 am')
-    expect(formatApiDate('2026-11-18T22:30:00Z')).toBe('2026-11-19')
+  it('uses the viewer’s timezone for events and keeps Kenya delivery times fixed', () => {
+    try {
+      vi.stubEnv('TZ', 'America/New_York')
+      expect(formatDate('2026-11-18')).toBe('18 Nov 2026')
+      expect(formatDate('2026-11-18T22:30:00Z')).toBe('18 Nov 2026')
+      expect(formatDateTime('2026-11-18T22:30:00Z')).toBe('18 Nov 2026, 5:30 pm')
+      expect(formatTime('2026-11-18T22:30:00Z')).toBe('5:30 pm')
+      expect(formatApiDate('2026-11-18T22:30:00Z')).toBe('2026-11-18')
+
+      vi.stubEnv('TZ', 'Europe/Amsterdam')
+      expect(formatDate('2026-11-18')).toBe('18 Nov 2026')
+      expect(formatDate('2026-11-18T22:30:00Z')).toBe('18 Nov 2026')
+      expect(formatDateTime('2026-11-18T22:30:00Z')).toBe('18 Nov 2026, 11:30 pm')
+      expect(formatApiDate('2026-11-18T22:30:00Z')).toBe('2026-11-18')
+
+      expect(formatBusinessDate('2026-11-18T22:30:00Z')).toBe('2026-11-19')
+      expect(formatBusinessDateTime('2026-11-18T22:30:00Z')).toBe('19 Nov 2026, 1:30 am')
+      expect(formatBusinessTime('2026-11-18T22:30:00Z')).toBe('1:30 am')
+    } finally {
+      vi.unstubAllEnvs()
+    }
   })
 
   it('uses safe empty values for invalid dates', () => {

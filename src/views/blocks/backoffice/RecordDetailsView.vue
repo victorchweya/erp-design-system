@@ -43,7 +43,7 @@ const usage = [
   <BlockDoc
     title="Record details"
     description="A labelled details list and record header for customers, orders, and payments."
-    eyebrow="Backoffice blocks"
+    eyebrow="UI blocks"
     :usage="usage"
     :examples="examples"
   />

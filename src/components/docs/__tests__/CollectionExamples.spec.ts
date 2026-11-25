@@ -7,6 +7,8 @@ import FocusTrapExample from '../examples/FocusTrapExample.vue'
 import BlockUIExample from '../examples/BlockUIExample.vue'
 import CommandMenuExample from '../examples/CommandMenuExample.vue'
 import TerminalExample from '../examples/TerminalExample.vue'
+import SidebarMenuExample from '../examples/SidebarMenuExample.vue'
+import SidebarDualExample from '../examples/SidebarDualExample.vue'
 
 enableAutoUnmount(afterEach)
 beforeEach(() => {
@@ -18,6 +20,33 @@ beforeEach(() => {
 })
 afterEach(() => vi.unstubAllGlobals())
 const options = { global: { plugins: [PrimeVue] }, attachTo: document.body }
+
+it('switches the workspace from the sidebar popup menu', async () => {
+  const wrapper = mount(SidebarMenuExample, options)
+  await wrapper.get('button[aria-label="Farm to Feed"]').trigger('click')
+  await flushPromises()
+  const company = Array.from(document.querySelectorAll<HTMLElement>('[role="menuitem"]')).find(
+    (item) => item.textContent?.includes('FTF Operations'),
+  )!
+  expect(company).toBeDefined()
+  company.click()
+  await flushPromises()
+  expect(wrapper.get('button[aria-label="FTF Operations"]').text()).toContain('Operations')
+})
+
+it('toggles each sidebar independently in the dual layout', async () => {
+  const wrapper = mount(SidebarDualExample, options)
+  await flushPromises()
+  const [navigation, assistant] = wrapper.findAll('button[aria-label="Toggle sidebar"]')
+  expect(navigation!.attributes('aria-expanded')).toBe('true')
+  expect(assistant!.attributes('aria-expanded')).toBe('false')
+  await assistant!.trigger('click')
+  expect(assistant!.attributes('aria-expanded')).toBe('true')
+  expect(navigation!.attributes('aria-expanded')).toBe('true')
+  await navigation!.trigger('click')
+  expect(navigation!.attributes('aria-expanded')).toBe('false')
+  expect(assistant!.attributes('aria-expanded')).toBe('true')
+})
 
 it('changes the visible records when paging', async () => {
   const wrapper = mount(PaginatorExample, options)

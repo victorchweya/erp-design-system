@@ -22,7 +22,7 @@ import RecordDetailHeaderBlock from '@/components/blocks/headers/RecordDetailHea
 import TableHeaderActionsBlock, {
   type TableColumnOption,
 } from '@/components/blocks/tables/TableHeaderActionsBlock.vue'
-import { DISPLAY_PLACEHOLDER, formatCurrency, formatDateTime, formatNumber } from '@/utils/format'
+import { DISPLAY_PLACEHOLDER, formatBusinessDateTime, formatCurrency, formatNumber } from '@/utils/format'
 
 const menu = useTemplateRef<InstanceType<typeof Menu>>('menu')
 const menuId = useId()
@@ -332,7 +332,7 @@ const deliveryDetails: { label: string; value: string; icon: Component; href?: s
   { label: 'Phone', value: '0734 943 613', icon: Phone, href: 'tel:+254734943613' },
   {
     label: 'Delivery date',
-    value: formatDateTime('2026-11-21T03:00:00+03:00'),
+    value: formatBusinessDateTime('2026-11-21T03:00:00+03:00'),
     icon: Calendar,
   },
   { label: 'Delivery window', value: '06:00–08:00', icon: Clock },

@@ -1,4 +1,4 @@
-import { formatCurrency, formatDate, formatTime } from '@/utils/format'
+import { formatBusinessTime, formatCurrency, formatDate, formatTime } from '@/utils/format'
 
 export interface WritingExample {
   do: string
@@ -36,7 +36,7 @@ export const writingGuidelines: readonly WritingGuideline[] = [
     ],
     examples: [
       {
-        do: `Order FTF-1042 is running late. The driver now expects to arrive at ${formatTime(sampleTime)}.`,
+        do: `Order FTF-1042 is running late. The driver now expects to arrive at ${formatBusinessTime(sampleTime)}.`,
         dont: 'Oops! Your delivery hit a snag!!',
       },
     ],
@@ -173,7 +173,7 @@ export const writingGuidelines: readonly WritingGuideline[] = [
     rules: [
       'Show money in Kenya shillings with formatCurrency.',
       'Use numerals for counts and always include the unit: “12 crates”, “10 kg”.',
-      'Show dates as day, short month, and year, and times in Nairobi time.',
+      'Show event timestamps in the viewer’s local time. Show delivery commitments in Kenya time.',
       'Use “—” when a value is missing.',
     ],
     examples: [

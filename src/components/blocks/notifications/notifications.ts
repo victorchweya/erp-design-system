@@ -81,7 +81,7 @@ export function sampleNotifications(): AppNotification[] {
       id: 'n6',
       type: 'system',
       title: 'Scheduled maintenance on Sunday 22 November',
-      body: 'The ERP will be unavailable from 01:00 to 03:00 EAT. Orders placed by customers during this window are queued.',
+      body: 'The ERP will be unavailable from 01:00 to 03:00 Kenya time. Orders placed by customers during this window are queued.',
       createdAt: '2026-11-18T10:00:00+03:00',
       read: true,
       href: '/status',

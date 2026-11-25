@@ -41,7 +41,7 @@ const usage = [
 
 <template>
   <BlockDoc
-    eyebrow="Backoffice blocks"
+    eyebrow="UI blocks"
     title="Status tag"
     description="One registry and one tag for order, payment, approval, route and other statuses, so every list reads the same."
     :usage="usage"

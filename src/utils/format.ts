@@ -1,9 +1,12 @@
+import { formatDate as vueFormatDate } from '@vueuse/core'
+
 export type FormattableNumber = number | string | null | undefined
 export type FormattableDate = Date | string | number | null | undefined
 
 export const DISPLAY_PLACEHOLDER = '—'
 export const DISPLAY_LOCALE = 'en-KE'
-export const DISPLAY_TIME_ZONE = 'Africa/Nairobi'
+export const BUSINESS_TIME_ZONE = 'Africa/Nairobi'
+export const DISPLAY_DATE_FORMAT = 'D MMM YYYY'
 
 function numberValue(value: FormattableNumber) {
   if (value === null || value === undefined || value === '') return null
@@ -51,45 +54,75 @@ export function formatNumber(value: FormattableNumber) {
     : new Intl.NumberFormat(DISPLAY_LOCALE, { maximumFractionDigits: 2 }).format(number)
 }
 
-export function formatDate(value: FormattableDate) {
+export function toDisplayDate(value: FormattableDate) {
+  // Date-only values are calendar days, while timestamps use the viewer's local day.
   const dateOnly = dateOnlyValue(value)
-  if (isDateOnlyString(value) && !dateOnly) return DISPLAY_PLACEHOLDER
+  if (isDateOnlyString(value) && !dateOnly) return null
   const date = dateOnly ?? dateValue(value)
+  if (!date) return null
+  if (dateOnly)
+    return new Date(dateOnly.getUTCFullYear(), dateOnly.getUTCMonth(), dateOnly.getUTCDate(), 12)
+  return date
+}
+
+export function formatDate(value: FormattableDate) {
+  const date = toDisplayDate(value)
+  return date
+    ? vueFormatDate(date, DISPLAY_DATE_FORMAT, { locales: DISPLAY_LOCALE })
+    : DISPLAY_PLACEHOLDER
+}
+
+function dateTime(value: FormattableDate, timeZone?: string) {
+  const date = dateValue(value)
   if (!date) return DISPLAY_PLACEHOLDER
   return new Intl.DateTimeFormat(DISPLAY_LOCALE, {
     day: 'numeric',
     month: 'short',
     year: 'numeric',
-    timeZone: dateOnly ? 'UTC' : DISPLAY_TIME_ZONE,
+    hour: 'numeric',
+    minute: '2-digit',
+    hour12: true,
+    timeZone,
   }).format(date)
 }
 
 export function formatDateTime(value: FormattableDate) {
+  return dateTime(value)
+}
+
+export function formatBusinessDateTime(value: FormattableDate) {
+  return dateTime(value, BUSINESS_TIME_ZONE)
+}
+
+function time(value: FormattableDate, timeZone?: string) {
   const date = dateValue(value)
   if (!date) return DISPLAY_PLACEHOLDER
   return new Intl.DateTimeFormat(DISPLAY_LOCALE, {
-    day: 'numeric',
-    month: 'short',
-    year: 'numeric',
     hour: 'numeric',
     minute: '2-digit',
     hour12: true,
-    timeZone: DISPLAY_TIME_ZONE,
+    timeZone,
   }).format(date)
 }
 
 export function formatTime(value: FormattableDate) {
-  const date = dateValue(value)
-  if (!date) return DISPLAY_PLACEHOLDER
-  return new Intl.DateTimeFormat(DISPLAY_LOCALE, {
-    hour: 'numeric',
-    minute: '2-digit',
-    hour12: true,
-    timeZone: DISPLAY_TIME_ZONE,
-  }).format(date)
+  return time(value)
+}
+
+export function formatBusinessTime(value: FormattableDate) {
+  return time(value, BUSINESS_TIME_ZONE)
 }
 
 export function formatApiDate(value: FormattableDate) {
+  if (dateOnlyValue(value)) return value as string
+  if (isDateOnlyString(value)) return ''
+  const date = dateValue(value)
+  if (!date) return ''
+  const pad = (part: number) => String(part).padStart(2, '0')
+  return `${date.getFullYear()}-${pad(date.getMonth() + 1)}-${pad(date.getDate())}`
+}
+
+export function formatBusinessDate(value: FormattableDate) {
   if (dateOnlyValue(value)) return value as string
   if (isDateOnlyString(value)) return ''
   const date = dateValue(value)
@@ -98,7 +131,7 @@ export function formatApiDate(value: FormattableDate) {
     year: 'numeric',
     month: '2-digit',
     day: '2-digit',
-    timeZone: DISPLAY_TIME_ZONE,
+    timeZone: BUSINESS_TIME_ZONE,
   }).formatToParts(date)
   const part = (type: Intl.DateTimeFormatPartTypes) =>
     parts.find((item) => item.type === type)?.value ?? ''

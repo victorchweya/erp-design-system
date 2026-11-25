@@ -5,6 +5,7 @@ import { useActiveSection } from '@/composables/useActiveSection'
 import { primeVueLocale } from '@/utils/locale'
 import {
   formatApiDate,
+  formatBusinessDateTime,
   formatCurrency,
   formatDate,
   formatDateTime,
@@ -13,6 +14,7 @@ import {
 } from '@/utils/format'
 
 const sampleTimestamp = '2026-11-18T11:30:00Z'
+const viewerTimeZone = Intl.DateTimeFormat().resolvedOptions().timeZone
 const sections = [
   { id: 'formatting-how-to-use', label: 'How to use' },
   { id: 'formatting-numbers', label: 'Currency & numbers' },
@@ -70,6 +72,12 @@ const dateRows = [
     output: formatApiDate(sampleTimestamp),
     utility: 'formatApiDate',
   },
+  {
+    purpose: 'Delivery commitment',
+    input: sampleTimestamp,
+    output: formatBusinessDateTime(sampleTimestamp),
+    utility: 'formatBusinessDateTime',
+  },
 ]
 </script>
 
@@ -81,7 +89,7 @@ const dateRows = [
         <h1 class="text-3xl font-medium tracking-tight sm:text-4xl">Formatting</h1>
         <p class="text-base leading-relaxed text-muted-color">
           Present currency, numbers, dates, and time consistently across FTF products. Displayed
-          timestamps use Nairobi time; values sent to APIs keep their machine-readable shape.
+          event timestamps use the viewer’s local time; Kenya delivery commitments use Kenya time.
         </p>
       </header>
 
@@ -151,7 +159,9 @@ const dateRows = [
         >
           <h2 id="formatting-dates-title" class="text-2xl font-medium">Dates &amp; time</h2>
           <p class="text-muted-color">
-            Keep date-only values unchanged. Convert timestamps to Africa/Nairobi for display.
+            Keep date-only values on their calendar day. Display event timestamps in the viewer’s
+            timezone ({{ viewerTimeZone }}). Display scheduled delivery times in Kenya time so the
+            commitment stays the same for users in every country.
           </p>
           <DataTable
             :value="dateRows"
@@ -193,7 +203,8 @@ const dateRows = [
           <p class="leading-relaxed text-muted-color">
             PrimeVue merges this partial locale with its English defaults, so day names, month
             names, and built-in labels stay in English. The locale controls input only; display text
-            still comes from the utilities above, using en-KE and Africa/Nairobi.
+            still comes from the utilities above, using en-KE and the viewer’s timezone for event
+            timestamps.
           </p>
           <DataTable
             :value="localeRows"
@@ -240,6 +251,11 @@ const dateRows = [
             </li>
             <li>
               Use an empty string for an invalid API date so it cannot look like a valid date.
+            </li>
+            <li>
+              Keep event timestamps as absolute instants in APIs. Use <code>formatApiDate</code> for
+              the viewer’s local calendar day, and <code>formatBusinessDate</code> when a Kenya
+              operational day is required.
             </li>
             <li>
               Keep numeric values as numbers in application state; format only at the display

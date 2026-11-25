@@ -63,7 +63,7 @@ const usage = [
 
 <template>
   <BlockDoc
-    eyebrow="Backoffice blocks"
+    eyebrow="UI blocks"
     title="Decision dialog"
     description="The one dialog for approving, rejecting, requesting changes to, cancelling, reversing or reopening a record, with a reason and a clear record of who decided."
     :usage="usage"

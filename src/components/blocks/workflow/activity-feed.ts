@@ -225,7 +225,9 @@ export function formatRelative(value: string, now: Date) {
 export function dayLabel(value: string, now: Date) {
   const day = formatApiDate(value)
   if (day === formatApiDate(now)) return 'Today'
-  if (day === formatApiDate(now.getTime() - 86_400_000)) return 'Yesterday'
+  const yesterday = new Date(now)
+  yesterday.setDate(yesterday.getDate() - 1)
+  if (day === formatApiDate(yesterday)) return 'Yesterday'
   return formatDate(value)
 }
 

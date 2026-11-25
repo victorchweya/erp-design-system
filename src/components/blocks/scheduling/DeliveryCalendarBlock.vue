@@ -2,7 +2,7 @@
 import { computed, shallowRef, useId } from 'vue'
 import ChevronLeft from '@primeicons/vue/chevron-left'
 import ChevronRight from '@primeicons/vue/chevron-right'
-import { DISPLAY_LOCALE, formatApiDate, formatNumber, formatTime } from '@/utils/format'
+import { DISPLAY_LOCALE, formatBusinessDate, formatBusinessTime, formatNumber } from '@/utils/format'
 
 type RunStatus = 'Planned' | 'Loading' | 'In transit' | 'Delivered' | 'Delayed'
 type CalendarView = 'week' | 'month'
@@ -61,7 +61,7 @@ function formatDay(date: string, options: Intl.DateTimeFormatOptions) {
 }
 
 // Sample schedule generated around today. Replace with runs from your planning service.
-const today = formatApiDate(new Date())
+const today = formatBusinessDate(new Date())
 const routes = [
   { kind: 'Customer delivery', route: 'Westlands & Parklands', stops: 9 },
   { kind: 'Farm pickup', route: 'Limuru farms', stops: 4 },
@@ -166,7 +166,7 @@ function openRun(run: DeliveryRun, event: Event) {
   drawerVisible.value = true
 }
 function runTime(run: DeliveryRun) {
-  return formatTime(`${run.date}T${run.start}:00+03:00`)
+  return formatBusinessTime(`${run.date}T${run.start}:00+03:00`)
 }
 function dayLabel(date: string) {
   return formatDay(date, { weekday: 'long', day: 'numeric', month: 'long' })

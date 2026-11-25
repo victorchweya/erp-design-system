@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import symbol from '@/assets/brand/symbol.svg'
+import logo from '@/assets/brand/logo.svg'
 import { shallowRef, useId } from 'vue'
 import ShoppingCart from '@primeicons/vue/shopping-cart'
 import Truck from '@primeicons/vue/truck'
@@ -36,7 +38,28 @@ const groups = [
         <SidebarAside as="nav" aria-label="Preview navigation">
           <SidebarPanel>
             <SidebarHeader>
-              <p class="truncate px-2 font-medium">Farm to Feed</p>
+              <SidebarMenu>
+                <SidebarMenuItem>
+                  <SidebarMenuButton aria-label="Farm to Feed">
+                    <img
+                      v-if="open"
+                      :src="logo"
+                      alt=""
+                      width="215"
+                      height="32"
+                      class="h-5 w-auto max-w-full shrink-0"
+                    />
+                    <img
+                      v-else
+                      :src="symbol"
+                      alt=""
+                      width="24"
+                      height="24"
+                      class="size-6 shrink-0"
+                    />
+                  </SidebarMenuButton>
+                </SidebarMenuItem>
+              </SidebarMenu>
             </SidebarHeader>
             <SidebarContent>
               <SidebarGroup v-for="group in groups" :key="group.label">

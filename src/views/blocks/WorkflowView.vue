@@ -96,7 +96,7 @@ const activeSection = useActiveSection(sections.map(({ id }) => id))
           </p>
           <p class="leading-relaxed text-muted">
             Show actions the viewer cannot take as disabled, with the reason beside them. Ask for
-            the reason in the Decision dialog, the same one used across Backoffice blocks, before
+            the reason in the Decision dialog, the same one used across UI blocks, before
             rejecting or sending work back, and record every decision in the history.
           </p>
           <p class="leading-relaxed text-muted">

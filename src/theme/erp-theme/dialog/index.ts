@@ -28,7 +28,12 @@ export const footer = {
 // PrimeVue 5.0.5 hard-codes Dialog animation timings and has no tokens for them.
 // The extra class outranks the shipped selectors without depending on stylesheet order.
 // The mask leave rule must follow the enter rule because the mask keeps both classes while closing.
+// Dialog also has no close-button focus token; scope the Button outline to this control.
 export const css = /*css*/ `
+    .p-dialog .p-dialog-close-button.p-button:focus-visible {
+        outline-color: dt('ftf.neutral.100');
+    }
+
     .p-dialog.p-dialog-enter-active {
         animation-duration: dt('motion.duration.slow');
         animation-timing-function: dt('motion.easing.enter');

@@ -38,6 +38,7 @@ it('updates the breadcrumb and current page when navigating between sections', a
 
   await router.push('/ui-blocks')
   expect(router.currentRoute.value.path).toBe('/ui-blocks/headers')
+  expect(breadcrumb.text()).toContain('Blocks')
   expect(breadcrumb.text()).toContain('UI blocks')
   expect(breadcrumb.get('[aria-current="page"]').text()).toBe('Section headers')
 })

@@ -56,7 +56,7 @@ const examples = [
   {
     id: 'maintenance',
     title: 'Planned maintenance',
-    description: 'Use during planned downtime. Give the expected return time in Nairobi time.',
+    description: 'Use during planned downtime. Give the expected return time in the viewer’s local time.',
     component: OfflinePageBlock,
     props: { headingTag: 'h3', variant: 'maintenance', supportHref: support.supportHref },
     code: offlineCode,

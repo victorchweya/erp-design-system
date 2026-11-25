@@ -38,7 +38,7 @@ const usage = [
 
 <template>
   <BlockDoc
-    eyebrow="Backoffice blocks"
+    eyebrow="UI blocks"
     title="Payment allocation"
     description="Allocate one payment across open invoices and see what is still unallocated before saving."
     :usage="usage"

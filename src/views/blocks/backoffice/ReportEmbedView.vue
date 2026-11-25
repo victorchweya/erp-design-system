@@ -30,7 +30,7 @@ const usage = [
 
 <template>
   <BlockDoc
-    eyebrow="Backoffice blocks"
+    eyebrow="UI blocks"
     title="Report embed"
     description="One picker and one frame for every embedded report and dashboard, with clear loading and failed states."
     :usage="usage"
