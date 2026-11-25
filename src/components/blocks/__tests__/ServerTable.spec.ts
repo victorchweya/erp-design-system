@@ -128,3 +128,22 @@ it('keeps the requested page and sort when a failed load is retried', async () =
   expect(firstRow()).not.toBe(secondPageRow)
   expect(firstRow()).not.toBe(firstPageRow)
 })
+
+it('clears a pending search and reloads the first page without the stale search', async () => {
+  const wrapper = mount(ServerTableExample, options)
+  await settle()
+  const originalFirstRow = firstRow()
+  await click(document.querySelector('[aria-label="Next Page"]'))
+  await settle()
+  expect(currentPage()).toBe('2')
+
+  const input = wrapper.get<HTMLInputElement>('[aria-label="Search orders"]')
+  await input.setValue('no matching order')
+  await wrapper.get('[aria-label="Clear order search"]').trigger('click')
+  expect(input.element.value).toBe('')
+  expect(document.activeElement).toBe(input.element)
+  await vi.advanceTimersByTimeAsync(300)
+  await settle()
+  expect(currentPage()).toBe('1')
+  expect(firstRow()).toBe(originalFirstRow)
+})

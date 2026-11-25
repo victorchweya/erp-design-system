@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import Times from '@primeicons/vue/times'
 import { computed, nextTick, onMounted, useTemplateRef } from 'vue'
 import Search from '@primeicons/vue/search'
 import { statusSeverity, type Supplier } from './suppliers'
@@ -24,6 +25,12 @@ onMounted(async () => {
   const row = root.value?.querySelector<HTMLElement>(`[data-supplier-id="${props.focusId}"]`)
   ;(row ?? root.value?.querySelector<HTMLElement>('h3'))?.focus()
 })
+const searchInput = useTemplateRef<{ $el: HTMLInputElement }>('searchInput')
+
+function clearSearch() {
+  query.value = ''
+  searchInput.value?.$el.focus()
+}
 </script>
 
 <template>
@@ -45,11 +52,23 @@ onMounted(async () => {
           <IconField class="min-w-0 flex-1 basis-56">
             <InputIcon><Search aria-hidden="true" /></InputIcon>
             <InputText
+              ref="searchInput"
               v-model="query"
               aria-label="Search suppliers"
               placeholder="Name, contact, county, or produce"
               fluid
             />
+            <InputIcon v-if="query">
+              <button
+                type="button"
+                aria-label="Clear supplier search"
+                title="Clear supplier search"
+                class="-m-1 flex rounded-sm p-1 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-0 focus-visible:outline-primary"
+                @click="clearSearch"
+              >
+                <Times aria-hidden="true" focusable="false" />
+              </button>
+            </InputIcon>
           </IconField>
           <span role="status" class="text-sm text-muted">{{ filtered.length }} suppliers</span>
         </div>

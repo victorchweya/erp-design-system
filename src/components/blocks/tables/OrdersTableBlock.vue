@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { computed, shallowRef, watch } from 'vue'
+import Times from '@primeicons/vue/times'
+import { computed, shallowRef, watch, useTemplateRef } from 'vue'
 import Search from '@primeicons/vue/search'
 import Inbox from '@primeicons/vue/inbox'
 const query = shallowRef('')
@@ -28,6 +29,12 @@ watch([query, status], () => (first.value = 0))
 function clear() {
   query.value = ''
   status.value = null
+}
+const searchInput = useTemplateRef<{ $el: HTMLInputElement }>('searchInput')
+
+function clearSearch() {
+  query.value = ''
+  searchInput.value?.$el.focus()
 }
 </script>
 
@@ -62,11 +69,23 @@ function clear() {
             <IconField class="w-full">
               <InputIcon><Search aria-hidden="true" /></InputIcon>
               <InputText
+                ref="searchInput"
                 v-model="query"
                 aria-label="Search orders"
                 placeholder="Reference or customer"
                 fluid
               />
+              <InputIcon v-if="query">
+                <button
+                  type="button"
+                  aria-label="Clear order search"
+                  title="Clear order search"
+                  class="-m-1 flex rounded-sm p-1 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-0 focus-visible:outline-primary"
+                  @click="clearSearch"
+                >
+                  <Times aria-hidden="true" focusable="false" />
+                </button>
+              </InputIcon>
             </IconField>
           </div>
           <div class="flex-1 basis-40">
@@ -98,7 +117,9 @@ function clear() {
         <Inbox :size="32" aria-hidden="true" class="text-muted" />
         <div class="space-y-2">
           <h3 class="text-lg font-medium">No matching orders</h3>
-          <p class="max-w-md text-sm text-muted">Try changing or clearing your search and filters.</p>
+          <p class="max-w-md text-sm text-muted">
+            Try changing or clearing your search and filters.
+          </p>
         </div>
         <Button type="button" severity="primary" outlined size="small" @click="clear"
           >Reset search</Button

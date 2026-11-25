@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import Times from '@primeicons/vue/times'
 import ExclamationTriangle from '@primeicons/vue/exclamation-triangle'
 import { computed, ref, shallowRef, useId, useTemplateRef } from 'vue'
 import type Menu from 'primevue/menu'
@@ -228,6 +229,12 @@ function clearFilters() {
   query.value = ''
   roleFilter.value = null
 }
+const searchInput = useTemplateRef<{ $el: HTMLInputElement }>('searchInput')
+
+function clearSearch() {
+  query.value = ''
+  searchInput.value?.$el.focus()
+}
 </script>
 
 <template>
@@ -262,11 +269,23 @@ function clearFilters() {
             <IconField class="min-w-0 flex-1 basis-48">
               <InputIcon><Search aria-hidden="true" /></InputIcon>
               <InputText
+                ref="searchInput"
                 v-model="query"
                 aria-label="Search users"
                 placeholder="Name or email"
                 fluid
               />
+              <InputIcon v-if="query">
+                <button
+                  type="button"
+                  aria-label="Clear user search"
+                  title="Clear user search"
+                  class="-m-1 flex rounded-sm p-1 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-0 focus-visible:outline-primary"
+                  @click="clearSearch"
+                >
+                  <Times aria-hidden="true" focusable="false" />
+                </button>
+              </InputIcon>
             </IconField>
             <Select
               v-model="roleFilter"

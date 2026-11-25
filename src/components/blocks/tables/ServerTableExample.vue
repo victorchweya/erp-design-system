@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import Times from '@primeicons/vue/times'
 import {
   computed,
   nextTick,
@@ -94,6 +95,10 @@ onBeforeUnmount(() => {
   clearTimeout(timer)
   controller?.abort()
 })
+function clearSearch() {
+  onSearch('')
+  searchInput.value?.$el.focus()
+}
 </script>
 
 <template>
@@ -111,6 +116,17 @@ onBeforeUnmount(() => {
             fluid
             @update:modelValue="onSearch"
           />
+          <InputIcon v-if="search">
+            <button
+              type="button"
+              aria-label="Clear order search"
+              title="Clear order search"
+              class="-m-1 flex rounded-sm p-1 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-0 focus-visible:outline-primary"
+              @click="clearSearch"
+            >
+              <Times aria-hidden="true" focusable="false" />
+            </button>
+          </InputIcon>
         </IconField>
       </div>
       <div class="sm:w-40">

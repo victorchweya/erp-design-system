@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { shallowRef } from 'vue'
+import Times from '@primeicons/vue/times'
+import { shallowRef, useTemplateRef } from 'vue'
 import ArrowLeft from '@primeicons/vue/arrow-left'
 import Box from '@primeicons/vue/box'
 import Check from '@primeicons/vue/check'
@@ -53,6 +54,12 @@ const workflow = [
 ]
 // The first incomplete step is the one in progress now.
 const currentStep = workflow.findIndex(({ complete }) => !complete)
+const searchInput = useTemplateRef<{ $el: HTMLInputElement }>('searchInput')
+
+function clearSearch() {
+  attributeSearch.value = ''
+  searchInput.value?.$el.focus()
+}
 </script>
 
 <template>
@@ -291,11 +298,23 @@ const currentStep = workflow.findIndex(({ complete }) => !complete)
                         <IconField class="min-w-52 flex-1">
                           <InputIcon><Search aria-hidden="true" /></InputIcon>
                           <InputText
+                            ref="searchInput"
                             v-model="attributeSearch"
                             placeholder="Search attributes"
                             aria-label="Search product attributes"
                             fluid
                           />
+                          <InputIcon v-if="attributeSearch">
+                            <button
+                              type="button"
+                              aria-label="Clear attribute search"
+                              title="Clear attribute search"
+                              class="-m-1 flex rounded-sm p-1 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-0 focus-visible:outline-primary"
+                              @click="clearSearch"
+                            >
+                              <Times aria-hidden="true" focusable="false" />
+                            </button>
+                          </InputIcon>
                         </IconField>
                         <Button type="button" label="Refine" severity="primary" outlined>
                           <template #icon="{ class: iconClass }">

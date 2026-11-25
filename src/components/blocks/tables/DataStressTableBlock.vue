@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import Times from '@primeicons/vue/times'
 import { computed, shallowRef, useTemplateRef, watch } from 'vue'
 import type DataTable from 'primevue/datatable'
 import type Menu from 'primevue/menu'
@@ -267,6 +268,12 @@ function resetFilters() {
   source.value = null
   deliveryType.value = null
 }
+const searchInput = useTemplateRef<{ $el: HTMLInputElement }>('searchInput')
+
+function clearSearch() {
+  query.value = ''
+  searchInput.value?.$el.focus()
+}
 </script>
 
 <template>
@@ -332,11 +339,23 @@ function resetFilters() {
               <IconField class="min-w-56 flex-1">
                 <InputIcon><Search aria-hidden="true" /></InputIcon>
                 <InputText
+                  ref="searchInput"
                   v-model="query"
                   placeholder="Search order/customer"
                   aria-label="Search order or customer"
                   fluid
                 />
+                <InputIcon v-if="query">
+                  <button
+                    type="button"
+                    aria-label="Clear order search"
+                    title="Clear order search"
+                    class="-m-1 flex rounded-sm p-1 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-0 focus-visible:outline-primary"
+                    @click="clearSearch"
+                  >
+                    <Times aria-hidden="true" focusable="false" />
+                  </button>
+                </InputIcon>
               </IconField>
               <Button
                 type="button"

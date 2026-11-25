@@ -97,6 +97,16 @@ it('filters customer orders by search and status', async () => {
   )
   expect(wrapper.text()).toContain('CO-2026-07-014')
   expect(wrapper.text()).not.toContain('CO-2025-08-528')
+
+  const search = wrapper.get<HTMLInputElement>('[aria-label="Search customer orders"]')
+  await search.setValue('Village')
+  await wrapper.get('[aria-label="Clear customer order search"]').trigger('click')
+  expect(search.element.value).toBe('')
+  expect(document.activeElement).toBe(search.element)
+  expect(wrapper.find('[aria-label="Clear customer order search"]').exists()).toBe(false)
+  // Clearing the text keeps the New status filter applied.
+  expect(wrapper.text()).toContain('CO-2026-07-014')
+  expect(wrapper.text()).not.toContain('CO-2025-08-528')
 })
 
 it('keeps the order identifier visible, restores columns, and exports filtered rows', async () => {
