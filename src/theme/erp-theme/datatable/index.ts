@@ -42,6 +42,7 @@ export const headerCell = {
 };
 
 export const columnTitle = {
+    fontSize: '{font.size.sm}',
     fontWeight: '{font.weight.medium}'
 };
 
@@ -62,6 +63,7 @@ export const row = {
 };
 
 export const bodyCell = {
+    fontSize: '{font.size.sm}',
     borderColor: '{datatable.border.color}',
     padding: '{spacing.3} {spacing.4}',
     sm: {
@@ -86,6 +88,7 @@ export const footerCell = {
 };
 
 export const columnFooter = {
+    fontSize: '{font.size.sm}',
     fontWeight: '{font.weight.medium}'
 };
 

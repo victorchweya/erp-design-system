@@ -30,6 +30,7 @@ export const headerCell = {
 };
 
 export const columnTitle = {
+    fontSize: '{font.size.sm}',
     fontWeight: '{font.weight.medium}'
 };
 
@@ -50,6 +51,7 @@ export const row = {
 };
 
 export const bodyCell = {
+    fontSize: '{font.size.sm}',
     borderColor: '{treetable.border.color}',
     padding: '0.75rem 1rem',
     gap: '0.5rem'
@@ -63,6 +65,7 @@ export const footerCell = {
 };
 
 export const columnFooter = {
+    fontSize: '{font.size.sm}',
     fontWeight: '{font.weight.medium}'
 };
 

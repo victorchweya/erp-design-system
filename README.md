@@ -156,7 +156,7 @@ Use Tailwind utilities such as `p-6` and `gap-4`. In ordinary CSS, the matching 
 
 The existing radius mapping is documented on the page: PrimeVue `border.radius.xs` matches `rounded-sm` (2px), and `border.radius.sm` matches `rounded` (4px). The `md`, `lg`, and `xl` names match across both systems.
 
-DataTables have a rounded outer frame in the shared preset: 6px (`border.radius.md`) for small tables and 8px (`border.radius.lg`) for default and large tables. The frame includes headers, footers, and pagination; inner cell borders stay square.
+DataTable and TreeTable column headings, body cells, and column footers default to `font.size.sm` (14px at the default 16px root) for every table density. DataTables have a rounded outer frame in the shared preset: 6px (`border.radius.md`) for small tables and 8px (`border.radius.lg`) for default and large tables. The frame includes headers, footers, and pagination; inner cell borders stay square.
 
 The shared wide container is `max-w-8xl`, capped at 90rem (1440px at a 16px root), matching FTF ecommerce. Its value lives in `spacing.ts`. Foundation pages use `max-w-7xl` and component pages use `max-w-screen-xl` (1280px). Container widths are separate from responsive breakpoints.
 
