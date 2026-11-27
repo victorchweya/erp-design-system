@@ -19,7 +19,7 @@ const sections = [
 ]
 const activeSection = useActiveSection(sections.map(({ id }) => id))
 const linkClass =
-  'rounded-sm font-medium text-primary underline underline-offset-4 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary'
+  'rounded-xs font-medium text-primary underline underline-offset-4 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary'
 
 const areas = [
   {
@@ -58,33 +58,21 @@ const serviceRows = [
   { service: 'ToastService', components: 'Toast', api: 'useToast()' },
 ]
 
-const tailwindCode = `// tailwind.config.js (abridged)
-import PrimeUI from 'tailwindcss-primeui'
-import { primitives } from './src/theme/erp-theme/foundations/palette.ts'
-import { semanticColors } from './src/theme/erp-theme/foundations/color-tokens.ts'
-
-export default {
-  darkMode: ['selector', '.app-dark'],
-  theme: {
-    extend: {
-      // Colours resolve to the preset's CSS variables, e.g. var(--p-ftf-green-500).
-      colors: { /* built from primitives and semanticColors */ },
-    },
-  },
-  plugins: [PrimeUI],
+const tailwindCode = `/* src/theme/erp-theme/tailwind.css (abridged) */
+@theme inline {
+  --color-kale: var(--p-ftf-kale);
+  --text-color-danger: var(--p-severity-danger-color);
+  --font-sans: var(--p-typography-font-family);
 }`
 
 const layerCode = `/* src/assets/styles/main.css */
-@layer tailwind-base, primevue, tailwind-utilities;
+@layer theme, base, primevue, components, utilities;
 
-@layer tailwind-base {
-  @tailwind base;
-}
+@import 'tailwindcss';
+@import 'tailwindcss-primeui';
+@import '../../theme/erp-theme/tailwind.css';
 
-@layer tailwind-utilities {
-  @tailwind components;
-  @tailwind utilities;
-}`
+@custom-variant dark (&:where(.app-dark, .app-dark *));`
 
 const tokenFiles = [
   { file: 'foundations/palette.ts', purpose: 'Raw FTF colour ramps and brand aliases' },
@@ -134,7 +122,7 @@ const adoptRows = [
     when: 'Dark mode',
   },
   {
-    file: 'tailwind.config.js',
+    file: 'src/theme/erp-theme/tailwind.css',
     purpose:
       'Tailwind utilities built from the same tokens, such as bg-kale and text-muted-color. Needs tailwindcss-primeui.',
     when: 'Tailwind, blocks, and copied examples',
@@ -152,7 +140,10 @@ const adoptRows = [
 ]
 const adoptPackages = [
   { name: 'primevue and @primeicons/vue', when: 'Always' },
-  { name: 'tailwindcss (v3) and tailwindcss-primeui', when: 'Tailwind utilities' },
+  {
+    name: 'tailwindcss (v4), @tailwindcss/vite, and tailwindcss-primeui',
+    when: 'Tailwind utilities',
+  },
   { name: 'chart.js', when: 'Chart' },
   { name: 'quill', when: 'Editor' },
 ]
@@ -290,16 +281,16 @@ const checkRows = [
         >
           <h2 id="general-tailwind-title" class="text-2xl font-medium">Tailwind</h2>
           <p class="leading-relaxed text-muted-color">
-            The project uses Tailwind CSS v3. Its config imports the shared palette and colour roles
-            from the preset, so utilities such as
+            The project uses Tailwind CSS v4 through its Vite plugin. CSS theme aliases reference
+            the shared preset, so utilities such as
             <Tag severity="secondary" class="align-baseline"><code>bg-kale</code></Tag> and
             <Tag severity="secondary" class="align-baseline"><code>text-danger</code></Tag>
             resolve to the same CSS variables as PrimeVue. The
-            <code class="text-color">tailwindcss-primeui</code> plugin adds theme utilities such as
-            <code class="text-color">bg-primary</code> and
+            <code class="text-color">tailwindcss-primeui</code> CSS integration adds theme utilities
+            such as <code class="text-color">bg-primary</code> and
             <code class="text-color">text-muted-color</code>.
           </p>
-          <CodeExample title="Tailwind config" language="TypeScript" :code="tailwindCode" />
+          <CodeExample title="Tailwind theme" language="CSS" :code="tailwindCode" />
           <CodeExample title="Cascade layers" language="CSS" :code="layerCode" />
         </section>
 

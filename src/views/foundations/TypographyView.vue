@@ -153,7 +153,7 @@ const weights = [
             Typography defines the text scale. Navigation styling and behaviour are documented in
             <RouterLink
               to="/components/core-elements/links"
-              class="rounded-sm text-primary underline underline-offset-4 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+              class="rounded-xs text-primary underline underline-offset-4 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
               >Links</RouterLink
             >.
           </p>

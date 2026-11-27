@@ -1,4 +1,4 @@
-// Tailwind v3 defaults, kept local so the standalone preset needs no Tailwind runtime.
+// Tailwind's 0.25rem spacing scale, kept local so the standalone preset needs no Tailwind runtime.
 export const spacing = {
   0: '0px',
   px: '1px',

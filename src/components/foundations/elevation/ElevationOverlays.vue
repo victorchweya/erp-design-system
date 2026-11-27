@@ -16,7 +16,7 @@ const categories = [
   {
     key: 'modal',
     base: overlayZIndex.modal,
-    components: 'Dialog, ConfirmDialog, DynamicDialog, Drawer, Toast, BlockUI, Image preview',
+    components: 'Dialog, ConfirmDialog, DynamicDialog, Drawer, BlockUI, Image preview',
   },
   { key: 'tooltip', base: overlayZIndex.tooltip, components: 'Tooltip directive' },
 ]

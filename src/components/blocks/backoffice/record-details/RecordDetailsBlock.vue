@@ -205,7 +205,7 @@ async function copy(row: (typeof rows.value)[number]['items'][number]) {
             <component
               :is="headingTag"
               :id="`${uid}-title`"
-              class="min-w-0 break-words text-lg font-medium"
+              class="min-w-0 wrap-break-word text-lg font-medium"
             >
               {{ title }}
             </component>
@@ -313,12 +313,12 @@ async function copy(row: (typeof rows.value)[number]['items'][number]) {
               <a
                 v-else-if="row.item.kind === 'link'"
                 :href="row.item.href ?? row.text"
-                class="min-w-0 break-words text-color underline underline-offset-2"
+                class="min-w-0 wrap-break-word text-color underline underline-offset-2"
                 >{{ row.text }}</a
               >
               <span
                 v-else
-                class="min-w-0 break-words"
+                class="min-w-0 wrap-break-word"
                 :class="{
                   'tabular-nums': row.item.kind === 'currency' || row.item.kind === 'number',
                 }"

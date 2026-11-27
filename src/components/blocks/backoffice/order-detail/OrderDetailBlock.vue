@@ -579,7 +579,7 @@ function exportDeliveredItems() {
                     class="flex items-start justify-between gap-4"
                   >
                     <dt class="text-muted">{{ detail.label }}</dt>
-                    <dd class="max-w-48 break-words text-right font-medium">
+                    <dd class="max-w-48 wrap-break-word text-right font-medium">
                       {{ detail.value ?? DISPLAY_PLACEHOLDER }}
                     </dd>
                   </div>
@@ -593,7 +593,7 @@ function exportDeliveredItems() {
                 <h2 id="sidebar-delivery-title">
                   <button
                     type="button"
-                    class="rounded-sm text-left text-base font-medium text-primary underline underline-offset-4 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+                    class="rounded-xs text-left text-base font-medium text-primary underline underline-offset-4 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
                     aria-haspopup="dialog"
                     :aria-expanded="detailsVisible && detailView === 'delivery'"
                     @click="openDeliveryDetails"
@@ -635,7 +635,7 @@ function exportDeliveredItems() {
                   </div>
                   <div class="flex items-start justify-between gap-4">
                     <dt class="text-muted">Comment</dt>
-                    <dd class="max-w-48 break-words text-right font-medium">
+                    <dd class="max-w-48 wrap-break-word text-right font-medium">
                       {{ DISPLAY_PLACEHOLDER }}
                     </dd>
                   </div>
@@ -874,7 +874,7 @@ function exportDeliveredItems() {
           <dl class="grid grid-cols-1 gap-3 sm:grid-cols-2">
             <div v-for="detail in customerDetails" :key="detail.label" class="flex flex-col gap-1">
               <dt class="text-muted">{{ detail.label }}</dt>
-              <dd class="break-words font-medium">
+              <dd class="wrap-break-word font-medium">
                 <a v-if="detail.href" :href="detail.href" class="text-primary hover:underline">{{
                   detail.value
                 }}</a>
@@ -918,7 +918,7 @@ function exportDeliveredItems() {
                 <component :is="detail.icon" :size="14" aria-hidden="true" class="shrink-0" />
                 {{ detail.label }}
               </dt>
-              <dd class="break-words text-right font-medium">
+              <dd class="wrap-break-word text-right font-medium">
                 <a v-if="detail.href" :href="detail.href" class="text-primary hover:underline">{{
                   detail.value
                 }}</a>
@@ -931,7 +931,7 @@ function exportDeliveredItems() {
               <Comment :size="14" aria-hidden="true" class="shrink-0" />
               Instructions
             </p>
-            <p class="break-words font-medium leading-relaxed">{{ deliveryInstructions }}</p>
+            <p class="wrap-break-word font-medium leading-relaxed">{{ deliveryInstructions }}</p>
           </div>
         </section>
       </div>

@@ -16,7 +16,7 @@ import ControlDensityExample from './ControlDensityExample.vue'
       <Card class="min-w-0" role="figure" aria-label="Padding example">
         <template #content>
           <div class="rounded-lg bg-primary-50 p-6 dark:bg-primary-950">
-            <div class="rounded border border-dashed border-primary bg-surface p-4 text-sm">
+            <div class="rounded-sm border border-dashed border-primary bg-surface p-4 text-sm">
               Content
             </div>
           </div>
@@ -34,7 +34,7 @@ import ControlDensityExample from './ControlDensityExample.vue'
             class="flex gap-4 rounded-lg bg-primary-50 p-6 dark:bg-primary-950"
             aria-hidden="true"
           >
-            <div v-for="item in 3" :key="item" class="h-14 min-w-0 flex-1 rounded bg-primary" />
+            <div v-for="item in 3" :key="item" class="h-14 min-w-0 flex-1 rounded-sm bg-primary" />
           </div>
         </template>
         <template #footer>

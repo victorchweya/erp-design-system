@@ -43,7 +43,7 @@ const typeIcon = { status: Sync, edit: Pencil, comment: Comment, system: Cog }
           <article
             :id="`${idPrefix}-${item.id}`"
             tabindex="-1"
-            class="flex flex-col gap-2 pb-5 text-sm focus:outline-none"
+            class="flex flex-col gap-2 pb-5 text-sm focus:outline-hidden"
           >
             <p>
               <span class="sr-only">{{ typeLabel[(item as ActivityEntry).type] }}: </span>

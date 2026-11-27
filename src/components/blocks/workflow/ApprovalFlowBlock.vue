@@ -202,7 +202,7 @@ function reset() {
             ref="statusHeading"
             :id="`${id}-title`"
             tabindex="-1"
-            class="text-xl font-medium focus:outline-none"
+            class="text-xl font-medium focus:outline-hidden"
           >
             {{ request.customer }}
           </h3>

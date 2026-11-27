@@ -1,6 +1,13 @@
 import { afterEach, beforeEach, expect, it, vi } from 'vitest'
 import { enableAutoUnmount, flushPromises, mount } from '@vue/test-utils'
 import PrimeVue from 'primevue/config'
+import ToastService from 'primevue/toastservice'
+import { useToast } from 'primevue/usetoast'
+import Dialog from 'primevue/dialog'
+import Drawer from 'primevue/drawer'
+import { defineComponent, shallowRef } from 'vue'
+import ToastHost from '@/components/ToastHost.vue'
+import { overlayZIndex } from '@/theme/erp-theme/foundations/layers'
 import PaginatorExample from '../examples/PaginatorExample.vue'
 import PickListExample from '../examples/PickListExample.vue'
 import FocusTrapExample from '../examples/FocusTrapExample.vue'
@@ -20,6 +27,48 @@ beforeEach(() => {
 })
 afterEach(() => vi.unstubAllGlobals())
 const options = { global: { plugins: [PrimeVue] }, attachTo: document.body }
+
+it.each(['before', 'after'])(
+  'keeps feedback above drawers and dialogs opened %s the toast',
+  async (order) => {
+    const Harness = defineComponent({
+      components: { ToastHost, Dialog, Drawer },
+      setup() {
+        const toast = useToast()
+        return {
+          drawer: shallowRef(false),
+          dialog: shallowRef(false),
+          show: () => toast.add({ group: 'layers', severity: 'success', summary: 'Saved' }),
+        }
+      },
+      template: `<ToastHost group="layers" />
+      <button @click="show">Notify</button>
+      <button @click="drawer = true">Open drawer</button>
+      <button @click="dialog = true">Open dialog</button>
+      <Drawer v-model:visible="drawer" header="Details" />
+      <Dialog v-model:visible="dialog" header="Edit" modal />`,
+    })
+    const wrapper = mount(Harness, {
+      attachTo: document.body,
+      global: {
+        plugins: [[PrimeVue, { zIndex: overlayZIndex }], ToastService],
+        stubs: { transition: false },
+      },
+    })
+    const [notify, drawer, dialog] = wrapper.findAll('button')
+    if (order === 'after') await notify!.trigger('click')
+    await drawer!.trigger('click')
+    await dialog!.trigger('click')
+    if (order === 'before') await notify!.trigger('click')
+    await flushPromises()
+    const host = document.querySelector<HTMLElement>('.p-toast')!
+    expect(host.textContent).toContain('Saved')
+    const masks = document.querySelectorAll<HTMLElement>('.p-drawer-mask, .p-dialog-mask')
+    expect(masks).toHaveLength(2)
+    for (const mask of masks)
+      expect(Number(host.style.zIndex)).toBeGreaterThan(Number(mask.style.zIndex))
+  },
+)
 
 it('switches the workspace from the sidebar popup menu', async () => {
   const wrapper = mount(SidebarMenuExample, options)

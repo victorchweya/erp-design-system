@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import ToastHost from '@/components/ToastHost.vue'
 import { computed, ref, shallowRef, useId } from 'vue'
 import { useToast } from 'primevue/usetoast'
 import Download from '@primeicons/vue/download'
@@ -133,7 +134,7 @@ function exportCsv() {
 </script>
 
 <template>
-  <Toast
+  <ToastHost
     :group="id"
     :breakpoints="{ '640px': { width: 'calc(100vw - 2rem)', right: '1rem', left: '1rem' } }"
   />

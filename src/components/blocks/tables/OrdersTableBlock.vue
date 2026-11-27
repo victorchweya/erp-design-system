@@ -80,7 +80,7 @@ function clearSearch() {
                   type="button"
                   aria-label="Clear order search"
                   title="Clear order search"
-                  class="-m-1 flex rounded-sm p-1 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-0 focus-visible:outline-primary"
+                  class="-m-1 flex rounded-xs p-1 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-0 focus-visible:outline-primary"
                   @click="clearSearch"
                 >
                   <Times aria-hidden="true" focusable="false" />

@@ -43,7 +43,7 @@ async function copyCode() {
         <div class="flex min-w-0 flex-wrap items-center gap-3">
           <span
             v-if="language !== 'Vue'"
-            class="rounded bg-surface-100 px-2 py-1 text-xs font-medium dark:bg-surface-800"
+            class="rounded-sm bg-surface-100 px-2 py-1 text-xs font-medium dark:bg-surface-800"
             >{{ language }}</span
           >
           <span class="font-medium">{{ title }}</span>

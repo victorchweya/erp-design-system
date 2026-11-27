@@ -32,7 +32,7 @@ const sections = computed(() => summarise(props.draft))
       <dl class="grid gap-x-6 gap-y-2 sm:grid-cols-[minmax(0,10rem)_minmax(0,1fr)]">
         <template v-for="[label, value] in section.rows" :key="label">
           <dt class="text-muted">{{ label }}</dt>
-          <dd class="break-words font-medium">{{ value }}</dd>
+          <dd class="wrap-break-word font-medium">{{ value }}</dd>
         </template>
       </dl>
     </section>

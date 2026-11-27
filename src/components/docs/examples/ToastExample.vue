@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import ToastHost from '@/components/ToastHost.vue'
 import { useId } from 'vue'
 import { useToast } from 'primevue/usetoast'
 const group = useId()
@@ -69,7 +70,7 @@ function show(severity: ToastSeverity, summary: string, detail: string) {
 </script>
 
 <template>
-  <Toast
+  <ToastHost
     :group="group"
     :breakpoints="{ '640px': { width: 'calc(100vw - 2rem)', right: '1rem', left: '1rem' } }"
   />

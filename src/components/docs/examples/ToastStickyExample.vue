@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import ToastHost from '@/components/ToastHost.vue'
 import { onBeforeUnmount, shallowRef, useId } from 'vue'
 import { useToast } from 'primevue/usetoast'
 import type { ToastMessageOptions } from 'primevue/toast'
@@ -41,7 +42,7 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <Toast :group="group" />
+  <ToastHost :group="group" />
   <div class="flex flex-wrap gap-2">
     <Button type="button" :disabled="exporting" @click="exportInvoices"
       ><Download aria-hidden="true" />Export</Button

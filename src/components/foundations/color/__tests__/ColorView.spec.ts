@@ -65,13 +65,13 @@ it('renders the color documentation without internal audit notes', () => {
   }
   const shadows = wrapper.get('#color-shadows')
   const shadowUtilities = [
+    'shadow-xs',
     'shadow-sm',
-    'shadow',
     'shadow-md',
     'shadow-lg',
     'shadow-xl',
     'shadow-2xl',
-    'shadow-inner',
+    'inset-shadow-sm',
     'shadow-none',
   ]
   expect(shadows.findAll('code').map((code) => code.text())).toEqual(shadowUtilities)

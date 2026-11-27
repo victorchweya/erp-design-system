@@ -22,8 +22,8 @@ const activeSection = useActiveSection(sections.map(({ id }) => id))
 const tailwindCss = `.panel {
   display: flex;
   flex-direction: column;
-  padding: theme('spacing.6');
-  gap: theme('spacing.4');
+  padding: --spacing(6);
+  gap: --spacing(4);
 }`
 const tokenCss = `.panel {
   display: flex;
@@ -84,7 +84,7 @@ const tokenCss = `.panel {
         >
           <h2 id="spacing-css-title" class="text-2xl font-medium">In CSS</h2>
           <p class="text-muted-color">
-            Use theme() in CSS processed by Tailwind v3, or use the shared PrimeVue variables in
+            Use --spacing() in CSS processed by Tailwind 4, or use the shared PrimeVue variables in
             ordinary CSS.
           </p>
           <CodeExample title="Tailwind-processed CSS" language="CSS" :code="tailwindCss" />

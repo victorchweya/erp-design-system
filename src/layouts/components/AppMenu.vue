@@ -130,7 +130,7 @@ const activeClass =
 
 <style scoped>
 .menu-group:has([aria-current='page']) > summary > .menu-group-label {
-  @apply font-medium;
+  font-weight: var(--p-font-weight-medium);
   color: var(--p-text-color);
 }
 </style>

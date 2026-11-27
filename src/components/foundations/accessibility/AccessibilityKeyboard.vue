@@ -80,7 +80,7 @@ const rows = [
           ><kbd
             v-for="key in data.keys"
             :key="key"
-            class="whitespace-nowrap rounded border border-surface bg-emphasis px-1.5 py-0.5 font-sans text-xs"
+            class="whitespace-nowrap rounded-sm border border-surface bg-emphasis px-1.5 py-0.5 font-sans text-xs"
             >{{ key }}</kbd
           ></span
         ></template

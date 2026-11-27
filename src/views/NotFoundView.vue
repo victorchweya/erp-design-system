@@ -6,7 +6,7 @@ const route = useRoute()
 </script>
 
 <template>
-  <div class="mx-auto flex min-h-[calc(100dvh-3.5rem)] w-full max-w-screen-xl items-center px-4 py-4">
+  <div class="mx-auto flex min-h-[calc(100dvh-3.5rem)] w-full max-w-(--breakpoint-xl) items-center px-4 py-4">
     <NotFoundPageBlock
       heading-tag="h1"
       :path="route.fullPath"

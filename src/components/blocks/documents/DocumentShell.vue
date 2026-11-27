@@ -72,7 +72,7 @@ onBeforeUnmount(() => {
       >
         <div v-for="item in meta" :key="item.label" class="flex min-w-0 flex-col gap-1">
           <dt class="text-xs font-medium uppercase tracking-wide text-muted">{{ item.label }}</dt>
-          <dd class="break-words">{{ item.value }}</dd>
+          <dd class="wrap-break-word">{{ item.value }}</dd>
         </div>
       </dl>
 

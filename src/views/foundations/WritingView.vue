@@ -45,7 +45,7 @@ const activeSection = useActiveSection(sections.map(({ id }) => id))
             {{ guideline.link.text }}
             <RouterLink
               :to="guideline.link.to"
-              class="rounded-sm text-primary underline underline-offset-4 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+              class="rounded-xs text-primary underline underline-offset-4 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
               >{{ guideline.link.label }}</RouterLink
             >.
           </p>

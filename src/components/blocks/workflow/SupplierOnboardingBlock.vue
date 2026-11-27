@@ -91,7 +91,7 @@ function restart() {
         <h4
           :id="headingId('done')"
           tabindex="-1"
-          class="flex items-center gap-2 text-lg font-medium focus:outline-none"
+          class="flex items-center gap-2 text-lg font-medium focus:outline-hidden"
         >
           <CheckCircle class="text-success" aria-hidden="true" />Supplier submitted
         </h4>
@@ -126,7 +126,7 @@ function restart() {
                 <h4
                   :id="headingId(step.value)"
                   tabindex="-1"
-                  class="text-lg font-medium focus:outline-none"
+                  class="text-lg font-medium focus:outline-hidden"
                 >
                   {{ step.title }}
                 </h4>

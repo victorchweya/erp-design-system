@@ -86,7 +86,7 @@ function onKeydown(event: KeyboardEvent) {
           >
         </div>
       </form>
-      <p v-else class="whitespace-pre-line break-words leading-relaxed">
+      <p v-else class="whitespace-pre-line wrap-break-word leading-relaxed">
         <template v-for="(part, index) in parts" :key="index">
           <strong v-if="part.mention" class="font-medium text-primary">{{ part.text }}</strong>
           <template v-else>{{ part.text }}</template>

@@ -1,20 +1,18 @@
 import { afterEach, beforeEach, expect, it } from 'vitest'
 import { $dt, Theme } from '@primeuix/styled'
 import postcss from 'postcss'
-import tailwindcss from 'tailwindcss'
+import { compile } from '@tailwindcss/node'
 import ErpTheme from '@/theme/erp-theme'
-import loadConfig from 'tailwindcss/loadConfig'
-import resolveConfig from 'tailwindcss/resolveConfig'
 import defaultTheme from 'tailwindcss/defaultTheme'
+import { readFileSync } from 'node:fs'
 import { resolve } from 'node:path'
 
 import { brandTokenReferences, primitives } from '../palette'
 import { colorRoles, colorValue, contrastRatio, roleByName, semanticColors } from '../color-tokens'
 import { fontSizes, fontWeights } from '../typography'
-import { spacing } from '../spacing'
+import { spacing, wideContainerMaxWidth } from '../spacing'
 import { controlSizes } from '../controls'
 
-const tailwindConfig = loadConfig(resolve('tailwind.config.js'))
 const previousTheme = Theme.getTheme() ?? {}
 beforeEach(() => {
   Theme.setTheme({
@@ -26,7 +24,6 @@ afterEach(() => Theme.setTheme(previousTheme))
 
 it('keeps shared PrimeVue spacing aligned with Tailwind and preserves control density', () => {
   expect(spacing).toEqual(defaultTheme.spacing)
-  expect(resolveConfig(tailwindConfig).theme.spacing).toEqual(spacing)
   for (const [step, value] of Object.entries(spacing)) {
     expect($dt(`spacing.${step}`).value).toBe(value)
   }
@@ -64,15 +61,13 @@ it('keeps shared PrimeVue spacing aligned with Tailwind and preserves control de
 })
 
 it('keeps the public PrimeVue typography scale aligned with default Tailwind utilities', () => {
-  const tailwind = resolveConfig(tailwindConfig)
   for (const [name, [size, lineHeight]] of Object.entries(fontSizes)) {
     const expected = [size, { lineHeight }]
     expect(defaultTheme.fontSize[name as keyof typeof fontSizes]).toEqual(expected)
-    expect(tailwind.theme.fontSize[name as keyof typeof fontSizes]).toEqual(expected)
     expect($dt(`font.size.${name}`).value).toBe(size)
   }
   for (const [name, value] of Object.entries(fontWeights)) {
-    expect(tailwind.theme.fontWeight[name as keyof typeof fontWeights]).toBe(value)
+    expect(defaultTheme.fontWeight[name as keyof typeof fontWeights]).toBe(value)
     expect($dt(`font.weight.${name}`).value).toBe(value)
   }
   for (const token of [
@@ -202,20 +197,25 @@ it('publishes the same verified neutral ramp as surfaces in both modes', () => {
 })
 
 it('generates semantic, brand, palette, opacity and dark Tailwind utilities from theme variables', async () => {
-  const result = await postcss([
-    tailwindcss({
-      ...tailwindConfig,
-      content: [
-        {
-          raw: [
-            'bg-surface text-surface text-muted text-color text-muted-color bg-surface-0 dark:bg-surface-900 bg-kale bg-lime bg-carrot text-tamarind bg-kale/50 text-warn/50 bg-ftf-green-500 border-ftf-neutral-200 bg-ftf-purple-950 bg-status-warning text-status-warning-contrast',
-            ...semanticColors.map(({ name }) => `text-${name} bg-${name} text-${name}-contrast`),
-          ].join(' '),
-          extension: 'html',
-        },
-      ],
-    }),
-  ]).process('@tailwind utilities;', { from: undefined })
+  const compiler = await compile(readFileSync(resolve('src/assets/styles/main.css'), 'utf8'), {
+    base: resolve('src/assets/styles'),
+    onDependency: () => {},
+  })
+  const candidates = [
+    ...'bg-surface text-surface text-muted text-color text-muted-color bg-surface-0 dark:bg-surface-900 bg-kale bg-lime bg-carrot text-tamarind bg-kale/50 text-warn/50 bg-ftf-green-500 border-ftf-neutral-200 bg-ftf-purple-950 bg-status-warning text-status-warning-contrast max-w-8xl font-sans shadow-xs rounded-xs animate-fadein'.split(
+      ' ',
+    ),
+    ...Object.entries(primitives).flatMap(([family, shades]) =>
+      Object.keys(shades).map((shade) => `bg-ftf-${family}-${shade}`),
+    ),
+    ...Object.keys(brandTokenReferences).map((name) => `bg-${name}`),
+    ...semanticColors.flatMap(({ name }) => [
+      `text-${name}`,
+      `bg-${name}`,
+      `text-${name}-contrast`,
+    ]),
+  ]
+  const result = { css: compiler.build(candidates) }
   for (const variable of [
     '--p-primary-color',
     '--p-primary-contrast-color',
@@ -230,7 +230,7 @@ it('generates semantic, brand, palette, opacity and dark Tailwind utilities from
   ]) {
     expect(result.css).toContain(`var(${variable})`)
   }
-  expect(result.css).toContain('calc(100% * 0.5)')
+  expect(result.css).toContain('50%')
   expect(result.css).toContain('.app-dark')
   expect(result.css).toContain('--p-ftf-purple-950')
   expect(result.css).toContain('--p-status-warning-background')
@@ -261,7 +261,22 @@ it('generates semantic, brand, palette, opacity and dark Tailwind utilities from
   expect(variablesFor('.bg-surface', 'background-color')).toContain('var(--p-content-background)')
   expect(variablesFor('.text-surface', 'color')).toContain('var(--p-content-background)')
   expect(variablesFor('.text-muted', 'color')).toContain('var(--p-text-muted-color)')
-  expect(variablesFor('.text-warn\\/50', 'color')).toContain('calc(100% * 0.5)')
+  expect(variablesFor('.text-warn\\/50', 'color')).toContain('50%')
+  for (const [family, shades] of Object.entries(primitives)) {
+    for (const shade of Object.keys(shades)) {
+      expect(variablesFor(`.bg-ftf-${family}-${shade}`, 'background-color')).toBe(
+        `var(--p-ftf-${family}-${shade})`,
+      )
+    }
+  }
+  for (const name of Object.keys(brandTokenReferences)) {
+    expect(variablesFor(`.bg-${name}`, 'background-color')).toBe(`var(--p-ftf-${name})`)
+  }
+  expect(variablesFor('.max-w-8xl', 'max-width')).toBe(wideContainerMaxWidth)
+  expect(variablesFor('.font-sans', 'font-family')).toBe('var(--p-typography-font-family)')
+  expect(variablesFor('.rounded-xs', 'border-radius')).toBe('var(--radius-xs)')
+  expect(variablesFor('.shadow-xs', '--tw-shadow')).not.toBe('')
+  expect(variablesFor('.animate-fadein', 'animation')).not.toBe('')
 })
 
 it('resolves finalized feedback component defaults and input roles from the foundation pairs', () => {

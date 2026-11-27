@@ -42,7 +42,7 @@ const rows = steps.map((step) => ({
       <Column header="Size">
         <template #body="{ data }">
           <div
-            class="h-3 rounded bg-primary"
+            class="h-3 rounded-sm bg-primary"
             :style="{ width: data.value, maxWidth: '100%' }"
             aria-hidden="true"
           />

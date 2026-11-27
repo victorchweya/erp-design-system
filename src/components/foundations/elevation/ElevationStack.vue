@@ -1,5 +1,9 @@
 <script setup lang="ts">
-import { appShellLayers, overlayZIndex } from '@/theme/erp-theme/foundations/layers'
+import {
+  appShellLayers,
+  notificationLayers,
+  overlayZIndex,
+} from '@/theme/erp-theme/foundations/layers'
 
 // Ordered from the bottom of the stack to the top.
 const layers = [
@@ -8,7 +12,7 @@ const layers = [
     name: 'Sticky headers',
     zIndex: '1–10',
     detail: 'Table headers, page toolbars',
-    shadow: 'shadow-sm',
+    shadow: 'shadow-xs',
   },
   {
     name: 'Topbar',
@@ -29,9 +33,15 @@ const layers = [
     shadow: 'shadow-md',
   },
   {
-    name: 'Modals, tooltips, toasts',
+    name: 'Modals and tooltips',
     zIndex: `${overlayZIndex.modal}+`,
-    detail: 'Dialog, Drawer, Tooltip, Toast',
+    detail: 'Dialog, Drawer, Tooltip',
+    shadow: 'shadow-xl',
+  },
+  {
+    name: 'Notifications',
+    zIndex: String(notificationLayers.toast),
+    detail: 'ToastHost',
     shadow: 'shadow-xl',
   },
 ].map((layer, index, all) => ({
@@ -47,8 +57,8 @@ const layers = [
 <template>
   <figure class="flex flex-col gap-3">
     <ol
-      class="relative isolate h-[23rem] rounded-lg border border-dashed border-surface bg-emphasis p-0"
-      aria-label="Stacking order, from page content at the bottom to modals at the top"
+      class="relative isolate h-[26rem] rounded-lg border border-dashed border-surface bg-emphasis p-0"
+      aria-label="Stacking order, from page content at the bottom to notifications at the top"
     >
       <li
         v-for="layer in layers"

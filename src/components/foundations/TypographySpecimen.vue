@@ -44,7 +44,7 @@ function pixels(value: string) {
     </div>
     <Card class="min-w-0">
       <template #content>
-        <p class="break-words" :class="[sizeClasses[size], weightClasses[weight]]">
+        <p class="wrap-break-word" :class="[sizeClasses[size], weightClasses[weight]]">
           Shaping the Future of Food
         </p>
       </template>

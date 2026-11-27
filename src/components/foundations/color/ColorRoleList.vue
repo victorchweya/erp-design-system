@@ -43,7 +43,7 @@ const swatches = computed(() =>
       </template>
       <template #content>
         <div class="flex flex-col gap-1">
-          <h3 class="break-words text-base font-medium">{{ swatch.label }}</h3>
+          <h3 class="wrap-break-word text-base font-medium">{{ swatch.label }}</h3>
           <code class="break-all text-xs text-muted-color">{{ swatch.token }}</code>
           <span class="font-mono text-xs">Light {{ swatch.lightValue }}</span>
           <span class="font-mono text-xs">Dark {{ swatch.darkValue }}</span>

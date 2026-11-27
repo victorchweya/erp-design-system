@@ -43,7 +43,7 @@ onMounted(() => heading.value?.focus())
           <h3
             ref="heading"
             tabindex="-1"
-            class="text-xl font-medium tracking-tight outline-none sm:text-2xl"
+            class="text-xl font-medium tracking-tight outline-hidden sm:text-2xl"
           >
             {{ supplier.name }}
           </h3>

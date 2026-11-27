@@ -12,8 +12,8 @@ const levels = [
   },
   {
     name: 'Raised',
-    utility: 'shadow-sm',
-    preview: 'shadow-sm border border-surface',
+    utility: 'shadow-xs',
+    preview: 'shadow-xs border border-surface',
     token: 'No preset token',
     use: 'Sticky toolbars with content scrolling beneath them, and cards that lift on hover or drag.',
   },
@@ -62,7 +62,7 @@ const levels = [
             <template v-if="level.value">
               <dt class="text-muted-color">Value</dt>
               <dd>
-                <code class="break-words">{{ level.value }}</code>
+                <code class="wrap-break-word">{{ level.value }}</code>
               </dd>
             </template>
           </dl>

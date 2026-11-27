@@ -1,6 +1,6 @@
 # ERP Design System
 
-FTF design-system foundations, component documentation, and UI blocks, built with Vue 3, TypeScript, PrimeVue, and Tailwind CSS. The ERP theme is a standalone local preset.
+FTF design-system foundations, component documentation, and UI blocks, built with Vue 3, TypeScript, PrimeVue, and Tailwind CSS 4. The ERP theme is a standalone local preset.
 
 ## Getting started
 
@@ -23,7 +23,7 @@ Open `/` or `/components` to reach `/components/core-elements/button`. All 98 co
 
 The sidebar and routes use the same [component page registry](src/data/component-pages.ts). Each page loads independently; Quill only loads when the Editor example is opened. Existing page URLs are preserved. The component called Deferred in the reference is documented under its installed name, DeferredContent. [ComponentDoc.vue](src/components/docs/ComponentDoc.vue) provides the shared documentation layout while each example owns its local state.
 
-ToastService and DialogService are registered once in `src/main.ts`, alongside ConfirmationService. Ripple is enabled in the PrimeVue configuration. Copy these service registrations when reusing the corresponding examples in another app. New PrimeVue 5 compound components have local preset tokens in `src/theme/erp-theme/`.
+ToastService and DialogService are registered once in `src/main.ts`, alongside ConfirmationService. Use `src/components/ToastHost.vue` for toasts: it forwards native Toast attributes and slots and reserves the notification layer from `layers.ts`, keeping feedback above drawers and dialogs regardless of opening order. Ripple is enabled in the PrimeVue configuration. Copy these service registrations when reusing the corresponding examples in another app. New PrimeVue 5 compound components have local preset tokens in `src/theme/erp-theme/`.
 
 Examples do not send form values, passwords, codes, or files to a backend. FileUpload uses `customUpload` to report local selections. Form validation uses `@primevue/forms` with a small custom resolver. Editor uses Quill; the installed PrimeVue 5 component is deprecated, so prefer Textarea when formatted content is unnecessary.
 
@@ -109,7 +109,7 @@ FTF colour values live in one shared palette. The documentation, Tailwind utilit
 | [palette.ts](src/theme/erp-theme/foundations/palette.ts) | Raw FTF ramps and brand aliases |
 | [color-tokens.ts](src/theme/erp-theme/foundations/color-tokens.ts) | Semantic roles, foreground/background pairs, and documentation data |
 | [theme.ts](src/theme/erp-theme/foundations/theme.ts) | Maps the colour roles to PrimeVue semantic and component tokens |
-| [tailwind.config.js](tailwind.config.js) | Exposes the shared theme values as Tailwind utilities |
+| [tailwind.css](src/theme/erp-theme/tailwind.css) | Maps Tailwind 4 theme aliases to the preset’s CSS variables |
 
 The four core brand colours are:
 
@@ -138,7 +138,7 @@ Fixed brand colours and raw FTF ramps keep their values across modes. Raw ramp u
 
 ## Typography
 
-Typography uses Rubik and Tailwind's default type scale without custom size utilities. [typography.ts](src/theme/erp-theme/foundations/typography.ts) keeps a local copy of the default sizes, line heights, and the four UI weights for the standalone PrimeVue preset and documentation. The integration check verifies these against Tailwind's installed defaults and resolved configuration.
+Typography uses Rubik and Tailwind's default type scale without custom size utilities. [typography.ts](src/theme/erp-theme/foundations/typography.ts) keeps a local copy of the default sizes, line heights, and the four UI weights for the standalone PrimeVue preset and documentation. The integration check verifies these against Tailwind's installed defaults and compiled utilities.
 
 PrimeVue font sizes reference `font.size.*` tokens and weights reference `font.weight.*`. Small and default controls use `text-sm` (14px); large controls use `text-base` (16px). Body text remains 16px. Component line heights retain PrimeVue's layout; Tailwind text utilities include their default line heights. The root font size stays at the browser default so rem units respect user preferences.
 
@@ -150,11 +150,11 @@ Tags use 12px text with 2px vertical / 6px horizontal padding (approximately 22p
 
 PrimeVue 5.0.5 has incomplete size support for some trigger widths and nested chip inputs. The preset's shared CSS adapts those using the same control tokens; keep these adjustments in the preset rather than page-level padding or height overrides. Review all three sizes in **Foundations → Spacing → Control spacing**, including states, grouped controls, chips, light/dark mode, and narrow screens when changing density.
 
-Spacing uses Tailwind v3's default scale. [spacing.ts](src/theme/erp-theme/foundations/spacing.ts) keeps the matching values local for the standalone preset and documentation; the integration check verifies them against the installed Tailwind defaults. Shared form fields, lists, navigation, overlays, buttons, cards, tags, tables, and dialogs reference `spacing.*` tokens. Existing component-specific 18px padding and the Stepper's 26px alignment margin remain unchanged.
+Spacing uses Tailwind’s 0.25rem scale. [spacing.ts](src/theme/erp-theme/foundations/spacing.ts) keeps the matching values local for the standalone preset and documentation; the integration check verifies them against the installed Tailwind defaults. Shared form fields, lists, navigation, overlays, buttons, cards, tags, tables, and dialogs reference `spacing.*` tokens. Existing component-specific 18px padding and the Stepper's 26px alignment margin remain unchanged.
 
-Use Tailwind utilities such as `p-6` and `gap-4`. In ordinary CSS, the matching PrimeVue variables are `var(--p-spacing-6)` and `var(--p-spacing-4)`. In CSS processed by Tailwind v3, use `theme('spacing.6')`. Breakpoints and existing page gutters are unchanged.
+Use Tailwind utilities such as `p-6` and `gap-4`. In ordinary CSS, the matching PrimeVue variables are `var(--p-spacing-6)` and `var(--p-spacing-4)`. In Tailwind 4 CSS, use `--spacing(6)` or `calc(var(--spacing) * 6)`. Breakpoints and existing page gutters are unchanged.
 
-The existing radius mapping is documented on the page: PrimeVue `border.radius.xs` matches `rounded-sm` (2px), and `border.radius.sm` matches `rounded` (4px). The `md`, `lg`, and `xl` names match across both systems.
+The existing radius mapping is documented on the page: PrimeVue `border.radius.xs` matches `rounded-xs` (2px), and `border.radius.sm` matches `rounded-sm` (4px). The `md`, `lg`, and `xl` names match across both systems.
 
 DataTable and TreeTable column headings, body cells, and column footers default to `font.size.sm` (14px at the default 16px root) for every table density. DataTables have a rounded outer frame in the shared preset: 6px (`border.radius.md`) for small tables and 8px (`border.radius.lg`) for default and large tables. The frame includes headers, footers, and pagination; inner cell borders stay square.
 
@@ -191,5 +191,12 @@ Choose checks appropriate to the change:
 - `npm run type-check` for Vue and TypeScript changes.
 - `npm run test:unit -- --run` for unit tests; append a test path to target an affected suite.
 - `npm run build-only` for a production build, or `npm run build` to include type-checking.
+- `npm run lint` for the existing Oxlint and ESLint checks with automatic fixes, or `npx eslint .` for ESLint without fixes.
+
+`@shadcn/lint` is registered in `eslint.config.ts` for Vue and TypeScript files, using the existing Vue parser. Its discovery settings identify local components under `@/components` and explicit `primevue` imports. No `@shadcn/lint` rules are enabled; existing lint policies are unchanged. Add selected `shadcn/*` rules in the `app/design-system-lint` block after reviewing the [available rules](https://github.com/shadcn-ui/lint#rules) and [configuration examples](https://github.com/shadcn-ui/lint/blob/main/docs/design-systems.md).
+
+Tailwind 4 runs through `@tailwindcss/vite`. The entry stylesheet imports `tailwindcss`, the CSS version of `tailwindcss-primeui`, and the local `@theme inline` aliases in `src/theme/erp-theme/tailwind.css`. Those aliases reference PrimeVue variables, so palette values stay in the TypeScript preset and respond to colour mode changes. When adding a palette token, add its Tailwind alias too; the theme integration test checks the generated utilities. Keep the `theme, base, primevue, components, utilities` layer order and `.app-dark` variant aligned with `src/main.ts`. The Aura reference snapshot is excluded from scanning. See the [Tailwind upgrade guide](https://tailwindcss.com/docs/upgrade-guide) and [PrimeVue integration guide](https://primevue.dev/tailwind).
+
+`@shadcn/lint` can discover the local CSS theme. Its token rules do not read the TypeScript preset itself. Setup follows the [official guide](https://github.com/shadcn-ui/lint/blob/main/SETUP.md); no rules are enabled automatically.
 
 Follow [AGENTS.md](AGENTS.md) for testing guidance. Documentation-only changes do not require application tests. Run Playwright only when explicitly requested.

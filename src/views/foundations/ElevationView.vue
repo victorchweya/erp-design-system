@@ -130,8 +130,8 @@ app.use(PrimeVue, {
         >
           <h2 id="elevation-toast-title" class="text-2xl font-medium">Toast</h2>
           <p class="leading-relaxed text-muted-color">
-            Toast uses the modal category, so it appears above the app shell, overlays, and any
-            dialog that is already open. Its default position is
+            Use the shared ToastHost, which reserves the notification layer above drawers and
+            dialogs, including those opened after a toast appears. Its default position is
             <code class="text-color">top-right</code>; PrimeVue also supports
             <code class="text-color">top-left</code>, <code class="text-color">top-center</code>,
             <code class="text-color">bottom-left</code>,
@@ -165,7 +165,8 @@ app.use(PrimeVue, {
             <li>
               Do not set <code class="text-color">baseZIndex</code> or turn off
               <code class="text-color">autoZIndex</code> on PrimeVue overlays; nested overlays rely
-              on automatic layering.
+              on automatic layering. ToastHost is the shared exception: it uses the notification
+              layer from <code class="text-color">layers.ts</code>.
             </li>
             <li>
               Open a Dialog from a Drawer when needed. It stacks above the Drawer automatically.

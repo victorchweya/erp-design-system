@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import ToastHost from '@/components/ToastHost.vue'
 import { computed, nextTick, ref, shallowRef, useId, useTemplateRef } from 'vue'
 import { useToast } from 'primevue/usetoast'
 import Building from '@primeicons/vue/building'
@@ -127,7 +128,7 @@ function discard() {
               :id="`${id}-section`"
               ref="heading"
               tabindex="-1"
-              class="text-lg font-medium outline-none"
+              class="text-lg font-medium outline-hidden"
               :class="{ 'text-danger': active === 'danger' }"
             >
               {{ current.label }}
@@ -172,7 +173,7 @@ function discard() {
       </form>
     </div>
     <p role="status" class="sr-only">{{ dirty ? 'You have unsaved changes.' : '' }}</p>
-    <Toast
+    <ToastHost
       :group="id"
       :breakpoints="{ '640px': { width: 'calc(100vw - 2rem)', right: '1rem', left: '1rem' } }"
     />

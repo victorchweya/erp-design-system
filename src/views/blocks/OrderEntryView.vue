@@ -32,7 +32,7 @@ function saveReceiving(results: ReconciliationResult[]) {
 </script>
 
 <template>
-  <div class="mx-auto flex w-full max-w-screen-xl flex-col gap-12 px-4 py-10 text-sm">
+  <div class="mx-auto flex w-full max-w-(--breakpoint-xl) flex-col gap-12 px-4 py-10 text-sm">
     <header class="flex flex-col gap-3">
       <p class="font-medium uppercase tracking-wide text-primary">UI blocks</p>
       <h1 class="text-3xl font-medium tracking-tight sm:text-4xl">Order entry</h1>

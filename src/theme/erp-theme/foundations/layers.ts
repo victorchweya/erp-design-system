@@ -5,6 +5,11 @@ export const appShellLayers = {
   sidebar: 30,
 } as const
 
+// Keep feedback outside the automatic overlay stack so later modals cannot cover it.
+export const notificationLayers = {
+  toast: 10000,
+} as const
+
 export const overlayZIndex = {
   overlay: 1000,
   menu: 1000,

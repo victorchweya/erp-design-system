@@ -1,12 +1,12 @@
 <script setup lang="ts">
 const shadows = [
-  { label: 'Small', utility: 'shadow-sm' },
-  { label: 'Default', utility: 'shadow' },
+  { label: 'Small', utility: 'shadow-xs' },
+  { label: 'Default', utility: 'shadow-sm' },
   { label: 'Medium', utility: 'shadow-md' },
   { label: 'Large', utility: 'shadow-lg' },
   { label: 'Extra large', utility: 'shadow-xl' },
   { label: '2X large', utility: 'shadow-2xl' },
-  { label: 'Inner', utility: 'shadow-inner' },
+  { label: 'Inner', utility: 'inset-shadow-sm' },
   { label: 'None', utility: 'shadow-none' },
 ]
 </script>

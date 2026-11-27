@@ -36,7 +36,7 @@ function clearSearch() {
 <template>
   <div ref="root" class="flex flex-col gap-4">
     <header class="flex flex-col gap-1">
-      <h3 tabindex="-1" class="text-xl font-medium tracking-tight outline-none">Suppliers</h3>
+      <h3 tabindex="-1" class="text-xl font-medium tracking-tight outline-hidden">Suppliers</h3>
       <p class="text-sm text-muted">Open a supplier to review details, orders, and activity.</p>
     </header>
     <DataTable
@@ -63,7 +63,7 @@ function clearSearch() {
                 type="button"
                 aria-label="Clear supplier search"
                 title="Clear supplier search"
-                class="-m-1 flex rounded-sm p-1 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-0 focus-visible:outline-primary"
+                class="-m-1 flex rounded-xs p-1 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-0 focus-visible:outline-primary"
                 @click="clearSearch"
               >
                 <Times aria-hidden="true" focusable="false" />

@@ -14,13 +14,13 @@ const radii = [
     usedBy: 'Accordion headers, panel headers (0 radius)',
   },
   {
-    utility: 'rounded-sm',
+    utility: 'rounded-xs',
     value: borderRadii.xs,
     variable: '--p-border-radius-xs',
     usedBy: 'FloatLabel label backgrounds',
   },
   {
-    utility: 'rounded',
+    utility: 'rounded-sm',
     value: borderRadii.sm,
     variable: '--p-border-radius-sm',
     usedBy: 'Checkboxes, list options, menu items',
@@ -58,10 +58,10 @@ const breakpoints = [
   { label: '2X large', prefix: '2xl', width: 1536 },
 ]
 const containers = [
-  { label: 'container/sm', value: '640px', utility: 'max-w-screen-sm' },
-  { label: 'container/md', value: '768px', utility: 'max-w-screen-md' },
-  { label: 'container/lg', value: '1024px', utility: 'max-w-screen-lg' },
-  { label: 'container/xl', value: '1280px', utility: 'max-w-screen-xl' },
+  { label: 'container/sm', value: '640px', utility: 'max-w-(--breakpoint-sm)' },
+  { label: 'container/md', value: '768px', utility: 'max-w-(--breakpoint-md)' },
+  { label: 'container/lg', value: '1024px', utility: 'max-w-(--breakpoint-lg)' },
+  { label: 'container/xl', value: '1280px', utility: 'max-w-(--breakpoint-xl)' },
   {
     label: 'container/2xl',
     value: `${Number.parseFloat(wideContainerMaxWidth) * 16}px`,
@@ -81,8 +81,8 @@ const containers = [
   >
     <h2 id="spacing-radius-title" class="text-2xl font-medium">Radius</h2>
     <p class="text-muted-color">
-      Use the existing FTF radii. PrimeVue’s sm token is 4px and matches Tailwind’s rounded utility;
-      rounded-sm is 2px. The md, lg, and xl names match across both systems.
+      Use the existing FTF radii. PrimeVue’s sm token is 4px and matches Tailwind’s rounded-sm
+      utility; rounded-xs is 2px. The md, lg, and xl names match across both systems.
     </p>
     <DataTable
       :value="radii"
@@ -144,12 +144,14 @@ const containers = [
         >
       </Column>
       <Column header="CSS variable">
-        <template #body><span aria-label="No CSS variable">—</span></template>
+        <template #body="{ data }"
+          ><code>{{ `--breakpoint-${data.prefix}` }}</code></template
+        >
       </Column>
     </DataTable>
     <p class="text-sm text-muted-color">
-      Tailwind v3 defines breakpoints in its configuration and does not publish --breakpoint-* CSS
-      variables.
+      Tailwind 4 publishes --breakpoint-* CSS variables. Use them for matching container widths;
+      responsive variants use the same breakpoint values.
     </p>
     <p class="text-sm text-muted-color">
       One column on mobile, two from md, and three from xl, with a 16px gap at every size.
@@ -198,8 +200,9 @@ const containers = [
       </Column>
     </DataTable>
     <p class="text-sm text-muted-color">
-      Foundation pages use max-w-7xl (1280px), and component pages use max-w-screen-xl (1280px).
-      Container caps are separate from responsive breakpoints: 2xl: still starts at 1536px.
+      Foundation pages use max-w-7xl (1280px), and component pages use max-w-(--breakpoint-xl)
+      (1280px). Container caps are separate from responsive breakpoints: 2xl: still starts at
+      1536px.
     </p>
     <p class="text-sm text-muted-color">
       A centred container with 16px side padding and a 16px grid gap. From lg, the content and

@@ -146,7 +146,7 @@ function reset() {
         </Tabs>
         <a
           href="#notification-inbox"
-          class="self-center rounded-sm font-medium text-primary underline underline-offset-4 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+          class="self-center rounded-xs font-medium text-primary underline underline-offset-4 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
           @click="popover?.hide()"
           >View all notifications</a
         >

@@ -63,7 +63,7 @@ const creditDetails: Detail[] = [
                 class="flex items-start justify-between gap-4"
               >
                 <dt class="text-muted">{{ detail.label }}</dt>
-                <dd class="max-w-48 break-words text-right font-medium">{{ detail.value }}</dd>
+                <dd class="max-w-48 wrap-break-word text-right font-medium">{{ detail.value }}</dd>
               </div>
             </dl>
           </section>
@@ -80,7 +80,7 @@ const creditDetails: Detail[] = [
                 class="flex items-start justify-between gap-4"
               >
                 <dt class="text-muted">{{ detail.label }}</dt>
-                <dd class="max-w-48 break-words text-right font-medium">
+                <dd class="max-w-48 wrap-break-word text-right font-medium">
                   <a v-if="detail.href" :href="detail.href" class="text-primary hover:underline">{{
                     detail.value
                   }}</a>
@@ -102,7 +102,7 @@ const creditDetails: Detail[] = [
                 class="flex items-start justify-between gap-4"
               >
                 <dt class="text-muted">{{ detail.label }}</dt>
-                <dd class="max-w-48 break-words text-right font-medium">{{ detail.value }}</dd>
+                <dd class="max-w-48 wrap-break-word text-right font-medium">{{ detail.value }}</dd>
               </div>
             </dl>
           </section>
@@ -119,7 +119,7 @@ const creditDetails: Detail[] = [
                 class="flex items-start justify-between gap-4"
               >
                 <dt class="text-muted">{{ detail.label }}</dt>
-                <dd class="max-w-48 break-words text-right font-medium tabular-nums">
+                <dd class="max-w-48 wrap-break-word text-right font-medium tabular-nums">
                   {{ detail.value }}
                 </dd>
               </div>

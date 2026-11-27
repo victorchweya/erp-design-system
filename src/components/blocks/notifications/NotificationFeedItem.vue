@@ -15,7 +15,7 @@ const type = computed(() => notificationTypes[props.item.type])
     <div class="flex min-w-0 flex-1 flex-col gap-1">
       <a
         :href="item.href"
-        class="rounded-sm underline-offset-4 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+        class="rounded-xs underline-offset-4 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
         :class="item.read ? 'text-color' : 'font-semibold text-color'"
         @click="emit('open', $event)"
         >{{ item.title }}<span v-if="!item.read" class="sr-only"> (unread)</span></a

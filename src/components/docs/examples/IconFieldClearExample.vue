@@ -28,7 +28,7 @@ function clearQuery() {
         @keydown.esc="clearQuery" /><InputIcon v-if="query"
         ><button
           type="button"
-          class="-m-1 flex rounded-sm p-1 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-0 focus-visible:outline-primary"
+          class="-m-1 flex rounded-xs p-1 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-0 focus-visible:outline-primary"
           aria-label="Clear supplier search"
           @click="clearQuery"
         >

@@ -1,0 +1,191 @@
+/* Tailwind aliases reference the standalone preset; palette values stay in foundations/palette.ts. */
+@theme inline {
+  --container-8xl: 90rem;
+
+  --color-status-success: var(--p-status-success-background);
+  --color-status-success-contrast: var(--p-status-success-color);
+
+  --color-status-warning: var(--p-status-warning-background);
+  --color-status-warning-contrast: var(--p-status-warning-color);
+
+  --color-status-error: var(--p-status-error-background);
+  --color-status-error-contrast: var(--p-status-error-color);
+
+  --color-status-info: var(--p-status-info-background);
+  --color-status-info-contrast: var(--p-status-info-color);
+
+  --color-ftf-emerald-50: var(--p-ftf-emerald-50);
+  --color-ftf-emerald-100: var(--p-ftf-emerald-100);
+  --color-ftf-emerald-200: var(--p-ftf-emerald-200);
+  --color-ftf-emerald-300: var(--p-ftf-emerald-300);
+  --color-ftf-emerald-400: var(--p-ftf-emerald-400);
+  --color-ftf-emerald-500: var(--p-ftf-emerald-500);
+  --color-ftf-emerald-600: var(--p-ftf-emerald-600);
+  --color-ftf-emerald-700: var(--p-ftf-emerald-700);
+  --color-ftf-emerald-800: var(--p-ftf-emerald-800);
+  --color-ftf-emerald-900: var(--p-ftf-emerald-900);
+  --color-ftf-emerald-950: var(--p-ftf-emerald-950);
+
+  --color-ftf-green-50: var(--p-ftf-green-50);
+  --color-ftf-green-100: var(--p-ftf-green-100);
+  --color-ftf-green-200: var(--p-ftf-green-200);
+  --color-ftf-green-300: var(--p-ftf-green-300);
+  --color-ftf-green-400: var(--p-ftf-green-400);
+  --color-ftf-green-500: var(--p-ftf-green-500);
+  --color-ftf-green-600: var(--p-ftf-green-600);
+  --color-ftf-green-700: var(--p-ftf-green-700);
+  --color-ftf-green-800: var(--p-ftf-green-800);
+  --color-ftf-green-900: var(--p-ftf-green-900);
+  --color-ftf-green-950: var(--p-ftf-green-950);
+
+  --color-ftf-orange-50: var(--p-ftf-orange-50);
+  --color-ftf-orange-100: var(--p-ftf-orange-100);
+  --color-ftf-orange-200: var(--p-ftf-orange-200);
+  --color-ftf-orange-300: var(--p-ftf-orange-300);
+  --color-ftf-orange-400: var(--p-ftf-orange-400);
+  --color-ftf-orange-500: var(--p-ftf-orange-500);
+  --color-ftf-orange-600: var(--p-ftf-orange-600);
+  --color-ftf-orange-700: var(--p-ftf-orange-700);
+  --color-ftf-orange-800: var(--p-ftf-orange-800);
+  --color-ftf-orange-900: var(--p-ftf-orange-900);
+  --color-ftf-orange-950: var(--p-ftf-orange-950);
+
+  --color-ftf-indigo-50: var(--p-ftf-indigo-50);
+  --color-ftf-indigo-100: var(--p-ftf-indigo-100);
+  --color-ftf-indigo-200: var(--p-ftf-indigo-200);
+  --color-ftf-indigo-300: var(--p-ftf-indigo-300);
+  --color-ftf-indigo-400: var(--p-ftf-indigo-400);
+  --color-ftf-indigo-500: var(--p-ftf-indigo-500);
+  --color-ftf-indigo-600: var(--p-ftf-indigo-600);
+  --color-ftf-indigo-700: var(--p-ftf-indigo-700);
+  --color-ftf-indigo-800: var(--p-ftf-indigo-800);
+  --color-ftf-indigo-900: var(--p-ftf-indigo-900);
+  --color-ftf-indigo-950: var(--p-ftf-indigo-950);
+
+  --color-ftf-neutral-0: var(--p-ftf-neutral-0);
+  --color-ftf-neutral-50: var(--p-ftf-neutral-50);
+  --color-ftf-neutral-100: var(--p-ftf-neutral-100);
+  --color-ftf-neutral-200: var(--p-ftf-neutral-200);
+  --color-ftf-neutral-300: var(--p-ftf-neutral-300);
+  --color-ftf-neutral-400: var(--p-ftf-neutral-400);
+  --color-ftf-neutral-500: var(--p-ftf-neutral-500);
+  --color-ftf-neutral-600: var(--p-ftf-neutral-600);
+  --color-ftf-neutral-700: var(--p-ftf-neutral-700);
+  --color-ftf-neutral-800: var(--p-ftf-neutral-800);
+  --color-ftf-neutral-900: var(--p-ftf-neutral-900);
+  --color-ftf-neutral-950: var(--p-ftf-neutral-950);
+
+  --color-ftf-red-50: var(--p-ftf-red-50);
+  --color-ftf-red-100: var(--p-ftf-red-100);
+  --color-ftf-red-200: var(--p-ftf-red-200);
+  --color-ftf-red-300: var(--p-ftf-red-300);
+  --color-ftf-red-400: var(--p-ftf-red-400);
+  --color-ftf-red-500: var(--p-ftf-red-500);
+  --color-ftf-red-600: var(--p-ftf-red-600);
+  --color-ftf-red-700: var(--p-ftf-red-700);
+  --color-ftf-red-800: var(--p-ftf-red-800);
+  --color-ftf-red-900: var(--p-ftf-red-900);
+  --color-ftf-red-950: var(--p-ftf-red-950);
+
+  --color-ftf-yellow-50: var(--p-ftf-yellow-50);
+  --color-ftf-yellow-100: var(--p-ftf-yellow-100);
+  --color-ftf-yellow-200: var(--p-ftf-yellow-200);
+  --color-ftf-yellow-300: var(--p-ftf-yellow-300);
+  --color-ftf-yellow-400: var(--p-ftf-yellow-400);
+  --color-ftf-yellow-500: var(--p-ftf-yellow-500);
+  --color-ftf-yellow-600: var(--p-ftf-yellow-600);
+  --color-ftf-yellow-700: var(--p-ftf-yellow-700);
+  --color-ftf-yellow-800: var(--p-ftf-yellow-800);
+  --color-ftf-yellow-900: var(--p-ftf-yellow-900);
+  --color-ftf-yellow-950: var(--p-ftf-yellow-950);
+
+  --color-ftf-olive-50: var(--p-ftf-olive-50);
+  --color-ftf-olive-100: var(--p-ftf-olive-100);
+  --color-ftf-olive-200: var(--p-ftf-olive-200);
+  --color-ftf-olive-300: var(--p-ftf-olive-300);
+  --color-ftf-olive-400: var(--p-ftf-olive-400);
+  --color-ftf-olive-500: var(--p-ftf-olive-500);
+  --color-ftf-olive-600: var(--p-ftf-olive-600);
+  --color-ftf-olive-700: var(--p-ftf-olive-700);
+  --color-ftf-olive-800: var(--p-ftf-olive-800);
+  --color-ftf-olive-900: var(--p-ftf-olive-900);
+  --color-ftf-olive-950: var(--p-ftf-olive-950);
+
+  --color-ftf-brown-50: var(--p-ftf-brown-50);
+  --color-ftf-brown-100: var(--p-ftf-brown-100);
+  --color-ftf-brown-200: var(--p-ftf-brown-200);
+  --color-ftf-brown-300: var(--p-ftf-brown-300);
+  --color-ftf-brown-400: var(--p-ftf-brown-400);
+  --color-ftf-brown-500: var(--p-ftf-brown-500);
+  --color-ftf-brown-600: var(--p-ftf-brown-600);
+  --color-ftf-brown-700: var(--p-ftf-brown-700);
+  --color-ftf-brown-800: var(--p-ftf-brown-800);
+  --color-ftf-brown-900: var(--p-ftf-brown-900);
+  --color-ftf-brown-950: var(--p-ftf-brown-950);
+
+  --color-ftf-violet-50: var(--p-ftf-violet-50);
+  --color-ftf-violet-100: var(--p-ftf-violet-100);
+  --color-ftf-violet-200: var(--p-ftf-violet-200);
+  --color-ftf-violet-300: var(--p-ftf-violet-300);
+  --color-ftf-violet-400: var(--p-ftf-violet-400);
+  --color-ftf-violet-500: var(--p-ftf-violet-500);
+  --color-ftf-violet-600: var(--p-ftf-violet-600);
+  --color-ftf-violet-700: var(--p-ftf-violet-700);
+  --color-ftf-violet-800: var(--p-ftf-violet-800);
+  --color-ftf-violet-900: var(--p-ftf-violet-900);
+  --color-ftf-violet-950: var(--p-ftf-violet-950);
+
+  --color-ftf-purple-50: var(--p-ftf-purple-50);
+  --color-ftf-purple-100: var(--p-ftf-purple-100);
+  --color-ftf-purple-200: var(--p-ftf-purple-200);
+  --color-ftf-purple-300: var(--p-ftf-purple-300);
+  --color-ftf-purple-400: var(--p-ftf-purple-400);
+  --color-ftf-purple-500: var(--p-ftf-purple-500);
+  --color-ftf-purple-600: var(--p-ftf-purple-600);
+  --color-ftf-purple-700: var(--p-ftf-purple-700);
+  --color-ftf-purple-800: var(--p-ftf-purple-800);
+  --color-ftf-purple-900: var(--p-ftf-purple-900);
+  --color-ftf-purple-950: var(--p-ftf-purple-950);
+
+  --color-kale: var(--p-ftf-kale);
+  --color-lime: var(--p-ftf-lime);
+  --color-carrot: var(--p-ftf-carrot);
+  --color-tamarind: var(--p-ftf-tamarind);
+
+  --text-color-primary: var(--p-primary-color);
+  --text-color-success: var(--p-severity-success-color);
+  --text-color-info: var(--p-severity-info-color);
+  --text-color-warn: var(--p-severity-warn-color);
+  --text-color-help: var(--p-severity-help-color);
+  --text-color-danger: var(--p-severity-danger-color);
+  --text-color-contrast: var(--p-severity-contrast-color);
+  --text-color-primary-contrast: var(--p-primary-contrast-color);
+  --text-color-secondary-contrast: var(--p-severity-secondary-contrast-color);
+  --text-color-success-contrast: var(--p-severity-success-contrast-color);
+  --text-color-info-contrast: var(--p-severity-info-contrast-color);
+  --text-color-warn-contrast: var(--p-severity-warn-contrast-color);
+  --text-color-help-contrast: var(--p-severity-help-contrast-color);
+  --text-color-danger-contrast: var(--p-severity-danger-contrast-color);
+  --text-color-contrast-contrast: var(--p-severity-contrast-contrast-color);
+  --text-color-muted: var(--p-text-muted-color);
+  --text-color-note: var(--p-note-color);
+  --text-color-live: var(--p-live-color);
+  --text-color-surface: var(--p-content-background);
+
+  --background-color-primary: var(--p-primary-color);
+  --background-color-secondary: var(--p-severity-secondary-background);
+  --background-color-success: var(--p-severity-success-background);
+  --background-color-info: var(--p-severity-info-background);
+  --background-color-warn: var(--p-severity-warn-background);
+  --background-color-help: var(--p-severity-help-background);
+  --background-color-danger: var(--p-severity-danger-background);
+  --background-color-contrast: var(--p-severity-contrast-background);
+  --background-color-surface: var(--p-content-background);
+  --background-color-note: var(--p-note-background);
+  --background-color-live: var(--p-live-marker-color);
+
+  --border-color-note: var(--p-note-border-color);
+  --border-color-live: var(--p-live-marker-color);
+
+  --font-sans: var(--p-typography-font-family);
+}

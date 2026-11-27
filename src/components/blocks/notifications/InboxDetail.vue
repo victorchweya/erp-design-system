@@ -35,7 +35,7 @@ defineExpose({ focus: () => heading.value?.focus() })
       <p class="leading-relaxed">{{ item.body }}</p>
       <a
         :href="item.href"
-        class="self-start rounded-sm font-medium text-primary underline underline-offset-4 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+        class="self-start rounded-xs font-medium text-primary underline underline-offset-4 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
         @click="emit('follow', $event)"
         >{{ item.linkLabel }}</a
       >

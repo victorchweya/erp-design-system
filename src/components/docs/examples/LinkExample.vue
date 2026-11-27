@@ -8,7 +8,7 @@ import ExternalLink from '@primeicons/vue/external-link'
       Review the
       <RouterLink
         to="/foundations/formatting"
-        class="rounded-sm text-primary underline underline-offset-4 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+        class="rounded-xs text-primary underline underline-offset-4 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
         >formatting guidance</RouterLink
       >
       before displaying order values.
@@ -16,7 +16,7 @@ import ExternalLink from '@primeicons/vue/external-link'
 
     <RouterLink
       to="/ui-blocks/order-entry"
-      class="rounded-sm font-medium text-primary underline underline-offset-4 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+      class="rounded-xs font-medium text-primary underline underline-offset-4 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
       >Order FTF-1049</RouterLink
     >
 
@@ -24,7 +24,7 @@ import ExternalLink from '@primeicons/vue/external-link'
       href="https://router.vuejs.org/guide/essentials/navigation.html"
       target="_blank"
       rel="noreferrer"
-      class="inline-flex items-center gap-1 rounded-sm text-primary underline underline-offset-4 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+      class="inline-flex items-center gap-1 rounded-xs text-primary underline underline-offset-4 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
     >
       Vue Router navigation
       <ExternalLink aria-hidden="true" />

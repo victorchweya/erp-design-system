@@ -18,7 +18,7 @@ import { chartGuide } from './data-viz'
             v-for="block in data.blocks"
             :key="block.to"
             :to="block.to"
-            class="rounded-sm text-primary underline underline-offset-4 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+            class="rounded-xs text-primary underline underline-offset-4 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
             >{{ block.label }}</RouterLink
           ></span
         ></template
