@@ -122,6 +122,8 @@ The four core brand colours are:
 
 The eight secondary brand accents follow the brand guideline's order. Cream remains `yellow.100` (`#FFF5DF`). Neutrals and feedback colours belong to the wider UI palette.
 
+Note panels and expanded table rows use the lighter `yellow.50` (`#FFFAF0`) in light mode.
+
 Use semantic utilities for interface roles:
 
 ```html

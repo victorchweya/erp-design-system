@@ -571,7 +571,7 @@ export const colorRoles: ColorRole[] = [
     evidence: 'FTF decision',
     source: 'FTF accent roles · Cream.',
     // Dark mode avoids a large coloured panel: a slightly lifted neutral with a warm border.
-    light: pair('neutral.900', 'yellow.100'),
+    light: pair('neutral.900', 'yellow.50'),
     dark: pair('neutral.0', 'neutral.800'),
   },
   {
@@ -584,7 +584,7 @@ export const colorRoles: ColorRole[] = [
     group: 'accent',
     evidence: 'FTF decision',
     source: 'FTF accent roles · Cream border.',
-    light: pair('yellow.200', 'yellow.100'),
+    light: pair('yellow.200', 'yellow.50'),
     dark: pair('yellow.800', 'neutral.800'),
     kind: 'decorative',
   },
